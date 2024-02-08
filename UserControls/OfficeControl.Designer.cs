@@ -322,6 +322,7 @@
             this.MethodDrop.Size = new System.Drawing.Size(324, 28);
             this.MethodDrop.TabIndex = 12;
             this.MethodDrop.Text = "Select your Activation Method";
+            this.MethodDrop.SelectedIndexChanged += new System.EventHandler(this.MethodDrop_SelectedIndexChanged);
             // 
             // OfficeControl
             // 
