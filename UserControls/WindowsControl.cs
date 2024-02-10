@@ -12,8 +12,8 @@ namespace OpenFuryKMS
         {
             InitializeComponent();
             Directory.SetCurrentDirectory(@"C:\Windows\system32");
-            ProductNameLbl.Text = "Operating System: " + Win.GetAllInfo();
-            VersionLbl.Text = "Version: " + Win.Version;
+            ProductNameLbl.Text = $"Operating System: {Win.GetAllInfo()}";
+            VersionLbl.Text = $"Version: {Win.Version}";
         }
 
         private void InfoButton_Click(object sender, EventArgs e)
