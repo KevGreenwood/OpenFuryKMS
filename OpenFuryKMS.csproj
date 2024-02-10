@@ -145,8 +145,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Scripts\Windows_AutoKMS.ps1" />
-    <None Include="Scripts\Office_AutoKMS.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
