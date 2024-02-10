@@ -14,59 +14,42 @@ namespace OpenFuryKMS
 {
     public class PowershellHandler
     {
+        private static readonly List<string> KmsServers = new List<string>
+        {
+            "kms.chinancce.com", "kms.digiboy.ir", "kms.ddns.net", "xykz.f3322.org",
+            "dimanyakms.sytes.net", "kms.03k.org", "ms8.us.to", "s8.uk.to",
+            "s9.us.to", "kms9.msguides.com", "kms8.msguides.com", "kms7.msguides.com"
+        };
+
         public string ExecuteCommand(string cmd)
         {
-            using (PowerShell pwsh = PowerShell.Create())
+            using (var pwsh = PowerShell.Create())
             {
                 pwsh.AddScript(cmd);
                 var result = pwsh.Invoke();
-                string output = string.Join(Environment.NewLine, result.Select(o => o.ToString()));
-                return output;
+                return string.Join(Environment.NewLine, result.Select(o => o.ToString()));
             }
         }
 
-        public string AutoKMS(bool Windows = false, bool Office = false)
+        public string AutoKMS(bool windows = false, bool office = false)
         {
-            var KMS_Servers = new List<string> { "kms.chinancce.com", "kms.digiboy.ir", "kms.ddns.net", "xykz.f3322.org", "dimanyakms.sytes.net", "kms.03k.org", "ms8.us.to", "s8.uk.to", "s9.us.to", "kms9.msguides.com", "kms8.msguides.com", "kms7.msguides.com" };
-            bool ActivationSuccessful = false;
-            string result = "";
-
-            foreach (string Server in KMS_Servers)
+            foreach (var server in KmsServers)
             {
-                if (!ActivationSuccessful)
+                var setKms = windows ? $"cscript //nologo slmgr.vbs /skms {server} 2>&1" :
+                              office ? $"cscript //nologo ospp.vbs /sethst:{server} 2>&1" : string.Empty;
+
+                var activate = windows ? "cscript //nologo slmgr.vbs /ato" :
+                                office ? "cscript //nologo ospp.vbs /act" : string.Empty;
+
+                var result = ExecuteCommand($"{setKms}; {activate}");
+
+                if (result.Contains("successful"))
                 {
-                    string SetKMS = "";
-                    string Activate = "";
-
-                    if (Windows == true)
-                    {
-                        SetKMS = $"cscript //nologo slmgr.vbs /skms {Server} 2>&1";
-                        Activate = "cscript //nologo slmgr.vbs /ato";
-                    }
-                    if (Office == true)
-                    {
-                        SetKMS = $"cscript //nologo ospp.vbs /sethst:{Server} 2>&1";
-                        Activate = "cscript //nologo ospp.vbs /act";
-                    }
-
-                    result = ExecuteCommand($"{SetKMS}; {Activate}");
-
-                    if (result.Contains("successful"))
-                    {
-                        ActivationSuccessful = true;
-                        break;
-                    }
-                    else
-                    {
-                        result = "The connection to KMS Servers failed! Please try again and make sure you have an internet connection.";
-                    }
-                }
-                else
-                {
-                    break;
+                    return result;
                 }
             }
-            return result;
+
+            return "The connection to KMS Servers failed! Please try again and make sure you have an internet connection.";
         }
     }
 
@@ -84,9 +67,9 @@ namespace OpenFuryKMS
 
         public string Version = DisplayVersion + " (" + Build + "." + UBR + ") ";
 
-        public void Windows11_Fix()
+        private void Windows11Fix()
         {
-            if (Convert.ToInt32(Build) >= 22000)
+            if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
             {
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
             }
@@ -94,15 +77,14 @@ namespace OpenFuryKMS
 
         public string GetMinimalInfo()
         {
-            Windows11_Fix();
-            string MinimalInfo = ProductName + " " + DisplayVersion + " " + Platform;
-            return MinimalInfo;
+            Windows11Fix();
+            return $"{ProductName} {DisplayVersion} {Platform}";
         }
+
         public string GetAllInfo()
         {
-            Windows11_Fix();
-            string WholeInfo = "Microsoft " + ProductName + Platform;
-            return WholeInfo;
+            Windows11Fix();
+            return $"Microsoft {ProductName}{Platform}";
         }
     }
 
@@ -118,91 +100,68 @@ namespace OpenFuryKMS
 
         public bool DirChecker()
         {
-            bool IsInstalled = false;
-            string[] OfficePaths =
+            string[] officePaths =
             {
-                @"C:\Program Files\Microsoft Office\Office16",
-                @"C:\Program Files\Microsoft Office\Office15",
-                @"C:\Program Files (x86)\Microsoft Office\Office16",
-                @"C:\Program Files (x86)\Microsoft Office\Office15"
-            };
+            @"C:\Program Files\Microsoft Office\Office16",
+            @"C:\Program Files\Microsoft Office\Office15",
+            @"C:\Program Files (x86)\Microsoft Office\Office16",
+            @"C:\Program Files (x86)\Microsoft Office\Office15"
+        };
 
-            foreach (string OfficePath in OfficePaths)
+            foreach (string officePath in officePaths)
             {
-                if (Directory.Exists(OfficePath))
-                {
-                    Directory.SetCurrentDirectory(OfficePath);
-                    IsInstalled = true;
-                    break;
-                }
+                if (!Directory.Exists(officePath)) continue;
+                Directory.SetCurrentDirectory(officePath);
+                return true;
             }
-            return IsInstalled;
+
+            return false;
         }
+
         public string GetLicenseType()
         {
-            string LicenseType = "";
-
-            if (ReleaseId.EndsWith("Retail"))
-            {
-                LicenseType = "Retail";
-            }
-            else if (ReleaseId.EndsWith("Volume"))
-            {
-                LicenseType = "Volume";
-            }
-            return LicenseType;
+            return ReleaseId.EndsWith("Retail") ? "Retail" : ReleaseId.EndsWith("Volume") ? "Volume" : "";
         }
+
         public string GetProductName()
         {
-            string[] FullName = ProductName.Split('-');
-            string FinalName = FullName[0];
-            return FinalName;
+            return ProductName.Split('-')[0];
         }
+
         public string GetPlatform()
         {
-            string FinalPlatform = "";
-
-            if (Platform.Contains("x64"))
-            {
-                return FinalPlatform = "64 bits";
-            }
-            else
-            {
-                return FinalPlatform = "32 bits";
-            }
+            return Platform.Contains("x64") ? "64 bits" : "32 bits";
         }
 
         public string ExtractLicenseStatus(string output)
         {
-            string Status = "Unlicensed";
-            var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
-            if (match.Success)
+            var licenseStatusMap = new Dictionary<string, string>
             {
-                Status = match.Groups[1].Value.Trim();
-                Status = Status.Replace("---LICENSED---", "Licensed");
-                Status = Status.Replace("---NOTIFICATIONS---", "Unlicensed");
-            }
-            return Status;
-        }
+                {"---LICENSED---", "Licensed"},
+                {"---NOTIFICATIONS---", "Unlicensed"},
+                {"---OOB_GRACE---", "Unlicensed"}
+            };
 
+            var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
+            if (!match.Success) return "Unlicensed";
+            var status = match.Groups[1].Value.Trim();
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+        }
 
         public string ClearOutput(string output)
         {
-            var Lines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-            var CleanedLines = Lines.Where(line => !line.Contains("---Processing--------------------------") && !line.Contains("---Exiting-----------------------------") && !line.Contains("---------------------------------------"));
-            return string.Join(Environment.NewLine, CleanedLines);
+            var lines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            var cleanedLines = lines.Where(line => !line.Contains("---Processing--------------------------") && !line.Contains("---Exiting-----------------------------") && !line.Contains("---------------------------------------"));
+            return string.Join(Environment.NewLine, cleanedLines);
         }
 
-        public string InstallLicense(string Product, List<string> LastKeys, string LicenseKey)
+        public string InstallLicense(string product, IEnumerable<string> lastKeys, string licenseKey)
         {
-            string output = $"cmd /c \"for /f %x in ('dir /b ..\\root\\Licenses16\\{Product}*.xrm-ms') do cscript //nologo ospp.vbs /inslic:..\\root\\Licenses16\\%x\"; cscript //nologo ospp.vbs /setprt:1688; ";
+            var output = $"cmd /c \"for /f %x in ('dir /b ..\\root\\Licenses16\\{product}*.xrm-ms') do cscript //nologo ospp.vbs /inslic:..\\root\\Licenses16\\%x\"; cscript //nologo ospp.vbs /setprt:1688; ";
 
-            foreach (string LastKey in LastKeys)
-            {
-                output += $"cscript //nologo ospp.vbs /unpkey:{LastKey} >nul; ";
-            }
+            output = lastKeys.Aggregate(output, (current, lastKey) => current + $"cscript //nologo ospp.vbs /unpkey:{lastKey} >nul; ");
 
-            output += $"cscript //nologo ospp.vbs /inpkey:{LicenseKey}";
+            output += $"cscript //nologo ospp.vbs /inpkey:{licenseKey}";
             return output;
         }
     }

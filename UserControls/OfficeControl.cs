@@ -25,12 +25,11 @@ namespace OpenFuryKMS
         {
             InitializeComponent();
 
+            ServerDrop.Enabled = false;
             ActivateButton.Enabled = false;
-
             officeHandler.DirChecker();
-            InfoButton.PerformClick();
             Autodetect();
-
+            InfoButton.PerformClick();
             PwshOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /dstatus");
 
             string LicenseStatus = officeHandler.ExtractLicenseStatus(PwshOutput);
@@ -97,7 +96,7 @@ namespace OpenFuryKMS
             switch (ServerDrop.SelectedIndex)
             {
                 case 0:
-                    DirtyOutput = Pwsh.AutoKMS(Office: true);
+                    DirtyOutput = Pwsh.AutoKMS(office: true);
                     break;
 
                 case 1:
@@ -161,6 +160,10 @@ namespace OpenFuryKMS
             LicenseStatusLbl.Text = "License Status: " + officeHandler.ExtractLicenseStatus(PwshOutput) + " (" + officeHandler.GetLicenseType() + ") ";
         }
 
+        private void ProductDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ServerDrop.Enabled = true;
+        }
         private void MethodDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActivateButton.Enabled = true;

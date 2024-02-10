@@ -44,13 +44,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.OfficeBox = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.MethodDrop = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficeBox)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,6 +191,7 @@
             this.ProductDrop.Size = new System.Drawing.Size(325, 28);
             this.ProductDrop.TabIndex = 11;
             this.ProductDrop.Text = "Select your Office version";
+            this.ProductDrop.SelectedIndexChanged += new System.EventHandler(this.ProductDrop_SelectedIndexChanged);
             // 
             // ServerDrop
             // 
@@ -273,17 +274,17 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Console";
             // 
-            // pictureBox1
+            // OfficeBox
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.OfficeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::OpenFuryKMS.Properties.Resources.microsoft365;
-            this.pictureBox1.Location = new System.Drawing.Point(570, 345);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(145, 155);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.OfficeBox.Image = global::OpenFuryKMS.Properties.Resources.microsoft365;
+            this.OfficeBox.Location = new System.Drawing.Point(570, 345);
+            this.OfficeBox.Name = "OfficeBox";
+            this.OfficeBox.Size = new System.Drawing.Size(145, 155);
+            this.OfficeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.OfficeBox.TabIndex = 18;
+            this.OfficeBox.TabStop = false;
             // 
             // panel3
             // 
@@ -330,7 +331,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.OfficeBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -349,7 +350,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OfficeBox)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -375,7 +376,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox OfficeBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox MethodDrop;
