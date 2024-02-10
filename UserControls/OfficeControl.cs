@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenFuryKMS.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,21 +28,41 @@ namespace OpenFuryKMS
 
             ServerDrop.Enabled = false;
             ActivateButton.Enabled = false;
+
             officeHandler.DirChecker();
             Autodetect();
             InfoButton.PerformClick();
-            PwshOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /dstatus");
 
-            string LicenseStatus = officeHandler.ExtractLicenseStatus(PwshOutput);
+            UpdateLicenseStatus();
 
-            if (LicenseStatus == "Unlicensed")
+            ProductNameLbl.Text = $"Software: {officeHandler.GetProductName()}{officeHandler.GetPlatform()}";
+            VersionLbl.Text = $"Build: {officeHandler.Version}";
+
+            Dictionary<string, Image> productToImage = new Dictionary<string, Image>
             {
-                DeactivateButton.Enabled = false;
-            }
+                { "365", Resources.microsoft365 },
+                { "2021", Resources.microsoft365 },
+                { "2019", Resources.Office2019_2021 },
+                { "2016", Resources.Office2013_2016 },
+                { "2013", Resources.Office2013_2016 }
+            };
 
-            LicenseStatusLbl.Text = "License Status: " + LicenseStatus + " (" + officeHandler.GetLicenseType() + ") ";
-            ProductNameLbl.Text = "Software: " + officeHandler.GetProductName() + officeHandler.GetPlatform();
-            VersionLbl.Text = "Build: " + officeHandler.Version;
+            foreach (var item in productToImage)
+            {
+                if (officeHandler.ProductName.Contains(item.Key))
+                {
+                    OfficeBox.Image = item.Value;
+                    break;
+                }
+            }
+        }
+
+        public void UpdateLicenseStatus()
+        {
+            PwshOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /dstatus");
+            string LicenseStatus = officeHandler.ExtractLicenseStatus(PwshOutput);
+            LicenseStatusLbl.Text = $"License Status: {LicenseStatus} ({officeHandler.GetLicenseType()})";
+            DeactivateButton.Enabled = LicenseStatus != "Unlicensed";
         }
 
         private void Autodetect()
@@ -57,12 +78,10 @@ namespace OpenFuryKMS
 
             foreach (var item in productToIndex)
             {
-                if (officeHandler.ProductName.Contains(item.Key))
-                {
-                    ProductDrop.SelectedIndex = item.Value;
-                    ServerDrop.Enabled = true;
-                    break;
-                }
+                if (!officeHandler.ProductName.Contains(item.Key)) continue;
+                ProductDrop.SelectedIndex = item.Value;
+                ServerDrop.Enabled = true;
+                break;
             }
         }
 
@@ -93,23 +112,21 @@ namespace OpenFuryKMS
 
         private void SetKMS_Server()
         {
-            switch (ServerDrop.SelectedIndex)
+           
+            if (ServerDrop.SelectedIndex == 0)
             {
-                case 0:
-                    DirtyOutput = Pwsh.AutoKMS(office: true);
-                    break;
-
-                case 1:
-                    DirtyOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /sethst:kms.digiboy.ir; cscript //nologo ospp.vbs /act");
-                    break;
-
-                case 2:
-                    DirtyOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /sethst:kms.chinancce.com; cscript //nologo ospp.vbs /act");
-                    break;
+                DirtyOutput = Pwsh.AutoKMS(office: true);
             }
+            else
+            {
+                string server = Pwsh.KmsServers[ServerDrop.SelectedIndex - 1];
+                DirtyOutput = Pwsh.ExecuteCommand($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
+            }
+
             ActivateButton.Enabled = true;
             ShellBox.Text = officeHandler.ClearOutput(DirtyOutput);
         }
+
 
         private void InfoButton_Click(object sender, EventArgs e)
         {
@@ -126,15 +143,13 @@ namespace OpenFuryKMS
                     break;
 
                 case 1:
-                    DirtyOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /act");
-                    break;
-
                 case 2:
-                    DirtyOutput = Pwsh.ExecuteCommand("cscript //nologo ospp.vbs /rearm");
+                    string command = MethodDrop.SelectedIndex == 1 ? "/act" : "/rearm";
+                    DirtyOutput = Pwsh.ExecuteCommand($"cscript //nologo ospp.vbs {command}");
                     break;
             }
             ShellBox.Text = officeHandler.ClearOutput(DirtyOutput);
-            LicenseStatusLbl.Text = "License Status: " + officeHandler.ExtractLicenseStatus(PwshOutput) + " (" + officeHandler.GetLicenseType() + ") ";
+            UpdateLicenseStatus();
         }
 
         private void DeactivateButton_Click(object sender, EventArgs e)
@@ -157,7 +172,7 @@ namespace OpenFuryKMS
                     break;
                 }
             }
-            LicenseStatusLbl.Text = "License Status: " + officeHandler.ExtractLicenseStatus(PwshOutput) + " (" + officeHandler.GetLicenseType() + ") ";
+            UpdateLicenseStatus();
         }
 
         private void ProductDrop_SelectedIndexChanged(object sender, EventArgs e)

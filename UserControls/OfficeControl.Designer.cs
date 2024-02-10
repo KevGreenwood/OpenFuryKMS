@@ -210,7 +210,8 @@
             "s8.uk.to",
             "s9.us.to",
             "kms9.msguides.com (UNSTABLE)",
-            "kms8.msguides.com (UNSTABLE)"});
+            "kms8.msguides.com (UNSTABLE)",
+            "kms7.msguides.com (UNSTABLE)"});
             this.ServerDrop.Location = new System.Drawing.Point(360, 10);
             this.ServerDrop.Name = "ServerDrop";
             this.ServerDrop.Size = new System.Drawing.Size(324, 28);

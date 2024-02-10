@@ -14,11 +14,20 @@ namespace OpenFuryKMS
 {
     public class PowershellHandler
     {
-        private static readonly List<string> KmsServers = new List<string>
+        public readonly List<string> KmsServers = new List<string>
         {
-            "kms.chinancce.com", "kms.digiboy.ir", "kms.ddns.net", "xykz.f3322.org",
-            "dimanyakms.sytes.net", "kms.03k.org", "ms8.us.to", "s8.uk.to",
-            "s9.us.to", "kms9.msguides.com", "kms8.msguides.com", "kms7.msguides.com"
+            "kms.digiboy.ir",
+            "kms.chinancce.com",
+            "kms.ddns.net",
+            "xykz.f3322.org",
+            "dimanyakms.sytes.net",
+            "kms.03k.org",
+            "ms8.us.to",
+            "s8.uk.to",
+            "s9.us.to",
+            "kms9.msguides.com",
+            "kms8.msguides.com",
+            "kms7.msguides.com"
         };
 
         public string ExecuteCommand(string cmd)
