@@ -23,7 +23,7 @@ namespace OpenFuryKMS.UserControls
         public HomeControl()
         {
             InitializeComponent();
-            WinLbl.Text = WinHandler.GetMinimalInfo();
+            WinLbl.Text = WinHandler.GetMinimalInfo;
             PwshLbl.Text = "Powershell " + Pwsh.ExecuteCommand("$PSVersionTable.PSVersion");
 
             bool IsInstalled = officeHandler.DirChecker();

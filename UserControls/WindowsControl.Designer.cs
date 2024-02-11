@@ -30,7 +30,7 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.serverDrop = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.LicenseStatusLbl = new System.Windows.Forms.Label();
             this.VersionLbl = new System.Windows.Forms.Label();
@@ -40,22 +40,22 @@
             this.ShellBox = new System.Windows.Forms.TextBox();
             this.InfoButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.productDrop = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.licenseDrop = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.methodDrop = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.productLogo = new FontAwesome.Sharp.IconPictureBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -64,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.comboBox3);
+            this.panel3.Controls.Add(this.serverDrop);
             this.panel3.Location = new System.Drawing.Point(20, 250);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(695, 50);
@@ -81,12 +81,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "KMS Server";
             // 
-            // comboBox3
+            // serverDrop
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.serverDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverDrop.FormattingEnabled = true;
+            this.serverDrop.Items.AddRange(new object[] {
             "Auto (Recomended)",
             "kms.digiboy.ir",
             "kms.chinancce.com",
@@ -99,11 +99,11 @@
             "s9.us.to",
             "kms9.msguides.com (UNSTABLE)",
             "kms8.msguides.com (UNSTABLE)"});
-            this.comboBox3.Location = new System.Drawing.Point(360, 10);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(324, 28);
-            this.comboBox3.TabIndex = 12;
-            this.comboBox3.Text = "Select your KMS Server";
+            this.serverDrop.Location = new System.Drawing.Point(360, 10);
+            this.serverDrop.Name = "serverDrop";
+            this.serverDrop.Size = new System.Drawing.Size(324, 28);
+            this.serverDrop.TabIndex = 12;
+            this.serverDrop.Text = "Select your KMS Server";
             // 
             // label5
             // 
@@ -177,6 +177,7 @@
             this.ActivateButton.TabIndex = 21;
             this.ActivateButton.Text = "Activate!";
             this.ActivateButton.UseVisualStyleBackColor = false;
+            this.ActivateButton.Click += new System.EventHandler(this.ActivateButton_Click);
             // 
             // ShellBox
             // 
@@ -216,30 +217,31 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.productDrop);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(20, 140);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 50);
             this.panel1.TabIndex = 27;
             // 
-            // comboBox1
+            // productDrop
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.productDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.productDrop.BackColor = System.Drawing.Color.White;
+            this.productDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productDrop.ForeColor = System.Drawing.Color.Black;
+            this.productDrop.FormattingEnabled = true;
+            this.productDrop.Items.AddRange(new object[] {
             "Windows 10 - 11 Home",
             "Windows 10 - 11 Pro",
             "Windows 10 - 11 Education",
             "Windows 10 - 11 Enterprise"});
-            this.comboBox1.Location = new System.Drawing.Point(360, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(325, 28);
-            this.comboBox1.TabIndex = 11;
-            this.comboBox1.Text = "Select your Windows version";
+            this.productDrop.Location = new System.Drawing.Point(360, 10);
+            this.productDrop.Name = "productDrop";
+            this.productDrop.Size = new System.Drawing.Size(325, 28);
+            this.productDrop.TabIndex = 11;
+            this.productDrop.Text = "Select your Windows version";
+            this.productDrop.SelectedIndexChanged += new System.EventHandler(this.productDrop_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -258,7 +260,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.licenseDrop);
             this.panel2.Location = new System.Drawing.Point(20, 195);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(695, 50);
@@ -276,16 +278,16 @@
             this.label2.Text = "License";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox2
+            // licenseDrop
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(360, 10);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(324, 28);
-            this.comboBox2.TabIndex = 12;
-            this.comboBox2.Text = "Select your License Key";
+            this.licenseDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.licenseDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.licenseDrop.FormattingEnabled = true;
+            this.licenseDrop.Location = new System.Drawing.Point(360, 10);
+            this.licenseDrop.Name = "licenseDrop";
+            this.licenseDrop.Size = new System.Drawing.Size(324, 28);
+            this.licenseDrop.TabIndex = 12;
+            this.licenseDrop.Text = "Select your License Key";
             // 
             // panel4
             // 
@@ -293,7 +295,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.comboBox4);
+            this.panel4.Controls.Add(this.methodDrop);
             this.panel4.Location = new System.Drawing.Point(20, 305);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(695, 50);
@@ -310,20 +312,20 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Activation Method";
             // 
-            // comboBox4
+            // methodDrop
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.methodDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.methodDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.methodDrop.FormattingEnabled = true;
+            this.methodDrop.Items.AddRange(new object[] {
             "First Activation",
             "Manual Renew",
             "Rearm"});
-            this.comboBox4.Location = new System.Drawing.Point(360, 10);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(324, 28);
-            this.comboBox4.TabIndex = 12;
-            this.comboBox4.Text = "Select your Activation Method";
+            this.methodDrop.Location = new System.Drawing.Point(360, 10);
+            this.methodDrop.Name = "methodDrop";
+            this.methodDrop.Size = new System.Drawing.Size(324, 28);
+            this.methodDrop.TabIndex = 12;
+            this.methodDrop.Text = "Select your Activation Method";
             // 
             // label4
             // 
@@ -347,29 +349,29 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Product Information";
             // 
-            // iconPictureBox1
+            // productLogo
             // 
-            this.iconPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.productLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.iconPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Microsoft;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 105;
-            this.iconPictureBox1.Location = new System.Drawing.Point(566, 400);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(154, 105);
-            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.iconPictureBox1.TabIndex = 32;
-            this.iconPictureBox1.TabStop = false;
+            this.productLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.productLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.productLogo.IconChar = FontAwesome.Sharp.IconChar.Microsoft;
+            this.productLogo.IconColor = System.Drawing.Color.White;
+            this.productLogo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.productLogo.IconSize = 105;
+            this.productLogo.Location = new System.Drawing.Point(566, 400);
+            this.productLogo.Name = "productLogo";
+            this.productLogo.Size = new System.Drawing.Size(154, 105);
+            this.productLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.productLogo.TabIndex = 32;
+            this.productLogo.TabStop = false;
             // 
             // WindowsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.Controls.Add(this.iconPictureBox1);
+            this.Controls.Add(this.productLogo);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label5);
@@ -394,7 +396,7 @@
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,7 +405,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox serverDrop;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label LicenseStatusLbl;
         private System.Windows.Forms.Label VersionLbl;
@@ -413,17 +415,17 @@
         private System.Windows.Forms.TextBox ShellBox;
         private System.Windows.Forms.Button InfoButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox productDrop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox licenseDrop;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox methodDrop;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox productLogo;
     }
 }

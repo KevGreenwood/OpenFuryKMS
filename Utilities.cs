@@ -65,35 +65,51 @@ namespace OpenFuryKMS
     public class WindowsHandler
     {
         private static string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
-        private string ProductName = Registry.GetValue(WindowsPath, "ProductName", "").ToString();
+        public static string ProductName = Registry.GetValue(WindowsPath, "ProductName", "").ToString();
         private static string DisplayVersion = Registry.GetValue(WindowsPath, "DisplayVersion", "").ToString();
         private static string Build = Registry.GetValue(WindowsPath, "CurrentBuildNumber", "").ToString();
-        private string Platform = Environment.Is64BitOperatingSystem ? " 64 bits" : " 32 bits";
+        private static string Platform = Environment.Is64BitOperatingSystem ? " 64 bits" : " 32 bits";
         private static string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
         private string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
         private string Organization = Registry.GetValue(WindowsPath, "RegisteredOrganization", "").ToString();
         private string Owner = Registry.GetValue(WindowsPath, "RegisteredOwner", "").ToString();
 
-        public string Version = DisplayVersion + " (" + Build + "." + UBR + ") ";
+        public string Version = $"{DisplayVersion} ({Build}.{UBR})";
+        public string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
+        public string GetAllInfo = $"Microsoft {ProductName}{Platform}";
 
-        private void Windows11Fix()
+        public readonly List<(string License, string Description)> Home_Licenses = new List<(string, string)>
+        {
+            ("TX9XD-98N7V-6WMQ6-BX7FG-H8Q99", ""),
+            ("3KHY7-WNT83-DGQKR-F7HPR-844BM", " (N)"),
+            ("7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH", " (Single Language)"),
+            ("PVMJN-6DFY6-9CCP6-7BKTT-D3WVR", " (Country Specific)")
+        };
+
+        public readonly List<(string License, string Description)> Pro_Licenses = new List<(string, string)>
+        {
+            ("W269N-WFGWX-YVC9B-4J6C9-T83GX", ""),
+            ("MH37W-N47XK-V7XM9-C7227-GCQG9", " (N)")
+        };
+
+        public readonly List<(string License, string Description)> Education_Licenses = new List<(string, string)>
+        {
+            ("NW6C2-QMPVW-D7KKK-3GKT6-VCFB2", ""),
+            ("2WH4N-8QGBV-H22JP-CT43Q-MDWWJ", " (N)")
+        };
+
+        public readonly List<(string License, string Description)> Enterprise_Licenses = new List<(string, string)>
+        {
+            ("NPPR9-FWDCX-D2C8J-H872K-2YT43", ""),
+            ("DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", " (N)")
+        };
+
+        public WindowsHandler()
         {
             if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
             {
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
             }
-        }
-
-        public string GetMinimalInfo()
-        {
-            Windows11Fix();
-            return $"{ProductName} {DisplayVersion} {Platform}";
-        }
-
-        public string GetAllInfo()
-        {
-            Windows11Fix();
-            return $"Microsoft {ProductName}{Platform}";
         }
     }
 
