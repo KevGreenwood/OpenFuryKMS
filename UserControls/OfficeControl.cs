@@ -111,7 +111,7 @@ namespace OpenFuryKMS
         }
 
         private void SetKMS_Server()
-        {  
+        {
             if (ServerDrop.SelectedIndex == 0)
             {
                 DirtyOutput = Pwsh.AutoKMS(office: true);

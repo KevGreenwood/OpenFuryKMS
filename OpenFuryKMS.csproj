@@ -81,6 +81,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\HomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,22 +116,16 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OfficeControl.resx">
       <DependentUpon>OfficeControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserControls\SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,7 +133,7 @@
       <DependentUpon>WindowsControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <None Include="Assets\AldotheApache.ttf" />
+    <None Include="Resources\AldotheApache.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -150,28 +149,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\brand.png" />
+    <None Include="Resources\Icons\brand.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\colorIcon.png" />
+    <None Include="Resources\Icons\colorIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\icon.ico" />
+    <None Include="Resources\Icons\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Logo.png" />
+    <None Include="Resources\Icons\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\microsoft365.png" />
+    <None Include="Resources\Icons\microsoft365.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Office2013_2016.png" />
+    <None Include="Resources\Icons\Office2013_2016.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Office2019_2021.png" />
+    <None Include="Resources\Icons\Office2019_2021.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\whiteIcon.png" />
+    <None Include="Resources\Icons\whiteIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

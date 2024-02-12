@@ -35,10 +35,10 @@
             this.LicenseStatusLbl = new System.Windows.Forms.Label();
             this.VersionLbl = new System.Windows.Forms.Label();
             this.ProductNameLbl = new System.Windows.Forms.Label();
-            this.DeactivateButton = new System.Windows.Forms.Button();
-            this.ActivateButton = new System.Windows.Forms.Button();
+            this.removeBtn = new System.Windows.Forms.Button();
+            this.activateBtn = new System.Windows.Forms.Button();
             this.ShellBox = new System.Windows.Forms.TextBox();
-            this.InfoButton = new System.Windows.Forms.Button();
+            this.infoBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.productDrop = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -149,35 +149,36 @@
             this.ProductNameLbl.TabIndex = 23;
             this.ProductNameLbl.Text = "Microsoft Windows";
             // 
-            // DeactivateButton
+            // removeBtn
             // 
-            this.DeactivateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeactivateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(90)))), ((int)(((byte)(25)))));
-            this.DeactivateButton.FlatAppearance.BorderSize = 0;
-            this.DeactivateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeactivateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeactivateButton.ForeColor = System.Drawing.Color.White;
-            this.DeactivateButton.Location = new System.Drawing.Point(600, 513);
-            this.DeactivateButton.Name = "DeactivateButton";
-            this.DeactivateButton.Size = new System.Drawing.Size(120, 40);
-            this.DeactivateButton.TabIndex = 22;
-            this.DeactivateButton.Text = "Remove License";
-            this.DeactivateButton.UseVisualStyleBackColor = false;
+            this.removeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(90)))), ((int)(((byte)(25)))));
+            this.removeBtn.FlatAppearance.BorderSize = 0;
+            this.removeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeBtn.ForeColor = System.Drawing.Color.White;
+            this.removeBtn.Location = new System.Drawing.Point(600, 513);
+            this.removeBtn.Name = "removeBtn";
+            this.removeBtn.Size = new System.Drawing.Size(120, 40);
+            this.removeBtn.TabIndex = 22;
+            this.removeBtn.Text = "Remove License";
+            this.removeBtn.UseVisualStyleBackColor = false;
+            this.removeBtn.Click += new System.EventHandler(this.removeBtn_Click);
             // 
-            // ActivateButton
+            // activateBtn
             // 
-            this.ActivateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ActivateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(230)))), ((int)(((byte)(160)))));
-            this.ActivateButton.FlatAppearance.BorderSize = 0;
-            this.ActivateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActivateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivateButton.Location = new System.Drawing.Point(20, 513);
-            this.ActivateButton.Name = "ActivateButton";
-            this.ActivateButton.Size = new System.Drawing.Size(120, 40);
-            this.ActivateButton.TabIndex = 21;
-            this.ActivateButton.Text = "Activate!";
-            this.ActivateButton.UseVisualStyleBackColor = false;
-            this.ActivateButton.Click += new System.EventHandler(this.ActivateButton_Click);
+            this.activateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.activateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(230)))), ((int)(((byte)(160)))));
+            this.activateBtn.FlatAppearance.BorderSize = 0;
+            this.activateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.activateBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activateBtn.Location = new System.Drawing.Point(20, 513);
+            this.activateBtn.Name = "activateBtn";
+            this.activateBtn.Size = new System.Drawing.Size(120, 40);
+            this.activateBtn.TabIndex = 21;
+            this.activateBtn.Text = "Activate!";
+            this.activateBtn.UseVisualStyleBackColor = false;
+            this.activateBtn.Click += new System.EventHandler(this.ActivateButton_Click);
             // 
             // ShellBox
             // 
@@ -196,21 +197,21 @@
             this.ShellBox.Size = new System.Drawing.Size(540, 105);
             this.ShellBox.TabIndex = 20;
             // 
-            // InfoButton
+            // infoBtn
             // 
-            this.InfoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.InfoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(65)))), ((int)(((byte)(230)))));
-            this.InfoButton.FlatAppearance.BorderSize = 0;
-            this.InfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoButton.ForeColor = System.Drawing.Color.White;
-            this.InfoButton.Location = new System.Drawing.Point(315, 513);
-            this.InfoButton.Name = "InfoButton";
-            this.InfoButton.Size = new System.Drawing.Size(120, 40);
-            this.InfoButton.TabIndex = 19;
-            this.InfoButton.Text = "Information";
-            this.InfoButton.UseVisualStyleBackColor = false;
-            this.InfoButton.Click += new System.EventHandler(this.InfoButton_Click);
+            this.infoBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.infoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(65)))), ((int)(((byte)(230)))));
+            this.infoBtn.FlatAppearance.BorderSize = 0;
+            this.infoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.infoBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoBtn.ForeColor = System.Drawing.Color.White;
+            this.infoBtn.Location = new System.Drawing.Point(315, 513);
+            this.infoBtn.Name = "infoBtn";
+            this.infoBtn.Size = new System.Drawing.Size(120, 40);
+            this.infoBtn.TabIndex = 19;
+            this.infoBtn.Text = "Information";
+            this.infoBtn.UseVisualStyleBackColor = false;
+            this.infoBtn.Click += new System.EventHandler(this.InfoButton_Click);
             // 
             // panel1
             // 
@@ -380,10 +381,10 @@
             this.Controls.Add(this.LicenseStatusLbl);
             this.Controls.Add(this.VersionLbl);
             this.Controls.Add(this.ProductNameLbl);
-            this.Controls.Add(this.DeactivateButton);
-            this.Controls.Add(this.ActivateButton);
+            this.Controls.Add(this.removeBtn);
+            this.Controls.Add(this.activateBtn);
             this.Controls.Add(this.ShellBox);
-            this.Controls.Add(this.InfoButton);
+            this.Controls.Add(this.infoBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "WindowsControl";
@@ -410,10 +411,10 @@
         private System.Windows.Forms.Label LicenseStatusLbl;
         private System.Windows.Forms.Label VersionLbl;
         private System.Windows.Forms.Label ProductNameLbl;
-        private System.Windows.Forms.Button DeactivateButton;
-        private System.Windows.Forms.Button ActivateButton;
+        private System.Windows.Forms.Button removeBtn;
+        private System.Windows.Forms.Button activateBtn;
         private System.Windows.Forms.TextBox ShellBox;
-        private System.Windows.Forms.Button InfoButton;
+        private System.Windows.Forms.Button infoBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox productDrop;
         private System.Windows.Forms.Label label1;

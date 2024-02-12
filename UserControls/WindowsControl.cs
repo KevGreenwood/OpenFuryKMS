@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -18,38 +19,14 @@ namespace OpenFuryKMS
             ProductNameLbl.Text = $"Operating System: {Win.GetAllInfo}";
             VersionLbl.Text = $"Version: {Win.Version}";
 
-            if (Win.ProductName.Contains("Windows 11"))
+            if (WindowsHandler.ProductName.Contains("Windows 11"))
             {
-                productLogo.IconChar = FontAwesome.Sharp.IconChar.Microsoft;
+                productLogo.IconChar = IconChar.Microsoft;
             }
             else
             {
-                productLogo.IconChar = FontAwesome.Sharp.IconChar.Windows;
+                productLogo.IconChar = IconChar.Windows;
             }
-        }
-
-        private void InstallLicense()
-        {
-            string license = string.Empty;
-            switch (productDrop.SelectedIndex)
-            {
-                case 0:
-                    license = Win.Home_Licenses[licenseDrop.SelectedIndex].License;
-                    break;
-
-                case 1:
-                    license = Win.Pro_Licenses[licenseDrop.SelectedIndex].License;
-                    break;
-
-                case 2:
-                    license = Win.Education_Licenses[licenseDrop.SelectedIndex].License;
-                    break;
-
-                case 3:
-                    license = Win.Enterprise_Licenses[licenseDrop.SelectedIndex].License;
-                    break;
-            }
-            ShellBox.Text = Pwsh.ExecuteCommand($"cscript //nologo slmgr.vbs /ipk {license}");
         }
 
         private void SetKMS_Server()
@@ -74,7 +51,13 @@ namespace OpenFuryKMS
             switch (methodDrop.SelectedIndex)
             {
                 case 0:
-                    InstallLicense();
+                    if (licenseDrop.SelectedIndex != -1)
+                    {
+                        string selectedLicense = licenseDrop.SelectedItem.ToString();
+                        string licenseKey = selectedLicense.Split(' ')[0];
+                        ShellBox.Text = Pwsh.ExecuteCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
+                        SetKMS_Server();
+                    }
                     break;
 
                 case 1:
@@ -84,14 +67,14 @@ namespace OpenFuryKMS
                     break;
             }
         }
-        private void DeactivateButton_Click(object sender, EventArgs e)
+        private void removeBtn_Click(object sender, EventArgs e)
         {
             ShellBox.Text = Pwsh.ExecuteCommand("cscript //nologo slmgr.vbs /upk; cscript //nologo slmgr.vbs /cpky; cscript //nologo slmgr.vbs /ckms");
         }
 
         private void productDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(productDrop.SelectedIndex)
+            switch (productDrop.SelectedIndex)
             {
                 case 0:
                     licenseDrop.DataSource = Win.Home_Licenses.Select(x => x.License + x.Description).ToList();
