@@ -42,11 +42,11 @@ namespace OpenFuryKMS
             }
         }
 
-        private void InfoButton_Click(object sender, EventArgs e)
+        private void infoBtn_Click(object sender, EventArgs e)
         {
             ShellBox.Text = Pwsh.ExecuteCommand("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr");
         }
-        private void ActivateButton_Click(object sender, EventArgs e)
+        private void activateBtn_Click(object sender, EventArgs e)
         {
             switch (methodDrop.SelectedIndex)
             {

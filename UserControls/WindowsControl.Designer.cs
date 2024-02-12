@@ -178,7 +178,7 @@
             this.activateBtn.TabIndex = 21;
             this.activateBtn.Text = "Activate!";
             this.activateBtn.UseVisualStyleBackColor = false;
-            this.activateBtn.Click += new System.EventHandler(this.ActivateButton_Click);
+            this.activateBtn.Click += new System.EventHandler(this.activateBtn_Click);
             // 
             // ShellBox
             // 
@@ -211,7 +211,7 @@
             this.infoBtn.TabIndex = 19;
             this.infoBtn.Text = "Information";
             this.infoBtn.UseVisualStyleBackColor = false;
-            this.infoBtn.Click += new System.EventHandler(this.InfoButton_Click);
+            this.infoBtn.Click += new System.EventHandler(this.infoBtn_Click);
             // 
             // panel1
             // 
