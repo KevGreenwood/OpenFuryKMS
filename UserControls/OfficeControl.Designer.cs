@@ -28,177 +28,176 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InfoButton = new System.Windows.Forms.Button();
-            this.ShellBox = new System.Windows.Forms.TextBox();
-            this.ActivateButton = new System.Windows.Forms.Button();
-            this.DeactivateButton = new System.Windows.Forms.Button();
-            this.ProductNameLbl = new System.Windows.Forms.Label();
-            this.VersionLbl = new System.Windows.Forms.Label();
-            this.LicenseStatusLbl = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ProductDrop = new System.Windows.Forms.ComboBox();
-            this.ServerDrop = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.infoBtn = new System.Windows.Forms.Button();
+            this.shellBox = new System.Windows.Forms.TextBox();
+            this.activateBtn = new System.Windows.Forms.Button();
+            this.removeBtn = new System.Windows.Forms.Button();
+            this.productName_Lbl = new System.Windows.Forms.Label();
+            this.versionLbl = new System.Windows.Forms.Label();
+            this.statusLbl = new System.Windows.Forms.Label();
+            this.productLbl = new System.Windows.Forms.Label();
+            this.serverLbl = new System.Windows.Forms.Label();
+            this.productDrop = new System.Windows.Forms.ComboBox();
+            this.serverDrop = new System.Windows.Forms.ComboBox();
+            this.infoTitle_Lbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.OfficeBox = new System.Windows.Forms.PictureBox();
+            this.actTitle_Lbl = new System.Windows.Forms.Label();
+            this.consoleLbl = new System.Windows.Forms.Label();
+            this.productLogo = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.MethodDrop = new System.Windows.Forms.ComboBox();
+            this.methodLbl = new System.Windows.Forms.Label();
+            this.methodDrop = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productLogo)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // InfoButton
+            // infoBtn
             // 
-            this.InfoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.InfoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(65)))), ((int)(((byte)(230)))));
-            this.InfoButton.FlatAppearance.BorderSize = 0;
-            this.InfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoButton.ForeColor = System.Drawing.Color.White;
-            this.InfoButton.Location = new System.Drawing.Point(310, 510);
-            this.InfoButton.Name = "InfoButton";
-            this.InfoButton.Size = new System.Drawing.Size(120, 40);
-            this.InfoButton.TabIndex = 0;
-            this.InfoButton.Text = "Information";
-            this.InfoButton.UseVisualStyleBackColor = false;
-            this.InfoButton.Click += new System.EventHandler(this.InfoButton_Click);
+            this.infoBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.infoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(65)))), ((int)(((byte)(230)))));
+            this.infoBtn.FlatAppearance.BorderSize = 0;
+            this.infoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.infoBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoBtn.ForeColor = System.Drawing.Color.White;
+            this.infoBtn.Location = new System.Drawing.Point(310, 510);
+            this.infoBtn.Name = "infoBtn";
+            this.infoBtn.Size = new System.Drawing.Size(120, 40);
+            this.infoBtn.TabIndex = 0;
+            this.infoBtn.Text = "Information";
+            this.infoBtn.UseVisualStyleBackColor = false;
+            this.infoBtn.Click += new System.EventHandler(this.infoBtn_Click);
             // 
-            // ShellBox
+            // shellBox
             // 
-            this.ShellBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.shellBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShellBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ShellBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ShellBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShellBox.ForeColor = System.Drawing.Color.White;
-            this.ShellBox.Location = new System.Drawing.Point(20, 345);
-            this.ShellBox.Multiline = true;
-            this.ShellBox.Name = "ShellBox";
-            this.ShellBox.ReadOnly = true;
-            this.ShellBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ShellBox.Size = new System.Drawing.Size(540, 155);
-            this.ShellBox.TabIndex = 1;
+            this.shellBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.shellBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.shellBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shellBox.ForeColor = System.Drawing.Color.White;
+            this.shellBox.Location = new System.Drawing.Point(20, 345);
+            this.shellBox.Multiline = true;
+            this.shellBox.Name = "shellBox";
+            this.shellBox.ReadOnly = true;
+            this.shellBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.shellBox.Size = new System.Drawing.Size(540, 155);
+            this.shellBox.TabIndex = 1;
             // 
-            // ActivateButton
+            // activateBtn
             // 
-            this.ActivateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ActivateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(230)))), ((int)(((byte)(160)))));
-            this.ActivateButton.FlatAppearance.BorderSize = 0;
-            this.ActivateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ActivateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivateButton.Location = new System.Drawing.Point(20, 510);
-            this.ActivateButton.Name = "ActivateButton";
-            this.ActivateButton.Size = new System.Drawing.Size(120, 40);
-            this.ActivateButton.TabIndex = 2;
-            this.ActivateButton.Text = "Activate!";
-            this.ActivateButton.UseVisualStyleBackColor = false;
-            this.ActivateButton.Click += new System.EventHandler(this.ActivateButton_Click);
+            this.activateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.activateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(230)))), ((int)(((byte)(160)))));
+            this.activateBtn.FlatAppearance.BorderSize = 0;
+            this.activateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.activateBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activateBtn.Location = new System.Drawing.Point(20, 510);
+            this.activateBtn.Name = "activateBtn";
+            this.activateBtn.Size = new System.Drawing.Size(120, 40);
+            this.activateBtn.TabIndex = 2;
+            this.activateBtn.Text = "Activate!";
+            this.activateBtn.UseVisualStyleBackColor = false;
+            this.activateBtn.Click += new System.EventHandler(this.activateBtn_Click);
             // 
-            // DeactivateButton
+            // removeBtn
             // 
-            this.DeactivateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeactivateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(90)))), ((int)(((byte)(25)))));
-            this.DeactivateButton.FlatAppearance.BorderSize = 0;
-            this.DeactivateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeactivateButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeactivateButton.ForeColor = System.Drawing.Color.White;
-            this.DeactivateButton.Location = new System.Drawing.Point(595, 510);
-            this.DeactivateButton.Name = "DeactivateButton";
-            this.DeactivateButton.Size = new System.Drawing.Size(120, 40);
-            this.DeactivateButton.TabIndex = 3;
-            this.DeactivateButton.Text = "Remove License";
-            this.DeactivateButton.UseVisualStyleBackColor = false;
-            this.DeactivateButton.Click += new System.EventHandler(this.DeactivateButton_Click);
+            this.removeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(90)))), ((int)(((byte)(25)))));
+            this.removeBtn.FlatAppearance.BorderSize = 0;
+            this.removeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeBtn.ForeColor = System.Drawing.Color.White;
+            this.removeBtn.Location = new System.Drawing.Point(595, 510);
+            this.removeBtn.Name = "removeBtn";
+            this.removeBtn.Size = new System.Drawing.Size(120, 40);
+            this.removeBtn.TabIndex = 3;
+            this.removeBtn.Text = "Remove License";
+            this.removeBtn.UseVisualStyleBackColor = false;
+            this.removeBtn.Click += new System.EventHandler(this.removeBtn_Click);
             // 
-            // ProductNameLbl
+            // productName_Lbl
             // 
-            this.ProductNameLbl.AutoSize = true;
-            this.ProductNameLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductNameLbl.ForeColor = System.Drawing.Color.White;
-            this.ProductNameLbl.Location = new System.Drawing.Point(15, 30);
-            this.ProductNameLbl.Name = "ProductNameLbl";
-            this.ProductNameLbl.Size = new System.Drawing.Size(116, 20);
-            this.ProductNameLbl.TabIndex = 4;
-            this.ProductNameLbl.Text = "Microsoft Office";
+            this.productName_Lbl.AutoSize = true;
+            this.productName_Lbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productName_Lbl.ForeColor = System.Drawing.Color.White;
+            this.productName_Lbl.Location = new System.Drawing.Point(15, 30);
+            this.productName_Lbl.Name = "productName_Lbl";
+            this.productName_Lbl.Size = new System.Drawing.Size(116, 20);
+            this.productName_Lbl.TabIndex = 4;
+            this.productName_Lbl.Text = "Microsoft Office";
             // 
-            // VersionLbl
+            // versionLbl
             // 
-            this.VersionLbl.AutoSize = true;
-            this.VersionLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLbl.ForeColor = System.Drawing.Color.White;
-            this.VersionLbl.Location = new System.Drawing.Point(15, 50);
-            this.VersionLbl.Name = "VersionLbl";
-            this.VersionLbl.Size = new System.Drawing.Size(81, 20);
-            this.VersionLbl.TabIndex = 6;
-            this.VersionLbl.Text = "Version: 1X";
+            this.versionLbl.AutoSize = true;
+            this.versionLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLbl.ForeColor = System.Drawing.Color.White;
+            this.versionLbl.Location = new System.Drawing.Point(15, 50);
+            this.versionLbl.Name = "versionLbl";
+            this.versionLbl.Size = new System.Drawing.Size(81, 20);
+            this.versionLbl.TabIndex = 6;
+            this.versionLbl.Text = "Version: 1X";
             // 
-            // LicenseStatusLbl
+            // statusLbl
             // 
-            this.LicenseStatusLbl.AutoSize = true;
-            this.LicenseStatusLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LicenseStatusLbl.ForeColor = System.Drawing.Color.White;
-            this.LicenseStatusLbl.Location = new System.Drawing.Point(15, 70);
-            this.LicenseStatusLbl.Name = "LicenseStatusLbl";
-            this.LicenseStatusLbl.Size = new System.Drawing.Size(104, 20);
-            this.LicenseStatusLbl.TabIndex = 7;
-            this.LicenseStatusLbl.Text = "License Status:";
+            this.statusLbl.AutoSize = true;
+            this.statusLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLbl.ForeColor = System.Drawing.Color.White;
+            this.statusLbl.Location = new System.Drawing.Point(15, 70);
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.Size = new System.Drawing.Size(104, 20);
+            this.statusLbl.TabIndex = 7;
+            this.statusLbl.Text = "License Status:";
             // 
-            // label1
+            // productLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Product";
+            this.productLbl.AutoSize = true;
+            this.productLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productLbl.ForeColor = System.Drawing.Color.White;
+            this.productLbl.Location = new System.Drawing.Point(10, 13);
+            this.productLbl.Name = "productLbl";
+            this.productLbl.Size = new System.Drawing.Size(60, 20);
+            this.productLbl.TabIndex = 9;
+            this.productLbl.Text = "Product";
             // 
-            // label2
+            // serverLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(10, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "KMS Server";
+            this.serverLbl.AutoSize = true;
+            this.serverLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverLbl.ForeColor = System.Drawing.Color.White;
+            this.serverLbl.Location = new System.Drawing.Point(10, 13);
+            this.serverLbl.Name = "serverLbl";
+            this.serverLbl.Size = new System.Drawing.Size(84, 20);
+            this.serverLbl.TabIndex = 10;
+            this.serverLbl.Text = "KMS Server";
             // 
-            // ProductDrop
+            // productDrop
             // 
-            this.ProductDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductDrop.BackColor = System.Drawing.Color.White;
-            this.ProductDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductDrop.ForeColor = System.Drawing.Color.Black;
-            this.ProductDrop.FormattingEnabled = true;
-            this.ProductDrop.Items.AddRange(new object[] {
+            this.productDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.productDrop.BackColor = System.Drawing.Color.White;
+            this.productDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productDrop.ForeColor = System.Drawing.Color.Black;
+            this.productDrop.FormattingEnabled = true;
+            this.productDrop.Items.AddRange(new object[] {
             "Microsoft 365",
             "Microsoft Office Profesional Plus 2021",
             "Microsoft Office Profesional Plus 2019",
             "Microsoft Office Profesional Plus 2016",
             "Microsoft Office Profesional Plus 2013"});
-            this.ProductDrop.Location = new System.Drawing.Point(360, 10);
-            this.ProductDrop.Name = "ProductDrop";
-            this.ProductDrop.Size = new System.Drawing.Size(325, 28);
-            this.ProductDrop.TabIndex = 11;
-            this.ProductDrop.Text = "Select your Office version";
-            this.ProductDrop.SelectedIndexChanged += new System.EventHandler(this.ProductDrop_SelectedIndexChanged);
+            this.productDrop.Location = new System.Drawing.Point(360, 10);
+            this.productDrop.Name = "productDrop";
+            this.productDrop.Size = new System.Drawing.Size(325, 28);
+            this.productDrop.TabIndex = 11;
+            this.productDrop.Text = "Select your Office version";
             // 
-            // ServerDrop
+            // serverDrop
             // 
-            this.ServerDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ServerDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ServerDrop.FormattingEnabled = true;
-            this.ServerDrop.Items.AddRange(new object[] {
+            this.serverDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.serverDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverDrop.FormattingEnabled = true;
+            this.serverDrop.Items.AddRange(new object[] {
             "Auto (Recomended)",
             "kms.digiboy.ir",
             "kms.chinancce.com",
@@ -212,30 +211,30 @@
             "kms9.msguides.com (UNSTABLE)",
             "kms8.msguides.com (UNSTABLE)",
             "kms7.msguides.com (UNSTABLE)"});
-            this.ServerDrop.Location = new System.Drawing.Point(360, 10);
-            this.ServerDrop.Name = "ServerDrop";
-            this.ServerDrop.Size = new System.Drawing.Size(324, 28);
-            this.ServerDrop.TabIndex = 12;
-            this.ServerDrop.Text = "Select your KMS Server";
+            this.serverDrop.Location = new System.Drawing.Point(360, 10);
+            this.serverDrop.Name = "serverDrop";
+            this.serverDrop.Size = new System.Drawing.Size(324, 28);
+            this.serverDrop.TabIndex = 12;
+            this.serverDrop.Text = "Select your KMS Server";
             // 
-            // label3
+            // infoTitle_Lbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(15, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 25);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Product Information";
+            this.infoTitle_Lbl.AutoSize = true;
+            this.infoTitle_Lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoTitle_Lbl.ForeColor = System.Drawing.Color.White;
+            this.infoTitle_Lbl.Location = new System.Drawing.Point(15, 5);
+            this.infoTitle_Lbl.Name = "infoTitle_Lbl";
+            this.infoTitle_Lbl.Size = new System.Drawing.Size(187, 25);
+            this.infoTitle_Lbl.TabIndex = 13;
+            this.infoTitle_Lbl.Text = "Product Information";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel1.Controls.Add(this.ProductDrop);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.productDrop);
+            this.panel1.Controls.Add(this.productLbl);
             this.panel1.Location = new System.Drawing.Point(20, 140);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 50);
@@ -246,85 +245,85 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.ServerDrop);
+            this.panel2.Controls.Add(this.serverLbl);
+            this.panel2.Controls.Add(this.serverDrop);
             this.panel2.Location = new System.Drawing.Point(20, 195);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(695, 50);
             this.panel2.TabIndex = 15;
             // 
-            // label4
+            // actTitle_Lbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(15, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 25);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Product Activation";
+            this.actTitle_Lbl.AutoSize = true;
+            this.actTitle_Lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.actTitle_Lbl.ForeColor = System.Drawing.Color.White;
+            this.actTitle_Lbl.Location = new System.Drawing.Point(15, 110);
+            this.actTitle_Lbl.Name = "actTitle_Lbl";
+            this.actTitle_Lbl.Size = new System.Drawing.Size(172, 25);
+            this.actTitle_Lbl.TabIndex = 16;
+            this.actTitle_Lbl.Text = "Product Activation";
             // 
-            // label5
+            // consoleLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(15, 320);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 20);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Console";
+            this.consoleLbl.AutoSize = true;
+            this.consoleLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.consoleLbl.ForeColor = System.Drawing.Color.White;
+            this.consoleLbl.Location = new System.Drawing.Point(15, 320);
+            this.consoleLbl.Name = "consoleLbl";
+            this.consoleLbl.Size = new System.Drawing.Size(62, 20);
+            this.consoleLbl.TabIndex = 17;
+            this.consoleLbl.Text = "Console";
             // 
-            // OfficeBox
+            // productLogo
             // 
-            this.OfficeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.productLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.OfficeBox.Image = global::OpenFuryKMS.Properties.Resources.microsoft365;
-            this.OfficeBox.Location = new System.Drawing.Point(570, 345);
-            this.OfficeBox.Name = "OfficeBox";
-            this.OfficeBox.Size = new System.Drawing.Size(145, 155);
-            this.OfficeBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.OfficeBox.TabIndex = 18;
-            this.OfficeBox.TabStop = false;
+            this.productLogo.Image = global::OpenFuryKMS.Properties.Resources.microsoft365;
+            this.productLogo.Location = new System.Drawing.Point(570, 345);
+            this.productLogo.Name = "productLogo";
+            this.productLogo.Size = new System.Drawing.Size(145, 155);
+            this.productLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.productLogo.TabIndex = 18;
+            this.productLogo.TabStop = false;
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.MethodDrop);
+            this.panel3.Controls.Add(this.methodLbl);
+            this.panel3.Controls.Add(this.methodDrop);
             this.panel3.Location = new System.Drawing.Point(20, 250);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(695, 50);
             this.panel3.TabIndex = 16;
             // 
-            // label6
+            // methodLbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(10, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Activation Method";
+            this.methodLbl.AutoSize = true;
+            this.methodLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.methodLbl.ForeColor = System.Drawing.Color.White;
+            this.methodLbl.Location = new System.Drawing.Point(10, 13);
+            this.methodLbl.Name = "methodLbl";
+            this.methodLbl.Size = new System.Drawing.Size(132, 20);
+            this.methodLbl.TabIndex = 10;
+            this.methodLbl.Text = "Activation Method";
             // 
-            // MethodDrop
+            // methodDrop
             // 
-            this.MethodDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MethodDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MethodDrop.FormattingEnabled = true;
-            this.MethodDrop.Items.AddRange(new object[] {
+            this.methodDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.methodDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.methodDrop.FormattingEnabled = true;
+            this.methodDrop.Items.AddRange(new object[] {
             "First Activation",
             "Manual Renew",
             "Rearm"});
-            this.MethodDrop.Location = new System.Drawing.Point(360, 10);
-            this.MethodDrop.Name = "MethodDrop";
-            this.MethodDrop.Size = new System.Drawing.Size(324, 28);
-            this.MethodDrop.TabIndex = 12;
-            this.MethodDrop.Text = "Select your Activation Method";
-            this.MethodDrop.SelectedIndexChanged += new System.EventHandler(this.MethodDrop_SelectedIndexChanged);
+            this.methodDrop.Location = new System.Drawing.Point(360, 10);
+            this.methodDrop.Name = "methodDrop";
+            this.methodDrop.Size = new System.Drawing.Size(324, 28);
+            this.methodDrop.TabIndex = 12;
+            this.methodDrop.Text = "Select your Activation Method";
+            this.methodDrop.SelectedIndexChanged += new System.EventHandler(this.methodDrop_SelectedIndexChanged);
             // 
             // OfficeControl
             // 
@@ -332,17 +331,17 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.OfficeBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.LicenseStatusLbl);
-            this.Controls.Add(this.VersionLbl);
-            this.Controls.Add(this.ProductNameLbl);
-            this.Controls.Add(this.DeactivateButton);
-            this.Controls.Add(this.ActivateButton);
-            this.Controls.Add(this.ShellBox);
-            this.Controls.Add(this.InfoButton);
+            this.Controls.Add(this.productLogo);
+            this.Controls.Add(this.consoleLbl);
+            this.Controls.Add(this.actTitle_Lbl);
+            this.Controls.Add(this.infoTitle_Lbl);
+            this.Controls.Add(this.statusLbl);
+            this.Controls.Add(this.versionLbl);
+            this.Controls.Add(this.productName_Lbl);
+            this.Controls.Add(this.removeBtn);
+            this.Controls.Add(this.activateBtn);
+            this.Controls.Add(this.shellBox);
+            this.Controls.Add(this.infoBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "OfficeControl";
@@ -351,7 +350,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OfficeBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productLogo)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -361,25 +360,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Button InfoButton;
-        private System.Windows.Forms.TextBox ShellBox;
-        private System.Windows.Forms.Button ActivateButton;
-        private System.Windows.Forms.Button DeactivateButton;
-        private System.Windows.Forms.Label ProductNameLbl;
-        private System.Windows.Forms.Label VersionLbl;
-        private System.Windows.Forms.Label LicenseStatusLbl;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ProductDrop;
-        private System.Windows.Forms.ComboBox ServerDrop;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button infoBtn;
+        private System.Windows.Forms.TextBox shellBox;
+        private System.Windows.Forms.Button activateBtn;
+        private System.Windows.Forms.Button removeBtn;
+        private System.Windows.Forms.Label productName_Lbl;
+        private System.Windows.Forms.Label versionLbl;
+        private System.Windows.Forms.Label statusLbl;
+        private System.Windows.Forms.Label productLbl;
+        private System.Windows.Forms.Label serverLbl;
+        private System.Windows.Forms.ComboBox productDrop;
+        private System.Windows.Forms.ComboBox serverDrop;
+        private System.Windows.Forms.Label infoTitle_Lbl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox OfficeBox;
+        private System.Windows.Forms.Label actTitle_Lbl;
+        private System.Windows.Forms.Label consoleLbl;
+        private System.Windows.Forms.PictureBox productLogo;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox MethodDrop;
+        private System.Windows.Forms.Label methodLbl;
+        private System.Windows.Forms.ComboBox methodDrop;
     }
 }

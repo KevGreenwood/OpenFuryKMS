@@ -32,12 +32,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.serverDrop = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.LicenseStatusLbl = new System.Windows.Forms.Label();
+            this.statusLbl = new System.Windows.Forms.Label();
             this.VersionLbl = new System.Windows.Forms.Label();
             this.ProductNameLbl = new System.Windows.Forms.Label();
             this.removeBtn = new System.Windows.Forms.Button();
             this.activateBtn = new System.Windows.Forms.Button();
-            this.ShellBox = new System.Windows.Forms.TextBox();
+            this.shellBox = new System.Windows.Forms.TextBox();
             this.infoBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.productDrop = new System.Windows.Forms.ComboBox();
@@ -116,16 +116,16 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Console";
             // 
-            // LicenseStatusLbl
+            // statusLbl
             // 
-            this.LicenseStatusLbl.AutoSize = true;
-            this.LicenseStatusLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LicenseStatusLbl.ForeColor = System.Drawing.Color.White;
-            this.LicenseStatusLbl.Location = new System.Drawing.Point(15, 70);
-            this.LicenseStatusLbl.Name = "LicenseStatusLbl";
-            this.LicenseStatusLbl.Size = new System.Drawing.Size(104, 20);
-            this.LicenseStatusLbl.TabIndex = 25;
-            this.LicenseStatusLbl.Text = "License Status:";
+            this.statusLbl.AutoSize = true;
+            this.statusLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLbl.ForeColor = System.Drawing.Color.White;
+            this.statusLbl.Location = new System.Drawing.Point(15, 70);
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.Size = new System.Drawing.Size(104, 20);
+            this.statusLbl.TabIndex = 25;
+            this.statusLbl.Text = "License Status:";
             // 
             // VersionLbl
             // 
@@ -180,22 +180,22 @@
             this.activateBtn.UseVisualStyleBackColor = false;
             this.activateBtn.Click += new System.EventHandler(this.activateBtn_Click);
             // 
-            // ShellBox
+            // shellBox
             // 
-            this.ShellBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.shellBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShellBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ShellBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ShellBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShellBox.ForeColor = System.Drawing.Color.White;
-            this.ShellBox.Location = new System.Drawing.Point(20, 400);
-            this.ShellBox.Multiline = true;
-            this.ShellBox.Name = "ShellBox";
-            this.ShellBox.ReadOnly = true;
-            this.ShellBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ShellBox.Size = new System.Drawing.Size(540, 105);
-            this.ShellBox.TabIndex = 20;
+            this.shellBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.shellBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.shellBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shellBox.ForeColor = System.Drawing.Color.White;
+            this.shellBox.Location = new System.Drawing.Point(20, 400);
+            this.shellBox.Multiline = true;
+            this.shellBox.Name = "shellBox";
+            this.shellBox.ReadOnly = true;
+            this.shellBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.shellBox.Size = new System.Drawing.Size(540, 105);
+            this.shellBox.TabIndex = 20;
             // 
             // infoBtn
             // 
@@ -327,6 +327,7 @@
             this.methodDrop.Size = new System.Drawing.Size(324, 28);
             this.methodDrop.TabIndex = 12;
             this.methodDrop.Text = "Select your Activation Method";
+            this.methodDrop.SelectedIndexChanged += new System.EventHandler(this.methodDrop_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -378,12 +379,12 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.LicenseStatusLbl);
+            this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.VersionLbl);
             this.Controls.Add(this.ProductNameLbl);
             this.Controls.Add(this.removeBtn);
             this.Controls.Add(this.activateBtn);
-            this.Controls.Add(this.ShellBox);
+            this.Controls.Add(this.shellBox);
             this.Controls.Add(this.infoBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -408,12 +409,12 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox serverDrop;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label LicenseStatusLbl;
+        private System.Windows.Forms.Label statusLbl;
         private System.Windows.Forms.Label VersionLbl;
         private System.Windows.Forms.Label ProductNameLbl;
         private System.Windows.Forms.Button removeBtn;
         private System.Windows.Forms.Button activateBtn;
-        private System.Windows.Forms.TextBox ShellBox;
+        private System.Windows.Forms.TextBox shellBox;
         private System.Windows.Forms.Button infoBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox productDrop;

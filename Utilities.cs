@@ -111,6 +111,21 @@ namespace OpenFuryKMS
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
             }
         }
+
+        public string ExtractLicenseStatus(string output)
+        {
+            var licenseStatusMap = new Dictionary<string, string>
+            {
+                {"Licensed", "Licensed"},
+                {"Notification", "Unlicensed"},
+                {"Initial grace period", "Trial"}
+            };
+
+            var match = Regex.Match(output, @"License Status:\s*(.*)");
+            if (!match.Success) return "Unlicensed";
+            var status = match.Groups[1].Value.Trim();
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+        }
     }
 
     public class OfficeHandler
@@ -164,7 +179,7 @@ namespace OpenFuryKMS
             {
                 {"---LICENSED---", "Licensed"},
                 {"---NOTIFICATIONS---", "Unlicensed"},
-                {"---OOB_GRACE---", "Unlicensed"}
+                {"---OOB_GRACE---", "Trial"}
             };
 
             var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
