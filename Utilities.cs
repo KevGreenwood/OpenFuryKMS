@@ -126,6 +126,8 @@ namespace OpenFuryKMS
             var status = match.Groups[1].Value.Trim();
             return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
         }
+
+
     }
 
     public class OfficeHandler
@@ -134,9 +136,6 @@ namespace OpenFuryKMS
         public string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
         public string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString();
         public string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
-
-        private static string FullName_Path = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ProPlus2021Retail - es-es";
-        public string ProductName = Registry.GetValue(FullName_Path, "DisplayName", "").ToString();
 
         public bool DirChecker()
         {
@@ -165,8 +164,25 @@ namespace OpenFuryKMS
 
         public string GetProductName()
         {
-            return ProductName.Split('-')[0];
+            var versions = new Dictionary<string, string>
+            {
+                { "2021", "Microsoft Office 2021" },
+                { "2019", "Microsoft Office 2019" },
+                { "2016", "Microsoft Office 2016" },
+                { "2013", "Microsoft Office 2013" },
+                { "365", "Microsoft 365" }
+            };
+
+            foreach (var version in versions)
+            {
+                if (ReleaseId.Contains(version.Key))
+                {
+                    return version.Value;
+                }
+            }
+            return "Microsoft Office";
         }
+
 
         public string GetPlatform()
         {

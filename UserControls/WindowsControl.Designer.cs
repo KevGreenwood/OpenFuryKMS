@@ -104,6 +104,7 @@
             this.serverDrop.Size = new System.Drawing.Size(324, 28);
             this.serverDrop.TabIndex = 12;
             this.serverDrop.Text = "Select your KMS Server";
+            this.serverDrop.SelectedIndexChanged += new System.EventHandler(this.serverDrop_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -289,6 +290,7 @@
             this.licenseDrop.Size = new System.Drawing.Size(324, 28);
             this.licenseDrop.TabIndex = 12;
             this.licenseDrop.Text = "Select your License Key";
+            this.licenseDrop.SelectedIndexChanged += new System.EventHandler(this.licenseDrop_SelectedIndexChanged);
             // 
             // panel4
             // 

@@ -29,7 +29,7 @@ namespace OpenFuryKMS.UserControls
             bool IsInstalled = officeHandler.DirChecker();
             if (IsInstalled == true)
             {
-                OfficeLbl.Text = officeHandler.ProductName;
+                OfficeLbl.Text = officeHandler.GetProductName();
             }
             else
             {

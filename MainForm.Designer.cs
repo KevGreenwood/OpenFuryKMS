@@ -28,99 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.WindowsButton = new FontAwesome.Sharp.IconButton();
-            this.HomeButton = new FontAwesome.Sharp.IconButton();
-            this.ChildPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.SettingsButton = new FontAwesome.Sharp.IconButton();
+            this.windowsBtn = new FontAwesome.Sharp.IconButton();
+            this.homeBtn = new FontAwesome.Sharp.IconButton();
+            this.childPnl = new System.Windows.Forms.Panel();
+            this.menuPnl = new System.Windows.Forms.Panel();
+            this.settingsBtn = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.OfficeButton = new System.Windows.Forms.Button();
+            this.officeBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.leftPnl = new System.Windows.Forms.Panel();
+            this.menuPnl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // WindowsButton
+            // windowsBtn
             // 
-            this.WindowsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.WindowsButton.FlatAppearance.BorderSize = 0;
-            this.WindowsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.WindowsButton.ForeColor = System.Drawing.Color.White;
-            this.WindowsButton.IconChar = FontAwesome.Sharp.IconChar.Windows;
-            this.WindowsButton.IconColor = System.Drawing.Color.White;
-            this.WindowsButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.WindowsButton.IconSize = 30;
-            this.WindowsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WindowsButton.Location = new System.Drawing.Point(10, 55);
-            this.WindowsButton.Name = "WindowsButton";
-            this.WindowsButton.Size = new System.Drawing.Size(140, 40);
-            this.WindowsButton.TabIndex = 0;
-            this.WindowsButton.Text = "Windows";
-            this.WindowsButton.UseVisualStyleBackColor = false;
-            this.WindowsButton.Click += new System.EventHandler(this.WindowsButton_Click);
+            this.windowsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.windowsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.windowsBtn.FlatAppearance.BorderSize = 0;
+            this.windowsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.windowsBtn.ForeColor = System.Drawing.Color.White;
+            this.windowsBtn.IconChar = FontAwesome.Sharp.IconChar.Windows;
+            this.windowsBtn.IconColor = System.Drawing.Color.White;
+            this.windowsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.windowsBtn.IconSize = 30;
+            this.windowsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.windowsBtn.Location = new System.Drawing.Point(10, 52);
+            this.windowsBtn.Name = "windowsBtn";
+            this.windowsBtn.Size = new System.Drawing.Size(140, 40);
+            this.windowsBtn.TabIndex = 0;
+            this.windowsBtn.Text = "Windows";
+            this.windowsBtn.UseVisualStyleBackColor = false;
+            this.windowsBtn.Click += new System.EventHandler(this.windowsBtn_Click);
             // 
-            // HomeButton
+            // homeBtn
             // 
-            this.HomeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.HomeButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HomeButton.FlatAppearance.BorderSize = 0;
-            this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.IconChar = FontAwesome.Sharp.IconChar.House;
-            this.HomeButton.IconColor = System.Drawing.Color.White;
-            this.HomeButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.HomeButton.IconSize = 30;
-            this.HomeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HomeButton.Location = new System.Drawing.Point(10, 12);
-            this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(140, 40);
-            this.HomeButton.TabIndex = 1;
-            this.HomeButton.Text = "Home";
-            this.HomeButton.UseVisualStyleBackColor = false;
-            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
+            this.homeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.homeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.homeBtn.FlatAppearance.BorderSize = 0;
+            this.homeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeBtn.ForeColor = System.Drawing.Color.White;
+            this.homeBtn.IconChar = FontAwesome.Sharp.IconChar.House;
+            this.homeBtn.IconColor = System.Drawing.Color.White;
+            this.homeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.homeBtn.IconSize = 30;
+            this.homeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeBtn.Location = new System.Drawing.Point(10, 12);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(140, 40);
+            this.homeBtn.TabIndex = 1;
+            this.homeBtn.Text = "Home";
+            this.homeBtn.UseVisualStyleBackColor = false;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
-            // ChildPanel
+            // childPnl
             // 
-            this.ChildPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChildPanel.Location = new System.Drawing.Point(150, 0);
-            this.ChildPanel.Name = "ChildPanel";
-            this.ChildPanel.Size = new System.Drawing.Size(740, 560);
-            this.ChildPanel.TabIndex = 2;
+            this.childPnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.childPnl.Location = new System.Drawing.Point(150, 0);
+            this.childPnl.Name = "childPnl";
+            this.childPnl.Size = new System.Drawing.Size(740, 560);
+            this.childPnl.TabIndex = 2;
             // 
-            // panel1
+            // menuPnl
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.panel1.Controls.Add(this.SettingsButton);
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.OfficeButton);
-            this.panel1.Controls.Add(this.WindowsButton);
-            this.panel1.Controls.Add(this.HomeButton);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(150, 560);
-            this.panel1.TabIndex = 3;
+            this.menuPnl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.menuPnl.Controls.Add(this.settingsBtn);
+            this.menuPnl.Controls.Add(this.panel6);
+            this.menuPnl.Controls.Add(this.officeBtn);
+            this.menuPnl.Controls.Add(this.windowsBtn);
+            this.menuPnl.Controls.Add(this.homeBtn);
+            this.menuPnl.Controls.Add(this.panel3);
+            this.menuPnl.Controls.Add(this.leftPnl);
+            this.menuPnl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuPnl.Location = new System.Drawing.Point(0, 0);
+            this.menuPnl.Name = "menuPnl";
+            this.menuPnl.Size = new System.Drawing.Size(150, 560);
+            this.menuPnl.TabIndex = 3;
             // 
-            // SettingsButton
+            // settingsBtn
             // 
-            this.SettingsButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SettingsButton.FlatAppearance.BorderSize = 0;
-            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsButton.IconChar = FontAwesome.Sharp.IconChar.Gear;
-            this.SettingsButton.IconColor = System.Drawing.Color.White;
-            this.SettingsButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.SettingsButton.IconSize = 30;
-            this.SettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingsButton.Location = new System.Drawing.Point(10, 510);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(140, 40);
-            this.SettingsButton.TabIndex = 0;
-            this.SettingsButton.Text = "Settings";
-            this.SettingsButton.UseVisualStyleBackColor = true;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            this.settingsBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.settingsBtn.FlatAppearance.BorderSize = 0;
+            this.settingsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsBtn.ForeColor = System.Drawing.Color.White;
+            this.settingsBtn.IconChar = FontAwesome.Sharp.IconChar.Gear;
+            this.settingsBtn.IconColor = System.Drawing.Color.White;
+            this.settingsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.settingsBtn.IconSize = 30;
+            this.settingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.settingsBtn.Location = new System.Drawing.Point(10, 510);
+            this.settingsBtn.Name = "settingsBtn";
+            this.settingsBtn.Size = new System.Drawing.Size(140, 40);
+            this.settingsBtn.TabIndex = 0;
+            this.settingsBtn.Text = "Settings";
+            this.settingsBtn.UseVisualStyleBackColor = true;
+            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
             // panel6
             // 
@@ -130,18 +131,21 @@
             this.panel6.Size = new System.Drawing.Size(140, 10);
             this.panel6.TabIndex = 1;
             // 
-            // OfficeButton
+            // officeBtn
             // 
-            this.OfficeButton.FlatAppearance.BorderSize = 0;
-            this.OfficeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OfficeButton.ForeColor = System.Drawing.Color.White;
-            this.OfficeButton.Location = new System.Drawing.Point(10, 100);
-            this.OfficeButton.Name = "OfficeButton";
-            this.OfficeButton.Size = new System.Drawing.Size(140, 40);
-            this.OfficeButton.TabIndex = 0;
-            this.OfficeButton.Text = "Office";
-            this.OfficeButton.UseVisualStyleBackColor = true;
-            this.OfficeButton.Click += new System.EventHandler(this.OfficeButton_Click);
+            this.officeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.officeBtn.FlatAppearance.BorderSize = 0;
+            this.officeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.officeBtn.ForeColor = System.Drawing.Color.White;
+            this.officeBtn.Image = global::OpenFuryKMS.Properties.Resources.whiteIcon;
+            this.officeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.officeBtn.Location = new System.Drawing.Point(10, 92);
+            this.officeBtn.Name = "officeBtn";
+            this.officeBtn.Size = new System.Drawing.Size(140, 40);
+            this.officeBtn.TabIndex = 0;
+            this.officeBtn.Text = "Office";
+            this.officeBtn.UseVisualStyleBackColor = true;
+            this.officeBtn.Click += new System.EventHandler(this.officeBtn_Click);
             // 
             // panel3
             // 
@@ -151,13 +155,13 @@
             this.panel3.Size = new System.Drawing.Size(140, 12);
             this.panel3.TabIndex = 0;
             // 
-            // panel2
+            // leftPnl
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 560);
-            this.panel2.TabIndex = 2;
+            this.leftPnl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.leftPnl.Location = new System.Drawing.Point(0, 0);
+            this.leftPnl.Name = "leftPnl";
+            this.leftPnl.Size = new System.Drawing.Size(10, 560);
+            this.leftPnl.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -165,28 +169,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(890, 560);
-            this.Controls.Add(this.ChildPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.childPnl);
+            this.Controls.Add(this.menuPnl);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel1.ResumeLayout(false);
+            this.menuPnl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton WindowsButton;
-        private FontAwesome.Sharp.IconButton HomeButton;
-        private System.Windows.Forms.Panel ChildPanel;
-        private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton SettingsButton;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button OfficeButton;
+        private FontAwesome.Sharp.IconButton windowsBtn;
+        private FontAwesome.Sharp.IconButton homeBtn;
+        private System.Windows.Forms.Panel childPnl;
+        private System.Windows.Forms.Panel menuPnl;
+        private FontAwesome.Sharp.IconButton settingsBtn;
+        private System.Windows.Forms.Button officeBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel leftPnl;
     }
 }
 

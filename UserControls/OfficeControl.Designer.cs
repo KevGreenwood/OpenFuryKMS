@@ -216,6 +216,7 @@
             this.serverDrop.Size = new System.Drawing.Size(324, 28);
             this.serverDrop.TabIndex = 12;
             this.serverDrop.Text = "Select your KMS Server";
+            this.serverDrop.SelectedIndexChanged += new System.EventHandler(this.serverDrop_SelectedIndexChanged);
             // 
             // infoTitle_Lbl
             // 

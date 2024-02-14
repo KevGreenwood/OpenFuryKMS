@@ -1,46 +1,140 @@
-﻿using OpenFuryKMS.UserControls;
+﻿using FontAwesome.Sharp;
+using OpenFuryKMS.Properties;
+using OpenFuryKMS.UserControls;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace OpenFuryKMS
 {
     public partial class MainForm : Form
     {
-        private void addUserControl(UserControl userControl)
+        private Panel leftBorderBtn;
+        private IconButton currentBtn;
+        private string _currentButton, _lastActive;
+        OfficeHandler officeHandler = new OfficeHandler();
+        private struct RGBColors
         {
-            userControl.Dock = DockStyle.Fill;
-            ChildPanel.Controls.Clear();
-            ChildPanel.Controls.Add(userControl);
-            userControl.BringToFront();
+            public static Color color1 = Color.FromArgb(200, 255, 245);
+            public static Color color2 = Color.DodgerBlue;
+            public static Color color3 = Color.FromArgb(235, 60, 0);
+            public static Color color4 = Color.FromArgb(10, 160, 135);
         }
 
         public MainForm()
         {
             InitializeComponent();
-        }
-        private void MainForm_Load(object sender, System.EventArgs e)
-        {
-            HomeButton.PerformClick();
+
+            leftBorderBtn = new Panel();
+            leftBorderBtn.Size = new Size(4, 40);
+            menuPnl.Controls.Add(leftBorderBtn);
+
+            leftPnl.Size = new Size(2, 560);
+
+            windowsBtn.Enabled = WindowsHandler.ProductName.Contains("Windows 10") || WindowsHandler.ProductName.Contains("Windows 11");
+            officeBtn.Enabled = officeHandler.DirChecker();
         }
 
-        private void HomeButton_Click(object sender, System.EventArgs e)
+        private void MainForm_Load(object sender, System.EventArgs e)
         {
-            HomeControl home = new HomeControl();
-            addUserControl(home);
+            homeBtn.PerformClick();
         }
-        private void WindowsButton_Click(object sender, System.EventArgs e)
+
+        private void addUserControl(UserControl userControl)
         {
-            WindowsControl windows = new WindowsControl();
-            addUserControl(windows);
+            userControl.Dock = DockStyle.Fill;
+            childPnl.Controls.Clear();
+            childPnl.Controls.Add(userControl);
+            userControl.BringToFront();
         }
-        private void OfficeButton_Click(object sender, System.EventArgs e)
+
+        private void ActiveButton(object senderBtn, Color color, bool isOfficeButton = false)
         {
-            OfficeControl office = new OfficeControl();
-            addUserControl(office);
+            if (senderBtn != null)
+            {
+                ResetButton();
+                Control control = isOfficeButton ? officeBtn : (Control)senderBtn;
+                if (senderBtn is IconButton)
+                {
+                    currentBtn = (IconButton)senderBtn;
+                    currentBtn.BackColor = Color.FromArgb(40, 40, 40);
+                    currentBtn.ForeColor = color;
+                    currentBtn.IconColor = color;
+                }
+                if (isOfficeButton)
+                {
+                    officeBtn.Image = Resources.colorIcon;
+                    officeBtn.Refresh();
+                    officeBtn.BackColor = Color.FromArgb(40, 40, 40);
+                    officeBtn.ForeColor = color;
+                }
+                //LeftBorder
+                leftBorderBtn.BackColor = color;
+                leftBorderBtn.Location = new Point(2, control.Location.Y);
+                leftBorderBtn.Visible = true;
+                leftBorderBtn.BringToFront();
+            }
         }
-        private void SettingsButton_Click(object sender, System.EventArgs e)
+
+        private void ResetButton()
         {
-            SettingsControl settings = new SettingsControl();
-            addUserControl(settings);
+            if (currentBtn != null)
+            {
+                currentBtn.BackColor = Color.FromArgb(30, 30, 30);
+                currentBtn.ForeColor = Color.White;
+                currentBtn.IconColor = Color.White;
+            }
+
+            if (officeBtn != null)
+            {
+                officeBtn.BackColor = Color.FromArgb(30, 30, 30);
+                officeBtn.ForeColor = Color.White;
+                officeBtn.Image = Resources.whiteIcon;
+            }
+        }
+
+        private void homeBtn_Click(object sender, System.EventArgs e)
+        {
+            _currentButton = sender.ToString();
+            if (_currentButton != _lastActive)
+            {
+                _lastActive = _currentButton;
+                ActiveButton(sender, RGBColors.color1);
+                HomeControl home = new HomeControl();
+                addUserControl(home);
+            }
+        }
+        private void windowsBtn_Click(object sender, System.EventArgs e)
+        {
+            _currentButton = sender.ToString();
+            if (_currentButton != _lastActive)
+            {
+                _lastActive = _currentButton;
+                ActiveButton(sender, RGBColors.color2);
+                WindowsControl windows = new WindowsControl();
+                addUserControl(windows);
+            }
+        }
+        private void officeBtn_Click(object sender, System.EventArgs e)
+        {
+            _currentButton = sender.ToString();
+            if (_currentButton != _lastActive)
+            {
+                _lastActive = _currentButton;
+                ActiveButton(sender, RGBColors.color3, true);
+                OfficeControl office = new OfficeControl();
+                addUserControl(office);
+            }
+        }
+        private void settingsBtn_Click(object sender, System.EventArgs e)
+        {
+            _currentButton = sender.ToString();
+            if (_currentButton != _lastActive)
+            {
+                _lastActive = _currentButton;
+                ActiveButton(sender, RGBColors.color4);
+                SettingsControl settings = new SettingsControl();
+                addUserControl(settings);
+            }
         }
     }
 }

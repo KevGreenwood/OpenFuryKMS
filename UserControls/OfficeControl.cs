@@ -1,4 +1,5 @@
-﻿using OpenFuryKMS.Properties;
+﻿using Microsoft.Win32.TaskScheduler;
+using OpenFuryKMS.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,11 +8,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace OpenFuryKMS
 {
@@ -29,12 +30,11 @@ namespace OpenFuryKMS
 
             activateBtn.Enabled = false;
 
-            productName_Lbl.Text = $"Software: {officeHandler.GetProductName()}{officeHandler.GetPlatform()}";
+            productName_Lbl.Text = $"Software: {officeHandler.GetProductName()} {officeHandler.GetPlatform()}";
             versionLbl.Text = $"Build: {officeHandler.Version}";
-            
+
             officeHandler.DirChecker();
             Autodetect();
-            CheckForInternetConnection();
             GetLicenseStatus();
 
             Dictionary<string, Image> productToImage = new Dictionary<string, Image>
@@ -47,31 +47,13 @@ namespace OpenFuryKMS
             };
             foreach (var item in productToImage)
             {
-                if (officeHandler.ProductName.Contains(item.Key))
+                if (officeHandler.GetProductName().Contains(item.Key))
                 {
                     productLogo.Image = item.Value;
                     break;
                 }
             }
-            infoBtn.PerformClick();
-        }
-
-        public void CheckForInternetConnection()
-        {
-            bool isConnected = NetworkInterface.GetIsNetworkAvailable();
-
-            if (!isConnected)
-            {
-                serverDrop.Enabled = false;
-                if (methodDrop.SelectedIndex == 2)
-                {
-                    activateBtn.Enabled = true;
-                }
-                else
-                {
-                    activateBtn.Enabled = false;
-                }
-            }
+            shellBox.Text = officeHandler.ClearOutput(pwshOutput);
         }
 
         private void Autodetect()
@@ -86,13 +68,13 @@ namespace OpenFuryKMS
             };
             foreach (var item in productToIndex)
             {
-                if (!officeHandler.ProductName.Contains(item.Key)) continue;
+                if (!officeHandler.GetProductName().Contains(item.Key)) continue;
                 productDrop.SelectedIndex = item.Value;
                 serverDrop.Enabled = true;
                 break;
             }
         }
-        
+
         public void GetLicenseStatus()
         {
             pwshOutput = pwsh.ExecuteCommand("cscript //nologo ospp.vbs /dstatus");
@@ -100,7 +82,7 @@ namespace OpenFuryKMS
             statusLbl.Text = $"License Status: {licenseStatus} ({officeHandler.GetLicenseType()})";
             removeBtn.Enabled = licenseStatus != "Unlicensed";
         }
-        
+
         private void Activation()
         {
             switch (productDrop.SelectedIndex)
@@ -125,7 +107,7 @@ namespace OpenFuryKMS
             shellBox.Text = officeHandler.ClearOutput(pwsh.ExecuteCommand(dirtyOutput));
             SetKMS_Server();
         }
-        
+
         private void SetKMS_Server()
         {
             if (serverDrop.SelectedIndex == 0)
@@ -139,6 +121,64 @@ namespace OpenFuryKMS
             }
             activateBtn.Enabled = true;
             shellBox.Text = officeHandler.ClearOutput(dirtyOutput);
+        }
+
+        private void SwitchControls()
+        {
+            bool isMethodZero = methodDrop.SelectedIndex == 0;
+            bool isMethodOneOrTwo = methodDrop.SelectedIndex == 1 || methodDrop.SelectedIndex == 2;
+            bool isServerSelected = serverDrop.SelectedIndex != -1;
+
+            activateBtn.Enabled = (isMethodZero && isServerSelected) || isMethodOneOrTwo;
+            productDrop.Enabled = !isMethodOneOrTwo;
+            serverDrop.Enabled = !isMethodOneOrTwo;
+        }
+
+        private void CreateTask()
+        {
+            string targetFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenFuryKMS");
+            string targetPath = Path.Combine(targetFolder, "OfficeRenewer.ps1");
+
+            Directory.CreateDirectory(targetFolder);
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "OpenFuryKMS.Resources.Scripts.OfficeRenewer.ps1";
+
+            if (assembly.GetManifestResourceNames().Contains(resourceName))
+            {
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    File.WriteAllText(targetPath, reader.ReadToEnd());
+                }
+            }
+
+            using (TaskService ts = new TaskService())
+            {
+                // Especifica el nombre de la carpeta donde quieres crear la tarea
+                string taskFolderName = "\\OpenFuryKMS";
+
+                // Intenta obtener la carpeta
+                TaskFolder tf = ts.GetFolder(taskFolderName);
+
+                // Si la carpeta no existe, créala
+                if (tf == null)
+                {
+                    tf = ts.RootFolder.CreateFolder(taskFolderName);
+                }
+
+                // Si la tarea no existe, créala
+                if (tf.GetTasks().FirstOrDefault(t => t.Name == "OfficeRenewer") == null)
+                {
+                    TaskDefinition td = ts.NewTask();
+                    td.RegistrationInfo.Description = "Ejecuta el script OfficeRenewer.ps1 cada 180 días";
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 180 });
+                    td.Actions.Add(new ExecAction("powershell.exe", $"-File \"{targetPath}\""));
+
+                    // Registra la tarea en la carpeta especificada
+                    tf.RegisterTaskDefinition("OfficeRenewer", td);
+                }
+            }
         }
 
         private void activateBtn_Click(object sender, EventArgs e)
@@ -157,6 +197,22 @@ namespace OpenFuryKMS
             }
             shellBox.Text = officeHandler.ClearOutput(dirtyOutput);
             GetLicenseStatus();
+            if (methodDrop.SelectedIndex < 2)
+            {
+                using (TaskService ts = new TaskService())
+                {
+                    string taskFolderName = "\\OpenFuryKMS";
+                    TaskFolder tf = ts.GetFolder(taskFolderName);
+                    if (tf == null || tf.GetTasks().FirstOrDefault(t => t.Name == "OfficeRenewer") == null)
+                    {
+                        if (MessageBox.Show("¿Desea crear la tarea?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CreateTask();
+                            MessageBox.Show("La tarea ha sido creada exitosamente.");
+                        }
+                    }
+                }
+            }
         }
         private void infoBtn_Click(object sender, EventArgs e)
         {
@@ -185,14 +241,13 @@ namespace OpenFuryKMS
             GetLicenseStatus();
         }
 
+        private void serverDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SwitchControls();
+        }
         private void methodDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool isRearmSelected = methodDrop.SelectedIndex == 2;
-            bool isRenewSelected = methodDrop.SelectedIndex == 1;
-            bool isAllSelected = productDrop.SelectedIndex != -1;
-
-            activateBtn.Enabled = isAllSelected || isRearmSelected || isRenewSelected;
-            serverDrop.Enabled = isAllSelected;
+            SwitchControls();
         }
     }
 }

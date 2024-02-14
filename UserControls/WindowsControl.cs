@@ -1,8 +1,10 @@
 ﻿using FontAwesome.Sharp;
+using Microsoft.Win32.TaskScheduler;
 using System;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace OpenFuryKMS
@@ -21,7 +23,7 @@ namespace OpenFuryKMS
             activateBtn.Enabled = false;
 
             Directory.SetCurrentDirectory(@"C:\Windows\system32");
-            
+
             ProductNameLbl.Text = $"Operating System: {windowsHandler.GetAllInfo}";
             VersionLbl.Text = $"Version: {windowsHandler.Version}";
 
@@ -45,8 +47,7 @@ namespace OpenFuryKMS
                     break;
                 }
             }
-            CheckForInternetConnection();
-            infoBtn.PerformClick();
+            shellBox.Text = pwshOutput;
         }
 
         public void GetLicenseStatus()
@@ -55,17 +56,6 @@ namespace OpenFuryKMS
             string licenseStatus = windowsHandler.ExtractLicenseStatus(pwshOutput);
             statusLbl.Text = $"License Status: {licenseStatus}";
             removeBtn.Enabled = licenseStatus != "Unlicensed";
-        }
-
-        public void CheckForInternetConnection()
-        {
-            bool isConnected = NetworkInterface.GetIsNetworkAvailable();
-
-            if (!isConnected)
-            {
-                licenseDrop.Enabled = false;
-                serverDrop.Enabled = false;
-            }
         }
 
         private void SetKMS_Server()
@@ -78,6 +68,65 @@ namespace OpenFuryKMS
             {
                 string server = pwsh.KmsServers[serverDrop.SelectedIndex - 1];
                 shellBox.Text = pwsh.ExecuteCommand($"cscript //nologo slmgr.vbs /skms {server}; cscript //nologo slmgr.vbs /ato");
+            }
+        }
+
+        private void SwitchControls()
+        {
+            bool isMethodZero = methodDrop.SelectedIndex == 0;
+            bool isMethodOneOrTwo = methodDrop.SelectedIndex == 1 || methodDrop.SelectedIndex == 2;
+            bool isLicenseAndServerSelected = licenseDrop.SelectedIndex != -1 && serverDrop.SelectedIndex != -1;
+
+            activateBtn.Enabled = (isMethodZero && isLicenseAndServerSelected) || isMethodOneOrTwo;
+            productDrop.Enabled = !isMethodOneOrTwo;
+            licenseDrop.Enabled = !isMethodOneOrTwo;
+            serverDrop.Enabled = !isMethodOneOrTwo;
+        }
+
+        private void CreateTask()
+        {
+            string targetFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenFuryKMS");
+            string targetPath = Path.Combine(targetFolder, "WindowsRenewer.ps1");
+
+            Directory.CreateDirectory(targetFolder);
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "OpenFuryKMS.Resources.Scripts.WindowsRenewer.ps1";
+
+            if (!File.Exists(targetPath) && assembly.GetManifestResourceNames().Contains(resourceName))
+            {
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    File.WriteAllText(targetPath, reader.ReadToEnd());
+                }
+            }
+
+            using (TaskService ts = new TaskService())
+            {
+                // Especifica el nombre de la carpeta donde quieres crear la tarea
+                string taskFolderName = "\\OpenFuryKMS";
+
+                // Intenta obtener la carpeta
+                TaskFolder tf = ts.GetFolder(taskFolderName);
+
+                // Si la carpeta no existe, créala
+                if (tf == null)
+                {
+                    tf = ts.RootFolder.CreateFolder(taskFolderName);
+                }
+
+                // Si la tarea no existe, créala
+                if (tf.GetTasks().FirstOrDefault(t => t.Name == "WindowsRenewer") == null)
+                {
+                    TaskDefinition td = ts.NewTask();
+                    td.RegistrationInfo.Description = "Ejecuta el script WindowsRenewer.ps1 cada 180 días";
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 180 });
+                    td.Actions.Add(new ExecAction("powershell.exe", $"-File \"{targetPath}\""));
+
+                    // Registra la tarea en la carpeta especificada
+                    tf.RegisterTaskDefinition("WindowsRenewer", td);
+                }
             }
         }
 
@@ -101,7 +150,24 @@ namespace OpenFuryKMS
                     shellBox.Text = pwsh.ExecuteCommand($"cscript //nologo slmgr.vbs {command}");
                     break;
             }
+            if (methodDrop.SelectedIndex < 2)
+            {
+                using (TaskService ts = new TaskService())
+                {
+                    string taskFolderName = "\\OpenFuryKMS";
+                    TaskFolder tf = ts.GetFolder(taskFolderName);
+                    if (tf == null || tf.GetTasks().FirstOrDefault(t => t.Name == "WindowsRenewer") == null)
+                    {
+                        if (MessageBox.Show("¿Desea crear la tarea?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            CreateTask();
+                            MessageBox.Show("La tarea ha sido creada exitosamente.");
+                        }
+                    }
+                }
+            }
         }
+
         private void infoBtn_Click(object sender, EventArgs e)
         {
             shellBox.Text = pwsh.ExecuteCommand("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr");
@@ -132,16 +198,19 @@ namespace OpenFuryKMS
                     break;
             }
             licenseDrop.SelectedIndex = -1;
-            licenseDrop.Enabled = true;
+        }
+        private void licenseDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SwitchControls();
+        }
+
+        private void serverDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SwitchControls();
         }
         private void methodDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool isRearmSelected = methodDrop.SelectedIndex == 2;
-            bool isRenewSelected = methodDrop.SelectedIndex == 1;
-            bool isAllSelected = productDrop.SelectedIndex != -1 && licenseDrop.SelectedIndex != -1 && serverDrop.SelectedIndex != -1;
-
-            activateBtn.Enabled = isAllSelected || isRearmSelected || isRenewSelected;
-            licenseDrop.Enabled = serverDrop.Enabled = !isRearmSelected && !isRenewSelected;
+            SwitchControls();
         }
     }
 }
