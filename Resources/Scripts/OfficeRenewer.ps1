@@ -19,8 +19,24 @@ function DirChecker {
 if (DirChecker)
 {
     $output = cscript //nologo ospp.vbs /dstatus
+
+    Write-Host $output
+
     if (!($output -match "Licensed"))
     {
-        cscript //nologo ospp.vbs /act
+        Write-Host "========================================================================"
+        Write-Host "`nRenewing The License..."
+
+        $finalOutput = cscript //nologo ospp.vbs /act
+
+        if (($finalOutput -match "successful"))
+        {
+            Write-Host $finalOutput
+        }
+        else
+        {
+            Write-Error "There was a problem renewing the license. Please check the error details:"
+            Write-Host $finalOutput
+        }
     }
 }
