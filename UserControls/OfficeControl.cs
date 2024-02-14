@@ -93,7 +93,7 @@ namespace OpenFuryKMS
                     break;
 
                 case 1:
-                    dirtyOutput = officeHandler.InstallLicense("ProPlus2021VL_KMS", new List<string> { "6F7TH" }, "FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH");
+                    dirtyOutput = officeHandler.InstallLicense("ProPlus2021VL_KMS", new List<string> { "PG343", "6F7TH" }, "FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH");
                     break;
 
                 case 2:

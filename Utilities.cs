@@ -85,19 +85,16 @@ namespace OpenFuryKMS
             ("7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH", " (Single Language)"),
             ("PVMJN-6DFY6-9CCP6-7BKTT-D3WVR", " (Country Specific)")
         };
-
         public readonly List<(string License, string Description)> Pro_Licenses = new List<(string, string)>
         {
             ("W269N-WFGWX-YVC9B-4J6C9-T83GX", ""),
             ("MH37W-N47XK-V7XM9-C7227-GCQG9", " (N)")
         };
-
         public readonly List<(string License, string Description)> Education_Licenses = new List<(string, string)>
         {
             ("NW6C2-QMPVW-D7KKK-3GKT6-VCFB2", ""),
             ("2WH4N-8QGBV-H22JP-CT43Q-MDWWJ", " (N)")
         };
-
         public readonly List<(string License, string Description)> Enterprise_Licenses = new List<(string, string)>
         {
             ("NPPR9-FWDCX-D2C8J-H872K-2YT43", ""),
@@ -126,8 +123,6 @@ namespace OpenFuryKMS
             var status = match.Groups[1].Value.Trim();
             return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
         }
-
-
     }
 
     public class OfficeHandler
@@ -137,15 +132,19 @@ namespace OpenFuryKMS
         public string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString();
         public string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
 
+        /* I don't use this: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OFFICE VERSION
+           because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
+           that each Office version has its own language */
+
         public bool DirChecker()
         {
             string[] officePaths =
             {
-            @"C:\Program Files\Microsoft Office\Office16",
-            @"C:\Program Files\Microsoft Office\Office15",
-            @"C:\Program Files (x86)\Microsoft Office\Office16",
-            @"C:\Program Files (x86)\Microsoft Office\Office15"
-        };
+                @"C:\Program Files\Microsoft Office\Office16",
+                @"C:\Program Files\Microsoft Office\Office15",
+                @"C:\Program Files (x86)\Microsoft Office\Office16",
+                @"C:\Program Files (x86)\Microsoft Office\Office15"
+            };
 
             foreach (string officePath in officePaths)
             {
@@ -183,7 +182,6 @@ namespace OpenFuryKMS
             return "Microsoft Office";
         }
 
-
         public string GetPlatform()
         {
             return Platform.Contains("x64") ? "64 bits" : "32 bits";
@@ -215,7 +213,10 @@ namespace OpenFuryKMS
         {
             var output = $"cmd /c \"for /f %x in ('dir /b ..\\root\\Licenses16\\{product}*.xrm-ms') do cscript //nologo ospp.vbs /inslic:..\\root\\Licenses16\\%x\"; cscript //nologo ospp.vbs /setprt:1688; ";
 
-            output = lastKeys.Aggregate(output, (current, lastKey) => current + $"cscript //nologo ospp.vbs /unpkey:{lastKey} >nul; ");
+            foreach (var lastKey in lastKeys)
+            {
+                output += $"cscript //nologo ospp.vbs /unpkey:{lastKey}; ";
+            }
 
             output += $"cscript //nologo ospp.vbs /inpkey:{licenseKey}";
             return output;
