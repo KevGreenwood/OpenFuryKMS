@@ -199,9 +199,6 @@ doesn't, press the RENEW button.</value>
   <data name="titleLbl2" xml:space="preserve">
     <value>How does it work?</value>
   </data>
-  <data name="titleLbl1" xml:space="preserve">
-    <value>What is FuryKMS?</value>
-  </data>
   <data name="textLbl1" xml:space="preserve">
     <value>FuryKMS is a GUI (graphical user interface) that makes it easy to activate Microsoft Windows 10 - 11 and 
 Office 2013 - 2021</value>
@@ -224,6 +221,9 @@ In the rare case that your antivirus detects it as one, disable it momentarily t
   <data name="updatesOffLblOffice" xml:space="preserve">
     <value>Updates: Disabled</value>
   </data>
+  <data name="titleLbl1" xml:space="preserve">
+    <value>What is FuryKMS?</value>
+  </data>
   <data name="removingTRIAL" xml:space="preserve">
     <value>Removing TRIAL Licenses...</value>
   </data>
@@ -242,8 +242,7 @@ them in this program's documentation as a history.</value>
     <value>We have detected that you are using </value>
   </data>
   <data name="osLbl2" xml:space="preserve">
-    <value>
-you will still be able to use FuryKMS but with limited features.</value>
+    <value>, you will still be able to use FuryKMS but with limited features.</value>
   </data>
   <data name="warningText" xml:space="preserve">
     <value>Warning</value>

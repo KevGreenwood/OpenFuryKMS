@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="homeBtn" xml:space="preserve">
-    <value>Home</value>
+    <value>Inicio</value>
   </data>
   <data name="windowsBtn" xml:space="preserve">
     <value>Windows</value>
@@ -127,125 +127,127 @@
     <value>Office</value>
   </data>
   <data name="optionsBtn" xml:space="preserve">
-    <value>Settings</value>
+    <value>Opciones</value>
   </data>
   <data name="productsLbl" xml:space="preserve">
-    <value>Product</value>
+    <value>Producto</value>
   </data>
   <data name="licensesLbl" xml:space="preserve">
-    <value>Licenses</value>
+    <value>Licencias</value>
   </data>
   <data name="kmsLbl" xml:space="preserve">
-    <value>KMS Servers</value>
+    <value>Servidores KMS</value>
   </data>
   <data name="productsDrop" xml:space="preserve">
-    <value>Select your Windows Edition</value>
+    <value>Seleccione su edición de Windows</value>
   </data>
   <data name="licencesText" xml:space="preserve">
-    <value>Select your License</value>
+    <value>Seleccione su Licencia</value>
   </data>
   <data name="serversDrop" xml:space="preserve">
-    <value>Select your KMS Server</value>
+    <value>Seleccione su servidor KMS</value>
   </data>
   <data name="orgLbl" xml:space="preserve">
-    <value>Organization: </value>
+    <value>Organización: </value>
   </data>
   <data name="ownerLbl" xml:space="preserve">
-    <value>User: </value>
+    <value>Usuario: </value>
   </data>
   <data name="activateBtn" xml:space="preserve">
-    <value>Activate!</value>
+    <value>¡Activar!</value>
   </data>
   <data name="infoBtn" xml:space="preserve">
-    <value>Information</value>
+    <value>Información</value>
   </data>
   <data name="removeBtn" xml:space="preserve">
-    <value>Remove Key</value>
+    <value>Remover Licencia</value>
   </data>
   <data name="officeDrop" xml:space="preserve">
-    <value>Select your Office version</value>
+    <value>Seleccione su versión de Office</value>
   </data>
   <data name="noteLbl" xml:space="preserve">
-    <value>*Note: The license expires in 180 days and is automatically renewed 7 days later, in the rare case If it
-doesn't, press the RENEW button.</value>
+    <value>*Nota: La licencia caduca en 180 días y 7 días después se renueva de manera automática, en el raro caso
+que no lo haga, presione el botón de RENOVAR.</value>
   </data>
   <data name="verLbl" xml:space="preserve">
-    <value>Version: </value>
+    <value>Versión: </value>
   </data>
   <data name="updatesOnLblOffice" xml:space="preserve">
-    <value>Updates: Enabled</value>
+    <value>Actualizaciones: Habilitadas</value>
   </data>
   <data name="renewBtn" xml:space="preserve">
-    <value>Renew</value>
+    <value>Renovar</value>
   </data>
   <data name="removeAllBtn" xml:space="preserve">
-    <value>Remove All</value>
+    <value>Remover Todo</value>
   </data>
   <data name="langLbl" xml:space="preserve">
-    <value>Change Language</value>
+    <value>Cambiar Idioma</value>
   </data>
   <data name="updatesLbl" xml:space="preserve">
-    <value>Updates</value>
+    <value>Actualizaciones</value>
   </data>
   <data name="updatesBtn" xml:space="preserve">
-    <value>Check Updates</value>
+    <value>Revisar Actualizaciones</value>
   </data>
   <data name="contactLbl" xml:space="preserve">
-    <value>Contact and Help</value>
+    <value>Contacto y Ayuda</value>
   </data>
   <data name="aboutLbl" xml:space="preserve">
-    <value>About</value>
+    <value>Acerca de</value>
   </data>
   <data name="titleLbl2" xml:space="preserve">
-    <value>How does it work?</value>
+    <value>¿Como funciona?</value>
   </data>
   <data name="titleLbl1" xml:space="preserve">
-    <value>What is FuryKMS?</value>
+    <value>¿Qué es FuryKMS?</value>
   </data>
   <data name="textLbl1" xml:space="preserve">
-    <value>FuryKMS is a GUI (graphical user interface) that makes it easy to activate Microsoft Windows 10 - 11 and 
-Office 2013 - 2021</value>
+    <value>FuryKMS es una GUI (interfaz de usuario gráfica) que facilita el trabajo de activación de Microsoft 
+Windows 10 - 11 y Office 2013 – 2021</value>
   </data>
   <data name="textLbl2" xml:space="preserve">
-    <value>Windows activation is done with the SLMGR commands and generic licenses.
-Activation of the Office suite is done with The Office Software Protection Platform script (ospp.vbs) and
-generic licenses.
-All of this is validated on the MS Guides KMS servers and therefore these servers ARE NOT OFFICIAL, however
-the security of your computer will not be compromised.</value>
+    <value>La activación de Windows se realiza con los comandos de SLMGR y licencias genéricas.
+La activación de la suite Office se realiza con The Office Software Protection Platform script (ospp.vbs) y 
+licencias genéricas.
+Todo esto se valida en los servidores KMS de MS Guides y, por lo tanto, estos servidores NO SON OFICIALES,
+sin embargo, no se comprometerá la seguridad de su equipo.</value>
   </data>
   <data name="titleLbl3" xml:space="preserve">
-    <value>Is FuryKMS a Hacktool:Win32/Keygen?</value>
+    <value>¿FuryKMS es un Hacktool:Win32/Keygen?</value>
   </data>
   <data name="textLbl3" xml:space="preserve">
-    <value>No, FuryKMS does not contain any malicious code that could compromise the integrity of your computer,
-you can even check the source code to verify it.
-In the rare case that your antivirus detects it as one, disable it momentarily to use it without problems.</value>
+    <value>No, FuryKMS no contiene ningún código malicioso que pueda comprometer la integridad de su equipo,
+incluso puede revisar el código fuente para comprobarlo.
+En el extraño caso de que su antivirus lo detecte como uno, desactívelo de manera momentánea para usarlo
+sin problemas.</value>
   </data>
   <data name="updatesOffLblOffice" xml:space="preserve">
-    <value>Updates: Disabled</value>
+    <value>Actualizaciones: Deshabilitadas</value>
   </data>
   <data name="removingTRIAL" xml:space="preserve">
-    <value>Removing TRIAL Licenses...</value>
+    <value>Eliminando Licencias TRIAL...</value>
   </data>
   <data name="removingGeneric" xml:space="preserve">
-    <value>Removing GENERIC Licenses...</value>
+    <value>Removiendo Licencias GENÉRICAS...</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
-    <value>I’m always aware of the MS Guides servers and will be
-updating them as they open and close respectively.
-It’s recommended to use the servers marked as UNSTABLE 
-as the last option, since these servers are unstable; if these are
-no longer operational, I’ll remove them permanently and record
-them in this program's documentation as a history.</value>
+    <value>Estoy siempre al tanto de los servidores de MS Guides y los
+estaré actualizando a medida que se cierren y abren 
+respectivamente. Se recomienda usar los servidores marcados
+como UNSTABLE como última opción, ya que estos servidores
+se encentran inestables; si estos ya no están operativos, los
+eliminaré de forma permanente y los estaré registrando en la
+documentación de este programa como un historial.</value>
   </data>
   <data name="osLbl1" xml:space="preserve">
-    <value>We have detected that you are using </value>
+    <value>Hemos detectado que estás usando </value>
   </data>
   <data name="osLbl2" xml:space="preserve">
     <value>
-you will still be able to use FuryKMS but with limited features.</value>
+podrás seguir usando FuryKMS pero con funciones limitadas.</value>
   </data>
   <data name="warningText" xml:space="preserve">
-    <value>Warning</value>
+    <value>Advertencia</value>
   </data>
 </root>

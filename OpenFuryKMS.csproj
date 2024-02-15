@@ -129,10 +129,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Languages\Lang.en.resx" />
+    <EmbeddedResource Include="Resources\Languages\Lang.es.resx" />
     <EmbeddedResource Include="Resources\Languages\Lang.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Languages\Lang.ru.resx" />
     <EmbeddedResource Include="UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </EmbeddedResource>

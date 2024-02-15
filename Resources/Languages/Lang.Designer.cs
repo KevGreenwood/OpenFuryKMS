@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OpenFuryKMS.Resources.Languages {
+namespace FuryKMS.Languages {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace OpenFuryKMS.Resources.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OpenFuryKMS.Resources.Languages.Lang", typeof(Lang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FuryKMS.Languages.Lang", typeof(Lang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,371 @@ namespace OpenFuryKMS.Resources.Languages {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a About.
+        /// </summary>
+        internal static string aboutLbl {
+            get {
+                return ResourceManager.GetString("aboutLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Activate!.
+        /// </summary>
+        internal static string activateBtn {
+            get {
+                return ResourceManager.GetString("activateBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contact and Help.
+        /// </summary>
+        internal static string contactLbl {
+            get {
+                return ResourceManager.GetString("contactLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Home.
+        /// </summary>
+        internal static string homeBtn {
+            get {
+                return ResourceManager.GetString("homeBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Information.
+        /// </summary>
+        internal static string infoBtn {
+            get {
+                return ResourceManager.GetString("infoBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a I’m always aware of the MS Guides servers and will be
+        ///updating them as they open and close respectively.
+        ///It’s recommended to use the servers marked as UNSTABLE 
+        ///as the last option, since these servers are unstable; if these are
+        ///no longer operational, I’ll remove them permanently and record
+        ///them in this program&apos;s documentation as a history..
+        /// </summary>
+        internal static string infoLbl {
+            get {
+                return ResourceManager.GetString("infoLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a KMS Servers.
+        /// </summary>
+        internal static string kmsLbl {
+            get {
+                return ResourceManager.GetString("kmsLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Change Language.
+        /// </summary>
+        internal static string langLbl {
+            get {
+                return ResourceManager.GetString("langLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select your License.
+        /// </summary>
+        internal static string licencesText {
+            get {
+                return ResourceManager.GetString("licencesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Licenses.
+        /// </summary>
+        internal static string licensesLbl {
+            get {
+                return ResourceManager.GetString("licensesLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a *Note: The license expires in 180 days and is automatically renewed 7 days later, in the rare case If it
+        ///doesn&apos;t, press the RENEW button..
+        /// </summary>
+        internal static string noteLbl {
+            get {
+                return ResourceManager.GetString("noteLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Office.
+        /// </summary>
+        internal static string officeBtn {
+            get {
+                return ResourceManager.GetString("officeBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select your Office version.
+        /// </summary>
+        internal static string officeDrop {
+            get {
+                return ResourceManager.GetString("officeDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Settings.
+        /// </summary>
+        internal static string optionsBtn {
+            get {
+                return ResourceManager.GetString("optionsBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Organization: .
+        /// </summary>
+        internal static string orgLbl {
+            get {
+                return ResourceManager.GetString("orgLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a We have detected that you are using .
+        /// </summary>
+        internal static string osLbl1 {
+            get {
+                return ResourceManager.GetString("osLbl1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 
+        ///you will still be able to use FuryKMS but with limited features..
+        /// </summary>
+        internal static string osLbl2 {
+            get {
+                return ResourceManager.GetString("osLbl2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User: .
+        /// </summary>
+        internal static string ownerLbl {
+            get {
+                return ResourceManager.GetString("ownerLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select your Windows Edition.
+        /// </summary>
+        internal static string productsDrop {
+            get {
+                return ResourceManager.GetString("productsDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Product.
+        /// </summary>
+        internal static string productsLbl {
+            get {
+                return ResourceManager.GetString("productsLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Remove All.
+        /// </summary>
+        internal static string removeAllBtn {
+            get {
+                return ResourceManager.GetString("removeAllBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Remove Key.
+        /// </summary>
+        internal static string removeBtn {
+            get {
+                return ResourceManager.GetString("removeBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Removing GENERIC Licenses....
+        /// </summary>
+        internal static string removingGeneric {
+            get {
+                return ResourceManager.GetString("removingGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Removing TRIAL Licenses....
+        /// </summary>
+        internal static string removingTRIAL {
+            get {
+                return ResourceManager.GetString("removingTRIAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Renew.
+        /// </summary>
+        internal static string renewBtn {
+            get {
+                return ResourceManager.GetString("renewBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select your KMS Server.
+        /// </summary>
+        internal static string serversDrop {
+            get {
+                return ResourceManager.GetString("serversDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a FuryKMS is a GUI (graphical user interface) that makes it easy to activate Microsoft Windows 10 - 11 and 
+        ///Office 2013 - 2021.
+        /// </summary>
+        internal static string textLbl1 {
+            get {
+                return ResourceManager.GetString("textLbl1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Windows activation is done with the SLMGR commands and generic licenses.
+        ///Activation of the Office suite is done with The Office Software Protection Platform script (ospp.vbs) and
+        ///generic licenses.
+        ///All of this is validated on the MS Guides KMS servers and therefore these servers ARE NOT OFFICIAL, however
+        ///the security of your computer will not be compromised..
+        /// </summary>
+        internal static string textLbl2 {
+            get {
+                return ResourceManager.GetString("textLbl2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No, FuryKMS does not contain any malicious code that could compromise the integrity of your computer,
+        ///you can even check the source code to verify it.
+        ///In the rare case that your antivirus detects it as one, disable it momentarily to use it without problems..
+        /// </summary>
+        internal static string textLbl3 {
+            get {
+                return ResourceManager.GetString("textLbl3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a What is FuryKMS?.
+        /// </summary>
+        internal static string titleLbl1 {
+            get {
+                return ResourceManager.GetString("titleLbl1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a How does it work?.
+        /// </summary>
+        internal static string titleLbl2 {
+            get {
+                return ResourceManager.GetString("titleLbl2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Is FuryKMS a Hacktool:Win32/Keygen?.
+        /// </summary>
+        internal static string titleLbl3 {
+            get {
+                return ResourceManager.GetString("titleLbl3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Check Updates.
+        /// </summary>
+        internal static string updatesBtn {
+            get {
+                return ResourceManager.GetString("updatesBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Updates.
+        /// </summary>
+        internal static string updatesLbl {
+            get {
+                return ResourceManager.GetString("updatesLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Updates: Disabled.
+        /// </summary>
+        internal static string updatesOffLblOffice {
+            get {
+                return ResourceManager.GetString("updatesOffLblOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Updates: Enabled.
+        /// </summary>
+        internal static string updatesOnLblOffice {
+            get {
+                return ResourceManager.GetString("updatesOnLblOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Version: .
+        /// </summary>
+        internal static string verLbl {
+            get {
+                return ResourceManager.GetString("verLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Warning.
+        /// </summary>
+        internal static string warningText {
+            get {
+                return ResourceManager.GetString("warningText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Windows.
+        /// </summary>
+        internal static string windowsBtn {
+            get {
+                return ResourceManager.GetString("windowsBtn", resourceCulture);
             }
         }
     }
