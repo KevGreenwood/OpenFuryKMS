@@ -1,13 +1,16 @@
 ﻿using Microsoft.Win32.TaskScheduler;
 using OpenFuryKMS.Properties;
+using OpenFuryKMS.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OpenFuryKMS.UserControls
@@ -17,6 +20,7 @@ namespace OpenFuryKMS.UserControls
         public SettingsControl()
         {
             InitializeComponent();
+            LoadLanguage();
             CheckTaskAndFile();
         }
 
@@ -40,6 +44,13 @@ namespace OpenFuryKMS.UserControls
             }
 
             removeWin_Btn.Enabled = fileExists || taskExists;
+        }
+
+        public void LoadLanguage()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
+            langDrop.Text = Language.langLbl;
+            removeWin_Btn.Text = Language.homeBtn;
         }
 
         private void removeWin_Btn_Click(object sender, EventArgs e)
@@ -73,30 +84,29 @@ namespace OpenFuryKMS.UserControls
                     }
                 }
             }
-
             MessageBox.Show("La tarea y el archivo han sido eliminados exitosamente.");
             removeWin_Btn.Enabled = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedIndex)
+            switch (langDrop.SelectedIndex)
             {
                 case 0:
                     Settings.Default.Language = "en";
-                    LanguageHandler.LoadLanguage();
                     break;
 
                 case 1:
                     Settings.Default.Language = "es";
-                    LanguageHandler.LoadLanguage();
+
                     break;
 
                 case 2:
                     Settings.Default.Language = "ru";
-                    LanguageHandler.LoadLanguage();
+                    
                     break;
             }
+            LoadLanguage();
         }
     }
 }

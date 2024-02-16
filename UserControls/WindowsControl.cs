@@ -1,10 +1,14 @@
 ﻿using FontAwesome.Sharp;
 using Microsoft.Win32.TaskScheduler;
+using OpenFuryKMS.Properties;
+using OpenFuryKMS.Resources;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace OpenFuryKMS
@@ -23,9 +27,6 @@ namespace OpenFuryKMS
             activateBtn.Enabled = false;
 
             Directory.SetCurrentDirectory(@"C:\Windows\system32");
-
-            ProductNameLbl.Text = $"Operating System: {windowsHandler.GetAllInfo}";
-            VersionLbl.Text = $"Version: {windowsHandler.Version}";
 
             GetLicenseStatus();
 
@@ -48,14 +49,35 @@ namespace OpenFuryKMS
                 }
             }
             shellBox.Text = pwshOutput;
+            LoadLanguage();
+        }
+
+        public void LoadLanguage()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
+            infoTitleLbl.Text = Language.infoTitleLbl;
+            osLbl.Text = Language.osLbl + windowsHandler.GetAllInfo;
+            versionLbl.Text = Language.versionLbl + windowsHandler.Version;
+            actTitleLbl.Text = Language.actTitleLbl;
+            productLbl.Text = Language.productsLbl;
+            licenseLbl.Text = Language.licensesLbl;
+            kmsLbl.Text = Language.kmsLbl;
+            methodLbl.Text = Language.methodLbl;
+            productDrop.Text = Language.productDrop;
+            licenseDrop.Text = Language.licenceDrop;
+            serverDrop.Text = Language.serverDrop;
+            methodDrop.Text = Language.methodDrop;
+            activateBtn.Text = Language.activateBtn;
+            infoBtn.Text = Language.infoBtn;
+            removeBtn.Text = Language.removeBtn;
         }
 
         public void GetLicenseStatus()
         {
             pwshOutput = pwsh.ExecuteCommand("cscript //nologo slmgr.vbs /dli");
             string licenseStatus = windowsHandler.ExtractLicenseStatus(pwshOutput);
-            statusLbl.Text = $"License Status: {licenseStatus}";
-            removeBtn.Enabled = licenseStatus != "Unlicensed";
+            statusLbl.Text = Language.statusLbl + licenseStatus;
+            removeBtn.Enabled = licenseStatus != Language.Unlicensed;
         }
 
         private void SetKMS_Server()

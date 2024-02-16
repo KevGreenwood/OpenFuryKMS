@@ -138,20 +138,14 @@
   <data name="kmsLbl" xml:space="preserve">
     <value>KMS-Сервер</value>
   </data>
-  <data name="productsDrop" xml:space="preserve">
+  <data name="productDrop" xml:space="preserve">
     <value>Выберите свою Редакцию Windows</value>
   </data>
-  <data name="licencesText" xml:space="preserve">
+  <data name="licenceDrop" xml:space="preserve">
     <value>Выберите свою Лицензию</value>
   </data>
-  <data name="serversDrop" xml:space="preserve">
+  <data name="serverDrop" xml:space="preserve">
     <value>Выберите свой KMS-Сервер</value>
-  </data>
-  <data name="orgLbl" xml:space="preserve">
-    <value>Организация: </value>
-  </data>
-  <data name="ownerLbl" xml:space="preserve">
-    <value>Пользователь: </value>
   </data>
   <data name="activateBtn" xml:space="preserve">
     <value>Активировать!</value>
@@ -162,17 +156,8 @@
   <data name="officeDrop" xml:space="preserve">
     <value>Выберите свою версию Office</value>
   </data>
-  <data name="verLbl" xml:space="preserve">
+  <data name="versionLbl" xml:space="preserve">
     <value>Версия: </value>
-  </data>
-  <data name="updatesOnLblOffice" xml:space="preserve">
-    <value>Обновления: Включены</value>
-  </data>
-  <data name="renewBtn" xml:space="preserve">
-    <value>Продлить</value>
-  </data>
-  <data name="removeAllBtn" xml:space="preserve">
-    <value>Убрать Все</value>
   </data>
   <data name="langLbl" xml:space="preserve">
     <value>Изменить Язык</value>
@@ -212,9 +197,6 @@ Windows 10 - 11 и Office 2013 - 2021</value>
   <data name="removeBtn" xml:space="preserve">
     <value>Удалить Ключ</value>
   </data>
-  <data name="updatesOffLblOffice" xml:space="preserve">
-    <value>Обновления: Отключено</value>
-  </data>
   <data name="noteLbl" xml:space="preserve">
     <value>*Примечание. Срок действия лицензии истекает через 180 дней и автоматически продлевается
 через 7 дней. В редких случаях, если это не так, нажмите кнопку ПРОДЛИТЬ.</value>
@@ -224,12 +206,6 @@ Windows 10 - 11 и Office 2013 - 2021</value>
 компьютера, вы даже можете проверить исходный код, чтобы убедиться в этом.
 В редких случаях, когда ваш антивирус определяет его как один, отключите его на мгновение, чтобы
 использовать без проблем.</value>
-  </data>
-  <data name="removingTRIAL" xml:space="preserve">
-    <value>Удаление TRIAL Лицензий...</value>
-  </data>
-  <data name="removingGeneric" xml:space="preserve">
-    <value>Удаление ОБЩИХ Лицензий...</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
     <value>Я всегда знаю о серверах MS Guides и буду обновлять их по
@@ -249,5 +225,29 @@ Windows 10 - 11 и Office 2013 - 2021</value>
   </data>
   <data name="warningText" xml:space="preserve">
     <value>Предостережение</value>
+  </data>
+  <data name="osLbl" xml:space="preserve">
+    <value>Операционные системы: </value>
+  </data>
+  <data name="infoTitleLbl" xml:space="preserve">
+    <value>Информация о товаре</value>
+  </data>
+  <data name="statusLbl" xml:space="preserve">
+    <value>Статус лицензии: </value>
+  </data>
+  <data name="actTitleLbl" xml:space="preserve">
+    <value>Активация продукта</value>
+  </data>
+  <data name="methodLbl" xml:space="preserve">
+    <value>Способ активации</value>
+  </data>
+  <data name="methodDrop" xml:space="preserve">
+    <value>Выберите метод активации</value>
+  </data>
+  <data name="Licensed" xml:space="preserve">
+    <value>Лицензированный</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Нелицензионный</value>
   </data>
 </root>

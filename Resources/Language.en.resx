@@ -138,20 +138,14 @@
   <data name="kmsLbl" xml:space="preserve">
     <value>KMS Servers</value>
   </data>
-  <data name="productsDrop" xml:space="preserve">
+  <data name="productDrop" xml:space="preserve">
     <value>Select your Windows Edition</value>
   </data>
-  <data name="licencesText" xml:space="preserve">
+  <data name="licenceDrop" xml:space="preserve">
     <value>Select your License</value>
   </data>
-  <data name="serversDrop" xml:space="preserve">
+  <data name="serverDrop" xml:space="preserve">
     <value>Select your KMS Server</value>
-  </data>
-  <data name="orgLbl" xml:space="preserve">
-    <value>Organization: </value>
-  </data>
-  <data name="ownerLbl" xml:space="preserve">
-    <value>User: </value>
   </data>
   <data name="activateBtn" xml:space="preserve">
     <value>Activate!</value>
@@ -169,17 +163,8 @@
     <value>*Note: The license expires in 180 days and is automatically renewed 7 days later, in the rare case If it
 doesn't, press the RENEW button.</value>
   </data>
-  <data name="verLbl" xml:space="preserve">
+  <data name="versionLbl" xml:space="preserve">
     <value>Version: </value>
-  </data>
-  <data name="updatesOnLblOffice" xml:space="preserve">
-    <value>Updates: Enabled</value>
-  </data>
-  <data name="renewBtn" xml:space="preserve">
-    <value>Renew</value>
-  </data>
-  <data name="removeAllBtn" xml:space="preserve">
-    <value>Remove All</value>
   </data>
   <data name="langLbl" xml:space="preserve">
     <value>Change Language</value>
@@ -218,17 +203,8 @@ the security of your computer will not be compromised.</value>
 you can even check the source code to verify it.
 In the rare case that your antivirus detects it as one, disable it momentarily to use it without problems.</value>
   </data>
-  <data name="updatesOffLblOffice" xml:space="preserve">
-    <value>Updates: Disabled</value>
-  </data>
   <data name="titleLbl1" xml:space="preserve">
     <value>What is FuryKMS?</value>
-  </data>
-  <data name="removingTRIAL" xml:space="preserve">
-    <value>Removing TRIAL Licenses...</value>
-  </data>
-  <data name="removingGeneric" xml:space="preserve">
-    <value>Removing GENERIC Licenses...</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
     <value>I’m always aware of the MS Guides servers and will be
@@ -246,5 +222,29 @@ them in this program's documentation as a history.</value>
   </data>
   <data name="warningText" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="osLbl" xml:space="preserve">
+    <value>Operating System: </value>
+  </data>
+  <data name="infoTitleLbl" xml:space="preserve">
+    <value>Product Information</value>
+  </data>
+  <data name="statusLbl" xml:space="preserve">
+    <value>License Status: </value>
+  </data>
+  <data name="actTitleLbl" xml:space="preserve">
+    <value>Product Activation</value>
+  </data>
+  <data name="methodLbl" xml:space="preserve">
+    <value>Activation Method</value>
+  </data>
+  <data name="methodDrop" xml:space="preserve">
+    <value>Select your Activation Method</value>
+  </data>
+  <data name="Licensed" xml:space="preserve">
+    <value>Licensed</value>
+  </data>
+  <data name="Unlicensed" xml:space="preserve">
+    <value>Unlicensed</value>
   </data>
 </root>

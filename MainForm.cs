@@ -1,7 +1,10 @@
 ﻿using FontAwesome.Sharp;
-
+using OpenFuryKMS.Properties;
+using OpenFuryKMS.Resources;
 using OpenFuryKMS.UserControls;
 using System.Drawing;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -12,7 +15,9 @@ namespace OpenFuryKMS
         private Panel leftBorderBtn;
         private IconButton currentBtn;
         private string _currentButton, _lastActive;
+
         OfficeHandler officeHandler = new OfficeHandler();
+
         private struct RGBColors
         {
             public static Color color1 = Color.FromArgb(200, 255, 245);
@@ -37,10 +42,15 @@ namespace OpenFuryKMS
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
-            LanguageHandler.LoadLanguage();
-            homeBtn.Text = Resources.Language.homeBtn;
-            settingsBtn.Text = Resources.Language.settingsBtn;
+            LoadLanguage();
             homeBtn.PerformClick();
+        }
+
+        public void LoadLanguage()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
+            homeBtn.Text = Language.homeBtn;
+            settingsBtn.Text = Language.settingsBtn;
         }
 
         private void addUserControl(UserControl userControl)
@@ -129,6 +139,12 @@ namespace OpenFuryKMS
                 addUserControl(office);
             }
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.Default.Save();
+        }
+
         private void settingsBtn_Click(object sender, System.EventArgs e)
         {
             _currentButton = sender.ToString();

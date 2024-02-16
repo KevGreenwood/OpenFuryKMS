@@ -79,6 +79,15 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Product Activation.
+        /// </summary>
+        internal static string actTitleLbl {
+            get {
+                return ResourceManager.GetString("actTitleLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Contact and Help.
         /// </summary>
         internal static string contactLbl {
@@ -120,6 +129,15 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Product Information.
+        /// </summary>
+        internal static string infoTitleLbl {
+            get {
+                return ResourceManager.GetString("infoTitleLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a KMS Servers.
         /// </summary>
         internal static string kmsLbl {
@@ -140,9 +158,18 @@ namespace OpenFuryKMS.Resources {
         /// <summary>
         ///   Busca una cadena traducida similar a Select your License.
         /// </summary>
-        internal static string licencesText {
+        internal static string licenceDrop {
             get {
-                return ResourceManager.GetString("licencesText", resourceCulture);
+                return ResourceManager.GetString("licenceDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Licensed.
+        /// </summary>
+        internal static string Licensed {
+            get {
+                return ResourceManager.GetString("Licensed", resourceCulture);
             }
         }
         
@@ -152,6 +179,24 @@ namespace OpenFuryKMS.Resources {
         internal static string licensesLbl {
             get {
                 return ResourceManager.GetString("licensesLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select your Activation Method.
+        /// </summary>
+        internal static string methodDrop {
+            get {
+                return ResourceManager.GetString("methodDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Activation Method.
+        /// </summary>
+        internal static string methodLbl {
+            get {
+                return ResourceManager.GetString("methodLbl", resourceCulture);
             }
         }
         
@@ -184,11 +229,11 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Organization: .
+        ///   Busca una cadena traducida similar a Operating System: .
         /// </summary>
-        internal static string orgLbl {
+        internal static string osLbl {
             get {
-                return ResourceManager.GetString("orgLbl", resourceCulture);
+                return ResourceManager.GetString("osLbl", resourceCulture);
             }
         }
         
@@ -212,20 +257,11 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a User: .
-        /// </summary>
-        internal static string ownerLbl {
-            get {
-                return ResourceManager.GetString("ownerLbl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Select your Windows Edition.
         /// </summary>
-        internal static string productsDrop {
+        internal static string productDrop {
             get {
-                return ResourceManager.GetString("productsDrop", resourceCulture);
+                return ResourceManager.GetString("productDrop", resourceCulture);
             }
         }
         
@@ -239,15 +275,6 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Remove All.
-        /// </summary>
-        internal static string removeAllBtn {
-            get {
-                return ResourceManager.GetString("removeAllBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Remove Key.
         /// </summary>
         internal static string removeBtn {
@@ -257,38 +284,11 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Removing GENERIC Licenses....
-        /// </summary>
-        internal static string removingGeneric {
-            get {
-                return ResourceManager.GetString("removingGeneric", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Removing TRIAL Licenses....
-        /// </summary>
-        internal static string removingTRIAL {
-            get {
-                return ResourceManager.GetString("removingTRIAL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Renew.
-        /// </summary>
-        internal static string renewBtn {
-            get {
-                return ResourceManager.GetString("renewBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Select your KMS Server.
         /// </summary>
-        internal static string serversDrop {
+        internal static string serverDrop {
             get {
-                return ResourceManager.GetString("serversDrop", resourceCulture);
+                return ResourceManager.GetString("serverDrop", resourceCulture);
             }
         }
         
@@ -298,6 +298,15 @@ namespace OpenFuryKMS.Resources {
         internal static string settingsBtn {
             get {
                 return ResourceManager.GetString("settingsBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a License Status: .
+        /// </summary>
+        internal static string statusLbl {
+            get {
+                return ResourceManager.GetString("statusLbl", resourceCulture);
             }
         }
         
@@ -363,6 +372,15 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Unlicensed.
+        /// </summary>
+        internal static string Unlicensed {
+            get {
+                return ResourceManager.GetString("Unlicensed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Check Updates.
         /// </summary>
         internal static string updatesBtn {
@@ -381,29 +399,11 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Updates: Disabled.
-        /// </summary>
-        internal static string updatesOffLblOffice {
-            get {
-                return ResourceManager.GetString("updatesOffLblOffice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Updates: Enabled.
-        /// </summary>
-        internal static string updatesOnLblOffice {
-            get {
-                return ResourceManager.GetString("updatesOnLblOffice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Version: .
         /// </summary>
-        internal static string verLbl {
+        internal static string versionLbl {
             get {
-                return ResourceManager.GetString("verLbl", resourceCulture);
+                return ResourceManager.GetString("versionLbl", resourceCulture);
             }
         }
         

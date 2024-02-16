@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.removeWin_Btn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.langDrop = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // removeWin_Btn
@@ -42,24 +42,24 @@
             this.removeWin_Btn.UseVisualStyleBackColor = true;
             this.removeWin_Btn.Click += new System.EventHandler(this.removeWin_Btn_Click);
             // 
-            // comboBox1
+            // langDrop
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.langDrop.FormattingEnabled = true;
+            this.langDrop.Items.AddRange(new object[] {
             "English (EN)",
             "Español (ES)",
             "Русский язык"});
-            this.comboBox1.Location = new System.Drawing.Point(37, 52);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.langDrop.Location = new System.Drawing.Point(37, 52);
+            this.langDrop.Name = "langDrop";
+            this.langDrop.Size = new System.Drawing.Size(121, 21);
+            this.langDrop.TabIndex = 1;
+            this.langDrop.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // SettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.langDrop);
             this.Controls.Add(this.removeWin_Btn);
             this.Name = "SettingsControl";
             this.Size = new System.Drawing.Size(740, 560);
@@ -70,6 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Button removeWin_Btn;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox langDrop;
     }
 }

@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.kmsLbl = new System.Windows.Forms.Label();
             this.serverDrop = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.statusLbl = new System.Windows.Forms.Label();
-            this.VersionLbl = new System.Windows.Forms.Label();
-            this.ProductNameLbl = new System.Windows.Forms.Label();
+            this.versionLbl = new System.Windows.Forms.Label();
+            this.osLbl = new System.Windows.Forms.Label();
             this.removeBtn = new System.Windows.Forms.Button();
             this.activateBtn = new System.Windows.Forms.Button();
             this.shellBox = new System.Windows.Forms.TextBox();
             this.infoBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.productDrop = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.productLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.licenseLbl = new System.Windows.Forms.Label();
             this.licenseDrop = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.methodLbl = new System.Windows.Forms.Label();
             this.methodDrop = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.actTitleLbl = new System.Windows.Forms.Label();
+            this.infoTitleLbl = new System.Windows.Forms.Label();
             this.productLogo = new FontAwesome.Sharp.IconPictureBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -63,23 +63,23 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.kmsLbl);
             this.panel3.Controls.Add(this.serverDrop);
             this.panel3.Location = new System.Drawing.Point(20, 250);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(695, 50);
             this.panel3.TabIndex = 29;
             // 
-            // label6
+            // kmsLbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(10, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "KMS Server";
+            this.kmsLbl.AutoSize = true;
+            this.kmsLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kmsLbl.ForeColor = System.Drawing.Color.White;
+            this.kmsLbl.Location = new System.Drawing.Point(10, 13);
+            this.kmsLbl.Name = "kmsLbl";
+            this.kmsLbl.Size = new System.Drawing.Size(84, 20);
+            this.kmsLbl.TabIndex = 10;
+            this.kmsLbl.Text = "KMS Server";
             // 
             // serverDrop
             // 
@@ -99,9 +99,9 @@
             "s9.us.to",
             "kms9.msguides.com (UNSTABLE)",
             "kms8.msguides.com (UNSTABLE)"});
-            this.serverDrop.Location = new System.Drawing.Point(360, 10);
+            this.serverDrop.Location = new System.Drawing.Point(275, 10);
             this.serverDrop.Name = "serverDrop";
-            this.serverDrop.Size = new System.Drawing.Size(324, 28);
+            this.serverDrop.Size = new System.Drawing.Size(409, 28);
             this.serverDrop.TabIndex = 12;
             this.serverDrop.Text = "Select your KMS Server";
             this.serverDrop.SelectedIndexChanged += new System.EventHandler(this.serverDrop_SelectedIndexChanged);
@@ -128,27 +128,27 @@
             this.statusLbl.TabIndex = 25;
             this.statusLbl.Text = "License Status:";
             // 
-            // VersionLbl
+            // versionLbl
             // 
-            this.VersionLbl.AutoSize = true;
-            this.VersionLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLbl.ForeColor = System.Drawing.Color.White;
-            this.VersionLbl.Location = new System.Drawing.Point(15, 50);
-            this.VersionLbl.Name = "VersionLbl";
-            this.VersionLbl.Size = new System.Drawing.Size(81, 20);
-            this.VersionLbl.TabIndex = 24;
-            this.VersionLbl.Text = "Version: 1X";
+            this.versionLbl.AutoSize = true;
+            this.versionLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLbl.ForeColor = System.Drawing.Color.White;
+            this.versionLbl.Location = new System.Drawing.Point(15, 50);
+            this.versionLbl.Name = "versionLbl";
+            this.versionLbl.Size = new System.Drawing.Size(81, 20);
+            this.versionLbl.TabIndex = 24;
+            this.versionLbl.Text = "Version: 1X";
             // 
-            // ProductNameLbl
+            // osLbl
             // 
-            this.ProductNameLbl.AutoSize = true;
-            this.ProductNameLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductNameLbl.ForeColor = System.Drawing.Color.White;
-            this.ProductNameLbl.Location = new System.Drawing.Point(15, 30);
-            this.ProductNameLbl.Name = "ProductNameLbl";
-            this.ProductNameLbl.Size = new System.Drawing.Size(137, 20);
-            this.ProductNameLbl.TabIndex = 23;
-            this.ProductNameLbl.Text = "Microsoft Windows";
+            this.osLbl.AutoSize = true;
+            this.osLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.osLbl.ForeColor = System.Drawing.Color.White;
+            this.osLbl.Location = new System.Drawing.Point(15, 30);
+            this.osLbl.Name = "osLbl";
+            this.osLbl.Size = new System.Drawing.Size(137, 20);
+            this.osLbl.TabIndex = 23;
+            this.osLbl.Text = "Microsoft Windows";
             // 
             // removeBtn
             // 
@@ -220,7 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel1.Controls.Add(this.productDrop);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.productLbl);
             this.panel1.Location = new System.Drawing.Point(20, 140);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 50);
@@ -238,56 +238,56 @@
             "Windows 10 - 11 Pro",
             "Windows 10 - 11 Education",
             "Windows 10 - 11 Enterprise"});
-            this.productDrop.Location = new System.Drawing.Point(360, 10);
+            this.productDrop.Location = new System.Drawing.Point(275, 10);
             this.productDrop.Name = "productDrop";
-            this.productDrop.Size = new System.Drawing.Size(325, 28);
+            this.productDrop.Size = new System.Drawing.Size(410, 28);
             this.productDrop.TabIndex = 11;
             this.productDrop.Text = "Select your Windows version";
             this.productDrop.SelectedIndexChanged += new System.EventHandler(this.productDrop_SelectedIndexChanged);
             // 
-            // label1
+            // productLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Product";
+            this.productLbl.AutoSize = true;
+            this.productLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productLbl.ForeColor = System.Drawing.Color.White;
+            this.productLbl.Location = new System.Drawing.Point(10, 13);
+            this.productLbl.Name = "productLbl";
+            this.productLbl.Size = new System.Drawing.Size(60, 20);
+            this.productLbl.TabIndex = 9;
+            this.productLbl.Text = "Product";
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.licenseLbl);
             this.panel2.Controls.Add(this.licenseDrop);
             this.panel2.Location = new System.Drawing.Point(20, 195);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(695, 50);
             this.panel2.TabIndex = 28;
             // 
-            // label2
+            // licenseLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(10, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "License";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.licenseLbl.AutoSize = true;
+            this.licenseLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.licenseLbl.ForeColor = System.Drawing.Color.White;
+            this.licenseLbl.Location = new System.Drawing.Point(10, 13);
+            this.licenseLbl.Name = "licenseLbl";
+            this.licenseLbl.Size = new System.Drawing.Size(57, 20);
+            this.licenseLbl.TabIndex = 10;
+            this.licenseLbl.Text = "License";
+            this.licenseLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // licenseDrop
             // 
             this.licenseDrop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.licenseDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.licenseDrop.FormattingEnabled = true;
-            this.licenseDrop.Location = new System.Drawing.Point(360, 10);
+            this.licenseDrop.Location = new System.Drawing.Point(275, 10);
             this.licenseDrop.Name = "licenseDrop";
-            this.licenseDrop.Size = new System.Drawing.Size(324, 28);
+            this.licenseDrop.Size = new System.Drawing.Size(409, 28);
             this.licenseDrop.TabIndex = 12;
             this.licenseDrop.Text = "Select your License Key";
             this.licenseDrop.SelectedIndexChanged += new System.EventHandler(this.licenseDrop_SelectedIndexChanged);
@@ -297,23 +297,23 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.methodLbl);
             this.panel4.Controls.Add(this.methodDrop);
             this.panel4.Location = new System.Drawing.Point(20, 305);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(695, 50);
             this.panel4.TabIndex = 30;
             // 
-            // label7
+            // methodLbl
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(10, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 20);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Activation Method";
+            this.methodLbl.AutoSize = true;
+            this.methodLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.methodLbl.ForeColor = System.Drawing.Color.White;
+            this.methodLbl.Location = new System.Drawing.Point(10, 13);
+            this.methodLbl.Name = "methodLbl";
+            this.methodLbl.Size = new System.Drawing.Size(132, 20);
+            this.methodLbl.TabIndex = 10;
+            this.methodLbl.Text = "Activation Method";
             // 
             // methodDrop
             // 
@@ -321,37 +321,37 @@
             this.methodDrop.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.methodDrop.FormattingEnabled = true;
             this.methodDrop.Items.AddRange(new object[] {
-            "First Activation",
-            "Manual Renew",
+            "KMS Activation",
+            "Renew",
             "Rearm"});
-            this.methodDrop.Location = new System.Drawing.Point(360, 10);
+            this.methodDrop.Location = new System.Drawing.Point(275, 10);
             this.methodDrop.Name = "methodDrop";
-            this.methodDrop.Size = new System.Drawing.Size(324, 28);
+            this.methodDrop.Size = new System.Drawing.Size(409, 28);
             this.methodDrop.TabIndex = 12;
             this.methodDrop.Text = "Select your Activation Method";
             this.methodDrop.SelectedIndexChanged += new System.EventHandler(this.methodDrop_SelectedIndexChanged);
             // 
-            // label4
+            // actTitleLbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(15, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 25);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Product Activation";
+            this.actTitleLbl.AutoSize = true;
+            this.actTitleLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.actTitleLbl.ForeColor = System.Drawing.Color.White;
+            this.actTitleLbl.Location = new System.Drawing.Point(15, 110);
+            this.actTitleLbl.Name = "actTitleLbl";
+            this.actTitleLbl.Size = new System.Drawing.Size(172, 25);
+            this.actTitleLbl.TabIndex = 30;
+            this.actTitleLbl.Text = "Product Activation";
             // 
-            // label3
+            // infoTitleLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(15, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 25);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Product Information";
+            this.infoTitleLbl.AutoSize = true;
+            this.infoTitleLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoTitleLbl.ForeColor = System.Drawing.Color.White;
+            this.infoTitleLbl.Location = new System.Drawing.Point(15, 5);
+            this.infoTitleLbl.Name = "infoTitleLbl";
+            this.infoTitleLbl.Size = new System.Drawing.Size(187, 25);
+            this.infoTitleLbl.TabIndex = 26;
+            this.infoTitleLbl.Text = "Product Information";
             // 
             // productLogo
             // 
@@ -379,11 +379,11 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.actTitleLbl);
+            this.Controls.Add(this.infoTitleLbl);
             this.Controls.Add(this.statusLbl);
-            this.Controls.Add(this.VersionLbl);
-            this.Controls.Add(this.ProductNameLbl);
+            this.Controls.Add(this.versionLbl);
+            this.Controls.Add(this.osLbl);
             this.Controls.Add(this.removeBtn);
             this.Controls.Add(this.activateBtn);
             this.Controls.Add(this.shellBox);
@@ -412,24 +412,24 @@
         private System.Windows.Forms.ComboBox serverDrop;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label statusLbl;
-        private System.Windows.Forms.Label VersionLbl;
-        private System.Windows.Forms.Label ProductNameLbl;
+        private System.Windows.Forms.Label versionLbl;
+        private System.Windows.Forms.Label osLbl;
         private System.Windows.Forms.Button removeBtn;
         private System.Windows.Forms.Button activateBtn;
         private System.Windows.Forms.TextBox shellBox;
         private System.Windows.Forms.Button infoBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox productDrop;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label productLbl;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label licenseLbl;
         private System.Windows.Forms.ComboBox licenseDrop;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label methodLbl;
         private System.Windows.Forms.ComboBox methodDrop;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label kmsLbl;
+        private System.Windows.Forms.Label actTitleLbl;
+        private System.Windows.Forms.Label infoTitleLbl;
         private FontAwesome.Sharp.IconPictureBox productLogo;
     }
 }

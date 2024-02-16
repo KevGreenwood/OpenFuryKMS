@@ -11,6 +11,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using OpenFuryKMS.Resources;
 
 
 namespace OpenFuryKMS
@@ -116,15 +118,15 @@ namespace OpenFuryKMS
         {
             var licenseStatusMap = new Dictionary<string, string>
             {
-                {"Licensed", "Licensed"},
-                {"Notification", "Unlicensed"},
+                {"Licensed", Language.Licensed},
+                {"Notification", Language.Unlicensed},
                 {"Initial grace period", "Trial"}
             };
 
             var match = Regex.Match(output, @"License Status:\s*(.*)");
-            if (!match.Success) return "Unlicensed";
+            if (!match.Success) return Language.Unlicensed;
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : Language.Unlicensed;
         }
     }
 
@@ -135,7 +137,7 @@ namespace OpenFuryKMS
         public string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString();
         public string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
 
-        /* I don't use this: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OFFICE VERSION
+        /* I don't use: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\**OFFICE VERSION**
            because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
            that each Office version has its own language */
 
@@ -194,15 +196,15 @@ namespace OpenFuryKMS
         {
             var licenseStatusMap = new Dictionary<string, string>
             {
-                {"---LICENSED---", "Licensed"},
-                {"---NOTIFICATIONS---", "Unlicensed"},
+                {"---LICENSED---", Language.Licensed},
+                {"---NOTIFICATIONS---", Language.Unlicensed},
                 {"---OOB_GRACE---", "Trial"}
             };
 
             var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
-            if (!match.Success) return "Unlicensed";
+            if (!match.Success) return Language.Unlicensed;
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : Language.Unlicensed;
         }
 
         public string ClearOutput(string output)
@@ -223,14 +225,6 @@ namespace OpenFuryKMS
 
             output += $"cscript //nologo ospp.vbs /inpkey:{licenseKey}";
             return output;
-        }
-    }
-
-    public class LanguageHandler
-    {
-        public static void LoadLanguage()
-        {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
         }
     }
 }

@@ -173,6 +173,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuPnl.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -182,14 +183,14 @@
         #endregion
 
         private FontAwesome.Sharp.IconButton windowsBtn;
-        private FontAwesome.Sharp.IconButton homeBtn;
         private System.Windows.Forms.Panel childPnl;
         private System.Windows.Forms.Panel menuPnl;
-        private FontAwesome.Sharp.IconButton settingsBtn;
         private System.Windows.Forms.Button officeBtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel leftPnl;
+        private FontAwesome.Sharp.IconButton homeBtn;
+        private FontAwesome.Sharp.IconButton settingsBtn;
     }
 }
 

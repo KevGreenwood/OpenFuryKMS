@@ -1,16 +1,19 @@
 ﻿using Microsoft.Win32.TaskScheduler;
 using OpenFuryKMS.Properties;
+using OpenFuryKMS.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,8 +33,7 @@ namespace OpenFuryKMS
 
             activateBtn.Enabled = false;
 
-            productName_Lbl.Text = $"Software: {officeHandler.GetProductName()} {officeHandler.GetPlatform()}";
-            versionLbl.Text = $"Build: {officeHandler.Version}";
+            productNameLbl.Text = $"Software: {officeHandler.GetProductName()} {officeHandler.GetPlatform()}";
 
             officeHandler.DirChecker();
             Autodetect();
@@ -54,6 +56,24 @@ namespace OpenFuryKMS
                 }
             }
             shellBox.Text = officeHandler.ClearOutput(pwshOutput);
+            LoadLanguage();
+        }
+
+        public void LoadLanguage()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
+            infoTitleLbl.Text = Language.infoTitleLbl;
+            versionLbl.Text = Language.versionLbl + officeHandler.Version;
+            actTitleLbl.Text = Language.actTitleLbl;
+            productLbl.Text = Language.productsLbl;
+            kmsLbl.Text = Language.kmsLbl;
+            methodLbl.Text = Language.methodLbl;
+            productDrop.Text = Language.productDrop;
+            serverDrop.Text = Language.serverDrop;
+            methodDrop.Text = Language.methodDrop;
+            activateBtn.Text = Language.activateBtn;
+            infoBtn.Text = Language.infoBtn;
+            removeBtn.Text = Language.removeBtn;
         }
 
         private void Autodetect()
@@ -79,8 +99,8 @@ namespace OpenFuryKMS
         {
             pwshOutput = pwsh.ExecuteCommand("cscript //nologo ospp.vbs /dstatus");
             string licenseStatus = officeHandler.ExtractLicenseStatus(pwshOutput);
-            statusLbl.Text = $"License Status: {licenseStatus} ({officeHandler.GetLicenseType()})";
-            removeBtn.Enabled = licenseStatus != "Unlicensed";
+            statusLbl.Text = $"{Language.statusLbl} {licenseStatus} ({officeHandler.GetLicenseType()})";
+            removeBtn.Enabled = licenseStatus != Language.Unlicensed;
         }
 
         private void Activation()

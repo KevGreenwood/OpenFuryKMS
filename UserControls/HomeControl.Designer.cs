@@ -44,7 +44,7 @@
             this.WinLbl.AutoSize = true;
             this.WinLbl.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WinLbl.ForeColor = System.Drawing.Color.White;
-            this.WinLbl.Location = new System.Drawing.Point(4, 180);
+            this.WinLbl.Location = new System.Drawing.Point(1, 166);
             this.WinLbl.Name = "WinLbl";
             this.WinLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.WinLbl.Size = new System.Drawing.Size(202, 30);
@@ -69,7 +69,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(-2, 79);
+            this.label5.Location = new System.Drawing.Point(1, 60);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(132, 30);
@@ -82,7 +82,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(-3, 109);
+            this.label6.Location = new System.Drawing.Point(-3, 106);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label6.Size = new System.Drawing.Size(353, 50);
@@ -131,7 +131,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::OpenFuryKMS.Properties.Resources.TitleLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(347, 54);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
