@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FuryKMS.Languages {
+namespace OpenFuryKMS.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace FuryKMS.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Lang {
+    internal class Language {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Lang() {
+        internal Language() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FuryKMS.Languages {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FuryKMS.Languages.Lang", typeof(Lang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OpenFuryKMS.Resources.Language", typeof(Language).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -184,15 +184,6 @@ namespace FuryKMS.Languages {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Settings.
-        /// </summary>
-        internal static string optionsBtn {
-            get {
-                return ResourceManager.GetString("optionsBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Organization: .
         /// </summary>
         internal static string orgLbl {
@@ -298,6 +289,15 @@ namespace FuryKMS.Languages {
         internal static string serversDrop {
             get {
                 return ResourceManager.GetString("serversDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Settings.
+        /// </summary>
+        internal static string settingsBtn {
+            get {
+                return ResourceManager.GetString("settingsBtn", resourceCulture);
             }
         }
         

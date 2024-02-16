@@ -39,11 +39,11 @@ namespace OpenFuryKMS
 
             Dictionary<string, Image> productToImage = new Dictionary<string, Image>
             {
-                { "365", Resources.microsoft365 },
-                { "2021", Resources.microsoft365 },
-                { "2019", Resources.Office2019_2021 },
-                { "2016", Resources.Office2013_2016 },
-                { "2013", Resources.Office2013_2016 }
+                { "365", Properties.Resources.microsoft365 },
+                { "2021", Properties.Resources.microsoft365 },
+                { "2019", Properties.Resources.Office2019_2021 },
+                { "2016", Properties.Resources.Office2013_2016 },
+                { "2013", Properties.Resources.Office2013_2016 }
             };
             foreach (var item in productToImage)
             {

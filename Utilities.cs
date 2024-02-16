@@ -1,11 +1,14 @@
 ﻿using Microsoft.Win32;
+using OpenFuryKMS.Properties;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Shapes;
 
@@ -220,6 +223,14 @@ namespace OpenFuryKMS
 
             output += $"cscript //nologo ospp.vbs /inpkey:{licenseKey}";
             return output;
+        }
+    }
+
+    public class LanguageHandler
+    {
+        public static void LoadLanguage()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
         }
     }
 }

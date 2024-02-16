@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32.TaskScheduler;
+using OpenFuryKMS.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,6 +76,27 @@ namespace OpenFuryKMS.UserControls
 
             MessageBox.Show("La tarea y el archivo han sido eliminados exitosamente.");
             removeWin_Btn.Enabled = false;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    Settings.Default.Language = "en";
+                    LanguageHandler.LoadLanguage();
+                    break;
+
+                case 1:
+                    Settings.Default.Language = "es";
+                    LanguageHandler.LoadLanguage();
+                    break;
+
+                case 2:
+                    Settings.Default.Language = "ru";
+                    LanguageHandler.LoadLanguage();
+                    break;
+            }
         }
     }
 }

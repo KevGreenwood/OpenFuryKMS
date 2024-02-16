@@ -126,7 +126,7 @@
   <data name="officeBtn" xml:space="preserve">
     <value>Office</value>
   </data>
-  <data name="optionsBtn" xml:space="preserve">
+  <data name="settingsBtn" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="productsLbl" xml:space="preserve">

@@ -90,10 +90,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Languages\Lang.Designer.cs">
+    <Compile Include="Resources\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Lang.resx</DependentUpon>
+      <DependentUpon>Language.resx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\HomeControl.cs">
       <SubType>UserControl</SubType>
@@ -127,15 +127,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Languages\Lang.en.resx" />
-    <EmbeddedResource Include="Resources\Languages\Lang.es.resx" />
-    <EmbeddedResource Include="Resources\Languages\Lang.resx">
+    <EmbeddedResource Include="Resources\Language.en.resx" />
+    <EmbeddedResource Include="Resources\Language.es.resx" />
+    <EmbeddedResource Include="Resources\Language.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Languages\Lang.ru.resx" />
+    <EmbeddedResource Include="Resources\Language.ru.resx" />
     <EmbeddedResource Include="UserControls\HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,30 +168,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icons\brand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\colorIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\microsoft365.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\Office2013_2016.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\Office2019_2021.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icons\whiteIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
@@ -202,5 +179,17 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\brand.png" />
+    <Content Include="Resources\Icons\colorIcon.png" />
+    <Content Include="Resources\Icons\icon.ico" />
+    <Content Include="Resources\Icons\Logo.png" />
+    <Content Include="Resources\Icons\microsoft365.png" />
+    <Content Include="Resources\Icons\Office2013_2016.png" />
+    <Content Include="Resources\Icons\Office2019_2021.png" />
+    <Content Include="Resources\Icons\TitleLogo.png" />
+    <Content Include="Resources\Icons\whiteIcon.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

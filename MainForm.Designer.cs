@@ -28,57 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.windowsBtn = new FontAwesome.Sharp.IconButton();
-            this.homeBtn = new FontAwesome.Sharp.IconButton();
             this.childPnl = new System.Windows.Forms.Panel();
             this.menuPnl = new System.Windows.Forms.Panel();
             this.settingsBtn = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.officeBtn = new System.Windows.Forms.Button();
+            this.windowsBtn = new FontAwesome.Sharp.IconButton();
+            this.homeBtn = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftPnl = new System.Windows.Forms.Panel();
             this.menuPnl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // windowsBtn
-            // 
-            this.windowsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.windowsBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.windowsBtn.FlatAppearance.BorderSize = 0;
-            this.windowsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.windowsBtn.ForeColor = System.Drawing.Color.White;
-            this.windowsBtn.IconChar = FontAwesome.Sharp.IconChar.Windows;
-            this.windowsBtn.IconColor = System.Drawing.Color.White;
-            this.windowsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.windowsBtn.IconSize = 30;
-            this.windowsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.windowsBtn.Location = new System.Drawing.Point(10, 52);
-            this.windowsBtn.Name = "windowsBtn";
-            this.windowsBtn.Size = new System.Drawing.Size(140, 40);
-            this.windowsBtn.TabIndex = 0;
-            this.windowsBtn.Text = "Windows";
-            this.windowsBtn.UseVisualStyleBackColor = false;
-            this.windowsBtn.Click += new System.EventHandler(this.windowsBtn_Click);
-            // 
-            // homeBtn
-            // 
-            this.homeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.homeBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.homeBtn.FlatAppearance.BorderSize = 0;
-            this.homeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeBtn.ForeColor = System.Drawing.Color.White;
-            this.homeBtn.IconChar = FontAwesome.Sharp.IconChar.House;
-            this.homeBtn.IconColor = System.Drawing.Color.White;
-            this.homeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.homeBtn.IconSize = 30;
-            this.homeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.homeBtn.Location = new System.Drawing.Point(10, 12);
-            this.homeBtn.Name = "homeBtn";
-            this.homeBtn.Size = new System.Drawing.Size(140, 40);
-            this.homeBtn.TabIndex = 1;
-            this.homeBtn.Text = "Home";
-            this.homeBtn.UseVisualStyleBackColor = false;
-            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
             // childPnl
             // 
@@ -138,7 +98,6 @@
             this.officeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.officeBtn.ForeColor = System.Drawing.Color.White;
             this.officeBtn.Image = global::OpenFuryKMS.Properties.Resources.whiteIcon;
-            this.officeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.officeBtn.Location = new System.Drawing.Point(10, 92);
             this.officeBtn.Name = "officeBtn";
             this.officeBtn.Size = new System.Drawing.Size(140, 40);
@@ -146,6 +105,46 @@
             this.officeBtn.Text = "Office";
             this.officeBtn.UseVisualStyleBackColor = true;
             this.officeBtn.Click += new System.EventHandler(this.officeBtn_Click);
+            // 
+            // windowsBtn
+            // 
+            this.windowsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.windowsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.windowsBtn.FlatAppearance.BorderSize = 0;
+            this.windowsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.windowsBtn.ForeColor = System.Drawing.Color.White;
+            this.windowsBtn.IconChar = FontAwesome.Sharp.IconChar.Windows;
+            this.windowsBtn.IconColor = System.Drawing.Color.White;
+            this.windowsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.windowsBtn.IconSize = 30;
+            this.windowsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.windowsBtn.Location = new System.Drawing.Point(10, 52);
+            this.windowsBtn.Name = "windowsBtn";
+            this.windowsBtn.Size = new System.Drawing.Size(140, 40);
+            this.windowsBtn.TabIndex = 0;
+            this.windowsBtn.Text = "Windows";
+            this.windowsBtn.UseVisualStyleBackColor = false;
+            this.windowsBtn.Click += new System.EventHandler(this.windowsBtn_Click);
+            // 
+            // homeBtn
+            // 
+            this.homeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.homeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.homeBtn.FlatAppearance.BorderSize = 0;
+            this.homeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeBtn.ForeColor = System.Drawing.Color.White;
+            this.homeBtn.IconChar = FontAwesome.Sharp.IconChar.House;
+            this.homeBtn.IconColor = System.Drawing.Color.White;
+            this.homeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.homeBtn.IconSize = 30;
+            this.homeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.homeBtn.Location = new System.Drawing.Point(10, 12);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(140, 40);
+            this.homeBtn.TabIndex = 1;
+            this.homeBtn.Text = "Home";
+            this.homeBtn.UseVisualStyleBackColor = false;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
             // panel3
             // 

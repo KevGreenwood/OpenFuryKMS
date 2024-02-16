@@ -1,8 +1,9 @@
 ﻿using FontAwesome.Sharp;
-using OpenFuryKMS.Properties;
+
 using OpenFuryKMS.UserControls;
 using System.Drawing;
 using System.Windows.Forms;
+
 
 namespace OpenFuryKMS
 {
@@ -36,6 +37,9 @@ namespace OpenFuryKMS
 
         private void MainForm_Load(object sender, System.EventArgs e)
         {
+            LanguageHandler.LoadLanguage();
+            homeBtn.Text = Resources.Language.homeBtn;
+            settingsBtn.Text = Resources.Language.settingsBtn;
             homeBtn.PerformClick();
         }
 
@@ -62,7 +66,7 @@ namespace OpenFuryKMS
                 }
                 if (isOfficeButton)
                 {
-                    officeBtn.Image = Resources.colorIcon;
+                    officeBtn.Image = Properties.Resources.colorIcon;
                     officeBtn.Refresh();
                     officeBtn.BackColor = Color.FromArgb(40, 40, 40);
                     officeBtn.ForeColor = color;
@@ -88,7 +92,7 @@ namespace OpenFuryKMS
             {
                 officeBtn.BackColor = Color.FromArgb(30, 30, 30);
                 officeBtn.ForeColor = Color.White;
-                officeBtn.Image = Resources.whiteIcon;
+                officeBtn.Image = Properties.Resources.whiteIcon;
             }
         }
 

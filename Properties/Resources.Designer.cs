@@ -61,16 +61,6 @@ namespace OpenFuryKMS.Properties {
         }
         
         /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] AldotheApache {
-            get {
-                object obj = ResourceManager.GetObject("AldotheApache", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap brand {
@@ -126,6 +116,16 @@ namespace OpenFuryKMS.Properties {
         internal static System.Drawing.Bitmap Office2019_2021 {
             get {
                 object obj = ResourceManager.GetObject("Office2019_2021", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TitleLogo {
+            get {
+                object obj = ResourceManager.GetObject("TitleLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

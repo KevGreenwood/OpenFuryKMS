@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="homeBtn" xml:space="preserve">
-    <value>Home</value>
+    <value>Дом</value>
   </data>
   <data name="windowsBtn" xml:space="preserve">
     <value>Windows</value>
@@ -126,125 +126,128 @@
   <data name="officeBtn" xml:space="preserve">
     <value>Office</value>
   </data>
-  <data name="optionsBtn" xml:space="preserve">
-    <value>Settings</value>
+  <data name="settingsBtn" xml:space="preserve">
+    <value>Настройки</value>
   </data>
   <data name="productsLbl" xml:space="preserve">
-    <value>Product</value>
+    <value>Товар</value>
   </data>
   <data name="licensesLbl" xml:space="preserve">
-    <value>Licenses</value>
+    <value>Лицензии</value>
   </data>
   <data name="kmsLbl" xml:space="preserve">
-    <value>KMS Servers</value>
+    <value>KMS-Сервер</value>
   </data>
   <data name="productsDrop" xml:space="preserve">
-    <value>Select your Windows Edition</value>
+    <value>Выберите свою Редакцию Windows</value>
   </data>
   <data name="licencesText" xml:space="preserve">
-    <value>Select your License</value>
+    <value>Выберите свою Лицензию</value>
   </data>
   <data name="serversDrop" xml:space="preserve">
-    <value>Select your KMS Server</value>
+    <value>Выберите свой KMS-Сервер</value>
   </data>
   <data name="orgLbl" xml:space="preserve">
-    <value>Organization: </value>
+    <value>Организация: </value>
   </data>
   <data name="ownerLbl" xml:space="preserve">
-    <value>User: </value>
+    <value>Пользователь: </value>
   </data>
   <data name="activateBtn" xml:space="preserve">
-    <value>Activate!</value>
+    <value>Активировать!</value>
   </data>
   <data name="infoBtn" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="removeBtn" xml:space="preserve">
-    <value>Remove Key</value>
+    <value>Информация</value>
   </data>
   <data name="officeDrop" xml:space="preserve">
-    <value>Select your Office version</value>
-  </data>
-  <data name="noteLbl" xml:space="preserve">
-    <value>*Note: The license expires in 180 days and is automatically renewed 7 days later, in the rare case If it
-doesn't, press the RENEW button.</value>
+    <value>Выберите свою версию Office</value>
   </data>
   <data name="verLbl" xml:space="preserve">
-    <value>Version: </value>
+    <value>Версия: </value>
   </data>
   <data name="updatesOnLblOffice" xml:space="preserve">
-    <value>Updates: Enabled</value>
+    <value>Обновления: Включены</value>
   </data>
   <data name="renewBtn" xml:space="preserve">
-    <value>Renew</value>
+    <value>Продлить</value>
   </data>
   <data name="removeAllBtn" xml:space="preserve">
-    <value>Remove All</value>
+    <value>Убрать Все</value>
   </data>
   <data name="langLbl" xml:space="preserve">
-    <value>Change Language</value>
+    <value>Изменить Язык</value>
   </data>
   <data name="updatesLbl" xml:space="preserve">
-    <value>Updates</value>
+    <value>Обновления</value>
   </data>
   <data name="updatesBtn" xml:space="preserve">
-    <value>Check Updates</value>
+    <value>Проверить Обновления</value>
   </data>
   <data name="contactLbl" xml:space="preserve">
-    <value>Contact and Help</value>
+    <value>Контакты и Помощь</value>
   </data>
   <data name="aboutLbl" xml:space="preserve">
-    <value>About</value>
+    <value>О</value>
   </data>
   <data name="titleLbl2" xml:space="preserve">
-    <value>How does it work?</value>
-  </data>
-  <data name="textLbl1" xml:space="preserve">
-    <value>FuryKMS is a GUI (graphical user interface) that makes it easy to activate Microsoft Windows 10 - 11 and 
-Office 2013 - 2021</value>
-  </data>
-  <data name="textLbl2" xml:space="preserve">
-    <value>Windows activation is done with the SLMGR commands and generic licenses.
-Activation of the Office suite is done with The Office Software Protection Platform script (ospp.vbs) and
-generic licenses.
-All of this is validated on the MS Guides KMS servers and therefore these servers ARE NOT OFFICIAL, however
-the security of your computer will not be compromised.</value>
-  </data>
-  <data name="titleLbl3" xml:space="preserve">
-    <value>Is FuryKMS a Hacktool:Win32/Keygen?</value>
-  </data>
-  <data name="textLbl3" xml:space="preserve">
-    <value>No, FuryKMS does not contain any malicious code that could compromise the integrity of your computer,
-you can even check the source code to verify it.
-In the rare case that your antivirus detects it as one, disable it momentarily to use it without problems.</value>
-  </data>
-  <data name="updatesOffLblOffice" xml:space="preserve">
-    <value>Updates: Disabled</value>
+    <value>Как это работает?</value>
   </data>
   <data name="titleLbl1" xml:space="preserve">
-    <value>What is FuryKMS?</value>
+    <value>Что такое FuryKMS?</value>
+  </data>
+  <data name="textLbl1" xml:space="preserve">
+    <value>FuryKMS - это GUI (графический пользовательский интерфейс), который упрощает активацию Microsoft
+Windows 10 - 11 и Office 2013 - 2021</value>
+  </data>
+  <data name="textLbl2" xml:space="preserve">
+    <value>Активация Windows выполняется с помощью команд SLMGR и общих лицензий.
+Активация пакета Office выполняется с помощью сценария платформы защиты программного 
+обеспечения Office (ospp.vbs) и общие лицензии.
+Все это проверено на серверах MS Guides KMS, и поэтому эти серверы НЕ ОФИЦИАЛЬНЫ, однако 
+безопасность вашего компьютера не будет скомпрометирована.</value>
+  </data>
+  <data name="titleLbl3" xml:space="preserve">
+    <value>Является ли FuryKMS Hacktool:Win32/Keygen?</value>
+  </data>
+  <data name="removeBtn" xml:space="preserve">
+    <value>Удалить Ключ</value>
+  </data>
+  <data name="updatesOffLblOffice" xml:space="preserve">
+    <value>Обновления: Отключено</value>
+  </data>
+  <data name="noteLbl" xml:space="preserve">
+    <value>*Примечание. Срок действия лицензии истекает через 180 дней и автоматически продлевается
+через 7 дней. В редких случаях, если это не так, нажмите кнопку ПРОДЛИТЬ.</value>
+  </data>
+  <data name="textLbl3" xml:space="preserve">
+    <value>Нет, FuryKMS не содержит вредоносного кода, который может поставить под угрозу целостность вашего
+компьютера, вы даже можете проверить исходный код, чтобы убедиться в этом.
+В редких случаях, когда ваш антивирус определяет его как один, отключите его на мгновение, чтобы
+использовать без проблем.</value>
   </data>
   <data name="removingTRIAL" xml:space="preserve">
-    <value>Removing TRIAL Licenses...</value>
+    <value>Удаление TRIAL Лицензий...</value>
   </data>
   <data name="removingGeneric" xml:space="preserve">
-    <value>Removing GENERIC Licenses...</value>
+    <value>Удаление ОБЩИХ Лицензий...</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
-    <value>I’m always aware of the MS Guides servers and will be
-updating them as they open and close respectively.
-It’s recommended to use the servers marked as UNSTABLE 
-as the last option, since these servers are unstable; if these are
-no longer operational, I’ll remove them permanently and record
-them in this program's documentation as a history.</value>
+    <value>Я всегда знаю о серверах MS Guides и буду обновлять их по
+мере их открытия и закрытия соответственно. Рекомендуется
+использовать серверы, помеченные как UNSTABLE вкачестве
+последнего варианта, так как эти серверы нестабильны; если 
+они больше не работают, я удалю их навсегда и запишу в
+документацию этой программы как историю.</value>
   </data>
   <data name="osLbl1" xml:space="preserve">
-    <value>We have detected that you are using </value>
+    <value>Мы обнаружили, что вы используете </value>
   </data>
   <data name="osLbl2" xml:space="preserve">
-    <value>, you will still be able to use FuryKMS but with limited features.</value>
+    <value>
+вы по-прежнему сможете использовать FuryKMS, но с
+ограниченными возможностями.</value>
   </data>
   <data name="warningText" xml:space="preserve">
-    <value>Warning</value>
+    <value>Предостережение</value>
   </data>
 </root>
