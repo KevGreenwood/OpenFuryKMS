@@ -73,7 +73,7 @@ namespace OpenFuryKMS
         public static string ProductName = Registry.GetValue(WindowsPath, "ProductName", "").ToString();
         private static string DisplayVersion = Registry.GetValue(WindowsPath, "DisplayVersion", "").ToString();
         private static string Build = Registry.GetValue(WindowsPath, "CurrentBuildNumber", "").ToString();
-        private static string Platform = Environment.Is64BitOperatingSystem ? " 64 bits" : " 32 bits";
+        private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         private static string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
         private string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
         private string Organization = Registry.GetValue(WindowsPath, "RegisteredOrganization", "").ToString();
@@ -81,7 +81,7 @@ namespace OpenFuryKMS
 
         public string Version = $"{DisplayVersion} ({Build}.{UBR})";
         public string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
-        public string GetAllInfo = $"Microsoft {ProductName}{Platform}";
+        public string GetAllInfo = $"Microsoft {ProductName} {Platform}";
 
         public readonly List<(string License, string Description)> Home_Licenses = new List<(string, string)>
         {
@@ -161,10 +161,10 @@ namespace OpenFuryKMS
             return false;
         }
 
-        public string GetLicenseType()
+        /*public string GetLicenseType()
         {
             return ReleaseId.EndsWith("Retail") ? "Retail" : ReleaseId.EndsWith("Volume") ? "Volume" : "";
-        }
+        }*/
 
         public string GetProductName()
         {

@@ -38,14 +38,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.WinLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // removeOfficeBtn
             // 
+            this.removeOfficeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeOfficeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(60)))), ((int)(((byte)(0)))));
             this.removeOfficeBtn.FlatAppearance.BorderSize = 0;
             this.removeOfficeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -53,9 +59,9 @@
             this.removeOfficeBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.removeOfficeBtn.Image = global::OpenFuryKMS.Properties.Resources.whiteIcon;
             this.removeOfficeBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.removeOfficeBtn.Location = new System.Drawing.Point(530, 3);
+            this.removeOfficeBtn.Location = new System.Drawing.Point(535, 3);
             this.removeOfficeBtn.Name = "removeOfficeBtn";
-            this.removeOfficeBtn.Size = new System.Drawing.Size(155, 40);
+            this.removeOfficeBtn.Size = new System.Drawing.Size(150, 40);
             this.removeOfficeBtn.TabIndex = 0;
             this.removeOfficeBtn.Text = "Office";
             this.removeOfficeBtn.UseVisualStyleBackColor = false;
@@ -94,12 +100,12 @@
             this.langDrop.Items.AddRange(new object[] {
             "English (EN)",
             "Español (ES)",
-            "Русский язык"});
+            "Русский язык (RU)"});
             this.langDrop.Location = new System.Drawing.Point(275, 10);
             this.langDrop.Name = "langDrop";
             this.langDrop.Size = new System.Drawing.Size(410, 28);
             this.langDrop.TabIndex = 11;
-            this.langDrop.Text = "Select your Windows version";
+            this.langDrop.Text = "Select your Language";
             this.langDrop.SelectedIndexChanged += new System.EventHandler(this.langDrop_SelectedIndexChanged);
             // 
             // productLbl
@@ -115,6 +121,7 @@
             // 
             // removeWindowsBtn
             // 
+            this.removeWindowsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.removeWindowsBtn.BackColor = System.Drawing.Color.DodgerBlue;
             this.removeWindowsBtn.FlatAppearance.BorderSize = 0;
             this.removeWindowsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -125,12 +132,11 @@
             this.removeWindowsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.removeWindowsBtn.IconSize = 40;
             this.removeWindowsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.removeWindowsBtn.Location = new System.Drawing.Point(275, 7);
+            this.removeWindowsBtn.Location = new System.Drawing.Point(275, 3);
             this.removeWindowsBtn.Name = "removeWindowsBtn";
-            this.removeWindowsBtn.Size = new System.Drawing.Size(110, 40);
+            this.removeWindowsBtn.Size = new System.Drawing.Size(150, 40);
             this.removeWindowsBtn.TabIndex = 29;
             this.removeWindowsBtn.Text = "Windows";
-            this.removeWindowsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.removeWindowsBtn.UseVisualStyleBackColor = false;
             this.removeWindowsBtn.Click += new System.EventHandler(this.removeWindowsBtn_Click);
             // 
@@ -139,7 +145,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(15, 227);
+            this.label1.Location = new System.Drawing.Point(15, 225);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 30;
@@ -174,11 +180,32 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel3.Controls.Add(this.iconButton1);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(20, 145);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(695, 50);
             this.panel3.TabIndex = 29;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.Indigo;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Download;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 40;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(535, 3);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(150, 40);
+            this.iconButton1.TabIndex = 30;
+            this.iconButton1.Text = "Download";
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -187,15 +214,56 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(10, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
+            this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Language";
+            this.label3.Text = "Check Updates";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::OpenFuryKMS.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 255);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(695, 142);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(230)))), ((int)(((byte)(160)))));
+            this.label4.Location = new System.Drawing.Point(15, 400);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(225, 25);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Kevin Greenwood - 2024";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // WinLbl
+            // 
+            this.WinLbl.AutoSize = true;
+            this.WinLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WinLbl.ForeColor = System.Drawing.Color.White;
+            this.WinLbl.Location = new System.Drawing.Point(15, 425);
+            this.WinLbl.Name = "WinLbl";
+            this.WinLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.WinLbl.Size = new System.Drawing.Size(144, 20);
+            this.WinLbl.TabIndex = 33;
+            this.WinLbl.Text = "Windows XX Version";
+            this.WinLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Controls.Add(this.WinLbl);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
@@ -210,6 +278,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +297,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label WinLbl;
     }
 }

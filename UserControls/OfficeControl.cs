@@ -99,7 +99,7 @@ namespace OpenFuryKMS
         {
             pwshOutput = pwsh.ExecuteCommand("cscript //nologo ospp.vbs /dstatus");
             string licenseStatus = officeHandler.ExtractLicenseStatus(pwshOutput);
-            statusLbl.Text = $"{Language.statusLbl} {licenseStatus} ({officeHandler.GetLicenseType()})";
+            statusLbl.Text = Language.statusLbl + licenseStatus;
             removeBtn.Enabled = licenseStatus != Language.Unlicensed;
         }
 
@@ -175,27 +175,20 @@ namespace OpenFuryKMS
 
             using (TaskService ts = new TaskService())
             {
-                // Especifica el nombre de la carpeta donde quieres crear la tarea
                 string taskFolderName = "\\OpenFuryKMS";
-
-                // Intenta obtener la carpeta
                 TaskFolder tf = ts.GetFolder(taskFolderName);
 
-                // Si la carpeta no existe, créala
                 if (tf == null)
                 {
                     tf = ts.RootFolder.CreateFolder(taskFolderName);
                 }
 
-                // Si la tarea no existe, créala
                 if (tf.GetTasks().FirstOrDefault(t => t.Name == "OfficeRenewer") == null)
                 {
                     TaskDefinition td = ts.NewTask();
                     td.RegistrationInfo.Description = "Ejecuta el script OfficeRenewer.ps1 cada 180 días";
-                    td.Triggers.Add(new DailyTrigger { DaysInterval = 180 });
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 182 });
                     td.Actions.Add(new ExecAction("powershell.exe", $"-File \"{targetPath}\""));
-
-                    // Registra la tarea en la carpeta especificada
                     tf.RegisterTaskDefinition("OfficeRenewer", td);
                 }
             }

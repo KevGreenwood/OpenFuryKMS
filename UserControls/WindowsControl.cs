@@ -143,7 +143,7 @@ namespace OpenFuryKMS
                 {
                     TaskDefinition td = ts.NewTask();
                     td.RegistrationInfo.Description = "Ejecuta el script WindowsRenewer.ps1 cada 180 días";
-                    td.Triggers.Add(new DailyTrigger { DaysInterval = 180 });
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 182 });
                     td.Actions.Add(new ExecAction("powershell.exe", $"-File \"{targetPath}\""));
 
                     // Registra la tarea en la carpeta especificada
