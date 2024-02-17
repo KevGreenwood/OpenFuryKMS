@@ -142,16 +142,12 @@ namespace OpenFuryKMS
                 addUserControl(office);
             }
         }
-
-        
-
         private void settingsBtn_Click(object sender, System.EventArgs e)
         {
             _currentButton = sender.ToString();
             if (_currentButton != _lastActive)
             {
                 _lastActive = _currentButton;
-                
                 ActiveButton(sender, RGBColors.color4);
                 SettingsControl settings = new SettingsControl(this);
                 addUserControl(settings);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using OpenFuryKMS.Properties;
+using OpenFuryKMS.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,9 +11,8 @@ using System.Management.Automation.Language;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
-using System.Windows.Shapes;
 using System.Windows.Forms;
-using OpenFuryKMS.Resources;
+using System.Windows.Shapes;
 
 
 namespace OpenFuryKMS

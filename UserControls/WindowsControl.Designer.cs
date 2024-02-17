@@ -50,7 +50,7 @@
             this.methodDrop = new System.Windows.Forms.ComboBox();
             this.actTitleLbl = new System.Windows.Forms.Label();
             this.infoTitleLbl = new System.Windows.Forms.Label();
-            this.productLogo = new FontAwesome.Sharp.IconPictureBox();
+            this.productLogo = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -357,16 +357,12 @@
             // 
             this.productLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.productLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.productLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.productLogo.IconChar = FontAwesome.Sharp.IconChar.Microsoft;
-            this.productLogo.IconColor = System.Drawing.Color.White;
-            this.productLogo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.productLogo.IconSize = 105;
-            this.productLogo.Location = new System.Drawing.Point(566, 400);
+            this.productLogo.Image = global::OpenFuryKMS.Properties.Resources.Windows11;
+            this.productLogo.Location = new System.Drawing.Point(566, 402);
             this.productLogo.Name = "productLogo";
-            this.productLogo.Size = new System.Drawing.Size(154, 105);
-            this.productLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.productLogo.Size = new System.Drawing.Size(155, 105);
+            this.productLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.productLogo.TabIndex = 32;
             this.productLogo.TabStop = false;
             // 
@@ -430,6 +426,6 @@
         private System.Windows.Forms.Label kmsLbl;
         private System.Windows.Forms.Label actTitleLbl;
         private System.Windows.Forms.Label infoTitleLbl;
-        private FontAwesome.Sharp.IconPictureBox productLogo;
+        private System.Windows.Forms.PictureBox productLogo;
     }
 }

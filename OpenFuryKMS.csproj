@@ -188,6 +188,8 @@
     <Content Include="Resources\Icons\Office2019_2021.png" />
     <Content Include="Resources\Icons\TitleLogo.png" />
     <Content Include="Resources\Icons\whiteIcon.png" />
+    <Content Include="Resources\Icons\Windows10.png" />
+    <Content Include="Resources\Icons\Windows11.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

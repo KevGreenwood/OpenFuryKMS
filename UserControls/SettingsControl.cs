@@ -17,24 +17,28 @@ namespace OpenFuryKMS.UserControls
 {
     public partial class SettingsControl : UserControl
     {
-        private MainForm main {  get; }
+        private MainForm main { get; }
         public SettingsControl(MainForm mainForm)
         {
             InitializeComponent();
-            CheckTaskAndFile();
             main = mainForm;
         }
         private void SettingsControl_Load(object sender, EventArgs e)
         {
+            removeWindowsBtn.Enabled = CheckTaskAndFile("WindowsRenewer");
+            removeOfficeBtn.Enabled = CheckTaskAndFile("OfficeRenewer");
             LoadLanguage();
             langDrop.Text = Settings.Default.LanguageSelected;
         }
 
-        private void CheckTaskAndFile()
+        private string GetTargetPath(string fileName)
         {
             string targetFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenFuryKMS");
-            string targetPath = Path.Combine(targetFolder, "WindowsRenewer.ps1");
-
+            return Path.Combine(targetFolder, $"{fileName}.ps1");
+        }
+        private bool CheckTaskAndFile(string fileName)
+        {
+            string targetPath = GetTargetPath(fileName);
             bool fileExists = File.Exists(targetPath);
 
             bool taskExists = false;
@@ -44,24 +48,15 @@ namespace OpenFuryKMS.UserControls
                 TaskFolder tf = ts.GetFolder(taskFolderName);
                 if (tf != null)
                 {
-                    Task task = tf.GetTasks().FirstOrDefault(t => t.Name == "WindowsRenewer");
+                    Task task = tf.GetTasks().FirstOrDefault(t => t.Name == fileName);
                     taskExists = task != null;
                 }
             }
-            removeWin_Btn.Enabled = fileExists || taskExists;
+            return fileExists || taskExists;
         }
-
-        public void LoadLanguage()
+        private bool DeleteTaskAndFile(string fileName)
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
-            removeWin_Btn.Text = Language.homeBtn;
-            main.LoadLanguage();
-        }
-
-        private void removeWin_Btn_Click(object sender, EventArgs e)
-        {
-            string targetFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenFuryKMS");
-            string targetPath = Path.Combine(targetFolder, "WindowsRenewer.ps1");
+            string targetPath = GetTargetPath(fileName);
 
             if (File.Exists(targetPath))
             {
@@ -73,17 +68,23 @@ namespace OpenFuryKMS.UserControls
                 TaskFolder tf = ts.GetFolder("\\OpenFuryKMS");
                 if (tf != null)
                 {
-                    Task task = tf.GetTasks().FirstOrDefault(t => t.Name == "WindowsRenewer");
+                    Task task = tf.GetTasks().FirstOrDefault(t => t.Name == fileName);
 
                     if (task != null)
-
                     {
-                        tf.DeleteTask("WindowsRenewer");
+                        tf.DeleteTask(fileName);
                     }
                 }
             }
             MessageBox.Show("La tarea y el archivo han sido eliminados exitosamente.");
-            removeWin_Btn.Enabled = false;
+            return false;
+        }
+
+        public void LoadLanguage()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
+            removeOfficeBtn.Text = Language.homeBtn;
+            main.LoadLanguage();
         }
 
         private void langDrop_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,6 +96,14 @@ namespace OpenFuryKMS.UserControls
                 LoadLanguage();
                 Settings.Default.LanguageSelected = langDrop.Text;
             }
+        }
+        private void removeWindowsBtn_Click(object sender, EventArgs e)
+        {
+            removeWindowsBtn.Enabled = DeleteTaskAndFile("WindowsRenewer");
+        }
+        private void removeOfficeBtn_Click(object sender, EventArgs e)
+        {
+            removeOfficeBtn.Enabled = DeleteTaskAndFile("OfficeRenewer");
         }
     }
 }

@@ -32,11 +32,11 @@ namespace OpenFuryKMS
 
             if (WindowsHandler.ProductName.Contains("Windows 11"))
             {
-                productLogo.IconChar = IconChar.Microsoft;
+                productLogo.Image = Properties.Resources.Windows11;
             }
             else
             {
-                productLogo.IconChar = IconChar.Windows;
+                productLogo.Image = Properties.Resources.Windows10;
             }
 
             var products = new[] { "Home", "Pro", "Education", "Enterprise" };
