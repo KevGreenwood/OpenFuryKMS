@@ -53,7 +53,7 @@
             this.langDrop.Name = "langDrop";
             this.langDrop.Size = new System.Drawing.Size(121, 21);
             this.langDrop.TabIndex = 1;
-            this.langDrop.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.langDrop.SelectedIndexChanged += new System.EventHandler(this.langDrop_SelectedIndexChanged);
             // 
             // SettingsControl
             // 
@@ -63,6 +63,7 @@
             this.Controls.Add(this.removeWin_Btn);
             this.Name = "SettingsControl";
             this.Size = new System.Drawing.Size(740, 560);
+            this.Load += new System.EventHandler(this.SettingsControl_Load);
             this.ResumeLayout(false);
 
         }

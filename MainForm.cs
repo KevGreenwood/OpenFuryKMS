@@ -39,11 +39,14 @@ namespace OpenFuryKMS
             windowsBtn.Enabled = WindowsHandler.ProductName.Contains("Windows 10") || WindowsHandler.ProductName.Contains("Windows 11");
             officeBtn.Enabled = officeHandler.DirChecker();
         }
-
         private void MainForm_Load(object sender, System.EventArgs e)
         {
             LoadLanguage();
             homeBtn.PerformClick();
+        }
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.Default.Save();
         }
 
         public void LoadLanguage()
@@ -140,10 +143,7 @@ namespace OpenFuryKMS
             }
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Settings.Default.Save();
-        }
+        
 
         private void settingsBtn_Click(object sender, System.EventArgs e)
         {
@@ -151,8 +151,9 @@ namespace OpenFuryKMS
             if (_currentButton != _lastActive)
             {
                 _lastActive = _currentButton;
+                
                 ActiveButton(sender, RGBColors.color4);
-                SettingsControl settings = new SettingsControl();
+                SettingsControl settings = new SettingsControl(this);
                 addUserControl(settings);
             }
         }

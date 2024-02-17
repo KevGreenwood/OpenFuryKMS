@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\usercontrols\\settingscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|solutionrelative:usercontrols\\settingscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\usercontrols\\settingscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|solutionrelative:usercontrols\\settingscontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SettingsControl.cs",
+              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\SettingsControl.cs",
+              "RelativeDocumentMoniker": "UserControls\\SettingsControl.cs",
+              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\SettingsControl.cs",
+              "RelativeToolTip": "UserControls\\SettingsControl.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAawFcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-17T16:53:23.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SettingsControl.cs [Dise\u00F1o]",
+              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\SettingsControl.cs",
+              "RelativeDocumentMoniker": "UserControls\\SettingsControl.cs",
+              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\SettingsControl.cs [Dise\u00F1o]",
+              "RelativeToolTip": "UserControls\\SettingsControl.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-17T16:04:22.231Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
