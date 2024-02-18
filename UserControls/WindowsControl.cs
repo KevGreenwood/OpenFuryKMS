@@ -224,6 +224,7 @@ namespace OpenFuryKMS
         private void licenseDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
             SwitchControls();
+            licenseDrop.Text = Language.licenceDrop;
         }
 
         private void serverDrop_SelectedIndexChanged(object sender, EventArgs e)

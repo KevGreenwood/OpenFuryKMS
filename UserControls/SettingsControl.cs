@@ -83,7 +83,14 @@ namespace OpenFuryKMS.UserControls
         public void LoadLanguage()
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
+            settingsLbl.Text = Language.settingsBtn;
+            langLbl.Text = Language.langLbl;
+
+            updatesLbl.Text = Language.updatesLbl;
+            downloadBtn.Text = Language.updatesBtn;
             removeOfficeBtn.Text = Language.homeBtn;
+            aboutLbl.Text = Language.aboutLbl;
+
             main.LoadLanguage();
         }
 

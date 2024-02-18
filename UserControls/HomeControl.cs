@@ -23,8 +23,8 @@ namespace OpenFuryKMS.UserControls
         public HomeControl()
         {
             InitializeComponent();
-            versionLbl.Text = Resources.Language.versionLbl + "1.0.0"; 
-            
+            versionLbl.Text = Resources.Language.versionLbl + "1.0.0";
+
             if (WindowsHandler.ProductName.Contains("Windows 10") || WindowsHandler.ProductName.Contains("Windows 11"))
             {
                 WinLbl.Text = $"{Resources.Language.osLbl} {WinHandler.GetMinimalInfo} ✅";
@@ -35,7 +35,7 @@ namespace OpenFuryKMS.UserControls
                 WinLbl.Text = $"{Resources.Language.osLbl} {WinHandler.GetMinimalInfo} ❌";
                 WinLbl.ForeColor = Color.Red;
             }
-            PwshLbl.Text = "PowerShell " + Pwsh.ExecuteCommand("$PSVersionTable.PSVersion");
+            PwshLbl.Text = "Shell: PowerShell " + Pwsh.ExecuteCommand("$PSVersionTable.PSVersion");
 
             bool IsInstalled = officeHandler.DirChecker();
             if (IsInstalled == true)

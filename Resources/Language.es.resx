@@ -120,12 +120,6 @@
   <data name="homeBtn" xml:space="preserve">
     <value>Inicio</value>
   </data>
-  <data name="windowsBtn" xml:space="preserve">
-    <value>Windows</value>
-  </data>
-  <data name="officeBtn" xml:space="preserve">
-    <value>Office</value>
-  </data>
   <data name="settingsBtn" xml:space="preserve">
     <value>Opciones</value>
   </data>
@@ -173,7 +167,7 @@ que no lo haga, presione el botón de RENOVAR.</value>
     <value>Actualizaciones</value>
   </data>
   <data name="updatesBtn" xml:space="preserve">
-    <value>Revisar Actualizaciones</value>
+    <value>Comprobar Actualizaciones</value>
   </data>
   <data name="contactLbl" xml:space="preserve">
     <value>Contacto y Ayuda</value>

@@ -211,15 +211,6 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Office.
-        /// </summary>
-        internal static string officeBtn {
-            get {
-                return ResourceManager.GetString("officeBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Select your Office version.
         /// </summary>
         internal static string officeDrop {
@@ -413,15 +404,6 @@ namespace OpenFuryKMS.Resources {
         internal static string warningText {
             get {
                 return ResourceManager.GetString("warningText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Windows.
-        /// </summary>
-        internal static string windowsBtn {
-            get {
-                return ResourceManager.GetString("windowsBtn", resourceCulture);
             }
         }
     }
