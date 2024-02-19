@@ -14,7 +14,6 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Shapes;
 
-
 namespace OpenFuryKMS
 {
     public class PowershellHandler
@@ -76,8 +75,6 @@ namespace OpenFuryKMS
         private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         private static string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
         private string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
-        private string Organization = Registry.GetValue(WindowsPath, "RegisteredOrganization", "").ToString();
-        private string Owner = Registry.GetValue(WindowsPath, "RegisteredOwner", "").ToString();
 
         public string Version = $"{DisplayVersion} ({Build}.{UBR})";
         public string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";

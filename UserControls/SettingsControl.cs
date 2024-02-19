@@ -88,7 +88,6 @@ namespace OpenFuryKMS.UserControls
 
             updatesLbl.Text = Language.updatesLbl;
             downloadBtn.Text = Language.updatesBtn;
-            removeOfficeBtn.Text = Language.homeBtn;
             aboutLbl.Text = Language.aboutLbl;
 
             main.LoadLanguage();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.childPnl = new System.Windows.Forms.Panel();
             this.menuPnl = new System.Windows.Forms.Panel();
             this.settingsBtn = new FontAwesome.Sharp.IconButton();
@@ -170,9 +171,10 @@
             this.ClientSize = new System.Drawing.Size(890, 560);
             this.Controls.Add(this.childPnl);
             this.Controls.Add(this.menuPnl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "OpenFuryKMS";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuPnl.ResumeLayout(false);

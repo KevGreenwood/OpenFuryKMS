@@ -23,7 +23,7 @@ namespace OpenFuryKMS.UserControls
         public HomeControl()
         {
             InitializeComponent();
-            versionLbl.Text = Resources.Language.versionLbl + "1.0.0";
+            versionLbl.Text = Resources.Language.versionLbl + "0.1.0-beta.1";
 
             if (WindowsHandler.ProductName.Contains("Windows 10") || WindowsHandler.ProductName.Contains("Windows 11"))
             {
