@@ -1,21 +1,22 @@
 # Security Policy
 
-## Supported Versions
+## Download OpenFuryKMS only from GitHub
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+OpenFuryKMS is a software that allows you to activate Windows and Office for free and legally. However, some older versions of this program (FuryKMS, as it was formerly known) are distributed by several websites that have nothing to do with me, the original developer. In particular, there is this page https://furykms.com of which I am NOT the owner, all those websites contain a modified version of the activator with malware. 
+Therefore, unless I announce it here, GitHub is still and will remain the only safe place to download OpenFuryKMS. Please always verify that you are downloading software from this trusted source.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you find a vulnerability, bug or security issue in OpenFuryKMS, please let me know as soon as possible. You can do this in the following ways:
+- By creating an issue in the GitHub repository: https://github.com/KevGreenwood/OpenFuryKMS/issues.
+- By emailing me at kevinrecalde929@gmail.com.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+When reporting a vulnerability, please include the following information:
+- The version of OpenFuryKMS you are using.
+- The operating system and version you are using.
+- The version and edition of Microsoft Office you are using.
+- A detailed description of the problem and how to reproduce it.
+- If possible, a screenshot or video showing the problem.
+- Any other information you think is relevant.
+
+I appreciate your cooperation and your confidence in my software. I commit myself to review all vulnerability reports I receive and respond to them. I will also strive to fix security issues as quickly as possible and to post the necessary updates on GitHub.
