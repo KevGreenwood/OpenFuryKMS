@@ -169,26 +169,19 @@ doesn't, press the RENEW button.</value>
   <data name="updatesBtn" xml:space="preserve">
     <value>Check Updates</value>
   </data>
-  <data name="contactLbl" xml:space="preserve">
-    <value>Contact and Help</value>
-  </data>
   <data name="aboutLbl" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
-    <value>I’m always aware of the MS Guides servers and will be
-updating them as they open and close respectively.
-It’s recommended to use the servers marked as UNSTABLE 
-as the last option, since these servers are unstable; if these are
-no longer operational, I’ll remove them permanently and record
-them in this program's documentation as a history.</value>
+    <value>Please note that this program is provided without warranty. I am not responsible for any misuse that may occur.
+I keep track of the status of KMS servers and will update the list as new ones are closed or opened.
+It is recommended to use servers marked as "UNSTABLE" only as a last resort, as their operation may be unstable. If these servers stop working permanently, I will remove them from the list and record them in the program documentation as a history.</value>
   </data>
-  <data name="osLbl1" xml:space="preserve">
-    <value>We have detected that you are using </value>
+  <data name="osWarning" xml:space="preserve">
+    <value>We have detected that you are using an incompatible version of Windows</value>
   </data>
-  <data name="osLbl2" xml:space="preserve">
-    <value>
-you will still be able to use FuryKMS but with limited features.</value>
+  <data name="warning2" xml:space="preserve">
+    <value>, you will still be able to use OpenFuryKMS but with limited features.</value>
   </data>
   <data name="warningText" xml:space="preserve">
     <value>Warning</value>
@@ -216,5 +209,42 @@ you will still be able to use FuryKMS but with limited features.</value>
   </data>
   <data name="Unlicensed" xml:space="preserve">
     <value>Unlicensed</value>
+  </data>
+  <data name="sysInfoLbl" xml:space="preserve">
+    <value>System Information</value>
+  </data>
+  <data name="insTitleLbl" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="insLbl" xml:space="preserve">
+    <value>This program allows you to activate the Home, Pro, Education and Enterprise editions of Windows 10 and 11, as well as Office 2021, 365, 2019, 2016 and 2013.
+We use KMS activation, which gives you a license with a duration of 180 days. In most cases, the license renews automatically. If not, you can renew it manually using the "Renew" method.
+You can also use the "Rearm" method to get a trial license with a limit of "rearms".
+To use this program you need an internet connection. Without internet, you will only be able to get license information and delete it.
+When activating Windows, you can choose the license that best suits your edition version.</value>
+  </data>
+  <data name="renewLbl" xml:space="preserve">
+    <value>Remove Renew Tasks</value>
+  </data>
+  <data name="taskRemoved" xml:space="preserve">
+    <value>The task and file have been successfully deleted.</value>
+  </data>
+  <data name="winMsgText" xml:space="preserve">
+    <value>Do you want to create a task that renews the Windows license?</value>
+  </data>
+  <data name="officeMsgText" xml:space="preserve">
+    <value>Do you want to create a task that renews the Office license?</value>
+  </data>
+  <data name="taskMsgTitle" xml:space="preserve">
+    <value>License Renewal</value>
+  </data>
+  <data name="taskCreated" xml:space="preserve">
+    <value>The task has been successfully created. It will be executed in 182 days.</value>
+  </data>
+  <data name="officeWarning" xml:space="preserve">
+    <value>We have detected that you are using an incompatible version of Office or it is not installed</value>
+  </data>
+  <data name="officeError" xml:space="preserve">
+    <value>Your version of Office is not compatible or is not installed</value>
   </data>
 </root>

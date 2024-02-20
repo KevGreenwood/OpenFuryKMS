@@ -218,10 +218,10 @@ namespace OpenFuryKMS
                     TaskFolder tf = ts.GetFolder(taskFolderName);
                     if (tf == null || tf.GetTasks().FirstOrDefault(t => t.Name == "OfficeRenewer") == null)
                     {
-                        if (MessageBox.Show("¿Desea crear la tarea?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(Language.officeMsgText, Language.taskMsgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             CreateTask();
-                            MessageBox.Show("La tarea ha sido creada exitosamente.");
+                            MessageBox.Show(Language.officeMsgText, Language.taskMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }

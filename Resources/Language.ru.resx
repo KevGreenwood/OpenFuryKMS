@@ -162,9 +162,6 @@
   <data name="updatesBtn" xml:space="preserve">
     <value>Проверить Обновления</value>
   </data>
-  <data name="contactLbl" xml:space="preserve">
-    <value>Контакты и Помощь</value>
-  </data>
   <data name="aboutLbl" xml:space="preserve">
     <value>О</value>
   </data>
@@ -176,19 +173,15 @@
 через 7 дней. В редких случаях, если это не так, нажмите кнопку ПРОДЛИТЬ.</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
-    <value>Я всегда знаю о серверах MS Guides и буду обновлять их по
-мере их открытия и закрытия соответственно. Рекомендуется
-использовать серверы, помеченные как UNSTABLE вкачестве
-последнего варианта, так как эти серверы нестабильны; если 
-они больше не работают, я удалю их навсегда и запишу в
-документацию этой программы как историю.</value>
+    <value>Пожалуйста, обратите внимание, что эта программа предоставляется без гарантии. Я не несу ответственности за возможное неправильное использование.
+Я слежу за состоянием серверов KMS и буду обновлять список по мере закрытия или открытия новых.
+Серверы, помеченные как "UNSTABLE", рекомендуется использовать только в крайнем случае, так как их работа может быть нестабильной. Если эти серверы перестанут работать постоянно, я удалю их из списка и запишу в документацию программы в качестве истории.</value>
   </data>
-  <data name="osLbl1" xml:space="preserve">
-    <value>Мы обнаружили, что вы используете </value>
+  <data name="osWarning" xml:space="preserve">
+    <value>Мы обнаружили, что вы используете несовместимую версию Windows</value>
   </data>
-  <data name="osLbl2" xml:space="preserve">
-    <value>
-вы по-прежнему сможете использовать FuryKMS, но с
+  <data name="warning2" xml:space="preserve">
+    <value>, вы по-прежнему сможете использовать FuryKMS, но с
 ограниченными возможностями.</value>
   </data>
   <data name="warningText" xml:space="preserve">
@@ -217,5 +210,42 @@
   </data>
   <data name="Unlicensed" xml:space="preserve">
     <value>Нелицензионный</value>
+  </data>
+  <data name="sysInfoLbl" xml:space="preserve">
+    <value>Системная информация</value>
+  </data>
+  <data name="insTitleLbl" xml:space="preserve">
+    <value>Инструкции</value>
+  </data>
+  <data name="insLbl" xml:space="preserve">
+    <value>Эта программа позволяет активировать редакции Home, Pro, Education и Enterprise для Windows 10 и 11, а также Office 2021, 365, 2019, 2016 и 2013.
+Мы используем KMS-активацию, которая дает вам лицензию сроком на 180 дней. В большинстве случаев лицензия продлевается автоматически. Если это не так, вы можете продлить ее вручную с помощью метода "Renew".
+Вы также можете использовать метод "Rearm", чтобы получить пробную лицензию с лимитом "rearms".
+Для использования этой программы вам необходимо подключение к Интернету. Без интернета вы сможете только получить информацию о лицензии и удалить ее.
+При активации Windows вы можете выбрать лицензию, наиболее подходящую для вашей версии издания.</value>
+  </data>
+  <data name="renewLbl" xml:space="preserve">
+    <value>Удаление обновленных задач</value>
+  </data>
+  <data name="taskRemoved" xml:space="preserve">
+    <value>Задание и файл были успешно удалены.</value>
+  </data>
+  <data name="winMsgText" xml:space="preserve">
+    <value>Вы хотите создать задачу, которая обновляет лицензию Windows?</value>
+  </data>
+  <data name="officeMsgText" xml:space="preserve">
+    <value>Вы хотите создать задачу, которая обновляет лицензию Office?</value>
+  </data>
+  <data name="taskMsgTitle" xml:space="preserve">
+    <value>Продление лицензии</value>
+  </data>
+  <data name="taskCreated" xml:space="preserve">
+    <value>Задание успешно создано. Оно будет выполнено через 182 дня.</value>
+  </data>
+  <data name="officeWarning" xml:space="preserve">
+    <value>Мы обнаружили, что вы используете несовместимую версию Office или она не установлена</value>
+  </data>
+  <data name="officeError" xml:space="preserve">
+    <value>Ваша версия Office несовместима или не установлена</value>
   </data>
 </root>

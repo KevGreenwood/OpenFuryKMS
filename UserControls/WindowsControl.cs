@@ -126,27 +126,20 @@ namespace OpenFuryKMS
 
             using (TaskService ts = new TaskService())
             {
-                // Especifica el nombre de la carpeta donde quieres crear la tarea
                 string taskFolderName = "\\OpenFuryKMS";
-
-                // Intenta obtener la carpeta
                 TaskFolder tf = ts.GetFolder(taskFolderName);
 
-                // Si la carpeta no existe, créala
                 if (tf == null)
                 {
                     tf = ts.RootFolder.CreateFolder(taskFolderName);
                 }
 
-                // Si la tarea no existe, créala
                 if (tf.GetTasks().FirstOrDefault(t => t.Name == "WindowsRenewer") == null)
                 {
                     TaskDefinition td = ts.NewTask();
                     td.RegistrationInfo.Description = "Ejecuta el script WindowsRenewer.ps1 cada 180 días";
                     td.Triggers.Add(new DailyTrigger { DaysInterval = 182 });
                     td.Actions.Add(new ExecAction("powershell.exe", $"-File \"{targetPath}\""));
-
-                    // Registra la tarea en la carpeta especificada
                     tf.RegisterTaskDefinition("WindowsRenewer", td);
                 }
             }
@@ -180,16 +173,15 @@ namespace OpenFuryKMS
                     TaskFolder tf = ts.GetFolder(taskFolderName);
                     if (tf == null || tf.GetTasks().FirstOrDefault(t => t.Name == "WindowsRenewer") == null)
                     {
-                        if (MessageBox.Show("¿Desea crear la tarea?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(Language.winMsgText, Language.taskMsgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             CreateTask();
-                            MessageBox.Show("La tarea ha sido creada exitosamente.");
+                            MessageBox.Show(Language.winMsgText, Language.taskMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
             }
         }
-
         private void infoBtn_Click(object sender, EventArgs e)
         {
             shellBox.Text = pwsh.ExecuteCommand("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr");
@@ -226,7 +218,6 @@ namespace OpenFuryKMS
             SwitchControls();
             licenseDrop.Text = Language.licenceDrop;
         }
-
         private void serverDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
             SwitchControls();

@@ -169,27 +169,19 @@ que no lo haga, presione el botón de RENOVAR.</value>
   <data name="updatesBtn" xml:space="preserve">
     <value>Comprobar Actualizaciones</value>
   </data>
-  <data name="contactLbl" xml:space="preserve">
-    <value>Contacto y Ayuda</value>
-  </data>
   <data name="aboutLbl" xml:space="preserve">
     <value>Acerca de</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
-    <value>Estoy siempre al tanto de los servidores de MS Guides y los
-estaré actualizando a medida que se cierren y abren 
-respectivamente. Se recomienda usar los servidores marcados
-como UNSTABLE como última opción, ya que estos servidores
-se encentran inestables; si estos ya no están operativos, los
-eliminaré de forma permanente y los estaré registrando en la
-documentación de este programa como un historial.</value>
+    <value>Ten en cuenta que este programa se ofrece sin garantías. No me hago responsable del uso inadecuado que se le pueda dar.
+Me mantengo al tanto del estado de los servidores KMS y los actualizaré en la lista a medida que se cierren o abran nuevos.
+Se recomienda usar los servidores marcados como "UNSTABLE" solo como última opción, ya que su funcionamiento puede ser inestable. Si estos servidores dejan de funcionar de forma permanente, los eliminaré de la lista y los registraré en la documentación del programa como un historial.</value>
   </data>
-  <data name="osLbl1" xml:space="preserve">
-    <value>Hemos detectado que estás usando </value>
+  <data name="osWarning" xml:space="preserve">
+    <value>Hemos detectado que estás usando una versión de Windows incompatible</value>
   </data>
-  <data name="osLbl2" xml:space="preserve">
-    <value>
-podrás seguir usando FuryKMS pero con funciones limitadas.</value>
+  <data name="warning2" xml:space="preserve">
+    <value>, podrás seguir usando OpenFuryKMS pero con funciones limitadas.</value>
   </data>
   <data name="warningText" xml:space="preserve">
     <value>Advertencia</value>
@@ -217,5 +209,42 @@ podrás seguir usando FuryKMS pero con funciones limitadas.</value>
   </data>
   <data name="Unlicensed" xml:space="preserve">
     <value>Sin Licencia</value>
+  </data>
+  <data name="sysInfoLbl" xml:space="preserve">
+    <value>Información del Sistema</value>
+  </data>
+  <data name="insTitleLbl" xml:space="preserve">
+    <value>Instrucciones</value>
+  </data>
+  <data name="insLbl" xml:space="preserve">
+    <value>Este programa te permite activar las ediciones Home, Pro, Education y Enterprise de Windows 10 y 11, así como Office 2021, 365, 2019, 2016 y 2013.
+Utilizamos la activación KMS, que te ofrece una licencia con una duración de 180 días. En la mayoría de los casos, la licencia se renueva automáticamente. Si no es así, puedes renovarla manualmente con el método "Renew".
+También puedes usar el método "Rearm" para obtener una licencia de prueba con un límite de “rearms”.
+Para usar este programa necesitas conexión a internet. Sin internet, solo podrás obtener información de la licencia y eliminarla.
+Al activar Windows, puedes elegir la licencia que mejor se adapte a la versión de tu edición.</value>
+  </data>
+  <data name="renewLbl" xml:space="preserve">
+    <value>Eliminar Tareas de Renovación</value>
+  </data>
+  <data name="taskRemoved" xml:space="preserve">
+    <value>La tarea y el archivo han sido eliminados exitosamente.</value>
+  </data>
+  <data name="winMsgText" xml:space="preserve">
+    <value>¿Desea crear una tarea que renueve la licencia de Windows?</value>
+  </data>
+  <data name="officeMsgText" xml:space="preserve">
+    <value>¿Desea crear una tarea que renueve la licencia de Office?</value>
+  </data>
+  <data name="taskMsgTitle" xml:space="preserve">
+    <value>Renovación de Licencia</value>
+  </data>
+  <data name="taskCreated" xml:space="preserve">
+    <value>La tarea ha sido creada exitosamente. Se ejecutará dentro de 182 días.</value>
+  </data>
+  <data name="officeWarning" xml:space="preserve">
+    <value>Hemos detectado que estás usando una versión de Office incompatible o no está instalado</value>
+  </data>
+  <data name="officeError" xml:space="preserve">
+    <value>Tu versión de Office no es compatible o no esta instalado</value>
   </data>
 </root>

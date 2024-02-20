@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenFuryKMS.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,9 +33,11 @@ namespace OpenFuryKMS.UserControls
             }
             else
             {
+                MessageBox.Show(Language.osWarning + Language.warning2, Language.warningText, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 WinLbl.Text = $"{Resources.Language.osLbl} {WinHandler.GetMinimalInfo} ❌";
                 WinLbl.ForeColor = Color.Red;
             }
+
             PwshLbl.Text = "Shell: PowerShell " + Pwsh.ExecuteCommand("$PSVersionTable.PSVersion");
 
             bool IsInstalled = officeHandler.DirChecker();
@@ -45,10 +48,15 @@ namespace OpenFuryKMS.UserControls
             }
             else
             {
-                OfficeLbl.Text = "Office is not installed ❌";
+                MessageBox.Show(Language.officeWarning + Language.warning2, Language.warningText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OfficeLbl.Text = $"{Language.officeError} ❌";
                 OfficeLbl.ForeColor = Color.Red;
             }
             Directory.SetCurrentDirectory(CurrentDirectory);
+
+            sysInfoLbl.Text = Language.sysInfoLbl;
+            insTitleLbl.Text = Language.insTitleLbl;
+            insLbl.Text = Language.insLbl;
         }
     }
 }

@@ -42,7 +42,9 @@
             this.updatesLbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.WinLbl = new System.Windows.Forms.Label();
+            this.finalLbl = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -243,25 +245,40 @@
             this.label4.Text = "Kevin Greenwood - 2024";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // WinLbl
+            // finalLbl
             // 
-            this.WinLbl.AutoSize = true;
-            this.WinLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WinLbl.ForeColor = System.Drawing.Color.White;
-            this.WinLbl.Location = new System.Drawing.Point(15, 425);
-            this.WinLbl.Name = "WinLbl";
-            this.WinLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.WinLbl.Size = new System.Drawing.Size(144, 20);
-            this.WinLbl.TabIndex = 33;
-            this.WinLbl.Text = "Windows XX Version";
-            this.WinLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.finalLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.finalLbl.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finalLbl.ForeColor = System.Drawing.Color.White;
+            this.finalLbl.Location = new System.Drawing.Point(15, 422);
+            this.finalLbl.Name = "finalLbl";
+            this.finalLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.finalLbl.Size = new System.Drawing.Size(725, 138);
+            this.finalLbl.TabIndex = 33;
+            this.finalLbl.Text = "Windows XX Version";
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(15, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(725, 422);
+            this.panel4.TabIndex = 36;
+            // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(15, 560);
+            this.panel5.TabIndex = 37;
             // 
             // SettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.Controls.Add(this.WinLbl);
+            this.Controls.Add(this.finalLbl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
@@ -269,6 +286,8 @@
             this.Controls.Add(this.aboutLbl);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.settingsLbl);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
             this.Name = "SettingsControl";
             this.Size = new System.Drawing.Size(740, 560);
             this.Load += new System.EventHandler(this.SettingsControl_Load);
@@ -300,6 +319,8 @@
         private FontAwesome.Sharp.IconButton downloadBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label WinLbl;
+        private System.Windows.Forms.Label finalLbl;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }

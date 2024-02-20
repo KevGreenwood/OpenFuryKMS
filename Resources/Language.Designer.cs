@@ -88,15 +88,6 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Contact and Help.
-        /// </summary>
-        internal static string contactLbl {
-            get {
-                return ResourceManager.GetString("contactLbl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Home.
         /// </summary>
         internal static string homeBtn {
@@ -115,12 +106,9 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a I’m always aware of the MS Guides servers and will be
-        ///updating them as they open and close respectively.
-        ///It’s recommended to use the servers marked as UNSTABLE 
-        ///as the last option, since these servers are unstable; if these are
-        ///no longer operational, I’ll remove them permanently and record
-        ///them in this program&apos;s documentation as a history..
+        ///   Busca una cadena traducida similar a Please note that this program is provided without warranty. I am not responsible for any misuse that may occur.
+        ///I keep track of the status of KMS servers and will update the list as new ones are closed or opened.
+        ///It is recommended to use servers marked as &quot;UNSTABLE&quot; only as a last resort, as their operation may be unstable. If these servers stop working permanently, I will remove them from the list and record them in the program documentation as a history..
         /// </summary>
         internal static string infoLbl {
             get {
@@ -134,6 +122,27 @@ namespace OpenFuryKMS.Resources {
         internal static string infoTitleLbl {
             get {
                 return ResourceManager.GetString("infoTitleLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a This program allows you to activate the Home, Pro, Education and Enterprise editions of Windows 10 and 11, as well as Office 2021, 365, 2019, 2016 and 2013.
+        ///We use KMS activation, which gives you a license with a duration of 180 days. In most cases, the license renews automatically. If not, you can renew it manually using the &quot;Renew&quot; method.
+        ///You can also use the &quot;Rearm&quot; method to get a trial license with a limit of &quot;rearms&quot;.
+        ///To use this program you need an internet connection. Without internet, you will  [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string insLbl {
+            get {
+                return ResourceManager.GetString("insLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Instructions.
+        /// </summary>
+        internal static string insTitleLbl {
+            get {
+                return ResourceManager.GetString("insTitleLbl", resourceCulture);
             }
         }
         
@@ -220,6 +229,33 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Your version of Office is not compatible or is not installed.
+        /// </summary>
+        internal static string officeError {
+            get {
+                return ResourceManager.GetString("officeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Do you want to create a task that renews the Office license?.
+        /// </summary>
+        internal static string officeMsgText {
+            get {
+                return ResourceManager.GetString("officeMsgText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a We have detected that you are using an incompatible version of Office or it is not installed.
+        /// </summary>
+        internal static string officeWarning {
+            get {
+                return ResourceManager.GetString("officeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Operating System: .
         /// </summary>
         internal static string osLbl {
@@ -229,21 +265,11 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a We have detected that you are using .
+        ///   Busca una cadena traducida similar a We have detected that you are using an incompatible version of Windows.
         /// </summary>
-        internal static string osLbl1 {
+        internal static string osWarning {
             get {
-                return ResourceManager.GetString("osLbl1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a 
-        ///you will still be able to use FuryKMS but with limited features..
-        /// </summary>
-        internal static string osLbl2 {
-            get {
-                return ResourceManager.GetString("osLbl2", resourceCulture);
+                return ResourceManager.GetString("osWarning", resourceCulture);
             }
         }
         
@@ -275,6 +301,15 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Remove Renew Tasks.
+        /// </summary>
+        internal static string renewLbl {
+            get {
+                return ResourceManager.GetString("renewLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Select your KMS Server.
         /// </summary>
         internal static string serverDrop {
@@ -298,6 +333,42 @@ namespace OpenFuryKMS.Resources {
         internal static string statusLbl {
             get {
                 return ResourceManager.GetString("statusLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a System Information.
+        /// </summary>
+        internal static string sysInfoLbl {
+            get {
+                return ResourceManager.GetString("sysInfoLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The task has been successfully created. It will be executed in 182 days..
+        /// </summary>
+        internal static string taskCreated {
+            get {
+                return ResourceManager.GetString("taskCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a License Renewal.
+        /// </summary>
+        internal static string taskMsgTitle {
+            get {
+                return ResourceManager.GetString("taskMsgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The task and file have been successfully deleted..
+        /// </summary>
+        internal static string taskRemoved {
+            get {
+                return ResourceManager.GetString("taskRemoved", resourceCulture);
             }
         }
         
@@ -338,11 +409,29 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a , you will still be able to use OpenFuryKMS but with limited features..
+        /// </summary>
+        internal static string warning2 {
+            get {
+                return ResourceManager.GetString("warning2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Warning.
         /// </summary>
         internal static string warningText {
             get {
                 return ResourceManager.GetString("warningText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Do you want to create a task that renews the Windows license?.
+        /// </summary>
+        internal static string winMsgText {
+            get {
+                return ResourceManager.GetString("winMsgText", resourceCulture);
             }
         }
     }

@@ -76,7 +76,7 @@ namespace OpenFuryKMS.UserControls
                     }
                 }
             }
-            MessageBox.Show("La tarea y el archivo han sido eliminados exitosamente.");
+            MessageBox.Show(Language.taskRemoved, Language.taskMsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return false;
         }
 
@@ -85,10 +85,11 @@ namespace OpenFuryKMS.UserControls
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Language);
             settingsLbl.Text = Language.settingsBtn;
             langLbl.Text = Language.langLbl;
-
+            renewLbl.Text = Language.renewLbl;
             updatesLbl.Text = Language.updatesLbl;
             downloadBtn.Text = Language.updatesBtn;
             aboutLbl.Text = Language.aboutLbl;
+            finalLbl.Text = Language.infoLbl;
 
             main.LoadLanguage();
         }
