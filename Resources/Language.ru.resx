@@ -168,38 +168,12 @@
   <data name="aboutLbl" xml:space="preserve">
     <value>О</value>
   </data>
-  <data name="titleLbl2" xml:space="preserve">
-    <value>Как это работает?</value>
-  </data>
-  <data name="titleLbl1" xml:space="preserve">
-    <value>Что такое FuryKMS?</value>
-  </data>
-  <data name="textLbl1" xml:space="preserve">
-    <value>FuryKMS - это GUI (графический пользовательский интерфейс), который упрощает активацию Microsoft
-Windows 10 - 11 и Office 2013 - 2021</value>
-  </data>
-  <data name="textLbl2" xml:space="preserve">
-    <value>Активация Windows выполняется с помощью команд SLMGR и общих лицензий.
-Активация пакета Office выполняется с помощью сценария платформы защиты программного 
-обеспечения Office (ospp.vbs) и общие лицензии.
-Все это проверено на серверах MS Guides KMS, и поэтому эти серверы НЕ ОФИЦИАЛЬНЫ, однако 
-безопасность вашего компьютера не будет скомпрометирована.</value>
-  </data>
-  <data name="titleLbl3" xml:space="preserve">
-    <value>Является ли FuryKMS Hacktool:Win32/Keygen?</value>
-  </data>
   <data name="removeBtn" xml:space="preserve">
     <value>Удалить Ключ</value>
   </data>
   <data name="noteLbl" xml:space="preserve">
     <value>*Примечание. Срок действия лицензии истекает через 180 дней и автоматически продлевается
 через 7 дней. В редких случаях, если это не так, нажмите кнопку ПРОДЛИТЬ.</value>
-  </data>
-  <data name="textLbl3" xml:space="preserve">
-    <value>Нет, FuryKMS не содержит вредоносного кода, который может поставить под угрозу целостность вашего
-компьютера, вы даже можете проверить исходный код, чтобы убедиться в этом.
-В редких случаях, когда ваш антивирус определяет его как один, отключите его на мгновение, чтобы
-использовать без проблем.</value>
   </data>
   <data name="infoLbl" xml:space="preserve">
     <value>Я всегда знаю о серверах MS Guides и буду обновлять их по

@@ -302,67 +302,6 @@ namespace OpenFuryKMS.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a FuryKMS is a GUI (graphical user interface) that makes it easy to activate Microsoft Windows 10 - 11 and 
-        ///Office 2013 - 2021.
-        /// </summary>
-        internal static string textLbl1 {
-            get {
-                return ResourceManager.GetString("textLbl1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Windows activation is done with the SLMGR commands and generic licenses.
-        ///Activation of the Office suite is done with The Office Software Protection Platform script (ospp.vbs) and
-        ///generic licenses.
-        ///All of this is validated on the MS Guides KMS servers and therefore these servers ARE NOT OFFICIAL, however
-        ///the security of your computer will not be compromised..
-        /// </summary>
-        internal static string textLbl2 {
-            get {
-                return ResourceManager.GetString("textLbl2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a No, FuryKMS does not contain any malicious code that could compromise the integrity of your computer,
-        ///you can even check the source code to verify it.
-        ///In the rare case that your antivirus detects it as one, disable it momentarily to use it without problems..
-        /// </summary>
-        internal static string textLbl3 {
-            get {
-                return ResourceManager.GetString("textLbl3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a What is FuryKMS?.
-        /// </summary>
-        internal static string titleLbl1 {
-            get {
-                return ResourceManager.GetString("titleLbl1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a How does it work?.
-        /// </summary>
-        internal static string titleLbl2 {
-            get {
-                return ResourceManager.GetString("titleLbl2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Is FuryKMS a Hacktool:Win32/Keygen?.
-        /// </summary>
-        internal static string titleLbl3 {
-            get {
-                return ResourceManager.GetString("titleLbl3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Unlicensed.
         /// </summary>
         internal static string Unlicensed {

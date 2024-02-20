@@ -1,26 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\usercontrols\\homecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|solutionrelative:usercontrols\\homecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|OpenFuryKMS||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\usercontrols\\homecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|solutionrelative:usercontrols\\homecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41126BD9-7283-428D-A16D-4B720C46E9F4}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -28,55 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 225,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OpenFuryKMS",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.csproj",
-              "RelativeDocumentMoniker": "OpenFuryKMS.csproj",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.csproj",
-              "RelativeToolTip": "OpenFuryKMS.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-02-19T18:09:28.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainForm.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\MainForm.cs",
-              "RelativeDocumentMoniker": "MainForm.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\MainForm.cs [Dise\u00F1o]",
-              "RelativeToolTip": "MainForm.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T18:09:06.519Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeControl.cs",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\HomeControl.cs",
-              "RelativeDocumentMoniker": "UserControls\\HomeControl.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\HomeControl.cs",
-              "RelativeToolTip": "UserControls\\HomeControl.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABkAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T18:08:21.316Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HomeControl.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\HomeControl.cs",
-              "RelativeDocumentMoniker": "UserControls\\HomeControl.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\UserControls\\HomeControl.cs [Dise\u00F1o]",
-              "RelativeToolTip": "UserControls\\HomeControl.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-19T18:08:20.423Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{79664857-03bf-4bca-aa54-ec998b3328f8}"
             }
           ]
         }

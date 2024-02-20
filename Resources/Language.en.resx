@@ -175,31 +175,6 @@ doesn't, press the RENEW button.</value>
   <data name="aboutLbl" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="titleLbl2" xml:space="preserve">
-    <value>How does it work?</value>
-  </data>
-  <data name="textLbl1" xml:space="preserve">
-    <value>FuryKMS is a GUI (graphical user interface) that makes it easy to activate Microsoft Windows 10 - 11 and 
-Office 2013 - 2021</value>
-  </data>
-  <data name="textLbl2" xml:space="preserve">
-    <value>Windows activation is done with the SLMGR commands and generic licenses.
-Activation of the Office suite is done with The Office Software Protection Platform script (ospp.vbs) and
-generic licenses.
-All of this is validated on the MS Guides KMS servers and therefore these servers ARE NOT OFFICIAL, however
-the security of your computer will not be compromised.</value>
-  </data>
-  <data name="titleLbl3" xml:space="preserve">
-    <value>Is FuryKMS a Hacktool:Win32/Keygen?</value>
-  </data>
-  <data name="textLbl3" xml:space="preserve">
-    <value>No, FuryKMS does not contain any malicious code that could compromise the integrity of your computer,
-you can even check the source code to verify it.
-In the rare case that your antivirus detects it as one, disable it momentarily to use it without problems.</value>
-  </data>
-  <data name="titleLbl1" xml:space="preserve">
-    <value>What is FuryKMS?</value>
-  </data>
   <data name="infoLbl" xml:space="preserve">
     <value>I’m always aware of the MS Guides servers and will be
 updating them as they open and close respectively.
