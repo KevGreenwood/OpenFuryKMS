@@ -208,6 +208,7 @@
             this.downloadBtn.TabIndex = 30;
             this.downloadBtn.Text = "Download";
             this.downloadBtn.UseVisualStyleBackColor = false;
+            this.downloadBtn.Click += new System.EventHandler(this.downloadBtn_Click);
             // 
             // updatesLbl
             // 

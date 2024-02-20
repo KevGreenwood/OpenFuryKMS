@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -111,6 +112,10 @@ namespace OpenFuryKMS.UserControls
         private void removeOfficeBtn_Click(object sender, EventArgs e)
         {
             removeOfficeBtn.Enabled = DeleteTaskAndFile("OfficeRenewer");
+        }
+        private void downloadBtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/KevGreenwood/OpenFuryKMS/releases/latest");
         }
     }
 }

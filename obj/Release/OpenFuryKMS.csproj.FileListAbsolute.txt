@@ -38,3 +38,30 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\obj\Release\ru\OpenFuryKMS.re
 E:\Global Repository\GitHub Repository\OpenFuryKMS\obj\Release\OpenFury.8BDB58DB.Up2Date
 E:\Global Repository\GitHub Repository\OpenFuryKMS\obj\Release\OpenFuryKMS.exe
 E:\Global Repository\GitHub Repository\OpenFuryKMS\obj\Release\OpenFuryKMS.pdb
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\OpenFuryKMS.exe.config
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\OpenFuryKMS.exe
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\OpenFuryKMS.pdb
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\en\OpenFuryKMS.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\es\OpenFuryKMS.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\ru\OpenFuryKMS.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\FontAwesome.Sharp.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\Microsoft.Win32.TaskScheduler.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\System.Management.Automation.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\Microsoft.Management.Infrastructure.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\Microsoft.Management.Infrastructure.Native.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\Microsoft.Win32.TaskScheduler.xml
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\System.Management.Automation.xml
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\de\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\es\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\fr\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\it\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\pl\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\ru\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Global Repository\GitHub Repository\OpenFuryKMS\bin\Release\zh-Hant\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\Kevin Recalde\Desktop\x64\OpenFuryKMS.exe.config
+C:\Users\Kevin Recalde\Desktop\x64\OpenFuryKMS.exe
+C:\Users\Kevin Recalde\Desktop\x64\OpenFuryKMS.pdb
+C:\Users\Kevin Recalde\Desktop\x64\en\OpenFuryKMS.resources.dll
+C:\Users\Kevin Recalde\Desktop\x64\es\OpenFuryKMS.resources.dll
+C:\Users\Kevin Recalde\Desktop\x64\ru\OpenFuryKMS.resources.dll
