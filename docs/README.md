@@ -28,6 +28,9 @@ It is essential to download the version of the program that matches your system 
 - Improve the user experience in the interface.
 - Check in other Windows and Microsoft Office products.
 
+## Building
+If you plan to modify the program, it is critical that you configure the project to compile according to your operating system architecture. For example, if you are using 64-bit Windows, you must make sure that the program is compiled in 64-bit mode. The reason for this is a problem with a Microsoft Office registry key.
+
 ## Contribution
 Read the document to collaborate on long-term improvement and maintainability of the project.
 
