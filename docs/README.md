@@ -19,7 +19,7 @@ OpenFuryKMS is an intuitive front-end that facilitates Windows and Office activa
 - PowerShell 5.0 or higher.
 - .NET Framework 4.8.
 
-## Download and Installation
+## Download
 It is essential to download the version of the program that matches your system architecture (32-bit or 64-bit).
 
 ## To Do
