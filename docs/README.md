@@ -26,6 +26,7 @@ It is essential to download the version of the program that matches your system 
 - Optimize program performance.
 - Precise detection of Microsoft Office registry keys.
 - Improve the user experience in the interface.
+- Check in other Windows and Microsoft Office products.
 
 ## Contribution
 Read the document to collaborate on long-term improvement and maintainability of the project.
