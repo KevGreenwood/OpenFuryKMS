@@ -1,9 +1,6 @@
 # OpenFuryKMS
 OpenFuryKMS is an intuitive front-end that facilitates Windows and Office activation using SLMGR and OSPP commands via PowerShell. It aims to provide a secure and transparent alternative to users looking to activate their Microsoft products without risk of malware or intrusions.
 
-## Evolution and Security
-OpenFuryKMS represents the third version of a project that started as FuryKMS. After a second version that was never released, this latest release has been developed from scratch, fixing the problems of the previous versions and offering a renewed interface. It is important to note that old FuryKMS code has circulated on the Internet, being used to create malware versions that are available on various websites. OpenFuryKMS completely dissociates itself from these malicious versions and is committed to user security.
-
 ## Features:
 - Support for 32-bit and 64-bit systems.
 - Activation of Home, Pro, Education and Enterprise editions of Windows 10 and 11.
@@ -24,6 +21,19 @@ OpenFuryKMS represents the third version of a project that started as FuryKMS. A
 
 ## Download and installation
 It is essential to download the version of the program that matches your system architecture (32-bit or 64-bit).
+
+## To Do
+- Optimize program performance.
+- Precise detection of Microsoft Office registry keys.
+- Improve the user experience in the interface.
+
+## Contribution
+Read the document to collaborate on long-term improvement and maintainability of the project.
+
+---
+
+## Evolution and Security
+OpenFuryKMS represents the third version of a project that started as FuryKMS. After a second version that was never released, this latest release has been developed from scratch, fixing the problems of the previous versions and offering a renewed interface. It is important to note that old FuryKMS code has circulated on the Internet, being used to create malware versions that are available on various websites. OpenFuryKMS completely dissociates itself from these malicious versions and is committed to user security.
 
 ## Warning and Disclaimer:
 Kevin Greenwood (formerly known as Fury Greenwood), the original author of OpenFuryKMS, assures that his software does not contain any malicious code. He takes no responsibility for improper use of the program or for versions altered by third parties. This GitHub repository is the only official place to download the program.
