@@ -49,6 +49,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.PowerShell.SDK": {
+              "target": "Package",
+              "version": "[7.4.5, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -135,6 +139,10 @@
               "target": "Package",
               "version": "[8.1.240916, )"
             },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -150,6 +158,10 @@
             "System.Management.Automation": {
               "target": "Package",
               "version": "[7.4.5, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "WinUIEx": {
               "target": "Package",

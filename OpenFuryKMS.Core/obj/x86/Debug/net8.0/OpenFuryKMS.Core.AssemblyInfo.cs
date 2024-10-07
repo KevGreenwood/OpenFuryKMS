@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OpenFuryKMS.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+990629f23b69f745afeeca8f96c17b70f7fe5879")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b82f7bccb79756253709f285d90a390ed92acf7")]
 [assembly: System.Reflection.AssemblyProductAttribute("OpenFuryKMS.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OpenFuryKMS.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
