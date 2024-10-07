@@ -74,17 +74,19 @@ namespace OpenFuryKMS
         private static string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
         private string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
 
-        public static void Windows11Fix()
+        public string Version = $"{DisplayVersion} ({Build}.{UBR})";
+        public string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
+        public string GetAllInfo = string.Empty;
+
+
+        public WindowsHandler()
         {
             if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
             {
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
             }
+            GetAllInfo = $"Microsoft {ProductName} {Platform}";
         }
-
-        public static string Version = $"{DisplayVersion} ({Build}.{UBR})";
-        public string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
-        public static string GetAllInfo = $"Microsoft {ProductName} {Platform}";
 
         public static List<string> Editions =
         [

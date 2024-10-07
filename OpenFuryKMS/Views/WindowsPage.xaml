@@ -48,12 +48,17 @@
         </controls:SettingsCard>
 
         <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
-            <ComboBox Width="310" PlaceholderText="Select your Activation Method" VerticalAlignment="Center" />
+            <ComboBox x:Name="MethodCombo" Width="310" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
+                <x:String>KMS</x:String>
+                <x:String>Renew</x:String>
+                <x:String>Rearm</x:String>
+            </ComboBox>
+            
         </controls:SettingsCard>
 
 
         <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">Console</TextBlock>
-        <TextBox x:Name="ShellBox" TextWrapping="Wrap" AcceptsReturn="True"  Height="225"/>
+        <TextBox x:Name="ShellBox" TextWrapping="Wrap" AcceptsReturn="True"  Height="300" IsReadOnly="True" FontFamily="Consolas"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -61,9 +66,9 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
+            <Button x:Name="ActivateButton" Click="ActivateButton_Click" Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
             <Button x:Name="InfoButton" Click="InfoButton_Click" Content="Information" Grid.Column="1" HorizontalAlignment="Center" />
-            <Button Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
+            <Button x:Name="RemoveButton" Click="RemoveButton_Click" Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
         </Grid>
     </StackPanel>
 </Page>

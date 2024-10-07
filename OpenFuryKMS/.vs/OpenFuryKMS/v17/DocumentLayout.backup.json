@@ -3,22 +3,6 @@
   "WorkspaceRootPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\services\\localsettingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:services\\localsettingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\helpers\\settingsstorageextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:helpers\\settingsstorageextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\views\\windowspage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:views\\windowspage.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\views\\windowspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:views\\windowspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
@@ -35,66 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LocalSettingsService.cs",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Services\\LocalSettingsService.cs",
-              "RelativeDocumentMoniker": "Services\\LocalSettingsService.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Services\\LocalSettingsService.cs*",
-              "RelativeToolTip": "Services\\LocalSettingsService.cs*",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAADcAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T20:40:05.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SettingsStorageExtensions.cs",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Helpers\\SettingsStorageExtensions.cs",
-              "RelativeDocumentMoniker": "Helpers\\SettingsStorageExtensions.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Helpers\\SettingsStorageExtensions.cs",
-              "RelativeToolTip": "Helpers\\SettingsStorageExtensions.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACkAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T20:34:38.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WindowsPage.xaml.cs",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\WindowsPage.xaml.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml.cs",
-              "RelativeToolTip": "Views\\WindowsPage.xaml.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAABIAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T20:29:34.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Utilities.cs",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Utilities.cs",
-              "RelativeDocumentMoniker": "Utilities.cs",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Utilities.cs",
-              "RelativeToolTip": "Utilities.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T20:28:54.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "WindowsPage.xaml",
               "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml",
               "RelativeDocumentMoniker": "Views\\WindowsPage.xaml",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml",
-              "RelativeToolTip": "Views\\WindowsPage.xaml",
-              "ViewState": "AgIAAAcAAAAAAAAAAABBwBUAAAACAAAAAAAAAA==",
+              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml*",
+              "RelativeToolTip": "Views\\WindowsPage.xaml*",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAEIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-07T20:27:19.11Z",
+              "WhenOpened": "2024-10-07T21:28:32.582Z",
               "EditorCaption": ""
             }
           ]

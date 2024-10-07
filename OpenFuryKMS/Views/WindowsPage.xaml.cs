@@ -8,6 +8,7 @@ namespace OpenFuryKMS.Views;
 public sealed partial class WindowsPage : Page
 {
     public string pwshOutput;
+    WindowsHandler windowsHandler = new WindowsHandler();
 
     public WindowsViewModel ViewModel
     {
@@ -16,11 +17,11 @@ public sealed partial class WindowsPage : Page
 
     public WindowsPage()
     {
-        //Directory.SetCurrentDirectory(@"C:\Windows\System32");
+        Directory.SetCurrentDirectory(@"C:\Windows\System32");
         
         ViewModel = App.GetService<WindowsViewModel>();
         InitializeComponent();
-
+        
         var products = new[] { "Home", "Pro", "Education", "Enterprise" };
         for (int i = 0; i < products.Length; i++)
         {
@@ -39,13 +40,13 @@ public sealed partial class WindowsPage : Page
     {
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         ProductCombo.ItemsSource = WindowsHandler.Editions;
+
     }
 
     private void LoadLanguage()
     {
-        WindowsHandler.Windows11Fix();
-        ProductName.Text = WindowsHandler.GetAllInfo;
-        Version.Text = WindowsHandler.Version;
+        ProductName.Text = windowsHandler.GetAllInfo;
+        Version.Text = windowsHandler.Version;
     
     }
 
@@ -96,6 +97,32 @@ public sealed partial class WindowsPage : Page
     private void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr");
-        Debug.WriteLine(Directory.GetCurrentDirectory());
+    }
+
+    private void ActivateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        switch (MethodCombo.SelectedIndex)
+        {
+            case 0:
+                if (LicenseCombo.SelectedIndex != -1)
+                {
+                    string selectedLicense = LicenseCombo.SelectedItem.ToString();
+                    string licenseKey = selectedLicense.Split(' ')[0];
+                    ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
+                    SetKMS_Server();
+                }
+                break;
+
+            case 1:
+            case 2:
+                string command = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
+                ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs {command}");
+                break;
+        }
+    }
+
+    private void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /upk; cscript //nologo slmgr.vbs /cpky; cscript //nologo slmgr.vbs /ckms");
     }
 }
