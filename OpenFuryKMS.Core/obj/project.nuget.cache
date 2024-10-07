@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "X1GqDV87aRo=",
+  "success": true,
+  "projectFilePath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kevin Recalde\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

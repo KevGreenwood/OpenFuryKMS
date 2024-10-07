@@ -1,0 +1,10 @@
+App.xbf
+MainWindow.xbf
+Styles\FontSizes.xbf
+Styles\TextBlock.xbf
+Styles\Thickness.xbf
+Views\MainPage.xbf
+Views\OfficePage.xbf
+Views\SettingsPage.xbf
+Views\ShellPage.xbf
+Views\WindowsPage.xbf

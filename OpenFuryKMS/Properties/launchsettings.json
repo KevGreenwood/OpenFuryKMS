@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "OpenFuryKMS (Unpackaged)": {
+        "commandName": "Project"
+      },
+      "OpenFuryKMS (Package)": {
+        "commandName": "MsixPackage"
+      }
+    }
+}
