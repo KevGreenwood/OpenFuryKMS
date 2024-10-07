@@ -1,2 +1,1 @@
-E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Internal.FrameworkUdk.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.WinUI.dll

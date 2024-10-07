@@ -147,6 +147,10 @@
               "target": "Package",
               "version": "[2.0.9, )"
             },
+            "System.Management.Automation": {
+              "target": "Package",
+              "version": "[7.4.5, )"
+            },
             "WinUIEx": {
               "target": "Package",
               "version": "[2.4.2, )"
