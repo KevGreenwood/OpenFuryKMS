@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kevin Recalde\\.nuget\\packages\\microsoft.windowsappsdk\\1.6.240923002\\buildTransitive\\Microsoft.WindowsAppSDK.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{1CA3E378-6A66-43BE-B0C8-B7CD454F3E57}|..\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms.core\\openfurykms.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,12 +18,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Microsoft.WindowsAppSDK.targets",
-              "DocumentMoniker": "C:\\Users\\Kevin Recalde\\.nuget\\packages\\microsoft.windowsappsdk\\1.6.240923002\\buildTransitive\\Microsoft.WindowsAppSDK.targets",
-              "ToolTip": "C:\\Users\\Kevin Recalde\\.nuget\\packages\\microsoft.windowsappsdk\\1.6.240923002\\buildTransitive\\Microsoft.WindowsAppSDK.targets",
-              "ViewState": "AgIAADcAAAAAAAAAAAAWwEsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-10-07T19:56:17.232Z",
+              "Title": "OpenFuryKMS.Core",
+              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+              "RelativeDocumentMoniker": "..\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+              "RelativeToolTip": "..\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-07T20:10:03.961Z",
               "EditorCaption": ""
             }
           ]
