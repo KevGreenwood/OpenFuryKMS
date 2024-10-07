@@ -1,3 +1,5 @@
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Internal.FrameworkUdk.dll
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.WinUI.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win-x86\native\WebView2Loader.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Web.WebView2.Core.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\App.xbf
@@ -20,7 +22,6 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.DirectManipulation.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Graphics.Display.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.InputStateManager.dll
-E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Internal.FrameworkUdk.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.UI.Composition.OSSupport.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.UI.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.UI.Input.dll
@@ -280,7 +281,6 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Extensions.Primitives.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.InteractiveExperiences.Projection.dll
-E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.WinUI.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Windows.AppLifecycle.Projection.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Windows.AppNotifications.Builder.Projection.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Windows.AppNotifications.Projection.dll
@@ -305,8 +305,6 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win-arm64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll
-E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
-E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Windows.SDK.NET.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\WinRT.Runtime.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Web.WebView2.Core.Projection.dll
@@ -355,6 +353,7 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\OpenFuryKMS.AssemblyInfoInputs.cache
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\OpenFuryKMS.AssemblyInfo.cs
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\OpenFuryKMS.csproj.CoreCompileInputs.cache
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\OpenFuryKMS.sourcelink.json
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\OpenFury.8BDB58DB.Up2Date
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\OpenFuryKMS.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\refint\OpenFuryKMS.dll
@@ -376,3 +375,7 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\qualifiers.txt
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\qualifiers.txt.intermediate
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\obj\x86\Debug\net8.0-windows10.0.22621.0\MultipleQualifiersPerDimensionFound.txt
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Extensions.Diagnostics.dll
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS\bin\x86\Debug\net8.0-windows10.0.22621.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll

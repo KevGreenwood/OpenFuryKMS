@@ -6,6 +6,7 @@ E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debu
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\OpenFuryKMS.Core.AssemblyInfoInputs.cache
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\OpenFuryKMS.Core.AssemblyInfo.cs
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\OpenFuryKMS.Core.csproj.CoreCompileInputs.cache
+E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\OpenFuryKMS.Core.sourcelink.json
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\OpenFuryKMS.Core.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\refint\OpenFuryKMS.Core.dll
 E:\Global Repository\GitHub Repository\OpenFuryKMS\OpenFuryKMS.Core\obj\x86\Debug\net8.0\OpenFuryKMS.Core.pdb
