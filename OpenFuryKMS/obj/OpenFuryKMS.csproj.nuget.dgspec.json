@@ -139,10 +139,6 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
-            "Microsoft.PowerShell.Native": {
-              "target": "Package",
-              "version": "[7.4.0, )"
-            },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
               "version": "[1.6.240923002, )"

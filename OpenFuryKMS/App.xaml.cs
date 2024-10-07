@@ -78,8 +78,8 @@ public partial class App : Application
             services.AddTransient<OfficePage>();
             services.AddTransient<WindowsViewModel>();
             services.AddTransient<WindowsPage>();
-            services.AddTransient<MainViewModel>();
-            services.AddTransient<MainPage>();
+            services.AddTransient<HomeViewModel>();
+            services.AddTransient<HomePage>();
             services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
 

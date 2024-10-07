@@ -28,7 +28,7 @@
         <NavigationView
             x:Name="NavigationViewControl"
             Canvas.ZIndex="0"
-            IsBackButtonVisible="Visible"
+            IsBackButtonVisible="Collapsed"
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
             IsSettingsVisible="True"
@@ -43,19 +43,19 @@
                 TODO: Update item icons by updating FontIcon.Glyph properties.
                 https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem x:Uid="Shell_Main" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.MainViewModel">
+                <NavigationViewItem x:Uid="Shell_Home" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.HomeViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Windows" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.WindowsViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF0E2;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Office" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.OfficeViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74C;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
@@ -82,9 +82,14 @@
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
             </i:Interaction.Behaviors>
-            <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
-                <Frame x:Name="NavigationFrame" />
-            </Grid>
+            
+            <!-- JUST WORKS SO DON'T TOUCH IT! -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
+                    <Frame x:Name="NavigationFrame" />
+                </Grid>
+            </ScrollViewer>
+            
         </NavigationView>
     </Grid>
 </Page>
