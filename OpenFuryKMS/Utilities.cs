@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 
 namespace OpenFuryKMS
@@ -105,20 +106,20 @@ namespace OpenFuryKMS
 
 
 
-        /*public string ExtractLicenseStatus(string output)
+        public string ExtractLicenseStatus(string output)
         {
             var licenseStatusMap = new Dictionary<string, string>
             {
-                {"Licensed", Language.Licensed},
-                {"Notification", Language.Unlicensed},
+                {"Licensed", "Licensed"},
+                {"Notification", "Unicensed"},
                 {"Initial grace period", "Trial"}
             };
 
             var match = Regex.Match(output, @"License Status:\s*(.*)");
-            if (!match.Success) return Language.Unlicensed;
+            if (!match.Success) return "Unicensed";
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : Language.Unlicensed;
-        }*/
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unicensed";
+        }
     }
 
     public class OfficeHandler

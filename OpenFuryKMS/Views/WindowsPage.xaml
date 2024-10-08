@@ -15,6 +15,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -25,11 +27,25 @@
                 <TextBlock x:Name="ProductName" Grid.Row="0" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"></TextBlock>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Version</TextBlock>
-                <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">XXHXX (XXXXX.XXXX)</TextBlock>
-                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
-                <FontIcon Grid.Row="2" Grid.Column="1" Glyph="&#xF138;" Foreground="red"/>
-                <FontIcon Grid.Row="2" Grid.Column="1" Glyph="&#xF13D;" Foreground="red"/>
-                <TextBlock x:Name="LicenseStatus" Grid.Row="2" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">Unlicensed</TextBlock>
+                <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"></TextBlock>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Activation Method</TextBlock>
+                <TextBlock x:Name="ActivationMethod" Grid.Row="2" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">KMS</TextBlock>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <FontIcon x:Name="CircleLic" Glyph="&#xF138;" Foreground="red"/>
+                    <FontIcon x:Name="CrossLic" Glyph="&#xF13D;" Foreground="red"/>
+                </Grid>
+                <TextBlock x:Name="LicenseStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"></TextBlock>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Renewal Task Status</TextBlock>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <FontIcon x:Name="CircleRe" Glyph="&#xF138;" Foreground="red"/>
+                    <FontIcon x:Name="CrossRe" Glyph="&#xF13D;" Foreground="red"/>
+                </Grid>
+                <TextBlock x:Name="RenewalStatus" Grid.Row="4" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">Uninstalled</TextBlock>
+
             </Grid>
         </Expander>
 
@@ -46,7 +62,7 @@
         </controls:SettingsCard>
 
         <controls:SettingsCard Header="Licenses" HeaderIcon="{ui:FontIcon Glyph=&#xE8D7;}" Description="Select the license corresponding to your edition">
-            <ComboBox x:Name="LicenseCombo" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
+            <ComboBox x:Name="LicenseCombo" SelectionChanged="LicenseCombo_SelectionChanged" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
         </controls:SettingsCard>
 
         <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
@@ -58,7 +74,7 @@
         </controls:SettingsCard>
 
         <controls:SettingsCard x:Name="ServerCard" Header="KMS Server" HeaderIcon="{ui:FontIcon Glyph=&#xE977;}" Visibility="Collapsed" Description="Choose one of the available servers. The recommended option is &quot;Auto&quot;">
-            <ComboBox x:Name="ServerCombo" Width="310" PlaceholderText="Select your KMS Server" VerticalAlignment="Center" />
+            <ComboBox x:Name="ServerCombo" SelectionChanged="ServerCombo_SelectionChanged" Width="310" PlaceholderText="Select your KMS Server" VerticalAlignment="Center" />
         </controls:SettingsCard>
 
         <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">Console</TextBlock>
