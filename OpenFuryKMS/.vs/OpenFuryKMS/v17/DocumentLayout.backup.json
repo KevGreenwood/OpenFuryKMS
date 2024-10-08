@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\views\\windowspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:views\\windowspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\openfurykms.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:openfurykms.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|e:\\global repository\\github repository\\openfurykms\\openfurykms\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4ADE7E-C4B4-4A3D-998F-BD28216917F9}|OpenFuryKMS.csproj|solutionrelative:utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WindowsPage.xaml",
-              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml",
-              "RelativeDocumentMoniker": "Views\\WindowsPage.xaml",
-              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Views\\WindowsPage.xaml",
-              "RelativeToolTip": "Views\\WindowsPage.xaml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAEIAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-07T21:28:32.582Z",
+              "Title": "OpenFuryKMS.csproj",
+              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\OpenFuryKMS.csproj",
+              "RelativeDocumentMoniker": "OpenFuryKMS.csproj",
+              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\OpenFuryKMS.csproj",
+              "RelativeToolTip": "OpenFuryKMS.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-08T15:38:17.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Utilities.cs",
+              "DocumentMoniker": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Utilities.cs",
+              "RelativeDocumentMoniker": "Utilities.cs",
+              "ToolTip": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\Utilities.cs",
+              "RelativeToolTip": "Utilities.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAIBZwBkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T14:11:35.699Z",
               "EditorCaption": ""
             }
           ]

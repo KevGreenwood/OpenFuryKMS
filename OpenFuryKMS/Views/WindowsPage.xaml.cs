@@ -1,7 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using OpenFuryKMS.ViewModels;
-using System;
-using System.Diagnostics;
 
 namespace OpenFuryKMS.Views;
 
@@ -17,11 +15,11 @@ public sealed partial class WindowsPage : Page
 
     public WindowsPage()
     {
-        Directory.SetCurrentDirectory(@"C:\Windows\System32");
-        
         ViewModel = App.GetService<WindowsViewModel>();
         InitializeComponent();
-        
+
+        Directory.SetCurrentDirectory(@"C:\Windows\System32");
+
         var products = new[] { "Home", "Pro", "Education", "Enterprise" };
         for (int i = 0; i < products.Length; i++)
         {
@@ -38,16 +36,16 @@ public sealed partial class WindowsPage : Page
 
     private void ComboBoxHandler()
     {
-        ServerCombo.ItemsSource = KMSHandler.KmsServers;
-        ProductCombo.ItemsSource = WindowsHandler.Editions;
-
+        var serverListWithAuto = new List<string> { "Auto" };
+        serverListWithAuto.AddRange(KMSHandler.KmsServers);
+        ServerCombo.ItemsSource = serverListWithAuto;
     }
 
     private void LoadLanguage()
     {
         ProductName.Text = windowsHandler.GetAllInfo;
         Version.Text = windowsHandler.Version;
-    
+
     }
 
     public void GetLicenseStatus()
@@ -124,5 +122,17 @@ public sealed partial class WindowsPage : Page
     private void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /upk; cscript //nologo slmgr.vbs /cpky; cscript //nologo slmgr.vbs /ckms");
+    }
+
+    private void MethodCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (MethodCombo.SelectedIndex == 0)
+        {
+            ServerCard.Visibility = Microsoft.UI.Xaml.Visibility.Visible;
+        }
+        else
+        {
+            ServerCard.Visibility = Microsoft.UI.Xaml.Visibility.Collapsed;
+        }
     }
 }

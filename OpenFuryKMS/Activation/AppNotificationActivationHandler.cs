@@ -1,10 +1,8 @@
 ﻿using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppLifecycle;
-using Microsoft.Windows.AppNotifications;
 
 using OpenFuryKMS.Contracts.Services;
-using OpenFuryKMS.ViewModels;
 
 namespace OpenFuryKMS.Activation;
 

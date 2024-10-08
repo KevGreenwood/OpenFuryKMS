@@ -26,7 +26,6 @@
 
                 <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Version</TextBlock>
                 <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">XXHXX (XXXXX.XXXX)</TextBlock>
-
                 <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
                 <FontIcon Grid.Row="2" Grid.Column="1" Glyph="&#xF138;" Foreground="red"/>
                 <FontIcon Grid.Row="2" Grid.Column="1" Glyph="&#xF13D;" Foreground="red"/>
@@ -36,26 +35,31 @@
 
         <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Product Activation</TextBlock>
         <controls:SettingsCard Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
-            <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" PlaceholderText="Windows 10 - 11 Enterprise" VerticalAlignment="Center" />
+            <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center">
+                <x:String>Windows 10 - 11 Home</x:String>
+                <x:String>Windows 10 - 11 Pro</x:String>
+                <x:String>Windows 10 - 11 Education</x:String>
+                <x:String>Windows 10 - 11 Enterprise</x:String>
+                <x:String>Windows Server</x:String>
+            </ComboBox>
+
         </controls:SettingsCard>
 
         <controls:SettingsCard Header="Licenses" HeaderIcon="{ui:FontIcon Glyph=&#xE8D7;}" Description="Select the license corresponding to your edition">
             <ComboBox x:Name="LicenseCombo" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
         </controls:SettingsCard>
 
-        <controls:SettingsCard Header="KMS Server" HeaderIcon="{ui:FontIcon Glyph=&#xE977;}" Description=" Choose one of the available servers. The recommended option is &quot;Auto&quot;">
-            <ComboBox x:Name="ServerCombo" Width="310" PlaceholderText="Select your KMS Server" VerticalAlignment="Center" />
-        </controls:SettingsCard>
-
         <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
-            <ComboBox x:Name="MethodCombo" Width="310" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
+            <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
                 <x:String>KMS</x:String>
                 <x:String>Renew</x:String>
                 <x:String>Rearm</x:String>
             </ComboBox>
-            
         </controls:SettingsCard>
 
+        <controls:SettingsCard x:Name="ServerCard" Header="KMS Server" HeaderIcon="{ui:FontIcon Glyph=&#xE977;}" Visibility="Collapsed" Description="Choose one of the available servers. The recommended option is &quot;Auto&quot;">
+            <ComboBox x:Name="ServerCombo" Width="310" PlaceholderText="Select your KMS Server" VerticalAlignment="Center" />
+        </controls:SettingsCard>
 
         <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}">Console</TextBlock>
         <TextBox x:Name="ShellBox" TextWrapping="Wrap" AcceptsReturn="True"  Height="300" IsReadOnly="True" FontFamily="Consolas"/>

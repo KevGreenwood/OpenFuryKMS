@@ -1,8 +1,6 @@
-﻿using System.Text;
-
-using Newtonsoft.Json;
-
+﻿using Newtonsoft.Json;
 using OpenFuryKMS.Core.Contracts.Services;
+using System.Text;
 
 namespace OpenFuryKMS.Core.Services;
 

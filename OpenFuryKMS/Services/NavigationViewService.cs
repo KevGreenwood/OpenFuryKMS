@@ -1,10 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-using Microsoft.UI.Xaml.Controls;
-
+﻿using Microsoft.UI.Xaml.Controls;
 using OpenFuryKMS.Contracts.Services;
 using OpenFuryKMS.Helpers;
 using OpenFuryKMS.ViewModels;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenFuryKMS.Services;
 

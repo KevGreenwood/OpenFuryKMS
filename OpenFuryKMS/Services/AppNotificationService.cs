@@ -1,10 +1,7 @@
-﻿using System.Collections.Specialized;
-using System.Web;
-
-using Microsoft.Windows.AppNotifications;
-
+﻿using Microsoft.Windows.AppNotifications;
 using OpenFuryKMS.Contracts.Services;
-using OpenFuryKMS.ViewModels;
+using System.Collections.Specialized;
+using System.Web;
 
 namespace OpenFuryKMS.Notifications;
 

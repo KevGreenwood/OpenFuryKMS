@@ -2,11 +2,8 @@
 
 using OpenFuryKMS.Contracts.Services;
 using OpenFuryKMS.Core.Contracts.Services;
-using OpenFuryKMS.Core.Helpers;
 using OpenFuryKMS.Helpers;
 using OpenFuryKMS.Models;
-
-using Windows.ApplicationModel;
 using Windows.Storage;
 
 namespace OpenFuryKMS.Services;

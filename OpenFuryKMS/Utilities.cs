@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
 using System.Management.Automation;
-using Microsoft.Win32;
-using System.IO;
-using System.Text.RegularExpressions;
-using Windows.Globalization;
 
 
 namespace OpenFuryKMS
@@ -88,14 +80,6 @@ namespace OpenFuryKMS
             GetAllInfo = $"Microsoft {ProductName} {Platform}";
         }
 
-        public static List<string> Editions =
-        [
-            "Windows 10 - 11 Home",
-            "Windows 10 - 11 Pro",
-            "Windows 10 - 11 Education",
-            "Windows 10 - 11 Enterprise"
-        ];
-
         public static readonly List<(string License, string Description)> Home_Licenses = new()
         {
             ("TX9XD-98N7V-6WMQ6-BX7FG-H8Q99", ""),
@@ -119,7 +103,7 @@ namespace OpenFuryKMS
             ("DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", " (N)")
         };
 
-        
+
 
         /*public string ExtractLicenseStatus(string output)
         {
