@@ -4,7 +4,89 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
-    
+    <StackPanel x:Name="ContentArea" Spacing="14">
+        <Expander  Header="Product Information" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" IsExpanded="True" Width="500">
+            <Grid HorizontalAlignment="Left" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Product Name</TextBlock>
+                <TextBlock x:Name="ProductName" Grid.Row="0" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Version</TextBlock>
+                <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+
+
+                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <FontIcon x:Name="CircleLic" Glyph="&#xF138;" Foreground="red"/>
+                    <FontIcon x:Name="CrossLic" Glyph="&#xF13D;" Foreground="red"/>
+                </Grid>
+                <TextBlock x:Name="LicenseStatus" Grid.Row="2" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Renewal Task Status</TextBlock>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <FontIcon x:Name="CircleRe" Glyph="&#xF138;" Foreground="red"/>
+                    <FontIcon x:Name="CrossRe" Glyph="&#xF13D;" Foreground="red"/>
+                </Grid>
+                <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">Not Installed</TextBlock>
+
+            </Grid>
+        </Expander>
+
+        <StackPanel 
+                    Orientation="Vertical"
+                    Spacing="2">
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0, 4">Product Activation</TextBlock>
+            <controls:SettingsCard Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
+                <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center" PlaceholderText="Select your Product">
+                    <x:String>Microsoft 365</x:String>
+                    <x:String>Microsoft Office 2021</x:String>
+                    <x:String>Microsoft Office 2019</x:String>
+                    <x:String>Microsoft Office 2016</x:String>
+                    <x:String>Microsoft Office 2013</x:String>
+                </ComboBox>
+            </controls:SettingsCard>
+            
+            <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
+                <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
+                    <x:String>KMS</x:String>
+                    <x:String>Renew</x:String>
+                    <x:String>Rearm</x:String>
+                </ComboBox>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard x:Name="ServerCard" Header="KMS Server" HeaderIcon="{ui:FontIcon Glyph=&#xE977;}" Visibility="Collapsed" Description="Choose one of the available servers. The recommended option is &quot;Auto&quot;">
+                <ComboBox x:Name="ServerCombo" SelectionChanged="ServerCombo_SelectionChanged" Width="310" PlaceholderText="Select your KMS Server" VerticalAlignment="Center" />
+            </controls:SettingsCard>
+        </StackPanel>
+
+        <StackPanel Spacing="5">
+            <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Margin="0, 4">Console</TextBlock>
+            <TextBox x:Name="ShellBox" TextWrapping="Wrap" AcceptsReturn="True"  Height="300" IsReadOnly="True" FontFamily="Consolas"/>
+            <Grid Margin="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="ActivateButton" Click="ActivateButton_Click" Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
+                <Button x:Name="InfoButton" Click="InfoButton_Click" Content="Information" Grid.Column="1" HorizontalAlignment="Center" />
+                <Button x:Name="RemoveButton" Click="RemoveButton_Click" Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
+            </Grid>
+        </StackPanel>
+    </StackPanel>
 </Page>
