@@ -83,9 +83,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="ActivateButton" Click="ActivateButton_Click" Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
+                <Button x:Name="ActivateButton" IsEnabled="False" Click="ActivateButton_Click" Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
                 <Button x:Name="InfoButton" Click="InfoButton_Click" Content="Information" Grid.Column="1" HorizontalAlignment="Center" />
-                <Button x:Name="RemoveButton" Click="RemoveButton_Click" Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
+                <Button x:Name="RemoveButton" IsEnabled="False" Click="RemoveButton_Click" Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
             </Grid>
         </StackPanel>
     </StackPanel>

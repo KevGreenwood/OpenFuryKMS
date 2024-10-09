@@ -60,16 +60,16 @@
                 </ComboBox>
             </controls:SettingsCard>
 
-            <controls:SettingsCard Header="Licenses" HeaderIcon="{ui:FontIcon Glyph=&#xE8D7;}" Description="Select the license corresponding to your edition">
-                <ComboBox x:Name="LicenseCombo" SelectionChanged="LicenseCombo_SelectionChanged" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
-            </controls:SettingsCard>
-
             <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
                 <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
                     <x:String>KMS</x:String>
                     <x:String>Renew</x:String>
                     <x:String>Rearm</x:String>
                 </ComboBox>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard x:Name="LicensesCard" Header="Licenses" HeaderIcon="{ui:FontIcon Glyph=&#xE8D7;}" Visibility="Collapsed" Description="Select the license corresponding to your edition">
+                <ComboBox x:Name="LicenseCombo" SelectionChanged="LicenseCombo_SelectionChanged" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
             </controls:SettingsCard>
 
             <controls:SettingsCard x:Name="ServerCard" Header="KMS Server" HeaderIcon="{ui:FontIcon Glyph=&#xE977;}" Visibility="Collapsed" Description="Choose one of the available servers. The recommended option is &quot;Auto&quot;">
@@ -87,9 +87,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="ActivateButton" Click="ActivateButton_Click" Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
+                <Button x:Name="ActivateButton" IsEnabled="False" Click="ActivateButton_Click" Content="Activate" Style="{StaticResource AccentButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" />
                 <Button x:Name="InfoButton" Click="InfoButton_Click" Content="Information" Grid.Column="1" HorizontalAlignment="Center" />
-                <Button x:Name="RemoveButton" Click="RemoveButton_Click" Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
+                <Button x:Name="RemoveButton" IsEnabled="False" Click="RemoveButton_Click" Content="Remove Key" Style="{StaticResource AccentButtonStyle}" Background="OrangeRed" Grid.Column="2" HorizontalAlignment="Right" />
             </Grid>
         </StackPanel>
     </StackPanel>

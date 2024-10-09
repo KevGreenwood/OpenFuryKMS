@@ -18,8 +18,9 @@ namespace OpenFuryKMS
 
     public class KMSHandler
     {
-        public static readonly List<string> KmsServers = new List<string>
+        public static List<string> KmsServers = new List<string>
         {
+            "Auto",
             "kms.digiboy.ir",
             "kms.chinancce.com",
             "kms.ddns.net",
@@ -36,7 +37,7 @@ namespace OpenFuryKMS
 
         public static string AutoKMS(bool windows = false, bool office = false)
         {
-            foreach (var server in KmsServers)
+            foreach (var server in KmsServers.Skip(1))
             {
                 var setKms = windows ? $"cscript //nologo slmgr.vbs /skms {server} 2>&1" :
                               office ? $"cscript //nologo ospp.vbs /sethst:{server} 2>&1" : string.Empty;
@@ -71,7 +72,6 @@ namespace OpenFuryKMS
         public string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
         public string GetAllInfo = string.Empty;
 
-
         public WindowsHandler()
         {
             if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
@@ -79,6 +79,12 @@ namespace OpenFuryKMS
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
             }
             GetAllInfo = $"Microsoft {ProductName} {Platform}";
+        }
+
+        public static int SetEdition()
+        {
+            string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
+            return Array.FindIndex(products, p => WindowsHandler.ProductName.Contains(p));
         }
 
         public static readonly List<(string License, string Description)> Home_Licenses = new()
@@ -125,15 +131,41 @@ namespace OpenFuryKMS
     public class OfficeHandler
     {
         private static string OfficePath_C2R = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration";
-        public string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
-        public string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString();
-        public string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
+        public static string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
+        private string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString();
+        private string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
 
         /* I don't use: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\**OFFICE VERSION**
            because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
            that each Office version has its own language */
 
-        public bool DirChecker()
+        public string ProductName = string.Empty;
+
+        private Dictionary<string, string> versions = new Dictionary<string, string>
+        {
+            { "365", "Microsoft 365" },
+            { "2021", "Microsoft Office 2021" },
+            { "2019", "Microsoft Office 2019" },
+            { "2016", "Microsoft Office 2016" },
+            { "2013", "Microsoft Office 2013" }
+        };
+
+        public OfficeHandler()
+        {
+            DirChecker();
+
+            foreach (var version in versions)
+            {
+                if (ReleaseId.Contains(version.Key))
+                {
+                    ProductName = version.Value;
+                    return;
+                }
+            }
+            ProductName = "Microsoft Office";
+        }
+
+        private bool DirChecker()
         {
             string[] officePaths =
             {
@@ -149,8 +181,16 @@ namespace OpenFuryKMS
                 Directory.SetCurrentDirectory(officePath);
                 return true;
             }
-
             return false;
+        }
+
+        public int SetVersion()
+        {
+            return versions.Values.ToList().FindIndex(p => ProductName.Contains(p));
+        }
+        public string GetPlatform()
+        {
+            return Platform.Contains("x64") ? "64 bits" : "32 bits";
         }
 
         /*public string GetLicenseType()
@@ -158,46 +198,20 @@ namespace OpenFuryKMS
             return ReleaseId.EndsWith("Retail") ? "Retail" : ReleaseId.EndsWith("Volume") ? "Volume" : "";
         }*/
 
-        public string GetProductName()
-        {
-            var versions = new Dictionary<string, string>
-            {
-                { "2021", "Microsoft Office 2021" },
-                { "2019", "Microsoft Office 2019" },
-                { "2016", "Microsoft Office 2016" },
-                { "2013", "Microsoft Office 2013" },
-                { "365", "Microsoft 365" }
-            };
-
-            foreach (var version in versions)
-            {
-                if (ReleaseId.Contains(version.Key))
-                {
-                    return version.Value;
-                }
-            }
-            return "Microsoft Office";
-        }
-
-        public string GetPlatform()
-        {
-            return Platform.Contains("x64") ? "64 bits" : "32 bits";
-        }
-
-        /*public string ExtractLicenseStatus(string output)
+        public static string ExtractLicenseStatus(string output)
         {
             var licenseStatusMap = new Dictionary<string, string>
             {
-                {"---LICENSED---", Language.Licensed},
-                {"---NOTIFICATIONS---", Language.Unlicensed},
+                {"---LICENSED---", "Licensed"},
+                {"---NOTIFICATIONS---", "Unlicensed"},
                 {"---OOB_GRACE---", "Trial"}
             };
 
             var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
-            if (!match.Success) return Language.Unlicensed;
+            if (!match.Success) return "Unlicensed";
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : Language.Unlicensed;
-        }*/
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+        }
 
         public string ClearOutput(string output)
         {

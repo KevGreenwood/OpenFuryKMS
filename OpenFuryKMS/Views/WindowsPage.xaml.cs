@@ -2,8 +2,6 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using OpenFuryKMS.ViewModels;
-using System.Diagnostics;
-using System.Drawing;
 
 namespace OpenFuryKMS.Views;
 
@@ -26,19 +24,16 @@ public sealed partial class WindowsPage : Page
         RemoveButton.IsEnabled = false;
         Directory.SetCurrentDirectory(@"C:\Windows\System32");
 
-        string[] products = { "Home", "Pro", "Education", "Enterprise" };
-        ProductCombo.SelectedIndex = Array.FindIndex(products, p => WindowsHandler.ProductName.Contains(p));
-
         LoadLanguage();
         GetLicenseStatus();
-        ComboBoxHandler();
+
+        ProductCombo.SelectedIndex = WindowsHandler.SetEdition();
+        ServerCombo.ItemsSource = KMSHandler.KmsServers;
     }
 
     private void ComboBoxHandler()
     {
-        var serverListWithAuto = new List<string> { "Auto" };
-        serverListWithAuto.AddRange(KMSHandler.KmsServers);
-        ServerCombo.ItemsSource = serverListWithAuto;
+
     }
 
     private void LoadLanguage()
@@ -134,6 +129,9 @@ public sealed partial class WindowsPage : Page
         bool isKmsSelected = MethodCombo.SelectedIndex == 0;
 
         ServerCard.Visibility = isKmsSelected
+            ? Microsoft.UI.Xaml.Visibility.Visible
+            : Microsoft.UI.Xaml.Visibility.Collapsed;
+        LicensesCard.Visibility = isKmsSelected
             ? Microsoft.UI.Xaml.Visibility.Visible
             : Microsoft.UI.Xaml.Visibility.Collapsed;
 
