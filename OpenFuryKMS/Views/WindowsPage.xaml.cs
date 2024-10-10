@@ -7,7 +7,8 @@ namespace OpenFuryKMS.Views;
 
 public sealed partial class WindowsPage : Page
 {
-    public string pwshOutput;
+    private string pwshOutput;
+    private int defaultOS;
     WindowsHandler windowsHandler = new WindowsHandler();
 
     public WindowsViewModel ViewModel
@@ -28,6 +29,7 @@ public sealed partial class WindowsPage : Page
         GetLicenseStatus();
 
         ProductCombo.SelectedIndex = WindowsHandler.SetEdition();
+        defaultOS = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
     }
 
@@ -43,7 +45,7 @@ public sealed partial class WindowsPage : Page
 
     }
 
-    public void GetLicenseStatus()
+    private void GetLicenseStatus()
     {
         pwshOutput = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli");
         string licenseStatus = windowsHandler.ExtractLicenseStatus(pwshOutput);
@@ -125,9 +127,13 @@ public sealed partial class WindowsPage : Page
     {
         LicenseCombo.SelectedIndex = -1;
         ServerCombo.SelectedIndex = -1;
+        ProductCombo.SelectedIndex = defaultOS;
 
         bool isKmsSelected = MethodCombo.SelectedIndex == 0;
 
+        ProductsCard.Visibility = isKmsSelected
+            ? Microsoft.UI.Xaml.Visibility.Visible
+            : Microsoft.UI.Xaml.Visibility.Collapsed;
         ServerCard.Visibility = isKmsSelected
             ? Microsoft.UI.Xaml.Visibility.Visible
             : Microsoft.UI.Xaml.Visibility.Collapsed;
@@ -135,19 +141,17 @@ public sealed partial class WindowsPage : Page
             ? Microsoft.UI.Xaml.Visibility.Visible
             : Microsoft.UI.Xaml.Visibility.Collapsed;
 
-        ProductCombo.IsEnabled = isKmsSelected;
-        LicenseCombo.IsEnabled = isKmsSelected;
         ActivateButton.IsEnabled = !isKmsSelected;
-    }
-
-    private void ServerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        UpdateActivateButtonState();
     }
 
     private void UpdateActivateButtonState()
     {
         ActivateButton.IsEnabled = ServerCombo.SelectedIndex != -1 && LicenseCombo.SelectedIndex != -1;
+    }
+
+    private void ServerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        UpdateActivateButtonState();
     }
 
     private void LicenseCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

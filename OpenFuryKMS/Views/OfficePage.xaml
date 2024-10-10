@@ -50,21 +50,22 @@
                     Orientation="Vertical"
                     Spacing="2">
             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0, 4">Product Activation</TextBlock>
-            <controls:SettingsCard Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
+
+            <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
+                <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
+                    <x:String>KMS</x:String>
+                    <x:String>Renew</x:String>
+                    <x:String>Rearm</x:String>
+                </ComboBox>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}" Visibility="Collapsed">
                 <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center" PlaceholderText="Select your Product">
                     <x:String>Microsoft 365</x:String>
                     <x:String>Microsoft Office 2021</x:String>
                     <x:String>Microsoft Office 2019</x:String>
                     <x:String>Microsoft Office 2016</x:String>
                     <x:String>Microsoft Office 2013</x:String>
-                </ComboBox>
-            </controls:SettingsCard>
-            
-            <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
-                <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
-                    <x:String>KMS</x:String>
-                    <x:String>Renew</x:String>
-                    <x:String>Rearm</x:String>
                 </ComboBox>
             </controls:SettingsCard>
 
@@ -75,7 +76,7 @@
 
         <StackPanel Spacing="5">
             <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Margin="0, 4">Console</TextBlock>
-            <TextBox x:Name="ShellBox" TextWrapping="Wrap" AcceptsReturn="True"  Height="300" IsReadOnly="True" FontFamily="Consolas"/>
+            <TextBox x:Name="ShellBox" TextWrapping="Wrap" AcceptsReturn="True"  Height="250" IsReadOnly="True" FontFamily="Consolas"/>
             <Grid Margin="0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

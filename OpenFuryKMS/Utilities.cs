@@ -110,8 +110,6 @@ namespace OpenFuryKMS
             ("DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", " (N)")
         };
 
-
-
         public string ExtractLicenseStatus(string output)
         {
             var licenseStatusMap = new Dictionary<string, string>
@@ -131,9 +129,9 @@ namespace OpenFuryKMS
     public class OfficeHandler
     {
         private static string OfficePath_C2R = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration";
-        public static string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
+        public string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
         private string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString();
-        private string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
+        public string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
 
         /* I don't use: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\**OFFICE VERSION**
            because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
@@ -198,7 +196,16 @@ namespace OpenFuryKMS
             return ReleaseId.EndsWith("Retail") ? "Retail" : ReleaseId.EndsWith("Volume") ? "Volume" : "";
         }*/
 
-        public static string ExtractLicenseStatus(string output)
+        public Dictionary<int, (string productKey, List<string> keys, string license)> productLicenses = new Dictionary<int, (string productKey, List<string> keys, string license)>
+        {
+            { 0, ("proplusvl_kms", new List<string> { "BTDRB", "KHGM9", "CPQVG" }, "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99") },
+            { 3, ("proplusvl_kms", new List<string> { "BTDRB", "KHGM9", "CPQVG" }, "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99") },
+            { 1, ("ProPlus2021VL_KMS", new List<string> { "PG343", "6F7TH" }, "FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH") },
+            { 2, ("ProPlus2019VL", new List<string> { "6MWKP" }, "NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP") },
+            { 4, ("", new List<string>(), "YC7DK-G2NP3-2QQC3-J6H88-GVGXT") }
+        };
+
+        public string ExtractLicenseStatus(string output)
         {
             var licenseStatusMap = new Dictionary<string, string>
             {

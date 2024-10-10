@@ -49,16 +49,8 @@
         <StackPanel 
                     Orientation="Vertical"
                     Spacing="2">
+            
             <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="0, 4">Product Activation</TextBlock>
-            <controls:SettingsCard Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
-                <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center">
-                    <x:String>Windows 10 - 11 Home</x:String>
-                    <x:String>Windows 10 - 11 Pro</x:String>
-                    <x:String>Windows 10 - 11 Education</x:String>
-                    <x:String>Windows 10 - 11 Enterprise</x:String>
-                    <x:String>Windows Server</x:String>
-                </ComboBox>
-            </controls:SettingsCard>
 
             <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
                 <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
@@ -68,6 +60,16 @@
                 </ComboBox>
             </controls:SettingsCard>
 
+            <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}" Visibility="Collapsed">
+                <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center">
+                    <x:String>Windows 10 - 11 Home</x:String>
+                    <x:String>Windows 10 - 11 Pro</x:String>
+                    <x:String>Windows 10 - 11 Education</x:String>
+                    <x:String>Windows 10 - 11 Enterprise</x:String>
+                    <x:String>Windows Server</x:String>
+                </ComboBox>
+            </controls:SettingsCard>
+            
             <controls:SettingsCard x:Name="LicensesCard" Header="Licenses" HeaderIcon="{ui:FontIcon Glyph=&#xE8D7;}" Visibility="Collapsed" Description="Select the license corresponding to your edition">
                 <ComboBox x:Name="LicenseCombo" SelectionChanged="LicenseCombo_SelectionChanged" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
             </controls:SettingsCard>
