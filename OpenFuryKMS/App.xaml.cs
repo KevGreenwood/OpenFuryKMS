@@ -106,5 +106,8 @@ public partial class App : Application
         App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
         await App.GetService<IActivationService>().ActivateAsync(args);
+
+        WindowsHandler.Windows11Fix();
+        OfficeHandler.GetProductName();
     }
 }

@@ -11,7 +11,6 @@ public sealed partial class OfficePage : Page
     private string dirtyOutput;
     private string pwshOutput;
 
-    OfficeHandler officeHandler = new OfficeHandler();
     public OfficeViewModel ViewModel
     {
         get;
@@ -22,10 +21,12 @@ public sealed partial class OfficePage : Page
         ViewModel = App.GetService<OfficeViewModel>();
         InitializeComponent();
 
-        ProductName.Text = $"{officeHandler.ProductName} {officeHandler.GetPlatform()}";
-        Version.Text = officeHandler.Version;
+        OfficeHandler.DirChecker();
 
-        ProductCombo.SelectedIndex = officeHandler.SetVersion();
+        ProductName.Text = $"{OfficeHandler.ProductName} {OfficeHandler.Platform}";
+        Version.Text = OfficeHandler.Version;
+
+        ProductCombo.SelectedIndex = OfficeHandler.SetVersion();
         defaultVersion = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         GetLicenseStatus();
@@ -34,7 +35,7 @@ public sealed partial class OfficePage : Page
     private void GetLicenseStatus()
     {
         pwshOutput = PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus");
-        string licenseStatus = officeHandler.ExtractLicenseStatus(pwshOutput);
+        string licenseStatus = OfficeHandler.ExtractLicenseStatus(pwshOutput);
         LicenseStatus.Text = licenseStatus;
         RemoveButton.IsEnabled = licenseStatus != "Unlicensed";
         if (licenseStatus == "Licensed")
@@ -51,55 +52,60 @@ public sealed partial class OfficePage : Page
         }
     }
 
-    private void Activation()
-    {
-        if (officeHandler.productLicenses.ContainsKey(ProductCombo.SelectedIndex))
-        {
-            var productInfo = officeHandler.productLicenses[ProductCombo.SelectedIndex];
-
-            if (!string.IsNullOrEmpty(productInfo.productKey))
-            {
-                dirtyOutput = officeHandler.InstallLicense(productInfo.productKey, productInfo.keys, productInfo.license);
-            }
-            else
-            {
-                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
-            }
-
-            ShellBox.Text = officeHandler.ClearOutput(PowershellHandler.RunCommand(dirtyOutput));
-            //SetKMS_Server();
-        }
-    }
-
     private void ActivateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         if (MethodCombo.SelectedIndex == 0)
         {
-            Activation();
+            if (OfficeHandler.productLicenses.ContainsKey(ProductCombo.SelectedIndex))
+            {
+                var productInfo = OfficeHandler.productLicenses[ProductCombo.SelectedIndex];
+
+                if (!string.IsNullOrEmpty(productInfo.productKey))
+                {
+                    dirtyOutput = OfficeHandler.InstallLicense(productInfo.productKey, productInfo.keys, productInfo.license);
+                }
+                else
+                {
+                    dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
+                }
+
+                ShellBox.Text = OfficeHandler.ClearOutput(PowershellHandler.RunCommand(dirtyOutput));
+
+                if (ServerCombo.SelectedIndex == 0)
+                {
+                    dirtyOutput = KMSHandler.AutoKMS(office: true);
+                }
+                else
+                {
+                    string server = KMSHandler.KmsServers[ServerCombo.SelectedIndex - 1];
+                    dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
+                }
+                ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+            }
         }
         else if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
         {
             string command = MethodCombo.SelectedIndex == 1 ? "/act" : "/rearm";
             dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs {command}");
         }
-        ShellBox.Text = officeHandler.ClearOutput(dirtyOutput);
+        ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         GetLicenseStatus();
     }
 
     private void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        ShellBox.Text = officeHandler.ClearOutput(PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus"));
+        ShellBox.Text = OfficeHandler.ClearOutput(PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus"));
     }
 
     private void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var matchingLicense = officeHandler.productLicenses
-            .FirstOrDefault(officeKey => officeKey.Value.keys.Any(key => officeHandler.ReleaseId.Contains(key)));
-
-        if (!string.IsNullOrEmpty(matchingLicense.Value.license))
+        if (OfficeHandler.productLicenses.ContainsKey(OfficeHandler.SetVersion()))
         {
-            dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /unpkey:{matchingLicense.Value.license}");
-            ShellBox.Text = officeHandler.ClearOutput(dirtyOutput);
+            foreach (var key in OfficeHandler.productLicenses[OfficeHandler.SetVersion()].keys)
+            {
+                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /unpkey:{key}");
+                ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+            }
         }
         GetLicenseStatus();
     }

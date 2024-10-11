@@ -9,7 +9,6 @@ public sealed partial class WindowsPage : Page
 {
     private string pwshOutput;
     private int defaultOS;
-    WindowsHandler windowsHandler = new WindowsHandler();
 
     public WindowsViewModel ViewModel
     {
@@ -21,8 +20,6 @@ public sealed partial class WindowsPage : Page
         ViewModel = App.GetService<WindowsViewModel>();
         InitializeComponent();
 
-        ActivateButton.IsEnabled = false;
-        RemoveButton.IsEnabled = false;
         Directory.SetCurrentDirectory(@"C:\Windows\System32");
 
         LoadLanguage();
@@ -40,15 +37,15 @@ public sealed partial class WindowsPage : Page
 
     private void LoadLanguage()
     {
-        ProductName.Text = windowsHandler.GetAllInfo;
-        Version.Text = windowsHandler.Version;
+        ProductName.Text = WindowsHandler.GetAllInfo;
+        Version.Text = WindowsHandler.Version;
 
     }
 
     private void GetLicenseStatus()
     {
         pwshOutput = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli");
-        string licenseStatus = windowsHandler.ExtractLicenseStatus(pwshOutput);
+        string licenseStatus = WindowsHandler.ExtractLicenseStatus(pwshOutput);
         LicenseStatus.Text = licenseStatus;
         RemoveButton.IsEnabled = licenseStatus != "Unlicensed";
         if (licenseStatus == "Licensed")
@@ -63,13 +60,6 @@ public sealed partial class WindowsPage : Page
             CrossLic.Foreground = new SolidColorBrush(Colors.Red);
             CircleLic.Foreground = new SolidColorBrush(Colors.Red);
         }
-    }
-
-    private void SetKMS_Server()
-    {
-        ShellBox.Text = ServerCombo.SelectedIndex == 0
-            ? KMSHandler.AutoKMS(windows: true)
-            : PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /skms {KMSHandler.KmsServers[ServerCombo.SelectedIndex - 1]}; cscript //nologo slmgr.vbs /ato");
     }
 
     private void ProductCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,7 +97,9 @@ public sealed partial class WindowsPage : Page
             string selectedLicense = LicenseCombo.SelectedItem.ToString();
             string licenseKey = selectedLicense.Split(' ')[0];
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
-            SetKMS_Server();
+            ShellBox.Text = ServerCombo.SelectedIndex == 0
+            ? KMSHandler.AutoKMS(windows: true)
+            : PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /skms {KMSHandler.KmsServers[ServerCombo.SelectedIndex - 1]}; cscript //nologo slmgr.vbs /ato");
         }
         else if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
         {
