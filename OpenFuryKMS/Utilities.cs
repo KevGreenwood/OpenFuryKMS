@@ -62,7 +62,7 @@ namespace OpenFuryKMS
 
     public static class WindowsHandler
     {
-        private static string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+        private const string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
         private static string DisplayVersion = Registry.GetValue(WindowsPath, "DisplayVersion", "").ToString();
         private static string Build = Registry.GetValue(WindowsPath, "CurrentBuildNumber", "").ToString();
         private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
@@ -238,71 +238,72 @@ namespace OpenFuryKMS
 
     public class CreateTask
     {
-        public string script = "WindowsRenewer";
+        public string script = string.Empty;
         public string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenFuryKMS");
         public string scriptFilePath;
+        public string taskFolderName = "\\OpenFuryKMS";
 
-        public CreateTask()
+        public CreateTask(string scriptName)
         {
+            script = scriptName;
             scriptFilePath = Path.Combine(appDataPath, $"{script}.ps1");
-            SaveScript();
-            CreateScheduledTask();
         }
 
         public void SaveScript()
         {
             Directory.CreateDirectory(appDataPath);
-            string scriptPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Scripts", $"{script}.ps1");
-            try
+
+            if (!File.Exists(scriptFilePath))
             {
-                if (!File.Exists(scriptFilePath) || File.GetLastWriteTime(scriptPath) > File.GetLastWriteTime(scriptFilePath))
+                var assembly = Assembly.GetExecutingAssembly();
+                var resourceName = $"OpenFuryKMS.Scripts.{script}.ps1";
+                if (assembly.GetManifestResourceNames().Contains(resourceName))
                 {
-                    File.Copy(scriptPath, scriptFilePath, true);
-                    //Console.WriteLine($"Script {script}.ps1 copiado a {appDataPath} exitosamente.");
+                    using Stream stream = assembly.GetManifestResourceStream(resourceName);
+                    using FileStream fileStream = new(scriptFilePath, FileMode.Create, FileAccess.Write);
+                    stream.CopyTo(fileStream);
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al copiar el script: {ex.Message}");
             }
         }
 
-        public void CreateScheduledTask()
+        public bool IsTaskScheduled()
         {
+            using TaskService taskService = new();
             try
             {
-                using (TaskService taskService = new TaskService())
+                TaskFolder tf = taskService.GetFolder(taskFolderName);
+                var task = tf?.GetTasks().FirstOrDefault(t => t.Name == script);
+                return task != null;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public string CreateScheduledTask()
+        {
+            SaveScript();
+            try
+            {
+                using TaskService taskService = new();
+                TaskFolder tf = taskService.GetFolder(taskFolderName);
+
+                tf ??= taskService.RootFolder.CreateFolder(taskFolderName);
+
+                if (tf.GetTasks().FirstOrDefault(t => t.Name == script) == null)
                 {
-                    string taskFolderName = "OpenFuryKMS";
-                    TaskFolder tf;
-
-                    try
-                    {
-                        tf = taskService.GetFolder(taskFolderName);
-                    }
-                    catch
-                    {
-                        tf = taskService.RootFolder.CreateFolder(taskFolderName);
-                    }
-
-                    if (tf.GetTasks().FirstOrDefault(t => t.Name == script) == null)
-                    {
-                        TaskDefinition td = taskService.NewTask();
-                        td.RegistrationInfo.Description = $"Ejecuta el script {script}.ps1 cada 181 días";
-                        td.Triggers.Add(new DailyTrigger { DaysInterval = 181 });
-                        td.Actions.Add(new ExecAction("powershell.exe", $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"", null));
-                        tf.RegisterTaskDefinition(script, td);
-                        //Console.WriteLine("Tarea 'WindowsRenewer' creada exitosamente.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("La tarea 'WindowsRenewer' ya existe.");
-                    }
+                    TaskDefinition td = taskService.NewTask();
+                    td.RegistrationInfo.Description = $"Ejecuta el script {script}.ps1 cada 181 días";
+                    td.Triggers.Add(new DailyTrigger { DaysInterval = 181 });
+                    td.Actions.Add(new ExecAction("powershell.exe", $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"", null));
+                    tf.RegisterTaskDefinition(script, td);
                 }
+                return "Tarea creada correctamente";
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al crear la tarea: {ex.Message}");
+                return $"Error al crear la tarea: {ex.Message}";
             }
         }
     }

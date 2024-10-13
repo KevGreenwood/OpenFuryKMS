@@ -86,32 +86,44 @@ public sealed partial class OfficePage : Page
             string command = MethodCombo.SelectedIndex == 1 ? "/act" : "/rearm";
             dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs {command}");
         }
-        
-        if (MethodCombo.SelectedIndex <= 1)
-        {
-
-            ContentDialog dialog = new()
-            {
-                XamlRoot = this.XamlRoot,
-                Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-                Title = "Product Renew Task",
-                Content = "Do you want to create a task that every 180 days will renew your license?",
-                PrimaryButtonText = "Yes",
-                CloseButtonText = "No",
-                DefaultButton = ContentDialogButton.Primary
-            };
-            var result = await dialog.ShowAsync();
-
-            if (result == ContentDialogResult.Primary)
-            {
-                CreateTask officeTask = new();
-                officeTask.script = "OfficeRenewer";
-                
-            }
-        }
 
         ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         GetLicenseStatus();
+
+        if (MethodCombo.SelectedIndex <= 1)
+        {
+            CreateTask officeTask = new("OfficeRenewer");
+
+            if (!officeTask.IsTaskScheduled())
+            {
+                ContentDialog renewTask = new()
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Product Renew Task",
+                    Content = "Do you want to create a task that every 180 days will renew your license?",
+                    PrimaryButtonText = "Yes",
+                    CloseButtonText = "No",
+                    DefaultButton = ContentDialogButton.Primary
+                };
+
+                var renewTask_r = await renewTask.ShowAsync();
+
+                if (renewTask_r == ContentDialogResult.Primary)
+                {
+
+                    ContentDialog resultDialog = new()
+                    {
+                        XamlRoot = this.XamlRoot,
+                        Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                        Title = "Product Renew Task",
+                        Content = officeTask.CreateScheduledTask(),
+                        CloseButtonText = "OK",
+                    };
+                    await resultDialog.ShowAsync();
+                }
+            }
+        }
     }
 
     private void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
