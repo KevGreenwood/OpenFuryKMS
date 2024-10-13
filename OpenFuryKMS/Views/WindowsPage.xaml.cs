@@ -86,12 +86,12 @@ public sealed partial class WindowsPage : Page
         LicenseCombo.SelectedIndex = -1;
     }
 
-    private void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void InfoButton_Click(object sender, RoutedEventArgs e)
     {
         ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr");
     }
 
-    private void ActivateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
         if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
         {
@@ -109,9 +109,43 @@ public sealed partial class WindowsPage : Page
         }
 
         GetLicenseStatus();
+
+        if (MethodCombo.SelectedIndex <= 1)
+        {
+            CreateTask task = new("WindowsRenewer");
+
+            if (!task.IsTaskScheduled())
+            {
+                ContentDialog renewTask = new()
+                {
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Product Renew Task",
+                    Content = "Do you want to create a task that every 180 days will renew your license?",
+                    PrimaryButtonText = "Yes",
+                    CloseButtonText = "No",
+                    DefaultButton = ContentDialogButton.Primary
+                };
+
+                var renewTask_r = await renewTask.ShowAsync();
+
+                if (renewTask_r == ContentDialogResult.Primary)
+                {
+                    ContentDialog resultDialog = new()
+                    {
+                        XamlRoot = this.XamlRoot,
+                        Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                        Title = "Product Renew Task",
+                        Content = task.CreateScheduledTask(),
+                        CloseButtonText = "OK",
+                    };
+                    await resultDialog.ShowAsync();
+                }
+            }
+        }
     }
 
-    private void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
         ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /upk; cscript //nologo slmgr.vbs /cpky; cscript //nologo slmgr.vbs /ckms");
         GetLicenseStatus();
@@ -126,14 +160,14 @@ public sealed partial class WindowsPage : Page
         bool isKmsSelected = MethodCombo.SelectedIndex == 0;
 
         ProductsCard.Visibility = isKmsSelected
-            ? Microsoft.UI.Xaml.Visibility.Visible
-            : Microsoft.UI.Xaml.Visibility.Collapsed;
+            ? Visibility.Visible
+            : Visibility.Collapsed;
         ServerCard.Visibility = isKmsSelected
-            ? Microsoft.UI.Xaml.Visibility.Visible
-            : Microsoft.UI.Xaml.Visibility.Collapsed;
+            ? Visibility.Visible
+            : Visibility.Collapsed;
         LicensesCard.Visibility = isKmsSelected
-            ? Microsoft.UI.Xaml.Visibility.Visible
-            : Microsoft.UI.Xaml.Visibility.Collapsed;
+            ? Visibility.Visible
+            : Visibility.Collapsed;
 
         ActivateButton.IsEnabled = !isKmsSelected;
     }

@@ -9,43 +9,52 @@
     mc:Ignorable="d">
 
     <StackPanel x:Name="ContentArea" Spacing="14">
-        <Expander  Header="Product Information" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" IsExpanded="True" Width="500">
-            <Grid HorizontalAlignment="Left" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/SVG/Windows/10.svg" Height="100" Grid.Column="0" Margin="0, 0, 20, 0" VerticalAlignment="Center"/>
+            <Expander  Header="Product Information" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" IsExpanded="True">
+                <Grid HorizontalAlignment="Left" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Operating System</TextBlock>
-                <TextBlock x:Name="ProductName" Grid.Row="0" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Operating System</TextBlock>
+                    <TextBlock x:Name="ProductName" Grid.Row="0" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Version</TextBlock>
-                <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Version</TextBlock>
+                    <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
 
 
-                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
-                <Grid Grid.Row="2" Grid.Column="1">
-                    <FontIcon x:Name="CircleLic" Glyph="&#xF138;" Foreground="red"/>
-                    <FontIcon x:Name="CrossLic" Glyph="&#xF13D;" Foreground="red"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <FontIcon x:Name="CircleLic" Glyph="&#xF138;" Foreground="red"/>
+                        <FontIcon x:Name="CrossLic" Glyph="&#xF13D;" Foreground="red"/>
+                    </Grid>
+                    <TextBlock x:Name="LicenseStatus" Grid.Row="2" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Renewal Task Status</TextBlock>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <FontIcon x:Name="CircleRe" Glyph="&#xF138;" Foreground="red"/>
+                        <FontIcon x:Name="CrossRe" Glyph="&#xF13D;" Foreground="red"/>
+                    </Grid>
+                    <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">Not Installed</TextBlock>
+
                 </Grid>
-                <TextBlock x:Name="LicenseStatus" Grid.Row="2" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
+            </Expander>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Renewal Task Status</TextBlock>
-                <Grid Grid.Row="3" Grid.Column="1">
-                    <FontIcon x:Name="CircleRe" Glyph="&#xF138;" Foreground="red"/>
-                    <FontIcon x:Name="CrossRe" Glyph="&#xF13D;" Foreground="red"/>
-                </Grid>
-                <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">Not Installed</TextBlock>
-
-            </Grid>
-        </Expander>
+        </Grid>
         
+       
         <StackPanel 
                     Orientation="Vertical"
                     Spacing="2">

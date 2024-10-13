@@ -20,6 +20,11 @@
 	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\SVG\Office\2013.svg" />
+    <None Remove="Assets\SVG\Office\2021.svg" />
+    <None Remove="Assets\SVG\Office\365.svg" />
+    <None Remove="Assets\SVG\Windows\10.svg" />
+    <None Remove="Assets\SVG\Windows\11.svg" />
     <None Remove="Scripts\OfficeRenewer.ps1" />
     <None Remove="Scripts\WindowsRenewer.ps1" />
   </ItemGroup>

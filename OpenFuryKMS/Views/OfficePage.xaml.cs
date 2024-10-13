@@ -92,9 +92,9 @@ public sealed partial class OfficePage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            CreateTask officeTask = new("OfficeRenewer");
+            CreateTask task = new("OfficeRenewer");
 
-            if (!officeTask.IsTaskScheduled())
+            if (!task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
                 {
@@ -111,13 +111,12 @@ public sealed partial class OfficePage : Page
 
                 if (renewTask_r == ContentDialogResult.Primary)
                 {
-
                     ContentDialog resultDialog = new()
                     {
                         XamlRoot = this.XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
-                        Content = officeTask.CreateScheduledTask(),
+                        Content = task.CreateScheduledTask(),
                         CloseButtonText = "OK",
                     };
                     await resultDialog.ShowAsync();

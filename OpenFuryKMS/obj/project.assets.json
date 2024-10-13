@@ -20138,11 +20138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\OpenFuryKMS.csproj",
+      "projectUniqueName": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\OpenFuryKMS.csproj",
       "projectName": "OpenFuryKMS",
-      "projectPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\OpenFuryKMS.csproj",
+      "projectPath": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\OpenFuryKMS.csproj",
       "packagesPath": "C:\\Users\\Kevin Recalde\\.nuget\\packages\\",
-      "outputPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\obj\\",
+      "outputPath": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -20163,8 +20163,8 @@
         "net8.0-windows10.0.22621": {
           "targetAlias": "net8.0-windows10.0.22621.0",
           "projectReferences": {
-            "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj": {
-              "projectPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj"
+            "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj": {
+              "projectPath": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj"
             }
           }
         }
