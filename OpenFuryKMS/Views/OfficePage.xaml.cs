@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using OpenFuryKMS.ViewModels;
@@ -52,42 +53,63 @@ public sealed partial class OfficePage : Page
         }
     }
 
-    private void ActivateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void ActivateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if (MethodCombo.SelectedIndex == 0)
+        if (MethodCombo.SelectedIndex == 0 && OfficeHandler.productLicenses.ContainsKey(ProductCombo.SelectedIndex))
         {
-            if (OfficeHandler.productLicenses.ContainsKey(ProductCombo.SelectedIndex))
+            var productInfo = OfficeHandler.productLicenses[ProductCombo.SelectedIndex];
+
+            if (!string.IsNullOrEmpty(productInfo.productKey))
             {
-                var productInfo = OfficeHandler.productLicenses[ProductCombo.SelectedIndex];
-
-                if (!string.IsNullOrEmpty(productInfo.productKey))
-                {
-                    dirtyOutput = OfficeHandler.InstallLicense(productInfo.productKey, productInfo.keys, productInfo.license);
-                }
-                else
-                {
-                    dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
-                }
-
-                ShellBox.Text = OfficeHandler.ClearOutput(PowershellHandler.RunCommand(dirtyOutput));
-
-                if (ServerCombo.SelectedIndex == 0)
-                {
-                    dirtyOutput = KMSHandler.AutoKMS(office: true);
-                }
-                else
-                {
-                    string server = KMSHandler.KmsServers[ServerCombo.SelectedIndex - 1];
-                    dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
-                }
-                ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+                dirtyOutput = OfficeHandler.InstallLicense(productInfo.productKey, productInfo.keys, productInfo.license);
             }
+            else
+            {
+                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
+            }
+
+            ShellBox.Text = OfficeHandler.ClearOutput(PowershellHandler.RunCommand(dirtyOutput));
+
+            if (ServerCombo.SelectedIndex == 0)
+            {
+                dirtyOutput = KMSHandler.AutoKMS(office: true);
+            }
+            else
+            {
+                string server = KMSHandler.KmsServers[ServerCombo.SelectedIndex - 1];
+                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
+            }
+            ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         }
         else if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
         {
             string command = MethodCombo.SelectedIndex == 1 ? "/act" : "/rearm";
             dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs {command}");
         }
+        
+        if (MethodCombo.SelectedIndex <= 1)
+        {
+
+            ContentDialog dialog = new()
+            {
+                XamlRoot = this.XamlRoot,
+                Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                Title = "Product Renew Task",
+                Content = "Do you want to create a task that every 180 days will renew your license?",
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No",
+                DefaultButton = ContentDialogButton.Primary
+            };
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                CreateTask officeTask = new();
+                officeTask.script = "OfficeRenewer";
+                
+            }
+        }
+
         ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         GetLicenseStatus();
     }

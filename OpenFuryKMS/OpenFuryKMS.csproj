@@ -19,6 +19,10 @@
 	<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
 	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Scripts\OfficeRenewer.ps1" />
+    <None Remove="Scripts\WindowsRenewer.ps1" />
+  </ItemGroup>
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
@@ -39,6 +43,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OpenFuryKMS.Core\OpenFuryKMS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\OfficeRenewer.ps1" />
+    <EmbeddedResource Include="Scripts\WindowsRenewer.ps1" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">

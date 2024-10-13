@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using OpenFuryKMS.ViewModels;
@@ -106,6 +107,7 @@ public sealed partial class WindowsPage : Page
             string command = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs {command}");
         }
+
         GetLicenseStatus();
     }
 
