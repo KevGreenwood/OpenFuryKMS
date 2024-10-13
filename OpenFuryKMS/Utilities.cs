@@ -121,7 +121,7 @@ namespace OpenFuryKMS
                 {"Initial grace period", "Trial"}
             };
             var match = Regex.Match(output, @"License Status:\s*(.*)");
-            if (!match.Success) return "Unicensed";
+            if (!match.Success) return "Unlicensed";
             var status = match.Groups[1].Value.Trim();
             return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unicensed";
         }
@@ -249,7 +249,7 @@ namespace OpenFuryKMS
             scriptFilePath = Path.Combine(appDataPath, $"{script}.ps1");
         }
 
-        public void SaveScript()
+        private void SaveScript()
         {
             Directory.CreateDirectory(appDataPath);
 

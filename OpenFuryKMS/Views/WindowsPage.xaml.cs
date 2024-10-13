@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using OpenFuryKMS.ViewModels;
 
 namespace OpenFuryKMS.Views;
@@ -10,6 +11,7 @@ public sealed partial class WindowsPage : Page
 {
     private string pwshOutput;
     private int defaultOS;
+    public CreateTask task = new("WindowsRenewer");
 
     public WindowsViewModel ViewModel
     {
@@ -25,22 +27,20 @@ public sealed partial class WindowsPage : Page
 
         LoadLanguage();
         GetLicenseStatus();
+        GetTaskStatus();
+        Logo.Source = WindowsHandler.ProductName.Contains("10")
+            ? new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"))
+            : (ImageSource)new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/11.svg"));
 
         ProductCombo.SelectedIndex = WindowsHandler.SetEdition();
         defaultOS = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
     }
 
-    private void ComboBoxHandler()
-    {
-
-    }
-
     private void LoadLanguage()
     {
         ProductName.Text = WindowsHandler.GetAllInfo;
         Version.Text = WindowsHandler.Version;
-
     }
 
     private void GetLicenseStatus()
@@ -60,6 +60,24 @@ public sealed partial class WindowsPage : Page
             CrossLic.Glyph = "\uF13D";
             CrossLic.Foreground = new SolidColorBrush(Colors.Red);
             CircleLic.Foreground = new SolidColorBrush(Colors.Red);
+        }
+    }
+
+    private void GetTaskStatus()
+    {
+        if (!task.IsTaskScheduled())
+        {
+            RenewalStatus.Text = "Not Installed";
+            CrossRe.Glyph = "\uF13D";
+            CrossRe.Foreground = new SolidColorBrush(Colors.Red);
+            CircleRe.Foreground = new SolidColorBrush(Colors.Red);
+        }
+        else
+        {
+            RenewalStatus.Text = "Installed";
+            CrossRe.Glyph = "\uF13E";
+            CrossRe.Foreground = new SolidColorBrush(Colors.Green);
+            CircleRe.Foreground = new SolidColorBrush(Colors.Green);
         }
     }
 
@@ -112,8 +130,6 @@ public sealed partial class WindowsPage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            CreateTask task = new("WindowsRenewer");
-
             if (!task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
@@ -143,6 +159,8 @@ public sealed partial class WindowsPage : Page
                 }
             }
         }
+
+        GetTaskStatus();
     }
 
     private void RemoveButton_Click(object sender, RoutedEventArgs e)

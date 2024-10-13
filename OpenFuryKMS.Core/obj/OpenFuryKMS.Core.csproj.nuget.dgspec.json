@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj": {}
+    "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj": {}
   },
   "projects": {
-    "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj": {
+    "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+        "projectUniqueName": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
         "projectName": "OpenFuryKMS.Core",
-        "projectPath": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
+        "projectPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\OpenFuryKMS.Core.csproj",
         "packagesPath": "C:\\Users\\Kevin Recalde\\.nuget\\packages\\",
-        "outputPath": "C:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\obj\\",
+        "outputPath": "E:\\Global Repository\\GitHub Repository\\OpenFuryKMS\\OpenFuryKMS.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

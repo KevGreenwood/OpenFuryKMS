@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Image Source="/Assets/SVG/Windows/10.svg" Height="100" Grid.Column="0" Margin="0, 0, 20, 0" VerticalAlignment="Center"/>
+            <Image x:Name="Logo" Height="100" Grid.Column="0" Margin="0, 0, 20, 0" VerticalAlignment="Center"/>
             <Expander  Header="Product Information" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" IsExpanded="True">
                 <Grid HorizontalAlignment="Left" >
                     <Grid.RowDefinitions>
@@ -47,7 +47,7 @@
                         <FontIcon x:Name="CircleRe" Glyph="&#xF138;" Foreground="red"/>
                         <FontIcon x:Name="CrossRe" Glyph="&#xF13D;" Foreground="red"/>
                     </Grid>
-                    <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5">Not Installed</TextBlock>
+                    <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
 
                 </Grid>
             </Expander>
