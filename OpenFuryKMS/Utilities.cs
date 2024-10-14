@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using System;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -142,7 +143,6 @@ namespace OpenFuryKMS
 
         public static string ProductName = "Product not found";
         private const string path = "ms-appx:///Assets/SVG/Office";
-        public static ImageSource logo;
 
         public static Dictionary<string, string> versions = new()
         {
@@ -160,10 +160,30 @@ namespace OpenFuryKMS
                 if (ReleaseId.Contains(version.Key))
                 {
                     ProductName = version.Value;
-                    logo = new SvgImageSource(new Uri($"{path}/{version.Key}.svg"));
                     return;
                 }
             }
+        }
+
+        public static Dictionary<string, string> logos = new()
+        {
+            { "365", $"{path}/365.svg" },
+            { "2021", $"{path}/365.svg" },
+            { "2019", $"{path}/2021.svg" },
+            { "2016", $"{path}/2016.svg" },
+            { "2013", $"{path}/2016.svg" }
+        };
+
+        public static ImageSource SetLogo()
+        {
+            foreach (var logo in logos)
+            {
+                if (ReleaseId.Contains(logo.Key))
+                {
+                    return new SvgImageSource(new Uri(logo.Value));
+                }
+            }
+            return new SvgImageSource(new Uri(string.Empty));
         }
 
         public static bool DirChecker()

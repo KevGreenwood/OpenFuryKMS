@@ -6,6 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:OpenFuryKMS.Helpers"
     xmlns:xaml="using:Microsoft.UI.Xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
@@ -13,6 +15,30 @@
     <Grid>
         <StackPanel
             x:Name="ContentArea">
+            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <controls:SettingsExpander Header="Activation Tasks" HeaderIcon="{ui:FontIcon Glyph=&#xF259;}">
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard Header="Windows Task">
+                        <ToggleSwitch x:Name="WindowsToggle" Toggled="WindowsToggle_Toggled"></ToggleSwitch>
+                    </controls:SettingsCard>
+                    <controls:SettingsCard Header="Office Task">
+                        <ToggleSwitch x:Name="OfficeToggle" Toggled="OfficeToggle_Toggled"></ToggleSwitch>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
+
+            <controls:SettingsExpander Header="Restore Product Activation Settings" HeaderIcon="{ui:FontIcon Glyph=&#xF259;}">
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard Header="Windows Task">
+                        <Button>Restore</Button>
+                    </controls:SettingsCard>
+                    <controls:SettingsCard Header="Office Task">
+                        <Button>Restore</Button>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
+
+
             <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock x:Uid="Settings_Theme" />
@@ -49,18 +75,6 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </StackPanel>
-            </StackPanel>
-
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
-
-                <TextBlock
-                    x:Uid="Settings_AboutDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
             </StackPanel>
         </StackPanel>
     </Grid>

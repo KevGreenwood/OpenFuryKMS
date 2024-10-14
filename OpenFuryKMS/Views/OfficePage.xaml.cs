@@ -34,8 +34,7 @@ public sealed partial class OfficePage : Page
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         GetLicenseStatus();
         GetTaskStatus();
-        Logo.Source = OfficeHandler.logo;
-
+        Logo.Source = OfficeHandler.SetLogo();
     }
 
     private void GetTaskStatus()
@@ -143,6 +142,8 @@ public sealed partial class OfficePage : Page
                     await resultDialog.ShowAsync();
                 }
             }
+
+            GetTaskStatus();
         }
     }
 

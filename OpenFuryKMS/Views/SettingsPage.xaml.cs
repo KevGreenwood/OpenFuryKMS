@@ -17,4 +17,14 @@ public sealed partial class SettingsPage : Page
         ViewModel = App.GetService<SettingsViewModel>();
         InitializeComponent();
     }
+
+    private void WindowsToggle_Toggled(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+
+    }
+
+    private void OfficeToggle_Toggled(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+
+    }
 }
