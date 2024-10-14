@@ -34,7 +34,6 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">Version</TextBlock>
                     <TextBlock x:Name="Version" Grid.Row="1" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
 
-
                     <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5">License Status</TextBlock>
                     <Grid Grid.Row="2" Grid.Column="1">
                         <FontIcon x:Name="CircleLic" Glyph="&#xF138;" Foreground="red"/>
@@ -48,7 +47,6 @@
                         <FontIcon x:Name="CrossRe" Glyph="&#xF13D;" Foreground="red"/>
                     </Grid>
                     <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
-
                 </Grid>
             </Expander>
 

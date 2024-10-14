@@ -1,5 +1,5 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using System.Management.Automation;
@@ -68,17 +68,19 @@ namespace OpenFuryKMS
         private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         private static string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
         private static string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
-        
+
         public static string ProductName = Registry.GetValue(WindowsPath, "ProductName", "").ToString();
         public static string Version = $"{DisplayVersion} ({Build}.{UBR})";
         public static string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
         public static string GetAllInfo = string.Empty;
+        public static ImageSource logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"));
 
         public static void Windows11Fix()
         {
             if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
             {
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
+                logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/11.svg"));
             }
             GetAllInfo = $"Microsoft {ProductName} {Platform}";
         }
@@ -138,7 +140,9 @@ namespace OpenFuryKMS
            because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
            that each Office version has its own language */
 
-        public static string ProductName = string.Empty;
+        public static string ProductName = "Product not found";
+        private const string path = "ms-appx:///Assets/SVG/Office";
+        public static ImageSource logo;
 
         public static Dictionary<string, string> versions = new()
         {
@@ -156,10 +160,10 @@ namespace OpenFuryKMS
                 if (ReleaseId.Contains(version.Key))
                 {
                     ProductName = version.Value;
+                    logo = new SvgImageSource(new Uri($"{path}/{version.Key}.svg"));
                     return;
                 }
             }
-            ProductName = "Product not found";
         }
 
         public static bool DirChecker()

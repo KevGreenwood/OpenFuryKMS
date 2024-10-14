@@ -2,7 +2,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Imaging;
 using OpenFuryKMS.ViewModels;
 
 namespace OpenFuryKMS.Views;
@@ -28,9 +27,7 @@ public sealed partial class WindowsPage : Page
         LoadLanguage();
         GetLicenseStatus();
         GetTaskStatus();
-        Logo.Source = WindowsHandler.ProductName.Contains("10")
-            ? new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"))
-            : (ImageSource)new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/11.svg"));
+        Logo.Source = WindowsHandler.logo;
 
         ProductCombo.SelectedIndex = WindowsHandler.SetEdition();
         defaultOS = ProductCombo.SelectedIndex;

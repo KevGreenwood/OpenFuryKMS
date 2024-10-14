@@ -20,7 +20,7 @@
 	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Assets\SVG\Office\2013.svg" />
+    <None Remove="Assets\SVG\Office\2016.svg" />
     <None Remove="Assets\SVG\Office\2021.svg" />
     <None Remove="Assets\SVG\Office\365.svg" />
     <None Remove="Assets\SVG\Windows\10.svg" />

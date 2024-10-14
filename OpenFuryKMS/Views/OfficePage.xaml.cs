@@ -11,6 +11,8 @@ public sealed partial class OfficePage : Page
     private int defaultVersion;
     private string dirtyOutput;
     private string pwshOutput;
+    public CreateTask task = new("OfficeRenewer");
+
 
     public OfficeViewModel ViewModel
     {
@@ -31,6 +33,27 @@ public sealed partial class OfficePage : Page
         defaultVersion = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         GetLicenseStatus();
+        GetTaskStatus();
+        Logo.Source = OfficeHandler.logo;
+
+    }
+
+    private void GetTaskStatus()
+    {
+        if (!task.IsTaskScheduled())
+        {
+            RenewalStatus.Text = "Not Installed";
+            CrossRe.Glyph = "\uF13D";
+            CrossRe.Foreground = new SolidColorBrush(Colors.Red);
+            CircleRe.Foreground = new SolidColorBrush(Colors.Red);
+        }
+        else
+        {
+            RenewalStatus.Text = "Installed";
+            CrossRe.Glyph = "\uF13E";
+            CrossRe.Foreground = new SolidColorBrush(Colors.Green);
+            CircleRe.Foreground = new SolidColorBrush(Colors.Green);
+        }
     }
 
     private void GetLicenseStatus()
@@ -92,8 +115,6 @@ public sealed partial class OfficePage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            CreateTask task = new("OfficeRenewer");
-
             if (!task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
