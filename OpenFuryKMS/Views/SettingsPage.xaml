@@ -12,37 +12,64 @@
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
-    <Grid>
         <StackPanel
-            x:Name="ContentArea">
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <controls:SettingsExpander Header="Activation Tasks" HeaderIcon="{ui:FontIcon Glyph=&#xF259;}">
+            x:Name="ContentArea" Spacing="14">
+
+        <StackPanel Spacing="2">
+            <controls:SettingsExpander Header="Activation Tasks" HeaderIcon="{ui:FontIcon Glyph=&#xE82D;}">
                 <controls:SettingsExpander.Items>
-                    <controls:SettingsCard Header="Windows Task">
+                    <controls:SettingsCard Header="Windows Renewer Task">
                         <ToggleSwitch x:Name="WindowsToggle" Toggled="WindowsToggle_Toggled"></ToggleSwitch>
                     </controls:SettingsCard>
-                    <controls:SettingsCard Header="Office Task">
+                    <controls:SettingsCard Header="Office Renewer Task">
                         <ToggleSwitch x:Name="OfficeToggle" Toggled="OfficeToggle_Toggled"></ToggleSwitch>
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
 
-            <controls:SettingsExpander Header="Restore Product Activation Settings" HeaderIcon="{ui:FontIcon Glyph=&#xF259;}">
+            <controls:SettingsExpander Header="Restore Product Activation Settings" HeaderIcon="{ui:FontIcon Glyph=&#xE777;}">
                 <controls:SettingsExpander.Items>
-                    <controls:SettingsCard Header="Windows Task">
+                    <controls:SettingsCard Header="Windows Settings">
                         <Button>Restore</Button>
                     </controls:SettingsCard>
-                    <controls:SettingsCard Header="Office Task">
+                    <controls:SettingsCard Header="Office Settings">
                         <Button>Restore</Button>
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
 
+            <controls:SettingsExpander Header="Advanced Options" HeaderIcon="{ui:FontIcon Glyph=&#xEC7A;}">
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard>
+                        <CheckBox>Add custom KMS servers</CheckBox>
+                    </controls:SettingsCard>
+                    <controls:SettingsCard>
+                        <CheckBox>Add custom licenses</CheckBox>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
+        </StackPanel>
 
-            <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <StackPanel Spacing="2">
+            <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Apareance and behaviour"/>
+            <controls:SettingsCard Header="Language" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+                <ComboBox></ComboBox>
+            </controls:SettingsCard>
+            <controls:SettingsCard Header="Theme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <ComboBox></ComboBox>
+            </controls:SettingsCard>
+        </StackPanel>
+
+
+        <StackPanel Spacing="2">
+            <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Version and updates"/>
+            <controls:SettingsCard Header="v0.1.0" HeaderIcon="{ui:FontIcon Glyph=&#xE895;}">
+                <Button>Check updates</Button>
+            </controls:SettingsCard>
+        </StackPanel>
+            
+            
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                <TextBlock x:Uid="Settings_Theme" />
-
                 <StackPanel Margin="{StaticResource XSmallTopMargin}">
                     <RadioButton
                         x:Uid="Settings_Theme_Light"
@@ -76,6 +103,16 @@
                     </RadioButton>
                 </StackPanel>
             </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <HyperlinkButton Grid.Column="0" Content="GitHub Repostory" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
+            <HyperlinkButton Grid.Column="1" Content="MS Guides" NavigateUri="https://msguides.com"/>
+            <HyperlinkButton Grid.Column="2" Content="Donate" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
+        </Grid>
+            
         </StackPanel>
-    </Grid>
 </Page>
