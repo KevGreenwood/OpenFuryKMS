@@ -8,9 +8,8 @@ namespace OpenFuryKMS.Views;
 
 public sealed partial class WindowsPage : Page
 {
-    private string pwshOutput;
+    private string pwshOutput = string.Empty;
     private int defaultOS;
-    public CreateTask task = new("WindowsRenewer");
 
     public WindowsViewModel ViewModel
     {
@@ -62,7 +61,7 @@ public sealed partial class WindowsPage : Page
 
     private void GetTaskStatus()
     {
-        if (!task.IsTaskScheduled())
+        if (!WindowsHandler.task.IsTaskScheduled())
         {
             RenewalStatus.Text = "Not Installed";
             CrossRe.Glyph = "\uF13D";
@@ -127,7 +126,7 @@ public sealed partial class WindowsPage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            if (!task.IsTaskScheduled())
+            if (!WindowsHandler.task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
                 {
@@ -149,7 +148,7 @@ public sealed partial class WindowsPage : Page
                         XamlRoot = this.XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
-                        Content = task.CreateScheduledTask(),
+                        Content = WindowsHandler.task.CreateScheduledTask(),
                         CloseButtonText = "OK",
                     };
                     await resultDialog.ShowAsync();

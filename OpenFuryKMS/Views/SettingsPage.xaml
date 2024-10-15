@@ -30,10 +30,10 @@
             <controls:SettingsExpander Header="Restore Product Activation Settings" HeaderIcon="{ui:FontIcon Glyph=&#xE777;}">
                 <controls:SettingsExpander.Items>
                     <controls:SettingsCard Header="Windows Settings">
-                        <Button>Restore</Button>
+                        <Button x:Name="WindowsRestore" Click="WindowsRestore_Click">Restore</Button>
                     </controls:SettingsCard>
                     <controls:SettingsCard Header="Office Settings">
-                        <Button>Restore</Button>
+                        <Button x:Name="OfficeRestore" Click="OfficeRestore_Click">Restore</Button>
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
@@ -103,15 +103,15 @@
                     </RadioButton>
                 </StackPanel>
             </StackPanel>
-        <Grid>
+        <Grid Margin="0,10"> 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <HyperlinkButton Grid.Column="0" Content="GitHub Repostory" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
-            <HyperlinkButton Grid.Column="1" Content="MS Guides" NavigateUri="https://msguides.com"/>
-            <HyperlinkButton Grid.Column="2" Content="Donate" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
+            <HyperlinkButton HorizontalAlignment="Left" Grid.Column="0" Content="GitHub Repostory" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
+            <HyperlinkButton HorizontalAlignment="Center" Grid.Column="1" Content="MS Guides" NavigateUri="https://msguides.com"/>
+            <HyperlinkButton HorizontalAlignment="Right" Grid.Column="2" Content="Donate" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
         </Grid>
             
         </StackPanel>

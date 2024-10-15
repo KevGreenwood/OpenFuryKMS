@@ -9,9 +9,8 @@ namespace OpenFuryKMS.Views;
 public sealed partial class OfficePage : Page
 {
     private int defaultVersion;
-    private string dirtyOutput;
-    private string pwshOutput;
-    public CreateTask task = new("OfficeRenewer");
+    private string dirtyOutput = string.Empty;
+    private string pwshOutput = string.Empty;
 
 
     public OfficeViewModel ViewModel
@@ -39,7 +38,7 @@ public sealed partial class OfficePage : Page
 
     private void GetTaskStatus()
     {
-        if (!task.IsTaskScheduled())
+        if (!OfficeHandler.task.IsTaskScheduled())
         {
             RenewalStatus.Text = "Not Installed";
             CrossRe.Glyph = "\uF13D";
@@ -114,7 +113,7 @@ public sealed partial class OfficePage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            if (!task.IsTaskScheduled())
+            if (!OfficeHandler.task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
                 {
@@ -136,7 +135,7 @@ public sealed partial class OfficePage : Page
                         XamlRoot = this.XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
-                        Content = task.CreateScheduledTask(),
+                        Content = OfficeHandler.task.CreateScheduledTask(),
                         CloseButtonText = "OK",
                     };
                     await resultDialog.ShowAsync();

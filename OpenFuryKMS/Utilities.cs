@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using System;
+using System.Diagnostics;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -64,17 +65,20 @@ namespace OpenFuryKMS
     public static class WindowsHandler
     {
         private const string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
-        private static string DisplayVersion = Registry.GetValue(WindowsPath, "DisplayVersion", "").ToString();
-        private static string Build = Registry.GetValue(WindowsPath, "CurrentBuildNumber", "").ToString();
-        private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
-        private static string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
-        private static string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
+        private static readonly string DisplayVersion = Registry.GetValue(WindowsPath, "DisplayVersion", "").ToString();
+        private static readonly string Build = Registry.GetValue(WindowsPath, "CurrentBuildNumber", "").ToString();
+        private static readonly string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
+        private static readonly string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
+        //private static readonly string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
 
         public static string ProductName = Registry.GetValue(WindowsPath, "ProductName", "").ToString();
-        public static string Version = $"{DisplayVersion} ({Build}.{UBR})";
-        public static string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
+        public static readonly string Version = $"{DisplayVersion} ({Build}.{UBR})";
+        public static readonly string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
         public static string GetAllInfo = string.Empty;
         public static ImageSource logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"));
+
+        public static RenewTask task = new("WindowsRenewer");
+
 
         public static void Windows11Fix()
         {
@@ -120,19 +124,19 @@ namespace OpenFuryKMS
             var licenseStatusMap = new Dictionary<string, string>
             {
                 {"Licensed", "Licensed"},
-                {"Notification", "Unicensed"},
-                {"Initial grace period", "Trial"}
+                {"Notification", "Unlicensed"},
+                {"Initial grace period", "Trial"},
             };
             var match = Regex.Match(output, @"License Status:\s*(.*)");
             if (!match.Success) return "Unlicensed";
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unicensed";
+            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
         }
     }
 
     public static class OfficeHandler
     {
-        private static string OfficePath_C2R = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration";
+        private const string OfficePath_C2R = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration";
         public static string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
         public static string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString().Contains("x64") ? "64 bits" : "32 bits";
         public static string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
@@ -144,7 +148,10 @@ namespace OpenFuryKMS
         public static string ProductName = "Product not found";
         private const string path = "ms-appx:///Assets/SVG/Office";
 
-        public static Dictionary<string, string> versions = new()
+        public static RenewTask task = new("OfficeRenewer");
+
+
+        private static Dictionary<string, string> versions = new()
         {
             { "365", "Microsoft 365" },
             { "2021", "Microsoft Office 2021" },
@@ -165,7 +172,7 @@ namespace OpenFuryKMS
             }
         }
 
-        public static Dictionary<string, string> logos = new()
+        private static Dictionary<string, string> logos = new()
         {
             { "365", $"{path}/365.svg" },
             { "2021", $"{path}/365.svg" },
@@ -236,7 +243,7 @@ namespace OpenFuryKMS
             var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
             if (!match.Success) return "Unlicensed";
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+            return licenseStatusMap.TryGetValue(status, out string? value) ? value : "Unlicensed";
         }
 
         public static string ClearOutput(string output)
@@ -260,14 +267,16 @@ namespace OpenFuryKMS
         }
     }
 
-    public class CreateTask
+    public class RenewTask
     {
-        public string script = string.Empty;
+        public string script;
         public string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenFuryKMS");
         public string scriptFilePath;
-        public string taskFolderName = "\\OpenFuryKMS";
+        public const string taskFolderName = "\\OpenFuryKMS";
+        public TaskService ts = new();
+        public TaskFolder? tf;
 
-        public CreateTask(string scriptName)
+        public RenewTask(string scriptName)
         {
             script = scriptName;
             scriptFilePath = Path.Combine(appDataPath, $"{script}.ps1");
@@ -283,19 +292,18 @@ namespace OpenFuryKMS
                 var resourceName = $"OpenFuryKMS.Scripts.{script}.ps1";
                 if (assembly.GetManifestResourceNames().Contains(resourceName))
                 {
-                    using Stream stream = assembly.GetManifestResourceStream(resourceName);
+                    using Stream? stream = assembly.GetManifestResourceStream(resourceName);
                     using FileStream fileStream = new(scriptFilePath, FileMode.Create, FileAccess.Write);
-                    stream.CopyTo(fileStream);
+                    stream?.CopyTo(fileStream);
                 }
             }
         }
 
         public bool IsTaskScheduled()
         {
-            using TaskService taskService = new();
             try
             {
-                TaskFolder tf = taskService.GetFolder(taskFolderName);
+                GetTaskFolder();
                 var task = tf?.GetTasks().FirstOrDefault(t => t.Name == script);
                 return task != null;
             }
@@ -310,14 +318,12 @@ namespace OpenFuryKMS
             SaveScript();
             try
             {
-                using TaskService taskService = new();
-                TaskFolder tf = taskService.GetFolder(taskFolderName);
-
-                tf ??= taskService.RootFolder.CreateFolder(taskFolderName);
+                GetTaskFolder();
+                tf ??= ts.RootFolder.CreateFolder(taskFolderName);
 
                 if (tf.GetTasks().FirstOrDefault(t => t.Name == script) == null)
                 {
-                    TaskDefinition td = taskService.NewTask();
+                    TaskDefinition td = ts.NewTask();
                     td.RegistrationInfo.Description = $"Ejecuta el script {script}.ps1 cada 181 días";
                     td.Triggers.Add(new DailyTrigger { DaysInterval = 181 });
                     td.Actions.Add(new ExecAction("powershell.exe", $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"", null));
@@ -329,6 +335,43 @@ namespace OpenFuryKMS
             {
                 return $"Error al crear la tarea: {ex.Message}";
             }
+        }
+
+        public void DeleteTask()
+        {
+            if (File.Exists(scriptFilePath))
+            {
+                File.Delete(scriptFilePath);
+            }
+
+            GetTaskFolder();
+            if (tf != null)
+            {
+                Microsoft.Win32.TaskScheduler.Task task = tf.GetTasks().FirstOrDefault(t => t.Name == script);
+
+                if (task != null)
+                {
+                    tf.DeleteTask(script);
+                }
+            }
+        }
+
+        public void CleanAll()
+        {
+            DeleteTask();
+
+            if (Directory.GetFiles(appDataPath) == null)
+            {
+                Directory.Delete(appDataPath);
+            }
+
+            GetTaskFolder();
+            tf?.DeleteFolder(taskFolderName);
+        }
+
+        private void GetTaskFolder()
+        {
+            tf = ts.GetFolder(taskFolderName);
         }
     }
 }
