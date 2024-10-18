@@ -111,12 +111,16 @@ namespace OpenFuryKMS
         public static readonly List<(string License, string Description)> Education_Licenses =
         [
             ("NW6C2-QMPVW-D7KKK-3GKT6-VCFB2", ""),
-            ("2WH4N-8QGBV-H22JP-CT43Q-MDWWJ", " (N)")
+            ("2WH4N-8QGBV-H22JP-CT43Q-MDWWJ", " (N)"),
+            ("6TP4R-GNPTD-KYYHQ-7B7DP-J447Y", " (Pro)"),
+            ("YVWGF-BXNMC-HTQYQ-CPQ99-66QFC", " (Pro N)"),
         ];
         public static readonly List<(string License, string Description)> Enterprise_Licenses =
         [
             ("NPPR9-FWDCX-D2C8J-H872K-2YT43", ""),
-            ("DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", " (N)")
+            ("DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", " (N)"),
+            ("YYVX9-NTFWV-6MDM3-9PT4T-4M68B", " (G)"),
+            ("44RPN-FTY23-9VTTB-MP9BX-T84FV", " (G N)"),
         ];
 
         public static string ExtractLicenseStatus(string output)
