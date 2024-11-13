@@ -50,12 +50,12 @@
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Windows" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.WindowsViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A9;"/>
+                        <ImageIcon Source="ms-appx:/Assets/SVG/microsoft.svg"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Office" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.OfficeViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74C;"/>
+                        <ImageIcon Source="ms-appx:/Assets/SVG/microsoft-office.svg"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Adobe" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.HomeViewModel">
