@@ -173,4 +173,7 @@
   &lt;/actions&gt;
 &lt;/toast&gt;</value>
   </data>
+  <data name="Shell_Adobe.Content" xml:space="preserve">
+    <value>Adobe</value>
+  </data>
 </root>

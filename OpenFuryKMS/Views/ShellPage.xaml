@@ -58,7 +58,7 @@
                         <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe101;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_Adobe" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.HomeViewModel">
+                <NavigationViewItem x:Uid="Shell_Adobe" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.AdobeViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe102;"/>
                     </NavigationViewItem.Icon>

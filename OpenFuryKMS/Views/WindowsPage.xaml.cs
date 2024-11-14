@@ -26,11 +26,13 @@ public sealed partial class WindowsPage : Page
         LoadLanguage();
         GetLicenseStatus();
         GetTaskStatus();
-        Logo.Source = WindowsHandler.logo;
+
+        Logo.Source = WindowsHandler.Logo;
 
         ProductCombo.SelectedIndex = WindowsHandler.SetEdition();
         defaultOS = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
+        ShellBox.Text = WindowsHandler.ShellOutput;
     }
 
     private void LoadLanguage()
@@ -41,8 +43,7 @@ public sealed partial class WindowsPage : Page
 
     private void GetLicenseStatus()
     {
-        pwshOutput = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli");
-        string licenseStatus = WindowsHandler.ExtractLicenseStatus(pwshOutput);
+        string licenseStatus = WindowsHandler.LicenseStatus;
         LicenseStatus.Text = licenseStatus;
         RemoveButton.IsEnabled = licenseStatus != "Unlicensed";
         if (licenseStatus == "Licensed")
@@ -122,6 +123,7 @@ public sealed partial class WindowsPage : Page
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs {command}");
         }
 
+        WindowsHandler.ExtractLicenseStatus();
         GetLicenseStatus();
 
         if (MethodCombo.SelectedIndex <= 1)
@@ -159,9 +161,10 @@ public sealed partial class WindowsPage : Page
         GetTaskStatus();
     }
 
-    private void RemoveButton_Click(object sender, RoutedEventArgs e)
+    private async void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
         ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /upk; cscript //nologo slmgr.vbs /cpky; cscript //nologo slmgr.vbs /ckms");
+        WindowsHandler.ExtractLicenseStatus();
         GetLicenseStatus();
     }
 

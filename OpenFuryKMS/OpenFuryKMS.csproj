@@ -26,7 +26,6 @@
     <None Remove="Assets\SVG\Office\365.svg" />
     <None Remove="Assets\SVG\Windows\10.svg" />
     <None Remove="Assets\SVG\Windows\11.svg" />
-    <None Remove="BlankWindow1.xaml" />
     <None Remove="Scripts\OfficeRenewer.ps1" />
     <None Remove="Scripts\WindowsRenewer.ps1" />
     <None Remove="Views\BlankPage1.xaml" />
@@ -68,9 +67,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Page Update="Views\BlankPage1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="BlankWindow1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

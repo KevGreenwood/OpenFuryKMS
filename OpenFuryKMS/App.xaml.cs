@@ -74,6 +74,8 @@ public partial class App : Application
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
+            services.AddTransient<AdobeViewModel>();
+            services.AddTransient<AdobePage>();
             services.AddTransient<OfficeViewModel>();
             services.AddTransient<OfficePage>();
             services.AddTransient<WindowsViewModel>();
@@ -107,7 +109,7 @@ public partial class App : Application
 
         await App.GetService<IActivationService>().ActivateAsync(args);
 
-        WindowsHandler.Windows11Fix();
+        await WindowsHandler.InitializeAsync();
         OfficeHandler.GetProductName();
     }
 }

@@ -2,8 +2,6 @@
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
-using System;
-using System.Diagnostics;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -65,36 +63,20 @@ namespace OpenFuryKMS
     public static class WindowsHandler
     {
         private const string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
-        private static readonly string DisplayVersion = Registry.GetValue(WindowsPath, "DisplayVersion", "").ToString();
-        private static readonly string Build = Registry.GetValue(WindowsPath, "CurrentBuildNumber", "").ToString();
-        private static readonly string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
-        private static readonly string UBR = Registry.GetValue(WindowsPath, "UBR", "").ToString();
-        //private static readonly string EditionID = Registry.GetValue(WindowsPath, "EditionID", "").ToString();
 
-        public static string ProductName = Registry.GetValue(WindowsPath, "ProductName", "").ToString();
-        public static readonly string Version = $"{DisplayVersion} ({Build}.{UBR})";
-        public static readonly string GetMinimalInfo = $"{ProductName} {DisplayVersion} {Platform}";
-        public static string GetAllInfo = string.Empty;
-        public static ImageSource logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"));
+        public static string DisplayVersion { get; private set; }
+        public static string Build { get; private set; }
+        public static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
+        public static string UBR { get; private set; }
+        public static string ProductName { get; private set; }
+        public static string Version => $"{DisplayVersion} ({Build}.{UBR})";
+        public static string GetMinimalInfo => $"{ProductName} {DisplayVersion} {Platform}";
+        public static string GetAllInfo { get; private set; }
+        public static string LicenseStatus { get; private set; }
+        public static string ShellOutput { get; private set; }
+        public static ImageSource Logo { get; private set; }
 
         public static RenewTask task = new("WindowsRenewer");
-
-
-        public static void Windows11Fix()
-        {
-            if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
-            {
-                ProductName = ProductName.Replace("Windows 10", "Windows 11");
-                logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/11.svg"));
-            }
-            GetAllInfo = $"Microsoft {ProductName} {Platform}";
-        }
-
-        public static int SetEdition()
-        {
-            string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
-            return Array.FindIndex(products, p => WindowsHandler.ProductName.Contains(p));
-        }
 
         public static readonly List<(string License, string Description)> Home_Licenses =
         [
@@ -123,18 +105,54 @@ namespace OpenFuryKMS
             ("44RPN-FTY23-9VTTB-MP9BX-T84FV", " (G N)"),
         ];
 
-        public static string ExtractLicenseStatus(string output)
+        public static async System.Threading.Tasks.Task InitializeAsync()
+        {
+            Build = await GetRegistryValueAsync(WindowsPath, "CurrentBuildNumber");
+            ProductName = await GetRegistryValueAsync(WindowsPath, "ProductName");
+
+            if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
+            {
+                ProductName = ProductName.Replace("Windows 10", "Windows 11");
+                Logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/11.svg"));
+            }
+            else
+            {
+                Logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"));
+            }
+            GetAllInfo = $"Microsoft {ProductName} {Platform}";
+
+            DisplayVersion = await GetRegistryValueAsync(WindowsPath, "DisplayVersion");
+            UBR = await GetRegistryValueAsync(WindowsPath, "UBR");
+
+            Directory.SetCurrentDirectory(@"C:\Windows\System32");
+            ExtractLicenseStatus();
+        }
+
+        private static async Task<string> GetRegistryValueAsync(string path, string name)
+        {
+            return await System.Threading.Tasks.Task.Run(() => Registry.GetValue(path, name, "").ToString());
+        }
+
+        public static void ExtractLicenseStatus()
         {
             var licenseStatusMap = new Dictionary<string, string>
             {
-                {"Licensed", "Licensed"},
-                {"Notification", "Unlicensed"},
-                {"Initial grace period", "Trial"},
+                { "Licensed", "Licensed" },
+                { "Notification", "Unlicensed" },
+                { "Initial grace period", "Trial" },
             };
-            var match = Regex.Match(output, @"License Status:\s*(.*)");
-            if (!match.Success) return "Unlicensed";
+
+            ShellOutput = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli");
+            var match = Regex.Match(ShellOutput, @"License Status:\s*(.*)");
+            if (!match.Success) LicenseStatus = "Unlicensed";
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+            LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+        }
+
+        public static int SetEdition()
+        {
+            string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
+            return Array.FindIndex(products, p => ProductName.Contains(p));
         }
     }
 

@@ -17,6 +17,7 @@ public class PageService : IPageService
         Configure<HomeViewModel, HomePage>();
         Configure<WindowsViewModel, WindowsPage>();
         Configure<OfficeViewModel, OfficePage>();
+        Configure<AdobeViewModel, AdobePage>();
         Configure<SettingsViewModel, SettingsPage>();
     }
 
