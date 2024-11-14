@@ -20,7 +20,7 @@
 	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Assets\icomoon.ttf" />
+    <None Remove="Assets\greenwood.ttf" />
     <None Remove="Assets\SVG\Office\2016.svg" />
     <None Remove="Assets\SVG\Office\2021.svg" />
     <None Remove="Assets\SVG\Office\365.svg" />
@@ -59,7 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Assets\icomoon.ttf">
+    <Content Update="Assets\greenwood.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="/Styles/Thickness.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <FontFamily x:Key="CustomIconFont">/Assets/icomoon.ttf#icomoon</FontFamily>
+            <FontFamily x:Key="CustomIconFont">/Assets/greenwood.ttf#greenwood</FontFamily>
 
         </ResourceDictionary>
     </Application.Resources>

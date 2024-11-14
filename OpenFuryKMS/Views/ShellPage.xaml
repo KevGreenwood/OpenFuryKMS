@@ -50,17 +50,17 @@
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Windows" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.WindowsViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe901;"/>
+                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe100;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Office" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.OfficeViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe900;"/>
+                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe101;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Adobe" helpers:NavigationHelper.NavigateTo="OpenFuryKMS.ViewModels.HomeViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe902;"/>
+                        <FontIcon FontFamily="{StaticResource CustomIconFont}" Glyph="&#xe102;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
