@@ -21,6 +21,8 @@ public sealed partial class OfficePage : Page
         ViewModel = App.GetService<OfficeViewModel>();
         InitializeComponent();
 
+        OfficeHandler.DirChecker();
+
         GetLicenseStatus();
         GetTaskStatus();
 
@@ -28,7 +30,7 @@ public sealed partial class OfficePage : Page
 
         ProductName.Text = $"{OfficeHandler.ProductName} {OfficeHandler.Platform}";
         Version.Text = OfficeHandler.Version;
-        ProductCombo.SelectedIndex = OfficeHandler.SetVersion();
+        ProductCombo.SelectedIndex = OfficeHandler.ProductIndex;
         defaultVersion = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         ShellBox.Text = OfficeHandler.ShellOutput;
@@ -36,7 +38,7 @@ public sealed partial class OfficePage : Page
 
     private void GetTaskStatus()
     {
-        if (!OfficeHandler.task.IsTaskScheduled())
+        if (!OfficeHandler.Task.IsTaskScheduled())
         {
             RenewalStatus.Text = "Not Installed";
             CrossRe.Glyph = "\uF13D";
@@ -110,7 +112,7 @@ public sealed partial class OfficePage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            if (!OfficeHandler.task.IsTaskScheduled())
+            if (!OfficeHandler.Task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
                 {
@@ -132,7 +134,7 @@ public sealed partial class OfficePage : Page
                         XamlRoot = this.XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
-                        Content = OfficeHandler.task.CreateScheduledTask(),
+                        Content = OfficeHandler.Task.CreateScheduledTask(),
                         CloseButtonText = "OK",
                     };
                     await resultDialog.ShowAsync();
@@ -149,9 +151,9 @@ public sealed partial class OfficePage : Page
 
     private void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if (OfficeHandler.productLicenses.ContainsKey(OfficeHandler.SetVersion()))
+        if (OfficeHandler.productLicenses.ContainsKey(OfficeHandler.ProductIndex))
         {
-            foreach (var key in OfficeHandler.productLicenses[OfficeHandler.SetVersion()].keys)
+            foreach (var key in OfficeHandler.productLicenses[OfficeHandler.ProductIndex].keys)
             {
                 dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /unpkey:{key}");
                 ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
@@ -181,11 +183,6 @@ public sealed partial class OfficePage : Page
             : Microsoft.UI.Xaml.Visibility.Collapsed;
 
         ActivateButton.IsEnabled = !isKmsSelected;
-    }
-
-    private void ProductCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-
     }
 
     private void UpdateActivateButtonState()

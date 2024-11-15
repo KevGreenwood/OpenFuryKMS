@@ -28,7 +28,7 @@ public sealed partial class WindowsPage : Page
 
         Logo.Source = WindowsHandler.Logo;
 
-        ProductCombo.SelectedIndex = WindowsHandler.SetEdition();
+        ProductCombo.SelectedIndex = WindowsHandler.ProductIndex;
         defaultOS = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         ShellBox.Text = WindowsHandler.ShellOutput;
@@ -61,7 +61,7 @@ public sealed partial class WindowsPage : Page
 
     private void GetTaskStatus()
     {
-        if (!WindowsHandler.task.IsTaskScheduled())
+        if (!WindowsHandler.Task.IsTaskScheduled())
         {
             RenewalStatus.Text = "Not Installed";
             CrossRe.Glyph = "\uF13D";
@@ -127,7 +127,7 @@ public sealed partial class WindowsPage : Page
 
         if (MethodCombo.SelectedIndex <= 1)
         {
-            if (!WindowsHandler.task.IsTaskScheduled())
+            if (!WindowsHandler.Task.IsTaskScheduled())
             {
                 ContentDialog renewTask = new()
                 {
@@ -149,7 +149,7 @@ public sealed partial class WindowsPage : Page
                         XamlRoot = this.XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
-                        Content = WindowsHandler.task.CreateScheduledTask(),
+                        Content = WindowsHandler.Task.CreateScheduledTask(),
                         CloseButtonText = "OK",
                     };
                     await resultDialog.ShowAsync();
@@ -160,7 +160,7 @@ public sealed partial class WindowsPage : Page
         GetTaskStatus();
     }
 
-    private async void RemoveButton_Click(object sender, RoutedEventArgs e)
+    private void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
         ShellBox.Text = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /upk; cscript //nologo slmgr.vbs /cpky; cscript //nologo slmgr.vbs /ckms");
         WindowsHandler.ExtractLicenseStatus();

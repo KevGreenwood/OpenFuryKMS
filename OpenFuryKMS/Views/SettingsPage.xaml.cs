@@ -18,19 +18,19 @@ public sealed partial class SettingsPage : Page
         InitializeComponent();
 
 
-        WindowsToggle.IsOn = WindowsHandler.task.IsTaskScheduled();
-        OfficeToggle.IsOn = OfficeHandler.task.IsTaskScheduled();
+        WindowsToggle.IsOn = WindowsHandler.Task.IsTaskScheduled();
+        OfficeToggle.IsOn = OfficeHandler.Task.IsTaskScheduled();
     }
 
     private void WindowsToggle_Toggled(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         if (WindowsToggle.IsOn)
         {
-            WindowsHandler.task.CreateScheduledTask();
+            WindowsHandler.Task.CreateScheduledTask();
         }
         else
         {
-            WindowsHandler.task.DeleteTask();
+            WindowsHandler.Task.DeleteTask();
         }
     }
 
@@ -38,21 +38,21 @@ public sealed partial class SettingsPage : Page
     {
         if (OfficeToggle.IsOn)
         {
-            OfficeHandler.task.CreateScheduledTask();
+            OfficeHandler.Task.CreateScheduledTask();
         }
         else
         {
-            OfficeHandler.task.DeleteTask();
+            OfficeHandler.Task.DeleteTask();
         }
     }
 
     private void WindowsRestore_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        WindowsHandler.task.CleanAll();
+        WindowsHandler.Task.CleanAll();
     }
 
     private void OfficeRestore_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        OfficeHandler.task.CleanAll();
+        OfficeHandler.Task.CleanAll();
     }
 }

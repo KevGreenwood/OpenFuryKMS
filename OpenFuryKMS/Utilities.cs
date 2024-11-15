@@ -3,8 +3,11 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using System;
+using System.Drawing;
 using System.Management.Automation;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
 
 
@@ -16,8 +19,25 @@ namespace OpenFuryKMS
         {
             PowerShell ps = PowerShell.Create();
             ps.AddScript(cmd);
-            var result = ps.Invoke();
-            return string.Join(Environment.NewLine, result.Select(o => o.ToString()));
+            try
+            {
+                var results = ps.Invoke();
+                if (ps.HadErrors)
+                {
+                    var errors = ps.Streams.Error.Select(e => e.ToString());
+                    return $"Error executing command: {cmd}{Environment.NewLine}{string.Join(Environment.NewLine, errors)}";
+                }
+
+                return string.Join(Environment.NewLine, results.Select(o => o.ToString()));
+            }
+            catch (Exception ex)
+            {
+                return $"Exception occurred: {ex.Message}";
+            }
+            finally
+            {
+                ps.Dispose();
+            }
         }
     }
 
@@ -67,16 +87,17 @@ namespace OpenFuryKMS
 
         private static string DisplayVersion { get; set; }
         private static string Build { get; set; }
-        private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         private static string UBR { get; set; }
         private static string ProductName { get; set; }
+        private static string Platform => Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         public static string Version => $"{DisplayVersion} ({Build}.{UBR})";
         public static string GetMinimalInfo => $"{ProductName} {DisplayVersion} {Platform}";
         public static string GetAllInfo { get; private set; }
         public static string LicenseStatus { get; private set; }
         public static string ShellOutput { get; private set; }
+        public static int ProductIndex { get; private set; }
         public static ImageSource Logo { get; private set; }
-        public static RenewTask task = new("WindowsRenewer");
+        public static RenewTask Task = new("WindowsRenewer");
 
         public static readonly List<(string License, string Description)> Home_Licenses =
         [
@@ -109,6 +130,8 @@ namespace OpenFuryKMS
         {
             Build = await GetRegistryValueAsync(WindowsPath, "CurrentBuildNumber");
             ProductName = await GetRegistryValueAsync(WindowsPath, "ProductName");
+            DisplayVersion = await GetRegistryValueAsync(WindowsPath, "DisplayVersion");
+            UBR = await GetRegistryValueAsync(WindowsPath, "UBR");
 
             if (int.TryParse(Build, out var buildNumber) && buildNumber >= 22000)
             {
@@ -119,10 +142,11 @@ namespace OpenFuryKMS
             {
                 Logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"));
             }
-            GetAllInfo = $"Microsoft {ProductName} {Platform}";
 
-            DisplayVersion = await GetRegistryValueAsync(WindowsPath, "DisplayVersion");
-            UBR = await GetRegistryValueAsync(WindowsPath, "UBR");
+            string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
+            ProductIndex = Array.FindIndex(products, p => ProductName.Contains(p));
+
+            GetAllInfo = $"Microsoft {ProductName} {Platform}";
 
             Directory.SetCurrentDirectory(@"C:\Windows\System32");
             ExtractLicenseStatus();
@@ -148,12 +172,6 @@ namespace OpenFuryKMS
             var status = match.Groups[1].Value.Trim();
             LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
         }
-
-        public static int SetEdition()
-        {
-            string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
-            return Array.FindIndex(products, p => ProductName.Contains(p));
-        }
     }
 
     public static class OfficeHandler
@@ -166,9 +184,10 @@ namespace OpenFuryKMS
         public static string ShellOutput { get; private set; }
         public static string LicenseStatus { get; private set; }
         public static string ProductName = "Product not found";
+        public static int ProductIndex { get; private set; }
         public static ImageSource Logo { get; private set; }
         private const string PathAssets = "ms-appx:///Assets/SVG/Office";
-        public static RenewTask task = new("OfficeRenewer");
+        public static RenewTask Task = new("OfficeRenewer");
 
         private static Dictionary<string, string> versions = new()
         {
@@ -217,6 +236,8 @@ namespace OpenFuryKMS
                 }
 
                 ExtractLicenseStatus();
+
+                ProductIndex = versions.Values.ToList().FindIndex(p => ProductName.Contains(p));
             }
         }
 
@@ -245,8 +266,6 @@ namespace OpenFuryKMS
             return false;
         }
 
-        public static int SetVersion() => versions.Values.ToList().FindIndex(p => ProductName.Contains(p));
-
 
         /*public string GetLicenseType()
         {
@@ -272,22 +291,57 @@ namespace OpenFuryKMS
 
         public static string ClearOutput(string output)
         {
-            var lines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-            var cleanedLines = lines.Where(line => !line.Contains("---Processing--------------------------") && !line.Contains("---Exiting-----------------------------") && !line.Contains("---------------------------------------"));
+            var exclusionPatterns = new[]
+            {
+                "---Processing--------------------------",
+                "---Exiting-----------------------------",
+                "---------------------------------------"
+            };
+
+            var cleanedLines = output
+                .Split([Environment.NewLine], StringSplitOptions.None)
+                .Where(line => !exclusionPatterns.Any(pattern => line.Contains(pattern)))
+                .ToArray();
+
             return string.Join(Environment.NewLine, cleanedLines);
         }
 
         public static string InstallLicense(string product, IEnumerable<string> lastKeys, string licenseKey)
         {
-            var output = $"cmd /c \"for /f %x in ('dir /b ..\\root\\Licenses16\\{product}*.xrm-ms') do cscript //nologo ospp.vbs /inslic:..\\root\\Licenses16\\%x\"; cscript //nologo ospp.vbs /setprt:1688; ";
+            var outputBuilder = new StringBuilder();
+
+            outputBuilder.AppendLine(ConvertEdition(product));
+
+            outputBuilder.AppendLine(PowershellHandler.RunCommand("cscript //nologo ospp.vbs /setprt:1688"));
 
             foreach (var lastKey in lastKeys)
             {
-                output += $"cscript //nologo ospp.vbs /unpkey:{lastKey}; ";
+                outputBuilder.AppendLine(PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /unpkey:{lastKey}"));
             }
 
-            output += $"cscript //nologo ospp.vbs /inpkey:{licenseKey}";
-            return output;
+            outputBuilder.AppendLine(PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{licenseKey}"));
+
+            return outputBuilder.ToString();
+        }
+
+        private static string ConvertEdition(string product)
+        {
+            if (PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus").Contains("RETAIL"))
+            {
+                var licenseFiles = Directory.GetFiles(@"..\root\Licenses16", $"{product}*.xrm-ms");
+                var outputBuilder = new StringBuilder();
+
+                foreach (var licenseFile in licenseFiles)
+                {
+                    outputBuilder.AppendLine(PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inslic:\"{licenseFile}\""));
+                }
+
+                return outputBuilder.ToString();
+            }
+            else
+            {
+                return "No conversion needed. Current license is not RETAIL.";
+            }
         }
     }
 
@@ -397,5 +451,25 @@ namespace OpenFuryKMS
         {
             tf = ts.GetFolder(taskFolderName);
         }
+    }
+
+
+    public static class AdobeHandler
+    {
+        public static string Name;
+
+
+        public static BitmapImage ConvertIconToBitmapImage(System.Drawing.Icon icon)
+        {
+            using var stream = new MemoryStream();
+            icon.ToBitmap().Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+            stream.Seek(0, SeekOrigin.Begin);
+
+            var bitmapImage = new BitmapImage();
+            bitmapImage.SetSource(stream.AsRandomAccessStream());
+            return bitmapImage;
+        }
+
+
     }
 }
