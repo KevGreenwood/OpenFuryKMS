@@ -10,8 +10,6 @@ public sealed partial class OfficePage : Page
 {
     private int defaultVersion;
     private string dirtyOutput = string.Empty;
-    private string pwshOutput = string.Empty;
-
 
     public OfficeViewModel ViewModel
     {
@@ -23,17 +21,17 @@ public sealed partial class OfficePage : Page
         ViewModel = App.GetService<OfficeViewModel>();
         InitializeComponent();
 
-        OfficeHandler.DirChecker();
+        GetLicenseStatus();
+        GetTaskStatus();
+
+        Logo.Source = OfficeHandler.Logo;
 
         ProductName.Text = $"{OfficeHandler.ProductName} {OfficeHandler.Platform}";
         Version.Text = OfficeHandler.Version;
-
         ProductCombo.SelectedIndex = OfficeHandler.SetVersion();
         defaultVersion = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
-        GetLicenseStatus();
-        GetTaskStatus();
-        Logo.Source = OfficeHandler.SetLogo();
+        ShellBox.Text = OfficeHandler.ShellOutput;
     }
 
     private void GetTaskStatus()
@@ -56,11 +54,9 @@ public sealed partial class OfficePage : Page
 
     private void GetLicenseStatus()
     {
-        pwshOutput = PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus");
-        string licenseStatus = OfficeHandler.ExtractLicenseStatus(pwshOutput);
-        LicenseStatus.Text = licenseStatus;
-        RemoveButton.IsEnabled = licenseStatus != "Unlicensed";
-        if (licenseStatus == "Licensed")
+        LicenseStatus.Text = OfficeHandler.LicenseStatus;
+        RemoveButton.IsEnabled = OfficeHandler.LicenseStatus != "Unlicensed";
+        if (OfficeHandler.LicenseStatus == "Licensed")
         {
             CrossLic.Glyph = "\uF13E";
             CrossLic.Foreground = new SolidColorBrush(Colors.Green);
@@ -109,6 +105,7 @@ public sealed partial class OfficePage : Page
         }
 
         ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+        OfficeHandler.ExtractLicenseStatus();
         GetLicenseStatus();
 
         if (MethodCombo.SelectedIndex <= 1)
@@ -141,7 +138,6 @@ public sealed partial class OfficePage : Page
                     await resultDialog.ShowAsync();
                 }
             }
-
             GetTaskStatus();
         }
     }
@@ -161,6 +157,7 @@ public sealed partial class OfficePage : Page
                 ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
             }
         }
+        OfficeHandler.ExtractLicenseStatus();
         GetLicenseStatus();
     }
 

@@ -8,7 +8,6 @@ namespace OpenFuryKMS.Views;
 
 public sealed partial class WindowsPage : Page
 {
-    private string pwshOutput = string.Empty;
     private int defaultOS;
 
     public WindowsViewModel ViewModel

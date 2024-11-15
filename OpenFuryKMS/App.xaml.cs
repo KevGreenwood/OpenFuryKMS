@@ -110,6 +110,6 @@ public partial class App : Application
         await App.GetService<IActivationService>().ActivateAsync(args);
 
         await WindowsHandler.InitializeAsync();
-        OfficeHandler.GetProductName();
+        await OfficeHandler.InitializeAsync();
     }
 }

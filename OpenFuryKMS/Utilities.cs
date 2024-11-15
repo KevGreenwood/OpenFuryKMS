@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
+using System;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -64,18 +65,17 @@ namespace OpenFuryKMS
     {
         private const string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
 
-        public static string DisplayVersion { get; private set; }
-        public static string Build { get; private set; }
-        public static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
-        public static string UBR { get; private set; }
-        public static string ProductName { get; private set; }
+        private static string DisplayVersion { get; set; }
+        private static string Build { get; set; }
+        private static string Platform = Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
+        private static string UBR { get; set; }
+        private static string ProductName { get; set; }
         public static string Version => $"{DisplayVersion} ({Build}.{UBR})";
         public static string GetMinimalInfo => $"{ProductName} {DisplayVersion} {Platform}";
         public static string GetAllInfo { get; private set; }
         public static string LicenseStatus { get; private set; }
         public static string ShellOutput { get; private set; }
         public static ImageSource Logo { get; private set; }
-
         public static RenewTask task = new("WindowsRenewer");
 
         public static readonly List<(string License, string Description)> Home_Licenses =
@@ -159,19 +159,16 @@ namespace OpenFuryKMS
     public static class OfficeHandler
     {
         private const string OfficePath_C2R = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\Configuration";
-        public static string Version = Registry.GetValue(OfficePath_C2R, "VersionToReport", "").ToString();
-        public static string Platform = Registry.GetValue(OfficePath_C2R, "Platform", "").ToString().Contains("x64") ? "64 bits" : "32 bits";
-        public static string ReleaseId = Registry.GetValue(OfficePath_C2R, "ProductReleaseIds", "").ToString();
 
-        /* I don't use: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\**OFFICE VERSION**
-           because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
-           that each Office version has its own language */
-
+        public static string Version { get; private set; }
+        public static string Platform { get; private set; }
+        public static string ReleaseId { get; private set; }
+        public static string ShellOutput { get; private set; }
+        public static string LicenseStatus { get; private set; }
         public static string ProductName = "Product not found";
-        private const string path = "ms-appx:///Assets/SVG/Office";
-
+        public static ImageSource Logo { get; private set; }
+        private const string PathAssets = "ms-appx:///Assets/SVG/Office";
         public static RenewTask task = new("OfficeRenewer");
-
 
         private static Dictionary<string, string> versions = new()
         {
@@ -181,39 +178,53 @@ namespace OpenFuryKMS
             { "2016", "Microsoft Office 2016" },
             { "2013", "Microsoft Office 2013" }
         };
-
-        public static void GetProductName()
-        {
-            foreach (var version in versions)
-            {
-                if (ReleaseId.Contains(version.Key))
-                {
-                    ProductName = version.Value;
-                    return;
-                }
-            }
-        }
-
         private static Dictionary<string, string> logos = new()
         {
-            { "365", $"{path}/365.svg" },
-            { "2021", $"{path}/365.svg" },
-            { "2019", $"{path}/2021.svg" },
-            { "2016", $"{path}/2016.svg" },
-            { "2013", $"{path}/2016.svg" }
+            { "365", $"{PathAssets}/365.svg" },
+            { "2021", $"{PathAssets}/365.svg" },
+            { "2019", $"{PathAssets}/2021.svg" },
+            { "2016", $"{PathAssets}/2016.svg" },
+            { "2013", $"{PathAssets}/2016.svg" }
+        };
+        public static Dictionary<int, (string productKey, List<string> keys, string license)> productLicenses = new()
+        {
+            { 0, ("proplusvl_kms", new List<string> { "BTDRB", "KHGM9", "CPQVG" }, "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99") },
+            { 1, ("ProPlus2021VL_KMS", new List<string> { "PG343", "6F7TH" }, "FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH") },
+            { 2, ("ProPlus2019VL", new List<string> { "6MWKP" }, "NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP") },
+            { 3, ("proplusvl_kms", new List<string> { "BTDRB", "KHGM9", "CPQVG" }, "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99") },
+            { 4, ("", new List<string>(), "YC7DK-G2NP3-2QQC3-J6H88-GVGXT") }
         };
 
-        public static ImageSource SetLogo()
+        public static async System.Threading.Tasks.Task InitializeAsync()
         {
-            foreach (var logo in logos)
+            if (DirChecker())
             {
-                if (ReleaseId.Contains(logo.Key))
+                Version = await GetRegistryValueAsync(OfficePath_C2R, "VersionToReport");
+                Platform = (await GetRegistryValueAsync(OfficePath_C2R, "Platform")).Contains("x64") ? "64 bits" : "32 bits";
+                ReleaseId = await GetRegistryValueAsync(OfficePath_C2R, "ProductReleaseIds");
+
+                /* I don't use: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\**OFFICE VERSION**
+                   because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
+                   that each Office version has its own language */
+
+                foreach (var version in versions)
                 {
-                    return new SvgImageSource(new Uri(logo.Value));
+                    if (!ReleaseId.Contains(version.Key)) continue;
+                    ProductName = version.Value;
+                    logos.TryGetValue(version.Key, out string logoPath);
+                    Logo = new SvgImageSource(new Uri(logoPath));
+                    break;
                 }
+
+                ExtractLicenseStatus();
             }
-            return new SvgImageSource(new Uri(string.Empty));
         }
+
+        private static async Task<string> GetRegistryValueAsync(string path, string name)
+        {
+            return await System.Threading.Tasks.Task.Run(() => Registry.GetValue(path, name, "").ToString());
+        }
+
 
         public static bool DirChecker()
         {
@@ -225,35 +236,26 @@ namespace OpenFuryKMS
                 @"C:\Program Files (x86)\Microsoft Office\Office15"
             };
 
-            foreach (string officePath in officePaths)
+            var foundPath = officePaths.FirstOrDefault(Directory.Exists);
+            if (foundPath != null)
             {
-                if (!Directory.Exists(officePath)) continue;
-                Directory.SetCurrentDirectory(officePath);
+                Directory.SetCurrentDirectory(foundPath);
                 return true;
             }
             return false;
         }
 
-        public static int SetVersion()
-        {
-            return versions.Values.ToList().FindIndex(p => ProductName.Contains(p));
-        }
+        public static int SetVersion() => versions.Values.ToList().FindIndex(p => ProductName.Contains(p));
+
 
         /*public string GetLicenseType()
         {
             return ReleaseId.EndsWith("Retail") ? "Retail" : ReleaseId.EndsWith("Volume") ? "Volume" : "";
         }*/
 
-        public static Dictionary<int, (string productKey, List<string> keys, string license)> productLicenses = new()
-        {
-            { 0, ("proplusvl_kms", new List<string> { "BTDRB", "KHGM9", "CPQVG" }, "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99") },
-            { 1, ("ProPlus2021VL_KMS", new List<string> { "PG343", "6F7TH" }, "FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH") },
-            { 2, ("ProPlus2019VL", new List<string> { "6MWKP" }, "NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP") },
-            { 3, ("proplusvl_kms", new List<string> { "BTDRB", "KHGM9", "CPQVG" }, "XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99") },
-            { 4, ("", new List<string>(), "YC7DK-G2NP3-2QQC3-J6H88-GVGXT") }
-        };
 
-        public static string ExtractLicenseStatus(string output)
+
+        public static void ExtractLicenseStatus()
         {
             var licenseStatusMap = new Dictionary<string, string>
             {
@@ -261,11 +263,11 @@ namespace OpenFuryKMS
                 {"---NOTIFICATIONS---", "Unlicensed"},
                 {"---OOB_GRACE---", "Trial"}
             };
-
-            var match = Regex.Match(output, @"LICENSE STATUS:\s*(.*)");
-            if (!match.Success) return "Unlicensed";
+            ShellOutput = ClearOutput(PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus"));
+            var match = Regex.Match(ShellOutput, @"LICENSE STATUS:\s*(.*)");
+            if (!match.Success) LicenseStatus = "Unlicensed";
             var status = match.Groups[1].Value.Trim();
-            return licenseStatusMap.TryGetValue(status, out string? value) ? value : "Unlicensed";
+            LicenseStatus = licenseStatusMap.TryGetValue(status, out string? value) ? value : "Unlicensed";
         }
 
         public static string ClearOutput(string output)
