@@ -110,7 +110,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <HyperlinkButton HorizontalAlignment="Left" Grid.Column="0" Content="GitHub Repostory" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
-            <HyperlinkButton HorizontalAlignment="Center" Grid.Column="1" Content="MS Guides" NavigateUri="https://msguides.com"/>
             <HyperlinkButton HorizontalAlignment="Right" Grid.Column="2" Content="Donate" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
         </Grid>
             

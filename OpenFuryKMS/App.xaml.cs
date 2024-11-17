@@ -111,5 +111,6 @@ public partial class App : Application
 
         await WindowsHandler.InitializeAsync();
         await OfficeHandler.InitializeAsync();
+        await AdobeHandler.LoadProducts();
     }
 }

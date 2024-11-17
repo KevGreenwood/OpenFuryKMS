@@ -1,11 +1,13 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using CommunityToolkit.WinUI.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using OpenFuryKMS.ViewModels;
 
 namespace OpenFuryKMS.Views;
 
 public sealed partial class AdobePage : Page
 {
+    public List<AdobeProduct> Products { get; set; }
+
     public AdobeViewModel ViewModel
     {
         get;
@@ -16,20 +18,41 @@ public sealed partial class AdobePage : Page
         ViewModel = App.GetService<AdobeViewModel>();
         InitializeComponent();
 
-        string exePath = @"C:\Program Files\Adobe\Adobe Photoshop 2022\Photoshop.exe";
 
-        ShellIconExtractor iconExtractor = new ShellIconExtractor(exePath, 0);
-        System.Drawing.Icon icon = iconExtractor.GetIcon(64);
+        Products = AdobeHandler.Products;
 
-        if (icon != null)
+        this.DataContext = this;
+    }
+
+    private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (sender is ToggleSwitch toggleSwitch && toggleSwitch.DataContext is AdobeProduct product)
         {
-            // Convierte a BitmapImage
-            var bitmapImage = AdobeHandler.ConvertIconToBitmapImage(icon);
-
-            // Asigna al control Image
-            IconImage.Source = bitmapImage; // IconImage es el nombre de tu control Image en XAML
+            if (toggleSwitch.IsOn)
+            {
+                BlockFirewall(product);
+            }
+            else
+            {
+                UnblockFirewall(product);
+            }
         }
     }
 
+    private void BlockFirewall(AdobeProduct product)
+    {
+        string ruleName = $"{product.Name}";
 
+        PowershellHandler.RunCommand($@"
+        netsh advfirewall firewall add rule name=""{ruleName}"" dir=in action=block program=""{product.ExecutablePath}"";
+        netsh advfirewall firewall add rule name=""{ruleName}"" dir=out action=block program=""{product.ExecutablePath}""");
+
+        product.IsFirewallBlocked = true;
+    }
+
+    private void UnblockFirewall(AdobeProduct product)
+    {
+        PowershellHandler.RunCommand($@"netsh advfirewall firewall delete rule name = ""{product.Name}""");
+        product.IsFirewallBlocked = false;
+    }
 }

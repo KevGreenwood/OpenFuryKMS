@@ -65,7 +65,7 @@
                 </ComboBox>
             </controls:SettingsCard>
 
-            <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}" Visibility="Collapsed">
+            <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE74C;}" Visibility="Collapsed">
                 <ComboBox x:Name="ProductCombo" Width="310" VerticalAlignment="Center" PlaceholderText="Select your Product">
                     <x:String>Microsoft 365</x:String>
                     <x:String>Microsoft Office 2021</x:String>

@@ -6,10 +6,38 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:local="using:OpenFuryKMS"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
-        <Image x:Name="IconImage" Width="64" Height="64" />
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="Opacity" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border>
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
+    <Grid x:Name="ContentArea">
+        <ListView ItemsSource="{Binding Products}" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:AdobeProduct">
+                    <StackPanel Orientation="Vertical">
+                        <controls:SettingsCard Header="{x:Bind Name}" Description="{x:Bind Version}">
+                            <controls:SettingsCard.HeaderIcon>
+                                <ImageIcon Source="{x:Bind Icon}" />
+                            </controls:SettingsCard.HeaderIcon>
+                            <ToggleSwitch IsOn="{x:Bind IsFirewallBlocked, Mode=TwoWay}" Toggled="ToggleSwitch_Toggled"/>
+                        </controls:SettingsCard>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
