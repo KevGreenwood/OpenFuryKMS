@@ -56,7 +56,10 @@
                 <ComboBox></ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard Header="Theme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
-                <ComboBox></ComboBox>
+                <controls:SettingsCard Header="Theme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                    <ComboBox></ComboBox>
+                </controls:SettingsCard>
+
             </controls:SettingsCard>
         </StackPanel>
 
