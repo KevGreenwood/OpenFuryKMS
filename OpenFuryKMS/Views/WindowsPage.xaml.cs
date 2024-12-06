@@ -9,6 +9,7 @@ namespace OpenFuryKMS.Views;
 public sealed partial class WindowsPage : Page
 {
     private int defaultOS;
+    private string edition;
 
     public WindowsViewModel ViewModel
     {
@@ -33,11 +34,6 @@ public sealed partial class WindowsPage : Page
         defaultOS = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         ShellBox.Text = WindowsHandler.ShellOutput;
-
-        if (WindowsHandler.ProductIndex == 4)
-        {
-            Edition
-        }
     }
 
     private void LoadLanguage()
@@ -89,25 +85,38 @@ public sealed partial class WindowsPage : Page
         {
             case 0:
                 LicenseCombo.ItemsSource = WindowsHandler.Home_Licenses.Select(x => x.License + x.Description).ToList();
+                EditionCard.Visibility = Visibility.Collapsed;
+
                 break;
 
             case 1:
                 LicenseCombo.ItemsSource = WindowsHandler.Pro_Licenses.Select(x => x.License + x.Description).ToList();
+                EditionCard.Visibility = Visibility.Collapsed;
+
                 break;
 
             case 2:
                 LicenseCombo.ItemsSource = WindowsHandler.Education_Licenses.Select(x => x.License + x.Description).ToList();
+                EditionCard.Visibility = Visibility.Collapsed;
+
                 break;
 
             case 3:
                 LicenseCombo.ItemsSource = WindowsHandler.Enterprise_Licenses.Select(x => x.License + x.Description).ToList();
+                EditionCard.Visibility = Visibility.Collapsed;
                 break;
 
             case 4:
                 LicenseCombo.ItemsSource = WindowsHandler.Server_Licenses.Select(x => x.License + x.Description).ToList();
+                if (WindowsHandler.ServerEval)
+                {
+                    EditionCard.Visibility = Visibility.Visible;
+                }
+
                 break;
         }
         LicenseCombo.SelectedIndex = -1;
+        EditionCombo.SelectedIndex = -1;
     }
 
     private void InfoButton_Click(object sender, RoutedEventArgs e)
@@ -122,11 +131,10 @@ public sealed partial class WindowsPage : Page
             string selectedLicense = LicenseCombo.SelectedItem.ToString();
             string licenseKey = selectedLicense.Split(' ')[0];
 
-            if (ProductCombo.SelectedIndex == 4)
+            if (LicenseCombo.SelectedIndex == 4)
             {
-                ShellBox.Text = WindowsHandler.Switch_ServerEditions(, LicenseCombo.SelectedItem.ToString());
+                ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
             }
-
 
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
             ShellBox.Text = ServerCombo.SelectedIndex == 0
@@ -222,6 +230,17 @@ public sealed partial class WindowsPage : Page
 
     private void EditionCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        switch (EditionCombo.SelectedIndex)
+        {
+            case 0:
+                edition = "serverstandard";
+                LicenseCombo.ItemsSource = WindowsHandler.SDServer_Licenses.Select(x => x.License + x.Description).ToList();
+                break;
 
+            case 1:
+                edition = "serverdatacenter";
+                LicenseCombo.ItemsSource = WindowsHandler.DCServer_Licenses.Select(x => x.License + x.Description).ToList();
+                break;
+        }
     }
 }

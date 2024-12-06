@@ -21,6 +21,7 @@ namespace OpenFuryKMS
         public static string LicenseStatus { get; private set; }
         public static string ShellOutput { get; private set; }
         public static int ProductIndex { get; private set; }
+        public static bool ServerEval => ProductName.Contains("Evaluation") && ProductName.Contains("Server");
         public static ImageSource Logo { get; private set; }
         public static RenewTask Task = new("WindowsRenewer");
 
@@ -54,18 +55,21 @@ namespace OpenFuryKMS
             ("M7XTQ-FN8P6-TTKYV-9D4CC-J462D", " (LTSC)"),
             ("92NFX-8DJQP-P6BBQ-THF9C-7CG2H", " (N LTSC)"),
         ];
-        public static readonly List<(string License, string Description)> Server_Licenses =
+        public static readonly List<(string License, string Description)> SDServer_Licenses =
         [
             ("TVRH6-WHNXV-R9WG3-9XRFY-MY832", " (2025 Standard)"),
-            ("D764K-2NDRG-47T6Q-P8T8W-YP6DF", " (2025 Datacenter)"),
             ("VDYBN-27WPP-V4HQT-9VMD4-VMK7H", " (2022 Standard)"),
-            ("WX4NM-KYWYW-QJJR4-XV3QB-6VM33", " (2022 Datacenter)"),
             ("N69G4-B89J2-4G8F4-WWYCC-J464C", " (2019 Standard)"),
-            ("WMDGN-G9PQG-XVVXX-R3X43-63DFG", " (2019 Datacenter)"),
             ("WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", " (2016 Standard)"),
-            ("CB7KF-BWN84-R7R2Y-793K2-8XDDG", " (2016 Datacenter)"),
-            ("JCKRF-N37P4-C2D82-9YXRT-4M63B", " (2016 Essentials)"),
         ];
+        public static readonly List<(string License, string Description)> DCServer_Licenses =
+        [
+            ("D764K-2NDRG-47T6Q-P8T8W-YP6DF", " (2025 Datacenter)"),
+            ("WX4NM-KYWYW-QJJR4-XV3QB-6VM33", " (2022 Datacenter)"),
+            ("WMDGN-G9PQG-XVVXX-R3X43-63DFG", " (2019 Datacenter)"),
+            ("CB7KF-BWN84-R7R2Y-793K2-8XDDG", " (2016 Datacenter)"),
+        ];
+        public static readonly List<(string License, string Description)> Server_Licenses = [.. SDServer_Licenses, .. DCServer_Licenses];
 
         public static readonly string[] Products = 
         [
@@ -118,18 +122,6 @@ namespace OpenFuryKMS
             if (!match.Success) LicenseStatus = "Unlicensed";
             var status = match.Groups[1].Value.Trim();
             LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
-        }
-
-        public static string Switch_ServerEditions(string edition, string key)
-        {
-            if (ProductName.Contains("Evaluation"))
-            {
-                return PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{key} /accepteula");
-            }
-            else
-            {
-                return string.Empty;
-            }
         }
     }
 
