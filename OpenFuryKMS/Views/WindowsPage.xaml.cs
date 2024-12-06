@@ -27,11 +27,17 @@ public sealed partial class WindowsPage : Page
         GetTaskStatus();
 
         Logo.Source = WindowsHandler.Logo;
-
+        
+        ProductCombo.ItemsSource = WindowsHandler.Products;
         ProductCombo.SelectedIndex = WindowsHandler.ProductIndex;
         defaultOS = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         ShellBox.Text = WindowsHandler.ShellOutput;
+
+        if (WindowsHandler.ProductIndex == 4)
+        {
+            Edition
+        }
     }
 
     private void LoadLanguage()
@@ -96,6 +102,10 @@ public sealed partial class WindowsPage : Page
             case 3:
                 LicenseCombo.ItemsSource = WindowsHandler.Enterprise_Licenses.Select(x => x.License + x.Description).ToList();
                 break;
+
+            case 4:
+                LicenseCombo.ItemsSource = WindowsHandler.Server_Licenses.Select(x => x.License + x.Description).ToList();
+                break;
         }
         LicenseCombo.SelectedIndex = -1;
     }
@@ -111,6 +121,13 @@ public sealed partial class WindowsPage : Page
         {
             string selectedLicense = LicenseCombo.SelectedItem.ToString();
             string licenseKey = selectedLicense.Split(' ')[0];
+
+            if (ProductCombo.SelectedIndex == 4)
+            {
+                ShellBox.Text = WindowsHandler.Switch_ServerEditions(, LicenseCombo.SelectedItem.ToString());
+            }
+
+
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
             ShellBox.Text = ServerCombo.SelectedIndex == 0
             ? KMSHandler.AutoKMS(windows: true)
@@ -201,5 +218,10 @@ public sealed partial class WindowsPage : Page
     private void LicenseCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         UpdateActivateButtonState();
+    }
+
+    private void EditionCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
     }
 }

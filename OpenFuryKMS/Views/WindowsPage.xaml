@@ -68,15 +68,16 @@
             </controls:SettingsCard>
 
             <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}" Visibility="Collapsed">
-                <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center">
-                    <x:String>Windows 10 - 11 Home</x:String>
-                    <x:String>Windows 10 - 11 Pro</x:String>
-                    <x:String>Windows 10 - 11 Education</x:String>
-                    <x:String>Windows 10 - 11 Enterprise</x:String>
-                    <x:String>Windows Server</x:String>
+                <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center" ItemsSource="{}"/>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard Header="Switch Editions" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}>
+                <ComboBox x:Name="EditionCombo" Width="310" SelectionChanged="EditionCombo_SelectionChanged" PlaceholderText="Select your edition" VerticalAlignment="Center">
+                    <x:String>Standard</x:String>
+                    <x:String>Datacenter</x:String>
                 </ComboBox>
             </controls:SettingsCard>
-            
+
             <controls:SettingsCard x:Name="LicensesCard" Header="Licenses" HeaderIcon="{ui:FontIcon Glyph=&#xE8D7;}" Visibility="Collapsed" Description="Select the license corresponding to your edition">
                 <ComboBox x:Name="LicenseCombo" SelectionChanged="LicenseCombo_SelectionChanged" Width="310" PlaceholderText="Select your License Key" VerticalAlignment="Center" />
             </controls:SettingsCard>

@@ -34,7 +34,9 @@ namespace OpenFuryKMS
         public static readonly List<(string License, string Description)> Pro_Licenses =
         [
             ("W269N-WFGWX-YVC9B-4J6C9-T83GX", ""),
-            ("MH37W-N47XK-V7XM9-C7227-GCQG9", " (N)")
+            ("MH37W-N47XK-V7XM9-C7227-GCQG9", " (N)"),
+            ("NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J", " (Pro for Workstations)"),
+            ("9FNHH-K3HBT-3W4TD-6383H-6XYWF", " (Pro for Workstations N)")
         ];
         public static readonly List<(string License, string Description)> Education_Licenses =
         [
@@ -49,6 +51,29 @@ namespace OpenFuryKMS
             ("DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4", " (N)"),
             ("YYVX9-NTFWV-6MDM3-9PT4T-4M68B", " (G)"),
             ("44RPN-FTY23-9VTTB-MP9BX-T84FV", " (G N)"),
+            ("M7XTQ-FN8P6-TTKYV-9D4CC-J462D", " (LTSC)"),
+            ("92NFX-8DJQP-P6BBQ-THF9C-7CG2H", " (N LTSC)"),
+        ];
+        public static readonly List<(string License, string Description)> Server_Licenses =
+        [
+            ("TVRH6-WHNXV-R9WG3-9XRFY-MY832", " (2025 Standard)"),
+            ("D764K-2NDRG-47T6Q-P8T8W-YP6DF", " (2025 Datacenter)"),
+            ("VDYBN-27WPP-V4HQT-9VMD4-VMK7H", " (2022 Standard)"),
+            ("WX4NM-KYWYW-QJJR4-XV3QB-6VM33", " (2022 Datacenter)"),
+            ("N69G4-B89J2-4G8F4-WWYCC-J464C", " (2019 Standard)"),
+            ("WMDGN-G9PQG-XVVXX-R3X43-63DFG", " (2019 Datacenter)"),
+            ("WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY", " (2016 Standard)"),
+            ("CB7KF-BWN84-R7R2Y-793K2-8XDDG", " (2016 Datacenter)"),
+            ("JCKRF-N37P4-C2D82-9YXRT-4M63B", " (2016 Essentials)"),
+        ];
+
+        public static readonly string[] Products = 
+        [
+            "Windows Home",
+            "Windows Pro",
+            "Windows Education",
+            "Windows Enterprise",
+            "Windows Server",
         ];
 
         public static async System.Threading.Tasks.Task InitializeAsync()
@@ -93,6 +118,18 @@ namespace OpenFuryKMS
             if (!match.Success) LicenseStatus = "Unlicensed";
             var status = match.Groups[1].Value.Trim();
             LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+        }
+
+        public static string Switch_ServerEditions(string edition, string key)
+        {
+            if (ProductName.Contains("Evaluation"))
+            {
+                return PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{key} /accepteula");
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 
