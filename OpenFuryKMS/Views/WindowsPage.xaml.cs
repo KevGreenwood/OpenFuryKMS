@@ -132,8 +132,7 @@ public sealed partial class WindowsPage : Page
 
         if (ProductCombo.SelectedIndex == 4 && WindowsHandler.ServerEval)
         {
-            ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
-            ShellBox.Text = PowershellHandler.RunCommand("Write-Host \"N\"");
+            ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula /NoRestart");
 
             var dialogFinished = new ManualResetEvent(false);
 
