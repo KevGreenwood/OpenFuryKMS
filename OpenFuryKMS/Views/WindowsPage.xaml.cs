@@ -112,6 +112,7 @@ public sealed partial class WindowsPage : Page
                 {
                     EditionCard.Visibility = Visibility.Visible;
                     ServerCard.Visibility = Visibility.Collapsed;
+                    LicensesCard.Visibility = Visibility.Collapsed;
                 }
 
                 break;
@@ -131,7 +132,8 @@ public sealed partial class WindowsPage : Page
 
         if (ProductCombo.SelectedIndex == 4 && WindowsHandler.ServerEval)
         {
-            ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
+            ShellBox.Text = PowershellHandler.RunCommand($"echo N | DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
+
             var dialogFinished = new ManualResetEvent(false);
 
             ContentDialog restartDialog = new ContentDialog
@@ -247,14 +249,7 @@ public sealed partial class WindowsPage : Page
 
     private void LicenseCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (ProductCombo.SelectedIndex == 4 && MethodCombo.SelectedIndex != -1 && LicenseCombo.SelectedIndex != -1)
-        {
-            ActivateButton.IsEnabled = true;
-        }
-        else
-        {
-            UpdateActivateButtonState();
-        }
+        UpdateActivateButtonState();
     }
 
     private void EditionCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -264,12 +259,17 @@ public sealed partial class WindowsPage : Page
             case 0:
                 edition = "serverstandard";
                 LicenseCombo.ItemsSource = WindowsHandler.SDServer_Licenses.Select(x => x.License + x.Description).ToList();
+
                 break;
 
             case 1:
                 edition = "serverdatacenter";
                 LicenseCombo.ItemsSource = WindowsHandler.DCServer_Licenses.Select(x => x.License + x.Description).ToList();
+                
+
                 break;
         }
+        LicenseCombo.SelectedIndex = WindowsHandler.LicenseIndex;
+        ActivateButton.IsEnabled = true;
     }
 }

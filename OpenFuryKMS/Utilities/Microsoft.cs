@@ -21,6 +21,7 @@ namespace OpenFuryKMS
         public static string LicenseStatus { get; private set; }
         public static string ShellOutput { get; private set; }
         public static int ProductIndex { get; private set; }
+        public static int LicenseIndex { get; private set; }
         public static bool ServerEval => ProductName.Contains("Evaluation") && ProductName.Contains("Server");
         public static ImageSource Logo { get; private set; }
         public static RenewTask Task = new("WindowsRenewer");
@@ -100,6 +101,20 @@ namespace OpenFuryKMS
             string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
             ProductIndex = Array.FindIndex(products, p => ProductName.Contains(p));
 
+            if (ServerEval)
+            {
+                string[] SDlicenses = { "2025 Standard", "2022 Standard", "2019 Standard", "2019 Datacenter", "2016 Datacenter" };
+                string[] DClicenses = { "2025 Datacenter", "2022 Datacenter", "2019 Datacenter", "2016 Datacenter" };
+                if (ProductName.Contains("Standard"))
+                {
+                    LicenseIndex = Array.FindIndex(SDlicenses, p => ProductName.Contains(p));
+                }
+                else if (ProductName.Contains("Datacenter"))
+                {
+                    LicenseIndex = Array.FindIndex(DClicenses, p => ProductName.Contains(p));
+                }
+            }
+
             GetAllInfo = $"Microsoft {ProductName} {Platform}";
 
             Directory.SetCurrentDirectory(@"C:\Windows\System32");
@@ -123,6 +138,8 @@ namespace OpenFuryKMS
             var status = match.Groups[1].Value.Trim();
             LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
         }
+
+
     }
 
     public static class OfficeHandler
