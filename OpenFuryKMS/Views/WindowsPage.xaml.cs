@@ -131,7 +131,7 @@ public sealed partial class WindowsPage : Page
             string selectedLicense = LicenseCombo.SelectedItem.ToString();
             string licenseKey = selectedLicense.Split(' ')[0];
 
-            if (LicenseCombo.SelectedIndex == 4)
+            if (ProductCombo.SelectedIndex == 4)
             {
                 ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
             }
