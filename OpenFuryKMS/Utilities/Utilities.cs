@@ -16,7 +16,7 @@ namespace OpenFuryKMS
                 var results = ps.Invoke();
                 if (ps.HadErrors)
                 {
-                    var errors = ps.Streams.Error.Select(e => e.ToString());
+                    var errors = results.Select(o => o.ToString());
                     return $"Error executing command: {cmd}{Environment.NewLine}{string.Join(Environment.NewLine, errors)}";
                 }
 

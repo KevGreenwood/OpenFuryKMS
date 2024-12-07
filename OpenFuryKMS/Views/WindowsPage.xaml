@@ -67,11 +67,11 @@
                 </ComboBox>
             </controls:SettingsCard>
 
-            <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}" Visibility="Collapsed" Description="Choose one of the two available editions. This change is unique, considering that you are using the evaluation version.">
+            <controls:SettingsCard x:Name="ProductsCard" Header="Product" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}" Visibility="Collapsed">
                 <ComboBox x:Name="ProductCombo" SelectionChanged="ProductCombo_SelectionChanged" Width="310" VerticalAlignment="Center"/>
             </controls:SettingsCard>
 
-            <controls:SettingsCard x:Name="EditionCard" Header="Switch Editions" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}" Visibility="Collapsed">
+            <controls:SettingsCard x:Name="EditionCard" Header="Switch Editions" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}" Visibility="Collapsed" Description="Choose one of the two available editions. This change is unique, considering that you are using the evaluation version.">
                 <ComboBox x:Name="EditionCombo" Width="310" SelectionChanged="EditionCombo_SelectionChanged" PlaceholderText="Select your edition" VerticalAlignment="Center">
                     <x:String>Standard</x:String>
                     <x:String>Datacenter</x:String>

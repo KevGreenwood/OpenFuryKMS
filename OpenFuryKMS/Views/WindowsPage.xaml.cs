@@ -111,6 +111,7 @@ public sealed partial class WindowsPage : Page
                 if (WindowsHandler.ServerEval)
                 {
                     EditionCard.Visibility = Visibility.Visible;
+                    ServerCard.Visibility = Visibility.Collapsed;
                 }
 
                 break;
@@ -126,16 +127,36 @@ public sealed partial class WindowsPage : Page
 
     private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
-        if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
+        string licenseKey = LicenseCombo.SelectedItem.ToString().Split(' ')[0];
+
+        if (ProductCombo.SelectedIndex == 4)
         {
-            string selectedLicense = LicenseCombo.SelectedItem.ToString();
-            string licenseKey = selectedLicense.Split(' ')[0];
+            ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
+            var dialogFinished = new ManualResetEvent(false);
 
-            if (ProductCombo.SelectedIndex == 4)
+            ContentDialog restartDialog = new ContentDialog
             {
-                ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
-            }
+                Title = "Reinicio requerido",
+                Content = "El sistema necesita reiniciarse para aplicar los cambios. ¿Desea reiniciar ahora?",
+                PrimaryButtonText = "Reiniciar",
+                CloseButtonText = "Cancelar",
+                XamlRoot = this.Content.XamlRoot
+            };
 
+            var task = restartDialog.ShowAsync().AsTask();
+
+            task.ContinueWith(result =>
+            {
+                dialogFinished.Set(); // Desbloquear el flujo
+                if (result.Result == ContentDialogResult.Primary)
+                {
+                    // Reiniciar la computadora si se selecciona "Reiniciar"
+                    PowershellHandler.RunCommand("shutdown /r /t 0");
+                }
+            });
+        }
+        else if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
+        {
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
             ShellBox.Text = ServerCombo.SelectedIndex == 0
             ? KMSHandler.AutoKMS(windows: true)
@@ -225,7 +246,14 @@ public sealed partial class WindowsPage : Page
 
     private void LicenseCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        UpdateActivateButtonState();
+        if (ProductCombo.SelectedIndex == 4 && MethodCombo.SelectedIndex != -1 && LicenseCombo.SelectedIndex != -1)
+        {
+            ActivateButton.IsEnabled = true;
+        }
+        else
+        {
+            UpdateActivateButtonState();
+        }
     }
 
     private void EditionCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
