@@ -129,7 +129,7 @@ public sealed partial class WindowsPage : Page
     {
         string licenseKey = LicenseCombo.SelectedItem.ToString().Split(' ')[0];
 
-        if (ProductCombo.SelectedIndex == 4)
+        if (ProductCombo.SelectedIndex == 4 && WindowsHandler.ServerEval)
         {
             ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
             var dialogFinished = new ManualResetEvent(false);
@@ -155,7 +155,8 @@ public sealed partial class WindowsPage : Page
                 }
             });
         }
-        else if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
+        
+        if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
         {
             ShellBox.Text = PowershellHandler.RunCommand($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
             ShellBox.Text = ServerCombo.SelectedIndex == 0
