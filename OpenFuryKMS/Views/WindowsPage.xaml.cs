@@ -132,7 +132,8 @@ public sealed partial class WindowsPage : Page
 
         if (ProductCombo.SelectedIndex == 4 && WindowsHandler.ServerEval)
         {
-            ShellBox.Text = PowershellHandler.RunCommand($"echo N | DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
+            ShellBox.Text = PowershellHandler.RunCommand($"DISM /online /set-edition:{edition} /productkey:{licenseKey} /accepteula");
+            ShellBox.Text = PowershellHandler.RunCommand("Write-Host \"N\"");
 
             var dialogFinished = new ManualResetEvent(false);
 
@@ -153,7 +154,7 @@ public sealed partial class WindowsPage : Page
                 if (result.Result == ContentDialogResult.Primary)
                 {
                     // Reiniciar la computadora si se selecciona "Reiniciar"
-                    PowershellHandler.RunCommand("shutdown /r /t 0");
+                    PowershellHandler.RunCommand("Restart-Computer");
                 }
             });
         }
