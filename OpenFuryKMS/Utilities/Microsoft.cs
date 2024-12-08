@@ -72,7 +72,7 @@ namespace OpenFuryKMS
         ];
         public static readonly List<(string License, string Description)> Server_Licenses = [.. SDServer_Licenses, .. DCServer_Licenses];
 
-        public static readonly string[] Products = 
+        public static readonly string[] Products =
         [
             "Windows Home",
             "Windows Pro",
@@ -138,8 +138,6 @@ namespace OpenFuryKMS
             var status = match.Groups[1].Value.Trim();
             LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
         }
-
-
     }
 
     public static class OfficeHandler
@@ -263,25 +261,25 @@ namespace OpenFuryKMS
             return string.Join(Environment.NewLine, cleanedLines);
         }
 
-        public static string InstallLicense(string product, IEnumerable<string> lastKeys, string licenseKey)
+        public async static Task<string> InstallLicense(string product, IEnumerable<string> lastKeys, string licenseKey)
         {
             var outputBuilder = new StringBuilder();
 
-            outputBuilder.AppendLine(ConvertEdition(product));
+            outputBuilder.AppendLine(await ConvertEdition(product));
 
-            outputBuilder.AppendLine(PowershellHandler.RunCommand("cscript //nologo ospp.vbs /setprt:1688"));
+            outputBuilder.AppendLine(await PowershellHandler.RunCommandAsync("cscript //nologo ospp.vbs /setprt:1688"));
 
             foreach (string lastKey in lastKeys)
             {
-                outputBuilder.AppendLine(PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /unpkey:{lastKey}"));
+                outputBuilder.AppendLine(await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /unpkey:{lastKey}"));
             }
 
-            outputBuilder.AppendLine(PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{licenseKey}"));
+            outputBuilder.AppendLine(await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /inpkey:{licenseKey}"));
 
             return outputBuilder.ToString();
         }
 
-        private static string ConvertEdition(string product)
+        private async static Task<string> ConvertEdition(string product)
         {
             if (PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus").Contains("RETAIL"))
             {
@@ -290,7 +288,7 @@ namespace OpenFuryKMS
 
                 foreach (string licenseFile in licenseFiles)
                 {
-                    outputBuilder.AppendLine(PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inslic:\"{licenseFile}\""));
+                    outputBuilder.AppendLine(await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /inslic:\"{licenseFile}\""));
                 }
 
                 return outputBuilder.ToString();

@@ -49,7 +49,6 @@
                     <TextBlock x:Name="RenewalStatus" Grid.Row="3" Grid.Column="1" Foreground="Gray" IsTextSelectionEnabled="True" HorizontalAlignment="Left" Margin="20,5"/>
                 </Grid>
             </Expander>
-
         </Grid>
         
        

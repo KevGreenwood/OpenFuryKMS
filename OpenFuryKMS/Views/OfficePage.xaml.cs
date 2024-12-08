@@ -80,30 +80,30 @@ public sealed partial class OfficePage : Page
 
             if (!string.IsNullOrEmpty(productInfo.productKey))
             {
-                dirtyOutput = OfficeHandler.InstallLicense(productInfo.productKey, productInfo.keys, productInfo.license);
+                dirtyOutput = await OfficeHandler.InstallLicense(productInfo.productKey, productInfo.keys, productInfo.license);
             }
             else
             {
-                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
+                dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
             }
 
-            ShellBox.Text = OfficeHandler.ClearOutput(PowershellHandler.RunCommand(dirtyOutput));
+            ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
 
             if (ServerCombo.SelectedIndex == 0)
             {
-                dirtyOutput = KMSHandler.AutoKMS(office: true);
+                dirtyOutput = await KMSHandler.AutoKMS(office: true);
             }
             else
             {
-                string server = KMSHandler.KmsServers[ServerCombo.SelectedIndex - 1];
-                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
+                string server = KMSHandler.KmsServers[ServerCombo.SelectedIndex];
+                dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
             }
             ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         }
         else if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
         {
             string command = MethodCombo.SelectedIndex == 1 ? "/act" : "/rearm";
-            dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs {command}");
+            dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs {command}");
         }
 
         ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
@@ -144,18 +144,18 @@ public sealed partial class OfficePage : Page
         }
     }
 
-    private void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        ShellBox.Text = OfficeHandler.ClearOutput(PowershellHandler.RunCommand("cscript //nologo ospp.vbs /dstatus"));
+        ShellBox.Text = OfficeHandler.ClearOutput(await PowershellHandler.RunCommandAsync("cscript //nologo ospp.vbs /dstatus"));
     }
 
-    private void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         if (OfficeHandler.productLicenses.ContainsKey(OfficeHandler.ProductIndex))
         {
             foreach (var key in OfficeHandler.productLicenses[OfficeHandler.ProductIndex].keys)
             {
-                dirtyOutput = PowershellHandler.RunCommand($"cscript //nologo ospp.vbs /unpkey:{key}");
+                dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /unpkey:{key}");
                 ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
             }
         }

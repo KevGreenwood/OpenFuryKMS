@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32.TaskScheduler;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Reflection;
 
 
@@ -31,6 +32,39 @@ namespace OpenFuryKMS
                 ps.Dispose();
             }
         }
+
+        public static async Task<string> RunCommandAsync(string cmd)
+        {
+            return await System.Threading.Tasks.Task.Run(() =>
+            {
+                using Runspace runspace = RunspaceFactory.CreateRunspace();
+                runspace.Open();
+
+                using PowerShell ps = PowerShell.Create();
+                ps.Runspace = runspace;
+                ps.AddScript(cmd);
+
+                try
+                {
+                    var results = ps.Invoke();
+                    if (ps.HadErrors)
+                    {
+                        var errors = results.Select(o => o.ToString());
+                        return $"Error executing command: {cmd}{Environment.NewLine}{string.Join(Environment.NewLine, errors)}";
+                    }
+
+                    return string.Join(Environment.NewLine, results.Select(o => o.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    return $"Exception occurred: {ex.Message}";
+                }
+                finally
+                {
+                    runspace.Close();
+                }
+            });
+        }
     }
 
     public static class KMSHandler
@@ -52,7 +86,7 @@ namespace OpenFuryKMS
             "kms7.msguides.com"
         ];
 
-        public static string AutoKMS(bool windows = false, bool office = false)
+        public static async Task<string> AutoKMS(bool windows = false, bool office = false)
         {
             foreach (var server in KmsServers.Skip(1))
             {
@@ -62,7 +96,7 @@ namespace OpenFuryKMS
                 var activate = windows ? "cscript //nologo slmgr.vbs /ato" :
                                 office ? "cscript //nologo ospp.vbs /act" : string.Empty;
 
-                var result = PowershellHandler.RunCommand($"{setKms}; {activate}");
+                var result = await PowershellHandler.RunCommandAsync($"{setKms}; {activate}");
 
                 if (result.Contains("successful"))
                 {
