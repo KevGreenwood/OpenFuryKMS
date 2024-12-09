@@ -22,12 +22,10 @@ public sealed partial class OfficePage : Page
         InitializeComponent();
 
         OfficeHandler.DirChecker();
-
         GetLicenseStatus();
         GetTaskStatus();
 
         Logo.Source = OfficeHandler.Logo;
-
         ProductName.Text = $"{OfficeHandler.ProductName} {OfficeHandler.Platform}";
         Version.Text = OfficeHandler.Version;
         ProductCombo.SelectedIndex = OfficeHandler.ProductIndex;
@@ -72,7 +70,7 @@ public sealed partial class OfficePage : Page
         }
     }
 
-    private async void ActivateButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
         if (MethodCombo.SelectedIndex == 0 && OfficeHandler.productLicenses.ContainsKey(ProductCombo.SelectedIndex))
         {
@@ -87,7 +85,7 @@ public sealed partial class OfficePage : Page
                 dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /inpkey:{productInfo.license}");
             }
 
-            ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+            ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput) + "\n";
 
             if (ServerCombo.SelectedIndex == 0)
             {
@@ -98,15 +96,14 @@ public sealed partial class OfficePage : Page
                 string server = KMSHandler.KmsServers[ServerCombo.SelectedIndex];
                 dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /sethst:{server}; cscript //nologo ospp.vbs /act");
             }
-            ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+            ShellBox.Text += OfficeHandler.ClearOutput(dirtyOutput);
         }
         else if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
         {
             string command = MethodCombo.SelectedIndex == 1 ? "/act" : "/rearm";
             dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs {command}");
+            ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         }
-
-        ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
         OfficeHandler.ExtractLicenseStatus();
         GetLicenseStatus();
 
@@ -144,12 +141,9 @@ public sealed partial class OfficePage : Page
         }
     }
 
-    private async void InfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        ShellBox.Text = OfficeHandler.ClearOutput(await PowershellHandler.RunCommandAsync("cscript //nologo ospp.vbs /dstatus"));
-    }
+    private async void InfoButton_Click(object sender, RoutedEventArgs e) => ShellBox.Text = OfficeHandler.ClearOutput(await PowershellHandler.RunCommandAsync("cscript //nologo ospp.vbs /dstatus"));
 
-    private async void RemoveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
         if (OfficeHandler.productLicenses.ContainsKey(OfficeHandler.ProductIndex))
         {
@@ -163,10 +157,7 @@ public sealed partial class OfficePage : Page
         GetLicenseStatus();
     }
 
-    private void ServerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        UpdateActivateButtonState();
-    }
+    private void ServerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) => ActivateButton.IsEnabled = ServerCombo.SelectedIndex != -1;
 
     private void MethodCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -176,17 +167,12 @@ public sealed partial class OfficePage : Page
         bool isKmsSelected = MethodCombo.SelectedIndex == 0;
 
         ProductsCard.Visibility = isKmsSelected
-            ? Microsoft.UI.Xaml.Visibility.Visible
-            : Microsoft.UI.Xaml.Visibility.Collapsed;
+            ? Visibility.Visible
+            : Visibility.Collapsed;
         ServerCard.Visibility = isKmsSelected
-            ? Microsoft.UI.Xaml.Visibility.Visible
-            : Microsoft.UI.Xaml.Visibility.Collapsed;
+            ? Visibility.Visible
+            : Visibility.Collapsed;
 
         ActivateButton.IsEnabled = !isKmsSelected;
-    }
-
-    private void UpdateActivateButtonState()
-    {
-        ActivateButton.IsEnabled = ServerCombo.SelectedIndex != -1;
     }
 }

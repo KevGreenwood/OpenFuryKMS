@@ -81,25 +81,18 @@ namespace OpenFuryKMS
 
         private static BitmapImage GetLargestIconAsImageSource(string executablePath)
         {
-            using (var icon = System.Drawing.Icon.ExtractAssociatedIcon(executablePath))
-            {
-                if (icon == null)
-                    return null;
+            using var icon = System.Drawing.Icon.ExtractAssociatedIcon(executablePath);
+            if (icon == null)
+                return null;
 
-                using (var bitmap = icon.ToBitmap())
-                {
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                        memoryStream.Seek(0, SeekOrigin.Begin);
+            using var bitmap = icon.ToBitmap();
+            using var memoryStream = new MemoryStream();
+            bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+            memoryStream.Seek(0, SeekOrigin.Begin);
 
-                        var bitmapImage = new BitmapImage();
-                        bitmapImage.SetSource(memoryStream.AsRandomAccessStream());
-                        return bitmapImage;
-                    }
-                }
-            }
+            var bitmapImage = new BitmapImage();
+            bitmapImage.SetSource(memoryStream.AsRandomAccessStream());
+            return bitmapImage;
         }
-
     }
 }

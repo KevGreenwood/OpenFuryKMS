@@ -81,7 +81,7 @@ namespace OpenFuryKMS
             "Windows Server",
         ];
 
-        public static async System.Threading.Tasks.Task InitializeAsync()
+        public static async Task InitializeAsync()
         {
             Build = await GetRegistryValueAsync(WindowsPath, "CurrentBuildNumber");
             ProductName = await GetRegistryValueAsync(WindowsPath, "ProductName");
@@ -101,18 +101,15 @@ namespace OpenFuryKMS
             string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
             ProductIndex = Array.FindIndex(products, p => ProductName.Contains(p));
 
-            if (ServerEval)
+            string[] SDlicenses = { "2025 Standard", "2022 Standard", "2019 Standard", "2019 Datacenter", "2016 Datacenter" };
+            string[] DClicenses = { "2025 Datacenter", "2022 Datacenter", "2019 Datacenter", "2016 Datacenter" };
+            if (ProductName.Contains("Standard"))
             {
-                string[] SDlicenses = { "2025 Standard", "2022 Standard", "2019 Standard", "2019 Datacenter", "2016 Datacenter" };
-                string[] DClicenses = { "2025 Datacenter", "2022 Datacenter", "2019 Datacenter", "2016 Datacenter" };
-                if (ProductName.Contains("Standard"))
-                {
-                    LicenseIndex = Array.FindIndex(SDlicenses, p => ProductName.Contains(p));
-                }
-                else if (ProductName.Contains("Datacenter"))
-                {
-                    LicenseIndex = Array.FindIndex(DClicenses, p => ProductName.Contains(p));
-                }
+                LicenseIndex = Array.FindIndex(SDlicenses, p => ProductName.Contains(p));
+            }
+            else if (ProductName.Contains("Datacenter"))
+            {
+                LicenseIndex = Array.FindIndex(DClicenses, p => ProductName.Contains(p));
             }
 
             GetAllInfo = $"Microsoft {ProductName} {Platform}";
@@ -132,11 +129,25 @@ namespace OpenFuryKMS
                 { "Initial grace period", "Trial" },
             };
 
-            ShellOutput = PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli");
+            ShellOutput = RemoveNewLine(PowershellHandler.RunCommand("cscript //nologo slmgr.vbs /dli"));
             var match = Regex.Match(ShellOutput, @"License Status:\s*(.*)");
             if (!match.Success) LicenseStatus = "Unlicensed";
             var status = match.Groups[1].Value.Trim();
             LicenseStatus = licenseStatusMap.ContainsKey(status) ? licenseStatusMap[status] : "Unlicensed";
+        }
+
+        public static string RemoveNewLine(string output)
+        {
+            string[] lines = output.Split(['\n'], StringSplitOptions.None);
+
+            int start = 0, end = lines.Length - 1;
+
+            while (start <= end && string.IsNullOrWhiteSpace(lines[start]))
+                start++;
+            while (end >= start && string.IsNullOrWhiteSpace(lines[end]))
+                end--;
+
+            return string.Join("\n", lines[start..(end + 1)]);
         }
     }
 
@@ -180,7 +191,7 @@ namespace OpenFuryKMS
             { 4, ("", new List<string>(), "YC7DK-G2NP3-2QQC3-J6H88-GVGXT") }
         };
 
-        public static async System.Threading.Tasks.Task InitializeAsync()
+        public static async Task InitializeAsync()
         {
             if (DirChecker())
             {

@@ -107,19 +107,29 @@ public sealed partial class WindowsPage : Page
         EditionCombo.SelectedIndex = -1;
     }
 
-    private async void InfoButton_Click(object sender, RoutedEventArgs e)
-    {
-        ShellBox.Text = await PowershellHandler.RunCommandAsync("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr");
-    }
+    private async void InfoButton_Click(object sender, RoutedEventArgs e) => ShellBox.Text = WindowsHandler.RemoveNewLine(await PowershellHandler.RunCommandAsync("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr"));
 
     private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
-        string licenseKey = LicenseCombo.SelectedItem.ToString().Split(' ')[0];
+        if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
+        {
+            string cmd = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
+            ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs {cmd}");
+        }
+
+        if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
+        {
+            string licenseKey = LicenseCombo.SelectedItem.ToString().Split(' ')[0];
+            ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /ipk {licenseKey}") + "\n";
+            ShellBox.Text += ServerCombo.SelectedIndex == 0
+            ? await KMSHandler.AutoKMS(windows: true)
+            : await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /skms {KMSHandler.KmsServers[ServerCombo.SelectedIndex]}; cscript //nologo slmgr.vbs /ato");
+        }
 
         if (ProductCombo.SelectedIndex == 4 && WindowsHandler.ServerEval)
         {
+            string licenseKey = LicenseCombo.SelectedItem.ToString().Split(' ')[0];
             ShellBox.Text = await PowershellHandler.RunCommandAsync($"DISM /Online /Set-Edition:{edition} /ProductKey:{licenseKey} /AcceptEula /English /NoRestart");
-
             var dialogFinished = new ManualResetEvent(false);
 
             ContentDialog restartDialog = new ContentDialog
@@ -133,62 +143,50 @@ public sealed partial class WindowsPage : Page
 
             var task = restartDialog.ShowAsync().AsTask();
 
-            task.ContinueWith(result =>
-            {
-                dialogFinished.Set();
-                if (result.Result == ContentDialogResult.Primary)
+            task.ContinueWith
+            (
+                result =>
                 {
-                    PowershellHandler.RunCommand("Restart-Computer");
+                    dialogFinished.Set();
+                    if (result.Result == ContentDialogResult.Primary)
+                    {
+                        PowershellHandler.RunCommand("Restart-Computer");
+                    }
                 }
-            });
+            );
         }
-        else
+        
+        WindowsHandler.ExtractLicenseStatus();
+        GetLicenseStatus();
+
+        if (MethodCombo.SelectedIndex <= 1)
         {
-            if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
+            if (!WindowsHandler.Task.IsTaskScheduled())
             {
-                ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /ipk {licenseKey}");
-                ShellBox.Text = ServerCombo.SelectedIndex == 0
-                ? await KMSHandler.AutoKMS(windows: true)
-                : await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /skms {KMSHandler.KmsServers[ServerCombo.SelectedIndex]}; cscript //nologo slmgr.vbs /ato");
-            }
-            else if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
-            {
-                string command = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
-                ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs {command}");
-            }
-
-            WindowsHandler.ExtractLicenseStatus();
-            GetLicenseStatus();
-
-            if (MethodCombo.SelectedIndex <= 1)
-            {
-                if (!WindowsHandler.Task.IsTaskScheduled())
+                ContentDialog renewTask = new()
                 {
-                    ContentDialog renewTask = new()
+                    XamlRoot = this.XamlRoot,
+                    Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                    Title = "Product Renew Task",
+                    Content = "Do you want to create a task that every 180 days will renew your license?",
+                    PrimaryButtonText = "Yes",
+                    CloseButtonText = "No",
+                    DefaultButton = ContentDialogButton.Primary
+                };
+
+                var renewTask_r = await renewTask.ShowAsync();
+
+                if (renewTask_r == ContentDialogResult.Primary)
+                {
+                    ContentDialog resultDialog = new()
                     {
                         XamlRoot = this.XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
-                        Content = "Do you want to create a task that every 180 days will renew your license?",
-                        PrimaryButtonText = "Yes",
-                        CloseButtonText = "No",
-                        DefaultButton = ContentDialogButton.Primary
+                        Content = WindowsHandler.Task.CreateScheduledTask(),
+                        CloseButtonText = "OK",
                     };
-
-                    var renewTask_r = await renewTask.ShowAsync();
-
-                    if (renewTask_r == ContentDialogResult.Primary)
-                    {
-                        ContentDialog resultDialog = new()
-                        {
-                            XamlRoot = this.XamlRoot,
-                            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-                            Title = "Product Renew Task",
-                            Content = WindowsHandler.Task.CreateScheduledTask(),
-                            CloseButtonText = "OK",
-                        };
-                        await resultDialog.ShowAsync();
-                    }
+                    await resultDialog.ShowAsync();
                 }
             }
         }
@@ -232,25 +230,14 @@ public sealed partial class WindowsPage : Page
 
     private void UpdateActivateButtonState()
     {
-        if (WindowsHandler.ServerEval)
-        {
-            ActivateButton.IsEnabled = ProductCombo.SelectedIndex == 4 && EditionCombo.SelectedIndex != -1;
-        }
-        else
-        {
-            ActivateButton.IsEnabled = ServerCombo.SelectedIndex != -1 && LicenseCombo.SelectedIndex != -1;
-        }
+        ActivateButton.IsEnabled = WindowsHandler.ServerEval
+            ? ProductCombo.SelectedIndex == 4 && EditionCombo.SelectedIndex != -1
+            : ServerCombo.SelectedIndex != -1 && LicenseCombo.SelectedIndex != -1;
     }
 
-    private void ServerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        UpdateActivateButtonState();
-    }
+    private void ServerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateActivateButtonState();
 
-    private void LicenseCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        UpdateActivateButtonState();
-    }
+    private void LicenseCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateActivateButtonState();
 
     private void EditionCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
