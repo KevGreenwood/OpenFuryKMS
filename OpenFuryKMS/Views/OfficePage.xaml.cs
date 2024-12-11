@@ -72,6 +72,7 @@ public sealed partial class OfficePage : Page
 
     private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
+        ActivateButton.IsEnabled = false;
         if (MethodCombo.SelectedIndex == 0 && OfficeHandler.productLicenses.ContainsKey(ProductCombo.SelectedIndex))
         {
             var productInfo = OfficeHandler.productLicenses[ProductCombo.SelectedIndex];
@@ -138,6 +139,7 @@ public sealed partial class OfficePage : Page
                 }
             }
             GetTaskStatus();
+            ActivateButton.IsEnabled = true;
         }
     }
 

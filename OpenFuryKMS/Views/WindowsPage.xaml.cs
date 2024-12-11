@@ -111,6 +111,7 @@ public sealed partial class WindowsPage : Page
 
     private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
+        ActivateButton.IsEnabled = false;
         if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
         {
             string cmd = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
@@ -191,6 +192,7 @@ public sealed partial class WindowsPage : Page
             }
         }
         GetTaskStatus();
+        ActivateButton.IsEnabled = true;
     }
 
     private async void RemoveButton_Click(object sender, RoutedEventArgs e)
