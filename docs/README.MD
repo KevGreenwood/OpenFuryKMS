@@ -1,8 +1,9 @@
 # OpenFuryKMS
-Originally known as *FuryKMS*, is the latest iteration of the original project, rebuilt using modern technologies with **WinUI 3**. This version focuses on activating the following products:
+Originally known as *FuryKMS*, is an intuitive front-end that facilitates Windows and Office activation using SLMGR and OSPP commands via PowerShell. It aims to provide a secure and transparent alternative to users looking to activate their Microsoft products without risk of malware or intrusions.
+This is the latest iteration of the original project, rebuilt using modern technologies with **WinUI 3**. This version focuses on activating the following products:
 
 ## Supported Products
-### Windows
+### Windows (64-bit only)
 - All editions of Windows 10 / 11 Home
 - All editions of Windows 10 / 11 Pro
 - All editions of Windows 10 / 11 Education
@@ -23,15 +24,12 @@ The application can activate most Adobe products by blocking the primary executa
 - Adobe Illustrator 2023
 
 ## Features
-- **Activation Options:**
   - You can choose to create a task that reactivates your product every 180 days.
   - Manual reactivation is also available.
   - Option to use a trial license.
   - Remove the current license key to reset the activation state.
   - View detailed license information for active products.
-
-- **Task Management:**
-  - Remove reactivation tasks.
+  - Automatic detection of KMS servers.
   - Restore default activation settings for products.
 
 ## Roadmap
