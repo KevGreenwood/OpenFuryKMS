@@ -13,21 +13,22 @@
         Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"
         BorderBrush="{ThemeResource SurfaceStrokeColorFlyoutBrush}"
         CornerRadius="8">
-		<Grid.Resources>
-			<ResourceDictionary>
-				<ResourceDictionary.ThemeDictionaries>
-					<ResourceDictionary x:Key="Light">
-						<SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
-						<SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
-					</ResourceDictionary>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key="Light">
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
+                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
+                    </ResourceDictionary>
                     <ResourceDictionary x:Key="Dark">
                         <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
                         <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
                     </ResourceDictionary>
                 </ResourceDictionary.ThemeDictionaries>
-			</ResourceDictionary>
-		</Grid.Resources>
-		<Grid
+            </ResourceDictionary>
+        </Grid.Resources>
+        
+        <Grid
             Padding="-1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"

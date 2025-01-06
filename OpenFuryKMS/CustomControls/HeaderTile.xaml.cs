@@ -40,7 +40,7 @@ namespace OpenFuryKMS.CustomControls
 
         public HeaderTile()
         {
-           this.InitializeComponent();
+           InitializeComponent();
         }
     }
 }

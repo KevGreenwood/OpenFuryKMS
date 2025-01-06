@@ -104,15 +104,15 @@ public partial class App : Application
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        await InternetConnection.IsInternetAvailable();
+        await WindowsHandler.InitializeAsync();
+        await OfficeHandler.InitializeAsync();
+        await AdobeHandler.LoadProducts();
+
         base.OnLaunched(args);
 
         App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
         await App.GetService<IActivationService>().ActivateAsync(args);
-
-        await InternetConnection.IsInternetAvailable();
-        await WindowsHandler.InitializeAsync();
-        await OfficeHandler.InitializeAsync();
-        await AdobeHandler.LoadProducts();
     }
 }
