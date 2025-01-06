@@ -20,12 +20,16 @@
 	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\Header-WindowsDesign.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Assets\greenwood.ttf" />
     <None Remove="Assets\SVG\Office\2016.svg" />
     <None Remove="Assets\SVG\Office\2021.svg" />
     <None Remove="Assets\SVG\Office\365.svg" />
     <None Remove="Assets\SVG\Windows\10.svg" />
     <None Remove="Assets\SVG\Windows\11.svg" />
+    <None Remove="CustomControls\HeaderTile.xaml" />
     <None Remove="Scripts\OfficeRenewer.ps1" />
     <None Remove="Scripts\WindowsRenewer.ps1" />
     <None Remove="Views\BlankPage1.xaml" />
@@ -36,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
@@ -66,6 +70,9 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Page Update="CustomControls\HeaderTile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\BlankPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

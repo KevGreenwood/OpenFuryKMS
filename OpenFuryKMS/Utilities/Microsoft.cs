@@ -13,7 +13,7 @@ namespace OpenFuryKMS
         private static string DisplayVersion { get; set; }
         private static string Build { get; set; }
         private static string UBR { get; set; }
-        private static string ProductName { get; set; }
+        public static string ProductName { get; set; }
         private static string Platform => Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         public static string Version => $"{DisplayVersion} ({Build}.{UBR})";
         public static string GetMinimalInfo => $"{ProductName} {DisplayVersion} {Platform}";
@@ -24,6 +24,8 @@ namespace OpenFuryKMS
         public static int LicenseIndex { get; private set; }
         public static bool ServerEval => ProductName.Contains("Evaluation") && ProductName.Contains("Server");
         public static ImageSource Logo { get; private set; }
+        public static BitmapImage LogoPNG { get; private set; }
+
         public static RenewTask Task = new("WindowsRenewer");
 
         public static readonly List<(string License, string Description)> Home_Licenses =
@@ -92,10 +94,12 @@ namespace OpenFuryKMS
             {
                 ProductName = ProductName.Replace("Windows 10", "Windows 11");
                 Logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/11.svg"));
+                LogoPNG = new BitmapImage(new Uri("ms-appx:///Assets/PNG/Win11.png"));
             }
             else
             {
                 Logo = new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Windows/10.svg"));
+                LogoPNG = new BitmapImage(new Uri("ms-appx:///Assets/PNG/Win10.png"));
             }
 
             string[] products = { "Home", "Pro", "Education", "Enterprise", "Server" };
@@ -163,6 +167,7 @@ namespace OpenFuryKMS
         public static string ProductName = "Product not found";
         public static int ProductIndex { get; private set; }
         public static ImageSource Logo { get; private set; }
+        public static ImageSource LogoPNG { get; private set; }
         private const string PathAssets = "ms-appx:///Assets/SVG/Office";
         public static RenewTask Task = new("OfficeRenewer");
 
@@ -211,6 +216,10 @@ namespace OpenFuryKMS
                     Logo = new SvgImageSource(new Uri(logoPath));
                     break;
                 }
+
+                LogoPNG = ProductName.Contains("2021") || ProductName.Contains("365")
+                    ? new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Office/365.svg"))
+                    : (ImageSource)new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Office/2019.svg"));
 
                 ExtractLicenseStatus();
 

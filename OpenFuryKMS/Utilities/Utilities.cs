@@ -211,4 +211,24 @@ namespace OpenFuryKMS
 
         private void GetTaskFolder() => tf = ts.GetFolder(taskFolderName);
     }
+
+    public static class InternetConnection
+    {
+        public static bool result;
+
+        public static async System.Threading.Tasks.Task IsInternetAvailable()
+        {
+            try
+            {
+                using var client = new HttpClient();
+                client.Timeout = TimeSpan.FromSeconds(5);
+                var response = await client.GetAsync("https://www.google.com");
+                result = response.IsSuccessStatusCode;
+            }
+            catch
+            {
+                result = false;
+            }
+        }
+    }
 }

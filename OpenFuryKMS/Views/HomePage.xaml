@@ -4,9 +4,58 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:custom="using:OpenFuryKMS.CustomControls"
     mc:Ignorable="d">
+    <StackPanel Spacing="20">
+        <StackPanel x:Name="ContentArea" Orientation="Horizontal" Spacing="12">
+            <custom:HeaderTile x:Name="Connection_Header" Title="Internet Connection">
+                <custom:HeaderTile.Source>
+                    <Grid>
+                        <FontIcon x:Name="MainIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xF385;" FontSize="50"/>
+                        <FontIcon x:Name="AuxIcon"  FontFamily="Segoe MDL2 Assets" Glyph="&#xF386;" FontSize="50"/>
+                    </Grid>
+                </custom:HeaderTile.Source>
+            </custom:HeaderTile>
 
-    <Grid x:Name="ContentArea">
-        
-    </Grid>
+            <custom:HeaderTile x:Name="Win_Header" Title="Microsoft Windows" Description="Windows 1X">
+                <custom:HeaderTile.Source>
+                    <Image x:Name="Win_Logo"/>
+                </custom:HeaderTile.Source>
+            </custom:HeaderTile>
+
+            <custom:HeaderTile x:Name="Office_Header" Title="Microsoft Office" Description="Office 20XX">
+                <custom:HeaderTile.Source>
+                    <Image x:Name="Office_Logo"/>
+                </custom:HeaderTile.Source>
+            </custom:HeaderTile>
+
+            <custom:HeaderTile x:Name="Adobe_Header" Title="Adobe" Description="n Products Installed">
+                <custom:HeaderTile.Source>
+                    <Image Source="/Assets/PNG/adobe.png"/>
+                </custom:HeaderTile.Source>
+            </custom:HeaderTile>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock TextWrapping="Wrap" FontSize="18">
+                <Run Foreground="OrangeRed">
+                    Some functionalities of the program may not be available
+                </Run>
+                <Run>
+                    because you do not have the compatible software or the required software could not be found.
+                </Run>
+                <LineBreak /><Run Foreground="HotPink">
+                    Note:
+                </Run>
+                <Run>
+                    To perform KMS activations, an internet connection is required. Otherwise, you will only be able to renew the license or use the trial license.
+                </Run>
+                <LineBreak /><Run Foreground="SpringGreen">
+                    Reminder:
+                </Run>
+                <Run>
+                    This software performs operations that can be reverted. You can undo them in the settings section. Also, if you downloaded this software from its GitHub repository, this program does not include any malware. If, for some unusual reason, your antivirus detects it as malware, temporarily disable the antivirus until you finish using the program.
+                </Run>
+            </TextBlock>
+        </StackPanel>
+    </StackPanel>
 </Page>

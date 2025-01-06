@@ -6,6 +6,7 @@ using OpenFuryKMS.Activation;
 using OpenFuryKMS.Contracts.Services;
 using OpenFuryKMS.Core.Contracts.Services;
 using OpenFuryKMS.Core.Services;
+using OpenFuryKMS.CustomControls;
 using OpenFuryKMS.Helpers;
 using OpenFuryKMS.Models;
 using OpenFuryKMS.Notifications;
@@ -109,6 +110,7 @@ public partial class App : Application
 
         await App.GetService<IActivationService>().ActivateAsync(args);
 
+        await InternetConnection.IsInternetAvailable();
         await WindowsHandler.InitializeAsync();
         await OfficeHandler.InitializeAsync();
         await AdobeHandler.LoadProducts();
