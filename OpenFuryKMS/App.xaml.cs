@@ -6,7 +6,6 @@ using OpenFuryKMS.Activation;
 using OpenFuryKMS.Contracts.Services;
 using OpenFuryKMS.Core.Contracts.Services;
 using OpenFuryKMS.Core.Services;
-using OpenFuryKMS.CustomControls;
 using OpenFuryKMS.Helpers;
 using OpenFuryKMS.Models;
 using OpenFuryKMS.Notifications;
@@ -113,6 +112,7 @@ public partial class App : Application
 
         App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        // await
+        App.GetService<IActivationService>().ActivateAsync(args);
     }
 }

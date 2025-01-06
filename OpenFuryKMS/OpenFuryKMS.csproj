@@ -18,6 +18,10 @@
 	<WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
 	<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
 	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	<FileVersion>0.1.0-beta</FileVersion>
+	<Company>Kev Greenwood</Company>
+	<AssemblyVersion>0.1.0</AssemblyVersion>
+	<Version>0.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Header-WindowsDesign.png" />
@@ -29,6 +33,7 @@
     <None Remove="Assets\SVG\Office\365.svg" />
     <None Remove="Assets\SVG\Windows\10.svg" />
     <None Remove="Assets\SVG\Windows\11.svg" />
+    <None Remove="Assets\WindowIcon.ico" />
     <None Remove="CustomControls\HeaderTile.xaml" />
     <None Remove="Scripts\OfficeRenewer.ps1" />
     <None Remove="Scripts\WindowsRenewer.ps1" />

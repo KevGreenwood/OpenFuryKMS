@@ -107,7 +107,10 @@ public sealed partial class WindowsPage : Page
         EditionCombo.SelectedIndex = -1;
     }
 
-    private async void InfoButton_Click(object sender, RoutedEventArgs e) => ShellBox.Text = WindowsHandler.RemoveNewLine(await PowershellHandler.RunCommandAsync("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr"));
+    private async void InfoButton_Click(object sender, RoutedEventArgs e)
+    {
+        ShellBox.Text = WindowsHandler.RemoveNewLine(await PowershellHandler.RunCommandAsync("cscript //nologo slmgr.vbs /dli; cscript //nologo slmgr.vbs /xpr"));
+    }
 
     private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
@@ -135,10 +138,10 @@ public sealed partial class WindowsPage : Page
 
             ContentDialog restartDialog = new ContentDialog
             {
-                Title = "Reinicio requerido",
-                Content = "El sistema necesita reiniciarse para aplicar los cambios. ¿Desea reiniciar ahora?",
-                PrimaryButtonText = "Reiniciar",
-                CloseButtonText = "Cancelar",
+                Title = "Reboot required",
+                Content = "The system needs to restart to apply the changes. Do you want to restart now?",
+                PrimaryButtonText = "Reboot",
+                CloseButtonText = "Cancel",
                 XamlRoot = this.Content.XamlRoot
             };
 
@@ -156,7 +159,7 @@ public sealed partial class WindowsPage : Page
                 }
             );
         }
-        
+
         WindowsHandler.ExtractLicenseStatus();
         GetLicenseStatus();
 

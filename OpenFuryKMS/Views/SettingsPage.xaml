@@ -71,7 +71,7 @@
 
         <StackPanel Spacing="2">
             <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Version and updates"/>
-            <controls:SettingsCard Header="v0.1.0" HeaderIcon="{ui:FontIcon Glyph=&#xE895;}">
+            <controls:SettingsCard Header="v0.1.0-beta" HeaderIcon="{ui:FontIcon Glyph=&#xE895;}">
                 <Button x:Name="UpdateButton" Click="UpdateButton_Click">Check updates</Button>
             </controls:SettingsCard>
         </StackPanel>

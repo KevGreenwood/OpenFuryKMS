@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:custom="using:OpenFuryKMS.CustomControls"
     mc:Ignorable="d">
+
     <StackPanel Spacing="20">
         <StackPanel x:Name="ContentArea" Orientation="Horizontal" Spacing="12">
             <custom:HeaderTile x:Name="Connection_Header" Title="Internet Connection">

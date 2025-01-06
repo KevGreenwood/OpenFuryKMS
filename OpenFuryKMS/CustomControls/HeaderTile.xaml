@@ -27,12 +27,13 @@
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
-        
-        <Grid
+
+        <Button
             Padding="-1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
             AutomationProperties.LabeledBy="{Binding ElementName=TitleText}"
             CornerRadius="{StaticResource OverlayCornerRadius}">
             <Grid
@@ -65,6 +66,6 @@
                         Text="{x:Bind Description, Mode=TwoWay}" />
                 </StackPanel>
             </Grid>
-        </Grid>
+        </Button>
 	</Grid>
 </UserControl>
