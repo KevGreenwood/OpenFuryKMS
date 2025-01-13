@@ -71,7 +71,7 @@
 
         <StackPanel Spacing="2">
             <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Version and updates"/>
-            <controls:SettingsCard Header="v0.1.0-beta" HeaderIcon="{ui:FontIcon Glyph=&#xE895;}">
+            <controls:SettingsCard Header="v0.2.0-beta" HeaderIcon="{ui:FontIcon Glyph=&#xE895;}">
                 <Button x:Name="UpdateButton" Click="UpdateButton_Click">Check updates</Button>
             </controls:SettingsCard>
         </StackPanel>
@@ -85,8 +85,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <HyperlinkButton HorizontalAlignment="Left" Grid.Column="0" Content="GitHub Repository" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
-            <!--<HyperlinkButton HorizontalAlignment="Right" Grid.Column="2" Content="Donate" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>-->
-            
+            <HyperlinkButton HorizontalAlignment="Right" Grid.Column="2" Content="Donate" NavigateUri="https://www.paypal.com/paypalme/FuryGreenwood"/>
+
         </Grid>
             
         </StackPanel>

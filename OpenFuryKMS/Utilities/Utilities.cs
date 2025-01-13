@@ -163,19 +163,20 @@ namespace OpenFuryKMS
 
                 if (tf.GetTasks().FirstOrDefault(t => t.Name == script) == null)
                 {
-                    TaskDefinition td = ts.NewTask();
-                    td.RegistrationInfo.Description = $"Ejecuta el script {script}.ps1 cada 181 días";
-                    td.Triggers.Add(new DailyTrigger { DaysInterval = 181 });
-                    td.Actions.Add(new ExecAction("powershell.exe", $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"", null));
-                    tf.RegisterTaskDefinition(script, td);
+                    TaskDefinition taskDefinition = ts.NewTask();
+                    taskDefinition.RegistrationInfo.Description = $"Executes the script {script}.ps1 every 181 days.";
+                    taskDefinition.Triggers.Add(new DailyTrigger { DaysInterval = 181 });
+                    taskDefinition.Actions.Add(new ExecAction("powershell.exe", $"-ExecutionPolicy Bypass -File \"{scriptFilePath}\"", null));
+                    tf.RegisterTaskDefinition(script, taskDefinition);
                 }
-                return "Tarea creada correctamente";
+                return "Task created successfully.";
             }
             catch (Exception ex)
             {
-                return $"Error al crear la tarea: {ex.Message}";
+                return $"Error creating the task: {ex.Message}";
             }
         }
+
 
         public void DeleteTask()
         {

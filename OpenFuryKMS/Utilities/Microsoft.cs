@@ -170,6 +170,17 @@ namespace OpenFuryKMS
         public static ImageSource LogoPNG { get; private set; }
         private const string PathAssets = "ms-appx:///Assets/SVG/Office";
         public static RenewTask Task = new("OfficeRenewer");
+        public static bool needAtention;
+
+        private static string[] keys_toRemove =
+        [
+            // Trial
+            "PG343", "8MBCX", "27GXM",
+            // 2021 --- 2013
+            "6F7TH", "6MWKP", "WFG99", "GVGXT",
+            // 2016 / 365
+            "BTDRB", "KHGM9", "CPQVG",
+        ];
 
         private static Dictionary<string, string> versions = new()
         {
@@ -208,6 +219,7 @@ namespace OpenFuryKMS
                    because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
                    that each Office version has its own language */
 
+
                 foreach (var version in versions)
                 {
                     if (!ReleaseId.Contains(version.Key)) continue;
@@ -222,6 +234,7 @@ namespace OpenFuryKMS
                     : (ImageSource)new SvgImageSource(new Uri("ms-appx:///Assets/SVG/Office/2019.svg"));
 
                 ExtractLicenseStatus();
+                await LicenseConflict();
 
                 ProductIndex = versions.Values.ToList().FindIndex(p => ProductName.Contains(p));
             }
@@ -235,9 +248,11 @@ namespace OpenFuryKMS
             string[] officePaths =
             {
                 @"C:\Program Files\Microsoft Office\Office16",
+                @"C:\Program Files\Microsoft Office\root\Office16",
                 @"C:\Program Files\Microsoft Office\Office15",
                 @"C:\Program Files (x86)\Microsoft Office\Office16",
-                @"C:\Program Files (x86)\Microsoft Office\Office15"
+                @"C:\Program Files (x86)\Microsoft Office\root\Office16",
+                @"C:\Program Files (x86)\Microsoft Office\Office15",
             };
 
             var foundPath = officePaths.FirstOrDefault(Directory.Exists);
@@ -317,6 +332,47 @@ namespace OpenFuryKMS
             {
                 return "No conversion needed. Current license is not RETAIL.";
             }
+        }
+
+        private async static Task LicenseConflict()
+        {
+            string licenseVer = string.Empty;
+
+            foreach (string line in ShellOutput.Split('\n'))
+            {
+                if (line.Contains("LICENSE NAME"))
+                {
+                    string licenseName = line.Split(':')[1].Trim();
+                    string[] licenseParts = licenseName.Split(',');
+                    licenseVer = licenseParts[0].Trim();
+                    break;
+                }
+            }
+
+            string[] parts = ProductName.Split(' ');
+
+            if (licenseVer.Contains(parts[^1][^2..]))
+            {
+                needAtention = false;
+            }
+            else
+            {
+                needAtention = true;
+            }
+        }
+
+        public async static Task<string> RemoveAll()
+        {
+            var outputBuilder = new StringBuilder();
+
+            foreach (string key in keys_toRemove)
+            {
+                outputBuilder.AppendLine(await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs /unpkey:{key}"));
+            }
+
+            needAtention = true;
+
+            return outputBuilder.ToString();
         }
     }
 }

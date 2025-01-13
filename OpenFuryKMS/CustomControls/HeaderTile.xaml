@@ -17,12 +17,12 @@
             <ResourceDictionary>
                 <ResourceDictionary.ThemeDictionaries>
                     <ResourceDictionary x:Key="Light">
-                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
-                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
+                        <SolidColorBrush x:Key="ButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
                     </ResourceDictionary>
                     <ResourceDictionary x:Key="Dark">
-                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
-                        <SolidColorBrush x:Key="HyperlinkButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
+                        <SolidColorBrush x:Key="ButtonBorderBrush" Color="{ThemeResource ControlStrokeColorDefault}" />
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="{ThemeResource ControlStrokeColorSecondary}" />
                     </ResourceDictionary>
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>

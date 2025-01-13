@@ -136,13 +136,14 @@ public sealed partial class WindowsPage : Page
             ShellBox.Text = await PowershellHandler.RunCommandAsync($"DISM /Online /Set-Edition:{edition} /ProductKey:{licenseKey} /AcceptEula /English /NoRestart");
             var dialogFinished = new ManualResetEvent(false);
 
-            ContentDialog restartDialog = new ContentDialog
+            ContentDialog restartDialog = new()
             {
+                XamlRoot = Content.XamlRoot,
+                Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                 Title = "Reboot required",
                 Content = "The system needs to restart to apply the changes. Do you want to restart now?",
                 PrimaryButtonText = "Reboot",
                 CloseButtonText = "Cancel",
-                XamlRoot = this.Content.XamlRoot
             };
 
             var task = restartDialog.ShowAsync().AsTask();
@@ -169,7 +170,7 @@ public sealed partial class WindowsPage : Page
             {
                 ContentDialog renewTask = new()
                 {
-                    XamlRoot = this.XamlRoot,
+                    XamlRoot = XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Product Renew Task",
                     Content = "Do you want to create a task that every 180 days will renew your license?",
@@ -184,7 +185,7 @@ public sealed partial class WindowsPage : Page
                 {
                     ContentDialog resultDialog = new()
                     {
-                        XamlRoot = this.XamlRoot,
+                        XamlRoot = XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
                         Content = WindowsHandler.Task.CreateScheduledTask(),
@@ -192,6 +193,11 @@ public sealed partial class WindowsPage : Page
                     };
                     await resultDialog.ShowAsync();
                 }
+            }
+            else if (WindowsHandler.Task.IsTaskScheduled())
+            {
+                WindowsHandler.Task.DeleteTask();
+                WindowsHandler.Task.CreateScheduledTask();
             }
         }
         GetTaskStatus();

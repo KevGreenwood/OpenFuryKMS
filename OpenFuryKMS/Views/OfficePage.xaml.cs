@@ -20,6 +20,7 @@ public sealed partial class OfficePage : Page
     {
         ViewModel = App.GetService<OfficeViewModel>();
         InitializeComponent();
+        Loaded += OfficePage_Loaded;
 
         OfficeHandler.DirChecker();
         GetLicenseStatus();
@@ -32,6 +33,29 @@ public sealed partial class OfficePage : Page
         defaultVersion = ProductCombo.SelectedIndex;
         ServerCombo.ItemsSource = KMSHandler.KmsServers;
         ShellBox.Text = OfficeHandler.ShellOutput;
+    }
+
+    private async void OfficePage_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (OfficeHandler.needAtention)
+        {
+            ContentDialog dialog = new()
+            {
+                XamlRoot = XamlRoot,
+                Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                Title = "License Conflict Detected",
+                Content = "The current version of Microsoft Office installed on your system is not compatible with the existing license key. Please uninstall the conflicting license to proceed.",
+                PrimaryButtonText = "OK",
+                DefaultButton = ContentDialogButton.Primary
+            };
+
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                ShellBox.Text = await OfficeHandler.RemoveAll();
+            }
+        }
     }
 
     private void GetTaskStatus()
@@ -114,7 +138,7 @@ public sealed partial class OfficePage : Page
             {
                 ContentDialog renewTask = new()
                 {
-                    XamlRoot = this.XamlRoot,
+                    XamlRoot = XamlRoot,
                     Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                     Title = "Product Renew Task",
                     Content = "Do you want to create a task that every 180 days will renew your license?",
@@ -129,7 +153,7 @@ public sealed partial class OfficePage : Page
                 {
                     ContentDialog resultDialog = new()
                     {
-                        XamlRoot = this.XamlRoot,
+                        XamlRoot = XamlRoot,
                         Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                         Title = "Product Renew Task",
                         Content = OfficeHandler.Task.CreateScheduledTask(),
@@ -138,9 +162,14 @@ public sealed partial class OfficePage : Page
                     await resultDialog.ShowAsync();
                 }
             }
-            GetTaskStatus();
-            ActivateButton.IsEnabled = true;
+            else if (OfficeHandler.Task.IsTaskScheduled())
+            {
+                OfficeHandler.Task.DeleteTask();
+                OfficeHandler.Task.CreateScheduledTask();
+            }
         }
+        GetTaskStatus();
+        ActivateButton.IsEnabled = true;
     }
 
     private async void InfoButton_Click(object sender, RoutedEventArgs e) => ShellBox.Text = OfficeHandler.ClearOutput(await PowershellHandler.RunCommandAsync("cscript //nologo ospp.vbs /dstatus"));

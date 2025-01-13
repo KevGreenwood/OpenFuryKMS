@@ -31,7 +31,11 @@ public sealed partial class HomePage : Page
         }
         Win_Header.Description = $"{WindowsHandler.ProductName}\n{WindowsHandler.LicenseStatus}";
         Win_Logo.Source = WindowsHandler.LogoPNG;
-        Office_Header.Description = $"{OfficeHandler.ProductName}\n{OfficeHandler.LicenseStatus}";
+
+        Office_Header.Description = OfficeHandler.needAtention
+            ? $"{OfficeHandler.ProductName}\nAttention Needed!"
+            : $"{OfficeHandler.ProductName}\n{OfficeHandler.LicenseStatus}";
+
         Office_Logo.Source = OfficeHandler.LogoPNG;
         Adobe_Header.Description = $"{AdobeHandler.Products.Count} Products Installed";
     }
