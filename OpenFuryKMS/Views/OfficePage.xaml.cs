@@ -128,6 +128,11 @@ public sealed partial class OfficePage : Page
             string command = MethodCombo.SelectedIndex == 1 ? "/act" : "/rearm";
             dirtyOutput = await PowershellHandler.RunCommandAsync($"cscript //nologo ospp.vbs {command}");
             ShellBox.Text = OfficeHandler.ClearOutput(dirtyOutput);
+
+            if (MethodCombo.SelectedIndex == 1 && OfficeHandler.Task.IsTaskScheduled())
+            {
+                OfficeHandler.Task.RecreateTask();
+            }
         }
         OfficeHandler.ExtractLicenseStatus();
         GetLicenseStatus();
@@ -164,8 +169,7 @@ public sealed partial class OfficePage : Page
             }
             else if (OfficeHandler.Task.IsTaskScheduled())
             {
-                OfficeHandler.Task.DeleteTask();
-                OfficeHandler.Task.CreateScheduledTask();
+                OfficeHandler.Task.RecreateTask();
             }
         }
         GetTaskStatus();

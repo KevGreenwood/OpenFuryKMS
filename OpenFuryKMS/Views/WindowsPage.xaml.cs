@@ -119,6 +119,11 @@ public sealed partial class WindowsPage : Page
         {
             string cmd = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
             ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs {cmd}");
+
+            if (MethodCombo.SelectedIndex == 1 && WindowsHandler.Task.IsTaskScheduled())
+            {
+                WindowsHandler.Task.RecreateTask();
+            }
         }
 
         if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
@@ -196,8 +201,7 @@ public sealed partial class WindowsPage : Page
             }
             else if (WindowsHandler.Task.IsTaskScheduled())
             {
-                WindowsHandler.Task.DeleteTask();
-                WindowsHandler.Task.CreateScheduledTask();
+                WindowsHandler.Task.RecreateTask();
             }
         }
         GetTaskStatus();

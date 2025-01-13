@@ -211,6 +211,12 @@ namespace OpenFuryKMS
         }
 
         private void GetTaskFolder() => tf = ts.GetFolder(taskFolderName);
+
+        public void RecreateTask()
+        {
+            DeleteTask();
+            CreateScheduledTask();
+        }
     }
 
     public static class InternetConnection
