@@ -85,6 +85,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <HyperlinkButton HorizontalAlignment="Left" Grid.Column="0" Content="GitHub Repository" NavigateUri="https://github.com/KevGreenwood/OpenFuryKMS"/>
+            <HyperlinkButton HorizontalAlignment="Center" Grid.Column="1" Content="Discord" NavigateUri="https://discord.com/users/458024744600731649"/>
             <HyperlinkButton HorizontalAlignment="Right" Grid.Column="2" Content="Donate" NavigateUri="https://www.paypal.com/paypalme/FuryGreenwood"/>
 
         </Grid>
