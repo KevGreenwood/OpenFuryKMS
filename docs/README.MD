@@ -3,7 +3,7 @@ Originally known as *FuryKMS*, is an intuitive front-end that facilitates Window
 This is the latest iteration of the original project, rebuilt using modern technologies with **WinUI 3**. This version focuses on activating the following products:
 
 ## Supported Products
-### Windows (64-bit only)
+### Windows
 - All editions of Windows 10 / 11 Home
 - All editions of Windows 10 / 11 Pro
 - All editions of Windows 10 / 11 Education
