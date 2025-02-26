@@ -5,17 +5,42 @@ using Microsoft.Win32;
 
 public static class SLGMR
 {
+
 }
 
 public static class OnlineKMS
 {
+    // abbodi1406's code rewritten in C#
+
     private const string SPPk = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform";
     private const string OPPk = @"SOFTWARE\Microsoft\OfficeSoftwareProtectionPlatform";
     private const string wApp = "55c92734-d682-4d71-983e-d6ec3f16059";
     private const string oApp = "0ff1ce15-a989-479d-af46-f275c6370663";
 
+    /*
+    public static bool IsWindowsPermanentlyActivated()
+    {
+        try
+        {
+            using (var search = new ManagementObjectSearcher(@"SELECT LicenseStatus, GracePeriodRemaining, PartialProductKey, LicenseDependsOn
+            FROM SoftwareLicensingProduct 
+            WHERE ApplicationID='55c92734-d682-4d71-983e-d6ec3f16059f' 
+            AND LicenseStatus=1 
+            AND GracePeriodRemaining=0 
+            AND PartialProductKey IS NOT NULL 
+            AND LicenseDependsOn IS NULL"))
+            {
+                var collection = search.Get();
+                return collection.Count > 0;
+            }
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }*/
 
-    private static async Task Clear()
+    private static async Task<string> Clear()
     {
         try
         {
@@ -62,15 +87,18 @@ public static class OnlineKMS
             SafeDeleteValue(oppKey, "DisableKeyManagementServiceHostCaching");
             SafeDeleteSubKeyTree(oppKey, "59a52881-a989-479d-af46-f275c6370663");
             SafeDeleteSubKeyTree(oppKey, oApp);
+
+            return "All reg keys has been deleted";
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error al limpiar la caché del registro: {ex.Message}");
+            return ex.Message;
         }
     }
 
     public static async Task<string> InstallProductKey(string key)
     {
+        await Clear();
         return await Task.Run(() =>
         {
             try
@@ -92,11 +120,10 @@ public static class OnlineKMS
             }
             catch (Exception ex)
             {
-                return "Error installing product key: " + ex.Message;
+                return ex.Message;
             }
         });
     }
-
 
     public static async Task<string> SetKMS(string server)
     {
@@ -122,11 +149,10 @@ public static class OnlineKMS
             }
             catch (Exception ex)
             {
-                return "Error setting KMS server: " + ex.Message;
+                return ex.Message;
             }
         });
     }
-
 
     public static async Task<string> Activate()
     {
@@ -149,7 +175,7 @@ public static class OnlineKMS
             }
             catch (Exception ex)
             {
-                return "Error activating Windows: " + ex.Message;
+                return ex.Message;
             }
         });
     }

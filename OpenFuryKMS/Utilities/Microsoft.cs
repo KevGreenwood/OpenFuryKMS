@@ -1,8 +1,10 @@
 ﻿using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
+using System.Management;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.Services.Description;
 
 namespace OpenFuryKMS
 {
@@ -152,6 +154,24 @@ namespace OpenFuryKMS
                 end--;
 
             return string.Join("\n", lines[start..(end + 1)]);
+        }
+
+        public static async Task<string> GetLicenseKey()
+        {
+            string key = string.Empty;
+
+            using ManagementObjectSearcher searcher = new("SELECT OA3xOriginalProductKey FROM SoftwareLicensingService");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                key = obj["OA3xOriginalProductKey"]?.ToString() ?? "";
+            }
+
+            if (string.IsNullOrEmpty(key))
+            {
+                key = await GetRegistryValueAsync(@$"{WindowsPath}\SoftwareProtectionPlatform", "BackupProductKeyDefault");
+            }
+
+            return key;
         }
     }
 
