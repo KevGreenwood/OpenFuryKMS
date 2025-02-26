@@ -60,7 +60,8 @@
 
             <controls:SettingsCard Header="Activation Method" HeaderIcon="{ui:FontIcon Glyph=&#xE785;}">
                 <ComboBox x:Name="MethodCombo" Width="310" SelectionChanged="MethodCombo_SelectionChanged" PlaceholderText="Select your Activation Method" VerticalAlignment="Center">
-                    <x:String>KMS</x:String>
+                    <x:String>Traditional KMS (SLMGR)</x:String>
+                    <x:String>Online KMS</x:String>
                     <x:String>Renew</x:String>
                     <x:String>Rearm</x:String>
                 </ComboBox>

@@ -115,12 +115,12 @@ public sealed partial class WindowsPage : Page
     private async void ActivateButton_Click(object sender, RoutedEventArgs e)
     {
         ActivateButton.IsEnabled = false;
-        if (MethodCombo.SelectedIndex == 1 || MethodCombo.SelectedIndex == 2)
+        if (MethodCombo.SelectedIndex == 2 || MethodCombo.SelectedIndex == 3)
         {
-            string cmd = MethodCombo.SelectedIndex == 1 ? "/ato" : "/rearm";
+            string cmd = MethodCombo.SelectedIndex == 2 ? "/ato" : "/rearm";
             ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs {cmd}");
 
-            if (MethodCombo.SelectedIndex == 1 && WindowsHandler.Task.IsTaskScheduled())
+            if (MethodCombo.SelectedIndex == 2  && WindowsHandler.Task.IsTaskScheduled())
             {
                 WindowsHandler.Task.RecreateTask();
             }
@@ -128,11 +128,17 @@ public sealed partial class WindowsPage : Page
 
         if (MethodCombo.SelectedIndex == 0 && LicenseCombo.SelectedIndex != -1)
         {
-            string licenseKey = LicenseCombo.SelectedItem.ToString().Split(' ')[0];
-            ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /ipk {licenseKey}") + "\n";
+            ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /ipk {LicenseCombo.SelectedItem.ToString().Split(' ')[0]}") + "\n";
             ShellBox.Text += ServerCombo.SelectedIndex == 0
             ? await KMSHandler.AutoKMS(windows: true)
             : await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs /skms {KMSHandler.KmsServers[ServerCombo.SelectedIndex]}; cscript //nologo slmgr.vbs /ato");
+        }
+
+        if (MethodCombo.SelectedIndex == 1 && LicenseCombo.SelectedIndex != -1)
+        {
+            ShellBox.Text = await OnlineKMS.InstallProductKey(LicenseCombo.SelectedItem.ToString().Split(' ')[0]) + "\n";
+            ShellBox.Text += await OnlineKMS.SetKMS(KMSHandler.KmsServers[ServerCombo.SelectedIndex]) + "\n";
+            ShellBox.Text += await OnlineKMS.Activate();
         }
 
         if (ProductCombo.SelectedIndex == 4 && WindowsHandler.ServerEval)
@@ -169,7 +175,7 @@ public sealed partial class WindowsPage : Page
         WindowsHandler.ExtractLicenseStatus();
         GetLicenseStatus();
 
-        if (MethodCombo.SelectedIndex <= 1)
+        if (MethodCombo.SelectedIndex <= 2)
         {
             if (!WindowsHandler.Task.IsTaskScheduled())
             {
@@ -221,7 +227,7 @@ public sealed partial class WindowsPage : Page
         ServerCombo.SelectedIndex = -1;
         ProductCombo.SelectedIndex = defaultOS;
 
-        bool isKmsSelected = MethodCombo.SelectedIndex == 0;
+        bool isKmsSelected = MethodCombo.SelectedIndex < 2;
 
         ProductsCard.Visibility = isKmsSelected
             ? Visibility.Visible

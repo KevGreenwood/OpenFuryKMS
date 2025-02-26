@@ -73,17 +73,27 @@ namespace OpenFuryKMS
         [
             "Auto",
             "kms.digiboy.ir",
+            "kms.03k.org",
+            "kms-default.cangshui.net",
+            "kms.sixyin.com",
+            "kms.cgtsoft.com",
+            "kms.idina.cn",
+            "kms.moeyuuko.com",
+            "xincheng213618.cn",
+            "kms.loli.best",
+            "kms.myds.cloud",
+            "kms.0t.net.cn",
+            "kms.wxlost.com",
+            "kms.moeyuuko.top",
+            "kms.ghpym.com",
             "kms.chinancce.com",
             "kms.ddns.net",
-            "xykz.f3322.org",
             "dimanyakms.sytes.net",
-            "kms.03k.org",
             "ms8.us.to",
             "s8.uk.to",
             "s9.us.to",
             "kms9.msguides.com",
             "kms8.msguides.com",
-            "kms7.msguides.com"
         ];
 
         public static async Task<string> AutoKMS(bool windows = false, bool office = false)

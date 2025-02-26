@@ -14,7 +14,7 @@ namespace OpenFuryKMS
         private static string Build { get; set; }
         private static string UBR { get; set; }
         public static string ProductName { get; set; }
-        private static string Platform => Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
+        public static string Platform => Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
         public static string Version => $"{DisplayVersion} ({Build}.{UBR})";
         public static string GetMinimalInfo => $"{ProductName} {DisplayVersion} {Platform}";
         public static string GetAllInfo { get; private set; }
@@ -218,7 +218,6 @@ namespace OpenFuryKMS
                 /* I don't use: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\**OFFICE VERSION**
                    because it's hard to maintain both x86 & x64 bit builds and rename other Office products, without considering
                    that each Office version has its own language */
-
 
                 foreach (var version in versions)
                 {
