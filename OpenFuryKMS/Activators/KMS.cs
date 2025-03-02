@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Management;
 using Microsoft.Win32;
+using OpenFuryKMS;
 
 public static class SLGMR
 {
@@ -17,28 +18,21 @@ public static class OnlineKMS
     private const string wApp = "55c92734-d682-4d71-983e-d6ec3f16059";
     private const string oApp = "0ff1ce15-a989-479d-af46-f275c6370663";
 
-    /*
-    public static bool IsWindowsPermanentlyActivated()
+    public static bool CheckPerm()
     {
-        try
+        foreach (ManagementObject service in new ManagementObjectSearcher(@"SELECT Name FROM SoftwareLicensingProduct 
+                                                                                    WHERE LicenseStatus=1
+                                                                                    AND GracePeriodRemaining=0 
+                                                                                    AND PartialProductKey IS NOT NULL AND LicenseDependsOn IS NULL").Get())
         {
-            using (var search = new ManagementObjectSearcher(@"SELECT LicenseStatus, GracePeriodRemaining, PartialProductKey, LicenseDependsOn
-            FROM SoftwareLicensingProduct 
-            WHERE ApplicationID='55c92734-d682-4d71-983e-d6ec3f16059f' 
-            AND LicenseStatus=1 
-            AND GracePeriodRemaining=0 
-            AND PartialProductKey IS NOT NULL 
-            AND LicenseDependsOn IS NULL"))
+            if (service["Name"] is string name && !string.IsNullOrEmpty(name))
             {
-                var collection = search.Get();
-                return collection.Count > 0;
+                return true;
             }
         }
-        catch (Exception)
-        {
-            return false;
-        }
-    }*/
+
+        return false;
+    }
 
     private static async Task<string> Clear()
     {
@@ -101,27 +95,17 @@ public static class OnlineKMS
         await Clear();
         return await Task.Run(() =>
         {
-            try
+            foreach (ManagementObject service in new ManagementObjectSearcher("SELECT Version FROM SoftwareLicensingService").Get())
             {
-                using ManagementObjectSearcher searcher = new("SELECT * FROM SoftwareLicensingService");
-                using ManagementObjectCollection services = searcher.Get();
+                using ManagementBaseObject inParams = service.GetMethodParameters("InstallProductKey");
+                inParams["ProductKey"] = key;
 
-                foreach (ManagementObject service in services)
-                {
-                    using ManagementBaseObject inParams = service.GetMethodParameters("InstallProductKey");
-                    inParams["ProductKey"] = key;
+                using ManagementBaseObject outParams = service.InvokeMethod("InstallProductKey", inParams, null);
+                int returnValue = Convert.ToInt32(outParams["ReturnValue"]);
 
-                    using ManagementBaseObject outParams = service.InvokeMethod("InstallProductKey", inParams, null);
-                    int returnValue = Convert.ToInt32(outParams["ReturnValue"]);
-
-                    return returnValue == 0 ? "Product Key Installed Successfully" : $"Error Code: {returnValue}";
-                }
-                return "Error: No se encontró SoftwareLicensingService.";
+                return returnValue == 0 ? "Product Key Installed Successfully" : $"Error Code: {returnValue}";
             }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            return "Error: No se encontró SoftwareLicensingService.";
         });
     }
 
@@ -158,26 +142,43 @@ public static class OnlineKMS
     {
         return await Task.Run(() =>
         {
-            try
+            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform", true);
+
+            if (Convert.ToUInt16(WindowsHandler.Build) == 14393)
             {
-                using ManagementObjectSearcher searcher = new("SELECT ID FROM SoftwareLicensingProduct WHERE ID='55c92734-d682-4d71-983e-d6ec3f16059f'");
-                using ManagementObjectCollection instances = searcher.Get();
-
-                foreach (ManagementObject instance in instances)
-                {
-                    using ManagementBaseObject outParams = instance.InvokeMethod("Activate", null, null);
-                    int returnValue = Convert.ToInt32(outParams["ReturnValue"]);
-
-                    return returnValue == 0 ? "Windows Activated Successfully" : $"Activation Error: {returnValue}";
-                }
-
-                return "Error: No se encontró el producto con la ID especificada.";
+                key.SetValue("NoAcquireGT", 1, RegistryValueKind.DWord);
             }
-            catch (Exception ex)
+            else
             {
-                return ex.Message;
+                key.SetValue("NoGenTicket", 1, RegistryValueKind.DWord);
+
             }
+
+            foreach (ManagementObject instance in new ManagementObjectSearcher("SELECT ID FROM SoftwareLicensingProduct WHERE ID='55c92734-d682-4d71-983e-d6ec3f16059f'").Get())
+            {
+                using ManagementBaseObject outParams = instance.InvokeMethod("Activate", null, null);
+                int returnValue = Convert.ToInt32(outParams["ReturnValue"]);
+
+                return returnValue == 0 ? "Windows Activated Successfully" : $"Activation Error: {returnValue}";
+            }
+
+            return "Error: No se encontró el producto con la ID especificada.";
         });
+    }
+    public static async Task<string> RefreshLicenseStatus()
+    {
+        try
+        {
+            foreach (ManagementObject service in new ManagementObjectSearcher(@"SELECT * FROM SoftwareLicensingService").Get())
+            {
+                service.InvokeMethod("RefreshLicenseStatus", null);
+            }
+            return "License status refreshed successfully";
+        }
+        catch (Exception ex)
+        {
+            return "Error refreshing license status: " + ex.Message;
+        }
     }
 
 }

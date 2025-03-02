@@ -13,7 +13,7 @@ namespace OpenFuryKMS
         private const string WindowsPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
 
         private static string DisplayVersion { get; set; }
-        private static string Build { get; set; }
+        public static string Build { get; set; }
         private static string UBR { get; set; }
         public static string ProductName { get; set; }
         public static string Platform => Environment.Is64BitOperatingSystem ? "64 bits" : "32 bits";
