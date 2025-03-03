@@ -4,6 +4,7 @@ using System.Management;
 using Microsoft.Win32;
 using OpenFuryKMS;
 
+
 public static class SLGMR
 {
 
@@ -12,6 +13,7 @@ public static class SLGMR
 public static class OnlineKMS
 {
     // abbodi1406's code rewritten in C#
+    private static string winID = string.Empty;
 
     private const string SPPk = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform";
     private const string OPPk = @"SOFTWARE\Microsoft\OfficeSoftwareProtectionPlatform";
@@ -32,6 +34,21 @@ public static class OnlineKMS
         }
 
         return false;
+    }
+
+    public static void GetID()
+    {
+
+        foreach (ManagementObject service in new ManagementObjectSearcher(@"SELECT ID FROM SoftwareLicensingProduct 
+                                                                                    WHERE Name like '%windows%'
+                                                                                    AND Description like '%KMSCLIENT%' 
+                                                                                    AND PartialProductKey IS NOT NULL AND LicenseDependsOn IS NULL").Get())
+        {
+            if (service["ID"] is string id && !string.IsNullOrEmpty(id))
+            {
+                winID = id;
+            }
+        }
     }
 
     private static async Task<string> Clear()
@@ -142,19 +159,20 @@ public static class OnlineKMS
     {
         return await Task.Run(() =>
         {
-            using RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform", true);
-
-            if (Convert.ToUInt16(WindowsHandler.Build) == 14393)
+            GetID();
+            using (RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform", true))
             {
-                key.SetValue("NoAcquireGT", 1, RegistryValueKind.DWord);
+                if (Convert.ToUInt16(WindowsHandler.Build) == 14393)
+                {
+                    key.SetValue("NoAcquireGT", 1, RegistryValueKind.DWord);
+                }
+                else
+                {
+                    key.SetValue("NoGenTicket", 1, RegistryValueKind.DWord);
+                }
             }
-            else
-            {
-                key.SetValue("NoGenTicket", 1, RegistryValueKind.DWord);
 
-            }
-
-            foreach (ManagementObject instance in new ManagementObjectSearcher("SELECT ID FROM SoftwareLicensingProduct WHERE ID='55c92734-d682-4d71-983e-d6ec3f16059f'").Get())
+            foreach (ManagementObject instance in new ManagementObjectSearcher(@$"SELECT ID FROM SoftwareLicensingProduct WHERE ID='{winID}'").Get())
             {
                 using ManagementBaseObject outParams = instance.InvokeMethod("Activate", null, null);
                 int returnValue = Convert.ToInt32(outParams["ReturnValue"]);

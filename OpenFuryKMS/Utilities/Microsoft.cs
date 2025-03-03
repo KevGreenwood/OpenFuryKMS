@@ -87,6 +87,7 @@ namespace OpenFuryKMS
 
         public static async Task InitializeAsync()
         {
+            OnlineKMS.GetID();
             Build = await GetRegistryValueAsync(WindowsPath, "CurrentBuildNumber");
             ProductName = await GetRegistryValueAsync(WindowsPath, "ProductName");
             DisplayVersion = await GetRegistryValueAsync(WindowsPath, "DisplayVersion");
