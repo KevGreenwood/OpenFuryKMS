@@ -1,6 +1,6 @@
-# OpenFuryKMS
+# Prometheus Forge
 ![Screenshot](screenshot.png)
-Originally known as *FuryKMS*, is an intuitive front-end that facilitates Windows and Office activation using SLMGR and OSPP commands via PowerShell. It aims to provide a secure and transparent alternative to users looking to activate their Microsoft products without risk of malware or intrusions.
+Originally known as *FuryKMS / OpenFuryKMS*, is an intuitive front-end that facilitates Windows and Office activation using SLMGR and OSPP commands via PowerShell. It aims to provide a secure and transparent alternative to users looking to activate their Microsoft products without risk of malware or intrusions.
 This is the latest iteration of the original project, rebuilt using modern technologies with **WinUI 3**. This version focuses on activating the following products:
 
 ## Supported Products
@@ -42,7 +42,6 @@ The application can activate most Adobe products by blocking the primary executa
 - Expanded support for additional Adobe products.
 - Enhanced UI/UX design.
 - Ability for users to input their own KMS server and add a custom license (if feasible).
-- Backup functionality for licenses (if feasible).
 - Option to permanently activate the system (if feasible).
 
 ### Legacy Version:
