@@ -1,6 +1,9 @@
 ﻿using Microsoft.Win32.TaskScheduler;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Reflection;
 
 
@@ -72,7 +75,6 @@ namespace OpenFuryKMS
         public static List<string> KmsServers =
         [
             "Auto",
-            "kms.digiboy.ir",
             "kms.03k.org",
             "kms-default.cangshui.net",
             "kms.sixyin.com",
@@ -89,6 +91,7 @@ namespace OpenFuryKMS
             "kms.chinancce.com",
             "kms.ddns.net",
             "dimanyakms.sytes.net",
+            "kms.digiboy.ir",
             "ms8.us.to",
             "s8.uk.to",
             "s9.us.to",
@@ -114,6 +117,36 @@ namespace OpenFuryKMS
                 }
             }
             return "The connection to KMS Servers failed! Please try again and make sure you have an internet connection.";
+        }
+
+        public static async Task<string> SelectServer()
+        {
+            foreach (string server in KmsServers.Skip(1))
+            {
+                try
+                {
+                    var addresses = await Dns.GetHostAddressesAsync(server);
+                    var ipv4 = addresses.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+
+                    if (ipv4 != null)
+                    {
+                        using (var ping = new Ping())
+                        {
+                            var reply = await ping.SendPingAsync(ipv4, 1000);
+                            if (reply.Status == IPStatus.Success)
+                            {
+                                return server;
+                            }
+                        }
+                        return server;
+                    }
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+            return "222.184.9.98";
         }
     }
 

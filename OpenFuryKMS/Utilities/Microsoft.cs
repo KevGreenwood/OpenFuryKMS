@@ -4,7 +4,6 @@ using Microsoft.Win32;
 using System.Management;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web.Services.Description;
 
 namespace OpenFuryKMS
 {

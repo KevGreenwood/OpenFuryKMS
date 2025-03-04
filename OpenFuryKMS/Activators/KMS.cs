@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Management;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using OpenFuryKMS;
+using System.Management;
 
 
 public static class SLGMR

@@ -120,7 +120,7 @@ public sealed partial class WindowsPage : Page
             string cmd = MethodCombo.SelectedIndex == 2 ? "/ato" : "/rearm";
             ShellBox.Text = await PowershellHandler.RunCommandAsync($"cscript //nologo slmgr.vbs {cmd}");
 
-            if (MethodCombo.SelectedIndex == 2  && WindowsHandler.Task.IsTaskScheduled())
+            if (MethodCombo.SelectedIndex == 2 && WindowsHandler.Task.IsTaskScheduled())
             {
                 WindowsHandler.Task.RecreateTask();
             }
@@ -137,7 +137,14 @@ public sealed partial class WindowsPage : Page
         if (MethodCombo.SelectedIndex == 1 && LicenseCombo.SelectedIndex != -1)
         {
             ShellBox.Text = await OnlineKMS.InstallProductKey(LicenseCombo.SelectedItem.ToString().Split(' ')[0]) + "\n";
-            ShellBox.Text += await OnlineKMS.SetKMS(KMSHandler.KmsServers[ServerCombo.SelectedIndex]) + "\n";
+            if (ServerCombo.SelectedIndex == 0)
+            {
+                ShellBox.Text += await OnlineKMS.SetKMS(await KMSHandler.SelectServer()) + "\n";
+            }
+            else
+            {
+                ShellBox.Text += await OnlineKMS.SetKMS(KMSHandler.KmsServers[ServerCombo.SelectedIndex]) + "\n";
+            }
             ShellBox.Text += await OnlineKMS.Activate();
         }
 
